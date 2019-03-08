@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-2.1.1.js"></script>
+</head>
+<body>
+<div id="rightNav">
+    <ul>
+        <li>
+            <a href="javascript:;">
+                <i></i>
+                <p>个人中心</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i></i>
+                <p>在线客服</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i></i>
+                <p>购物车</p>
+            </a>
+        </li>
+        <li id="topBtn">
+            <a href="javascript:;">
+                <i></i>
+                <p>返回顶部</p>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    // 返回顶部动画
+    $(function(){
+        if ($(window).scrollTop()>800){
+            $("#rightNav").show()
+        }
+        $(window).scroll(function(){
+            if ($(window).scrollTop()>800){
+                $("#rightNav").show()
+            }else {
+                $("#rightNav").hide()
+            }
+        });
+        $("#topBtn").click(function(){
+            $('body,html').animate({scrollTop:0},500);
+            return false;
+        });
+    });
+</script>
+</html>

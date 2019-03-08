@@ -1,0 +1,6 @@
+<template name="search">
+ <view class='search'>
+ <image src="../../images/search.png" class="searchIcon" ></image>
+  <input class='searchIpt' placeholder='根据商品名称、品牌、产地进行模糊搜索' />
+</view>
+</template>

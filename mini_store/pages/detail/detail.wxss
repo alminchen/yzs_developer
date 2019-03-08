@@ -1,0 +1,64 @@
+.slider{
+ position: relative;
+}
+.slide-img{
+  width:576rpx;
+  height:576rpx;
+  margin:87rpx auto;
+  display: block;
+
+}
+swiper{
+  height:750rpx;
+  padding-bottom:40rpx;
+}
+.slide-info{
+   border-radius: 50%;
+   position: absolute;
+   width: 80rpx;
+	 height: 80rpx;
+	 border: solid 1px rgba(228, 228, 228, 0.66);
+   color: #424144;
+   font-size:14px;
+   text-align: center;
+   padding:10rpx;
+   right:20rpx;
+   bottom:57rpx;
+
+}
+.ware-txt{
+  padding:30rpx 0 30rpx 30rpx;
+  border-top:1rpx solid #dbdbdb;
+}
+.ware-price{
+  display: flex;
+  justify-content: flex-start;
+}
+.price-num{
+  font-size:23px;
+}
+.price-hot{
+  width: 140rpx;
+	height: 38rpx;
+	background-color: #fdba2d;
+  color:#fff; 
+  font-size:12px;
+  text-align: center;
+  line-height: 38rpx;
+  margin:12rpx 0 0 20rpx;
+}
+.share_icon{
+  width:20rpx;
+  height:22rpx;
+}
+.ware-title{
+  display: flex;
+  justify-content: space-between;
+}
+.share{
+  width: 112rpx;
+	height: 50rpx;
+	background-color: #f4f4f4;
+	border-radius: 25rpx 0 0 25rpx;
+  margin-left:60rpx;
+}

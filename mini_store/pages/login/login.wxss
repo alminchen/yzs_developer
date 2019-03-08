@@ -1,0 +1,61 @@
+.login-head{
+  margin:60rpx 0  80rpx 0;
+  text-align: center;
+}
+.login-head image{
+  width:250rpx;
+  height:87rpx;
+}
+
+
+.form-list{
+ margin:0 30rpx 30rpx;
+  font-size:14px;
+  height: 90rpx;
+	border-radius: 5rpx;
+	opacity: 0.9;
+}
+
+.input-placeholder{
+   color: #999999;
+   
+}
+
+.form-list input{
+ background-color: #f8f8f8;
+  padding-left:20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+
+}
+.getCode{
+  display: flex;
+  justify-content: space-between;
+}
+.getCode input{
+  width:430rpx;
+}
+.getMsg{
+  width: 210rpx;
+	height: 90rpx;
+	background-color: #ffffff;
+  line-height:  90rpx;
+  text-align: center;
+	color: #222222;
+  font-size:14px;
+  margin:0;
+}
+.login-btn{
+  margin:0 30rpx;
+  height: 90rpx;
+	background-color: #f5174a;
+	border-radius: 5rpx;
+	opacity: 0.9;
+  color: #ffffff;
+}
+.agreement{
+  display: flex;
+  justify-content: flex-end;
+  font-size:12px;
+  margin:24rpx 30rpx 0 0;
+}

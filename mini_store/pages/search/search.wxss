@@ -1,0 +1,118 @@
+/* pages/search/search.wxss */
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper .inner {
+  width: 100%;
+  height: 100%;
+}
+
+.inner .search {
+  padding: 20rpx 24rpx;
+  height: 70rpx;
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.inner .searchIpt {
+  flex: 1;
+  background-color: #f8f8f8;
+  border-radius: 10rpx;
+  height: 100%;
+  font-size: 28rpx;
+  padding: 0 10rpx;
+  padding-left: 63rpx;
+  color: #666;
+}
+
+.inner .searchIcon {
+  content: "";
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  left: 42rpx;
+  top: 42rpx;
+}
+
+.inner .searchTtx {
+  width: 90rpx;
+  line-height: 70rpx;
+  text-align: right;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.inner .history {
+  padding: 38rpx 30rpx 38rpx 30rpx;
+  overflow: hidden;
+}
+
+.history .history-head {
+  width: 100%;
+  font-size: 24rpx;
+  padding-bottom: 38rpx;
+  overflow: hidden;
+}
+
+.history .his-tit {
+  float: left;
+}
+
+.history .clear {
+  width: 23rpx;
+  height: 27rpx;
+  margin-right: 20rpx;
+  float: right;
+}
+
+.inner .history-list {
+  width: 100%;
+  margin-left: -20rpx;
+  overflow: hidden;
+}
+
+.history-list .list-show {
+  padding: 10rpx 20rpx;
+  font-size: 22rpx;
+  background: #f3f3f3;
+  float: left;
+  border-radius: 3px;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.inner .hot-search {
+  padding: 0 30rpx;
+  font-size: 22rpx;
+  overflow: hidden;
+}
+
+.hot-search .hot-head {
+  width: 100%;
+  font-size: 24rpx;
+  padding-bottom: 38rpx;
+}
+
+.hot-search .hot-list {
+  width: 100%;
+  margin-left: -20rpx;
+  overflow: hidden;
+}
+
+.hot-search .hot-show {
+  padding: 10rpx 20rpx;
+  float: left;
+  border-radius: 3px;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  background: #f3f3f3;
+}
+
+.hot-search .hot-show.in{
+  background: #fff6f8;
+  color: #f5174a;
+}

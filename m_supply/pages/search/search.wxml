@@ -1,0 +1,14 @@
+<import src="../../template/search/search.wxml" />
+
+<template is="search" />
+<view class="history">
+  <view  class="delete">
+    <view class="his-txt">搜索历史</view>
+    <image src='../../images/delete.png' class="del-icon" bindtap='deleteHis'></image>
+  </view>
+  <view class="his-box">
+    <view class="his-list" wx:for="{{hisArray}}">
+      {{item}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<view class='wrapper'>
+  <view class='input boxSiz'>
+    <icon type="search" size="30rpx" class='search' />
+    <input placeholder="根据商品名称、品牌、产地进行模糊搜索" class='ipt' />
+  </view>
+  <view class='search-history'>
+    <view class='search-text'>
+      <text class='history-txt'>搜索历史</text>
+      <image class='history-clear' src='../../images/clear.png'></image>
+    </view>
+    <view class='history-list'>
+      <text class='list-text' wx:for="{{27}}" wx:for-index="idx" wx:key="idx">正版奶粉{{idx}}</text>
+    </view>
+  </view>  
+</view>

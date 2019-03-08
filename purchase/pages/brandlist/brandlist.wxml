@@ -1,0 +1,18 @@
+<scroll-view scroll-y="true" scroll-into-view="{{toView}}" scroll-with-animation='true'> 
+  <view class="brand" wx:for="{{brandList}}" wx:for-index="idx" wx:key="idx"> 
+    <view class="line"></view> 
+    <view id="{{item.wordindex}}" class="wordindex">{{item.wordindex}}</view> 
+    <view class="line"></view> 
+    <view class="brand_block"> 
+      <view class="color_view" bindtap="click" data-idx='{{idx}}'> 
+        <image src="{{item.brandimg}}"></image> 
+      </view> 
+    </view> 
+  </view> 
+</scroll-view> 
+<view class="index"> 
+  <text wx:for="{{wordindex}}" id='{{item}}' data-wordindex="{{item}}" wx:for-indx="idx" wx:key="idx" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend"> 
+    {{item}} 
+  </text> 
+</view> 
+<view class="index-name" wx:if="{{indexShow}}">{{indexEnglish}}</view>

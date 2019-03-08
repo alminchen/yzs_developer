@@ -1,0 +1,3 @@
+boxSiz,boxSiz::after,boxSiz::before{
+  box-sizing: border-box;
+}

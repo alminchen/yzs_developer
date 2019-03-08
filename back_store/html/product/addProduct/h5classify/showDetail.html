@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>销售单 -- 订单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../../css/font.css">
+    <link rel="stylesheet" href="../../../../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .layui-row{
+            width: 1180px;
+            margin:  0 auto;
+        }
+        .my-tab {
+            margin-top: 20px;
+            min-height: 500px;
+        }
+
+        .my-tab .layui-tab-title {
+            border: 0;
+        }
+
+        .my-tab li {
+            display: block;
+        }
+
+        .my-tab .layui-tab-title .layui-this {
+            background-color: #fff
+        }
+
+        .my-tab .layui-tab-title .layui-this:after {
+            border: none;
+        }
+
+        .my-pro-content {
+            width: 500px;
+            margin: 10px 0 0 30px;
+        }
+
+        .my-pro-content h2 {
+            padding-bottom: 10px;
+        }
+
+        .my-pro-content p {
+            line-height: 30px;
+        }
+
+        .country {
+            line-height: 30px;
+        }
+
+        .country img {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            margin-right: 20px;
+        }
+
+        .title {
+            line-height: 30px;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .bal {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 10px;
+        }
+
+        .attribute {
+            width: 400px;
+            display: inline-block;
+        }
+
+        .attribute .attr {
+            display: block;
+            padding: 10px 20px;
+            float: left;
+            border: 1px solid red;
+            margin: 0 10px 10px 0;
+        }
+        .bottom{
+            margin-top: 35px;
+            display: flex;
+        }
+
+        .bottom button{
+            flex: 1;
+        }
+        .showTable{
+            display: none;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+        }
+        .showTable .showinner{
+            width: 103.8%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .oneBtn{
+            margin-top: 6px;
+        }
+        .spdatas p{
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+                <cite>导航元素</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:2.5em;margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+            title="刷新">
+            <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+        <div class="layui-row">
+            <blockquote class="layui-elem-quote layui-quote-nm">商品详情</blockquote>
+            <div class="seelectIn">
+                <form class="layui-form layui-col-md12 x-so">
+                    <div class="layui-inline">
+                        <label>商品分类：</label>
+                        <div class="layui-input-inline">
+                            <select name="contrller">
+                                <option value="">订单状态</option>
+                                <option value="0">待确认</option>
+                                <option value="1">已确认</option>
+                                <option value="2">已收货</option>
+                                <option value="3">已取消</option>
+                                <option value="4">已完成</option>
+                                <option value="5">已作废</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="margin-left: 20px;">
+                        <div class="layui-input-inline">
+                            <select name="contrller">
+                                <option value="">订单状态</option>
+                                <option value="0">待确认</option>
+                                <option value="1">已确认</option>
+                                <option value="2">已收货</option>
+                                <option value="3">已取消</option>
+                                <option value="4">已完成</option>
+                                <option value="5">已作废</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;color:#999;margin-left:20px;font-size: 12px;vertical-align: middle">设置商品分类有助于客户方便快捷的找到商品完成购买</span>
+                </form>
+            </div>
+            <div class="my-tab clearfix">
+                <div class="layui-tab clearfix">
+                    <div class="layui-tab x-left">
+                        <ul class="layui-tab-title x-left">
+                            <li><img src="../../../../images/small.jpg" alt="" style="width:94px;height: 94px;"></li>
+                            <li><img src="../../../../images/small.jpg" alt="" style="width:94px;height: 94px;"></li>
+                            <li><img src="../../../../images/small.jpg" alt="" style="width:94px;height: 94px;"></li>
+                            <li><img src="../../../../images/small.jpg" alt="" style="width:94px;height: 94px;"></li>
+                            <li><img src="../../../../images/small.jpg" alt="" style="width:94px;height: 94px;"></li>
+                        </ul>
+                        <div class="layui-tab-content x-left" style="width:478px;height:478px;padding: 0;">
+                            <div class="layui-tab-item layui-show"><img src="../../../../images/large.jpg" alt="" style="width:478px;height:478px;">1</div>
+                            <div class="layui-tab-item"><img src="../../../../images/large.jpg" alt="" style="width:478px;height:478px;">2</div>
+                            <div class="layui-tab-item"><img src="../../../../images/large.jpg" alt="" style="width:478px;height:478px;">3</div>
+                            <div class="layui-tab-item"><img src="../../../../images/large.jpg" alt="" style="width:478px;height:478px;">4</div>
+                            <div class="layui-tab-item"><img src="../../../../images/large.jpg" alt="" style="width:478px;height:478px;">5</div>
+                        </div>
+                    </div>
+
+                    <div class=" my-pro-content x-left">
+                        <p class="country"><img src="../../../../images/1.jpg" alt=""><span>德国</span></p>
+                        <p class="title">商品名称商品名称商品名称商品名称全部展示</p>
+                        <p class="price x-red">￥2000.00</p>
+                        <p class="zhprice">折合单价:￥200.00/件</p>
+                        <p class="hot">热度：9</p>
+                        <div class="layui-inline showAttr" style="margin-top:20px;">
+                            <label class="bal">规格属性：</label>
+                            <div class="attribute">
+                                <span class="attr">attr1</span>
+                                <span class="attr">attr2</span>
+                                <span class="attr">attr3</span>
+                                <span class="attr">attr4</span>
+                                <span class="attr">attr5</span>
+                                <span class="attr">attr1</span>
+                                <span class="attr">attr2</span>
+                                <span class="attr">attr3</span>
+                                <span class="attr">attr4</span>
+                                <span class="attr">attr5</span>
+                                <span class="attr">attr1</span>
+                                <span class="attr">attr2</span>
+                                <span class="attr">attr3</span>
+                                <span class="attr">attr4</span>
+                                <span class="attr">attr5</span>
+                                <span class="attr">attr1</span>
+                                <span class="attr">attr2</span>
+                                <span class="attr">attr3</span>
+                                <span class="attr">attr4</span>
+                                <span class="attr">attr5</span>
+                            </div>
+                        </div>
+                        <div class="showTable">
+                            <div class="showinner">
+                                <table class="layui-table">
+                                    <thead>
+                                        <tr>
+                                            <th>规格属性</th>
+                                            <th>库存</th>
+                                            <th>平台价格:￥</th>
+                                            <th>本店销售价格:￥</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>0-3个月/一段/两罐装</td>
+                                            <td>100</td>
+                                            <td>100</td>
+                                            <td><input type="text" class="layui-input" style="width:100px;"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="bottom twoBtn">
+                            <button class="layui-btn layui-btn-primary addCk" type="button">放入仓库</button><button class="layui-btn layui-btn-primary addSj"
+                                type="button">上架出售</button>
+                        </div>
+                        <div class="bottom oneBtn" style="display:none;">
+                            <button class="layui-btn layui-btn-primary addSure" type="button">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <blockquote class="layui-elem-quote layui-quote-nm">商品参数</blockquote>
+            <fieldset class="layui-elem-field">
+                <div class="layui-field-box spdatas">
+                    <p>包装：2罐装</p>
+                    <p>保质期：6个月</p>
+                    <p>适用年龄：20~30岁</p>
+                </div>
+            </fieldset>
+            <blockquote class="layui-elem-quote layui-quote-nm">商品详情</blockquote>
+            <div class="spdetail">
+                <img src="../../../../images/large.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.addCk').on('click', function () {
+            $('.showAttr').hide();
+            $('.showTable').show();
+            $('.twoBtn').hide();
+            $('.oneBtn').show();
+        })
+        $('.addSure').on('click', function () {
+            layer.msg('添加成功', {
+                icon: 1,
+                time: 1000 //2秒关闭（如果不配置，默认是3秒）
+            }, function () {
+                $('.showAttr').show();
+                $('.showTable').hide();
+                $('.twoBtn').show();
+                $('.oneBtn').hide();
+            });
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+.setting{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-size:16px;
+  color:#000;
+  background-color:#f8f8f8;
+}
+.wx-txt{
+   padding:40rpx 30rpx;
+   background-color:#fff;
+   border-bottom:1px solid #dbdbdb;
+}
+.shop-tel{
+   padding:40rpx 30rpx;
+  background-color:#fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.shop-tel image{
+  width:17rpx;
+  height:30rpx;
+
+
+}
+.setting-tel{
+  margin-left:30rpx;
+}
+.agreen-box{
+  padding:20rpx 30rpx;
+  background-color:#fff;
+}
+.btn-agreen{
+	height: 88rpx;
+	background-color: #f5174a;
+	border-radius: 5rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size:16px;
+  color:#fff;
+}

@@ -1,0 +1,39 @@
+<!--joke列表项-->
+<template name="jokeItem">
+  <!--顶部-->
+  <view class='box'>
+    <view class="top">
+      <!--头像-->
+      <image class="avator" src="{{item.profile_image}}" mode="aspectFit"></image>
+      <!--标题、时间-->
+      <view class="title-time">
+        <text class="title">{{item.name}}</text>
+        <text class="time">{{item.create_time}}</text>
+      </view>
+
+      <!--更多按钮-->
+    </view>
+
+    <!--内容-->
+    <view class="content">
+      <text class="content-text">{{item.text}}</text>
+    </view>
+  </view>
+</template>
+
+<!--picture列表项-->
+<template name="pictureItem">
+  <view class="item-view">
+    <text class="content">{{item.text}}</text>
+    <image src="{{item.image0}}" mode="aspectFit" bindtap="preview" data-url="{{item.image0}}" />
+    <text class="date">{{item.create_time}}</text>
+  </view>
+</template>
+
+<!--加载更多页脚-->
+<template name="loadindFooter">
+  <view class="loading-view" hidden="{{hideFooter}}">
+    <image src="../../image/loading.gif" style="height:26px;width:26px" />
+    <text style="font-size:20px">正在加载</text>
+  </view>
+</template>

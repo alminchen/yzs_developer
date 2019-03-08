@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../css/font.css">
+    <link rel="stylesheet" href="../../../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="x-body">
+        <div class="edit_band" style="padding:0 20px;">
+            <form class="layui-form layui-col-md12 x-so" style=" margin-bottom: 0;">
+                <div class="layui-inline"><label for=""><span class="x-red">*</span>&nbsp;品牌名称：</label>
+                    <input type="text" name="userphone" placeholder="" autocomplete="off" class="layui-input" style="width:200px;"
+                        v-model="sss"></div><br />
+                <div class="layui-inline" style="margin-top:20px;position: relative;clear: both;"><label for="">&nbsp;&nbsp;品牌图片：&nbsp;</label>
+                    <img src="../../../images/img.png" alt="" style="width:110px; height:110px;">
+                    <input type="file" name="userphone" placeholder="" autocomplete="off" class="layui-input" style="border: none;opacity: 0;position: absolute;left:84px;top: 0;display: block;width: 110px;height: 110px;padding-left: 0;"><label
+                        for="">点击上传</label>
+                </div><br />
+                <div class="layui-form-item layui-form-text" style="margin-top:20px; clear: both;">
+                    <label class="" style="display:inline-block;width:80px;vertical-align: top;">品牌描述：</label>
+                    <div class="layui-input-block" style="display:inline-block;margin-left: 0;width: 450px">
+                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div><br />
+                <div class="layui-form-item" style="margin-top:10px;">
+                    <div class="layui-input-block" style="">
+                        <button type="button" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

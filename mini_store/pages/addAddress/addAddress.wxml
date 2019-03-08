@@ -1,0 +1,42 @@
+<view class='wrapper'>
+  <view class='inner'>
+    <form class='addAddress' style='height:{{leftHeight}}px' bindsubmit="savePersonInfo">
+      <view class='form-list'>
+        <view class="form-item-hd">姓名：</view>
+        <view class="form-item-bd">
+          <input type="text" placeholder-class="input-placeholder" name="name" value="{{name}}" placeholder="请输入姓名" />
+        </view>
+      </view>
+      <view class='form-list'>
+        <view class="form-item-hd">联系电话：</view>
+        <view class="form-item-bd">
+          <input type="text" placeholder-class="input-placeholder" name="telphone" placeholder="请输入联系电话" maxlength='11'/>
+        </view>
+      </view>
+      <view class='form-list'>
+        <view class="form-item-hd">所在地区：</view>
+        <view class="form-item-bd">
+          <addr-select bind:select="selectArea">
+            <input type="text" name="area" placeholder-class="input-placeholder" placeholder="请选择" value='{{address[0]&&address[0].name}}{{address[1]&&address[1].name}}{{address[2]&&address[2].name}}' disabled='true'/>
+            <input name="provice" hidden='hidden' value='{{address[0]&&address[0].name}}'></input>
+            <input name="city" hidden='hidden' value='{{address[1]&&address[1].name}}'></input>
+            <input name="district" hidden='hidden' value='{{address[2]&&address[2].name}}'></input>
+          </addr-select>
+        </view>
+      </view>
+      <view class='form-list detail'>
+        <view class="form-item-hd">详细地址：</view>
+        <view class="form-item-bd detail-bd">
+          <textarea class='detail-ipt' placeholder-class="input-placeholder" name="detail" placeholder="如街道、楼牌号等"></textarea>
+        </view>
+      </view>
+      <view class='form-list'>
+        <view class="form-item-hd">设为默认：</view>
+        <view class="form-item-bd">
+          <switch type="switch" name="default" color="#3fe65b" class='default' />
+        </view>
+      </view>
+      <button formType="submit" class="save-btn">保存并使用</button>
+    </form>
+  </view>
+</view>

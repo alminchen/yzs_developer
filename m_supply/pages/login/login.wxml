@@ -1,0 +1,18 @@
+<view class="login-head">
+<image src="../../images/loginbg.png"></image>
+</view>
+
+<form bindsubmit="formSubmit">
+  <view class="form-list"> 
+      <input type="number" placeholder-class="input-placeholder" name="tel"  placeholder="请输入您的手机号码"     maxlength="11"/>
+  </view>
+   <view class="form-list"> 
+      <input type="password" placeholder-class="input-placeholder" name="password"  placeholder="请输入密码" />
+  </view>
+  <button form-type='submit' class="login-btn">登录</button>
+</form>
+<view class="skip-btn">
+     <navigator url=""  class="sikp-l">用户注册</navigator>
+     <view class="login-bar"></view>
+     <navigator url="" class="sikp-l">忘记密码</navigator>
+</view>

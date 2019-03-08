@@ -1,0 +1,64 @@
+<view class='wrapper'>
+  <view class='input boxSiz'>
+    <icon type="search" size="30rpx" class='search' />
+    <input placeholder="根据商品名称、品牌、产地进行模糊搜索" class='ipt' />
+  </view>
+  <view class='container'>
+    <view class='nav-wrap'>
+      <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" scroll-left="{{navScrollLeft}}">
+        <block wx:for="{{navList}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+          <view class="nav-item {{currentTopItem == idx?'in':''}}" data-current="{{idx}}" bindtap="switchNav">{{navItem.name}}</view>
+        </block>
+      </scroll-view>
+      <!-- <view class='tab-line-active' style="transform:translateX({{slideOffset}}px);width:{{tabW}}px"></view> -->
+      <view class='arrow' bindtap='tabMaskShowHhide'>
+        <image class='arrow-oper' src='../../images/arrow_down.png'></image>
+      </view>
+    </view>
+    <swiper class="tab-box" current="{{currentTopItem}}" duration="300" bindchange="switchTab" style='height:{{swiperHeight}}px'>
+      <swiper-item wx:for="{{10}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
+        <scroll-view scroll-y style='height:100%;'>
+          <view class='list' wx:for="{{10}}" wx:for-index="idx" wx:key="idx">
+            <navigator url='/pages/shopDetail/shopDetail?id={{idx}}' hover-class='none'>
+              <view class='type-brand'>
+                <image class='brand-pic' src='../../images/brand.png'></image>
+              </view>
+              <view class='list-inner'>
+                <view class='list-picbox'>
+                  <image class='list-pic' src='../../images/goods.png'></image>
+                </view>
+                <view class='list-txtbox'>
+                  <view class='list-tit'>
+                    <image class='country' src='../../images/country.png'></image>
+                    <text class='mark'>德国</text>【澳洲直邮】澳洲金版婴幼儿奶金版白金版婴幼儿奶粉【澳洲直邮澳洲金版婴幼儿奶金版白金版婴幼儿奶粉
+                  </view>
+                  <view class='prce'>
+                    <text class='newprice'>￥28.00</text>
+                    <text class='oldprice'>￥50.00</text>
+                    <text class='type'>采购价</text>
+                  </view>
+                  <view class='suggestion'>建议零售价：￥300.00</view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='mask {{maskShow?"show":""}}' bindtap='hideMask'>
+    <view class='inner-mask'>
+      <view class='mask-text'>
+        <text class='please-select'>请选择</text>
+        <view class='mask-arrow'>
+          <image class='mask-oper' src='../../images/arrow_up.png'></image>
+        </view>
+      </view>
+      <view class='mask-list'>
+        <block wx:for="{{navList}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+          <view class="mark-item {{currentTopItem == idx?'select':''}}" data-current="{{idx}}" bindtap="switchNav">{{navItem.name}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

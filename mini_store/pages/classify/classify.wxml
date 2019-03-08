@@ -1,0 +1,49 @@
+<!-- pages/classify/classify.wxml -->
+<view class='wrapper'>
+    <view class="inner">
+        <view class="left" style="height:{{leftHeight}}px">
+            <scroll-view scroll-x="false" scroll-y="{{true}}" scroll-left="{{0}}" style="height:{{leftHeight}}px">
+                <view class="left-tab {{idx == 0?'in':''}}" wx:for="{{20}}" wx:for-index="idx" data-idx="{{idx}}" wx:key="idx" bindtap='getDataList'>
+                    {{item}}
+                </view>
+            </scroll-view>
+        </view>
+        <view class="right">
+            <scroll-view scroll-y="true" scroll-x="{{false}}" class="" scroll-top="{{0}}" style="height:{{leftHeight}}px" scroll-left="{{0}}">
+                <view class="right-inner">
+                    <view class="top">
+                        <image class="ad" src="../../images/ad_03.png"></image>
+                    </view>
+                    <view class="right-list">
+                        <view class="title">
+                            <image src="../../images/classify.png" class="classifyPic" />
+                            <view class="text">{{(dataList[0].li)+1}}</view>
+                        </view>
+                        <view class="list">
+                            <navigator url="/pages/classifyList/classifyList?id={{item}}" wx:for="{{18}}" wx:for-index="idx" data-idx="idx" wx:index="idx" wx:key="idx">
+                                <view class="list-pic">
+                                    <image src="../../images/classify_goods.png" class="classifyGoods" />
+                                    <view class="tit">美素佳儿{{idx}}</view>
+                                </view>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class="right-list">
+                        <view class="title">
+                            <image src="../../images/classify.png" class="classifyPic" />
+                            <view class="text">{{(dataList[0].li)+1}}</view>
+                        </view>
+                        <view class="list">
+                            <navigator url="/pages/classifyList/classifyList?id={{item}}" wx:for="{{18}}" wx:for-index="idx" data-idx="idx" wx:index="idx" wx:key="idx">
+                                <view class="list-pic">
+                                    <image src="../../images/classify_goods.png" class="classifyGoods" />
+                                    <view class="tit">美素佳儿{{idx}}</view>
+                                </view>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

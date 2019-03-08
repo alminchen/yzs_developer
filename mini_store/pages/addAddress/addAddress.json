@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "新增地址",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents":{
+    "addr-select": "/components/addr-select/index"
+  }
+}

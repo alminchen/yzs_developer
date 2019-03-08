@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>物流助手</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/logistic.css">
+</head>
+
+<body>
+    <div class="logistic-mian" id="logistic">
+        <div class="loginstic-inner">
+            <div class="logistic-nav">
+                <ul>
+                    <li>优惠活动</li>
+                    <li>物流助手</li>
+                    <li>在线客服</li>
+                </ul>
+            </div>
+            <div class="ligistic-list">
+                <ul>
+                    <li v-for="(item, index) in 3" :key="index">
+                        <div class="date-in"><span class="date-month">2018-10</span><span class="date-day">30</span></div>
+                        <div class="list-inner">
+                            <div class="top">
+                                <div class="has_pic">
+                                    <img src="../../images/goods_03.png" alt="">
+                                </div>
+                                <div class="has_text">
+                                    <p>[温馨提示]：您的订单已签收~<a href="../order/package.html" target="_blank">点击查看物流详情！</a><em>2018-12-08 12:15:22</em></p>
+                                    <p>订单编号：123456789</p>
+                                    <p>收货人：小全</p>
+                                </div>
+                            </div>
+                            <div class="bott">
+                                <div class="nums">(共1件)</div>
+                                <div class="logis-post">圆通快递(7844556669)</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>  
+    var vm = new Vue({
+        el:"#logistic"
+    })
+</script>
+</html>

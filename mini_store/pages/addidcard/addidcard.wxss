@@ -1,0 +1,148 @@
+/* pages/addidcard/addidcard.wxss */
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrapper .inner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.inner .ipt {
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.inner .ipt-same {
+  width: 100%;
+  padding: 15rpx 30rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.inner .ipt-text {
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.inner .ipt-in {
+  flex: 1;
+  height: 60rpx;
+}
+
+.inner .ipt-input {
+  width: 100%;
+  height: 100%;
+}
+
+.inner .attention {
+  width: 100%;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.inner .tips {
+  width: 100%;
+  padding-left: 40rpx;
+  padding-top: 40rpx;
+  padding-bottom: 28rpx;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.inner .tips-text {
+  font-size: 22rpx;
+  letter-spacing: 1px;
+  line-height: 34rpx;
+  color: #999;
+}
+
+.inner .tips-pic {
+  width: 22rpx;
+  height: 22rpx;
+  position: absolute;
+  left: 0;
+  top: 50rpx;
+}
+
+.inner .upload {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.inner .up-pic {
+  flex: 1;
+}
+
+.inner .up-pic.mar30 {
+  margin-right: 30rpx;
+}
+
+.inner .up-image {
+  width: 330rpx;
+  height: 210rpx;
+  border-radius: 10rpx;
+}
+
+.inner .up-text {
+  padding: 30rpx 0;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #424144;
+}
+
+.inner .attention-text {
+  width: 100%;
+  padding: 38rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.inner .attention-post, .inner .attention-tips {
+  line-height: 45rpx;
+  text-indent: 20rpx;
+  font-size: 26rpx;
+  position: relative;
+  color: #999;
+}
+
+.inner .attention-post::after, .inner .attention-tips::after {
+  content: "*";
+  font-size: 26rpx;
+  color: #f5174a;
+  position: absolute;
+  left: -20rpx;
+  top: 0;
+}
+
+.inner .saveAndUse {
+  padding: 20rpx;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #ececec;
+}
+
+.inner .saveBtn {
+  width: 100%;
+  padding: 20rpx 0;
+  text-align: center;
+  background-color: #f5174a;
+  color: #fff;
+  font-size: 30rpx;
+  letter-spacing: 2px;
+}

@@ -1,0 +1,35 @@
+<template name="classify">
+    <view class="right-inner">
+        <view class="top">
+            <image class="ad" src="../../images/ad_03.png"></image>
+        </view>
+        <view class="right-list">
+            <view class="title">
+                <image src="../../images/classify.png" class="classifyPic" />
+                <view class="text">{{(dataList[0].li)+1}}</view>
+            </view>
+            <view class="list">
+                <navigator url="/pages/classifyList/classifyList?id={{item}}" wx:for="{{6}}" wx:for-index="idx" data-idx="idx" wx:index="idx">
+                    <view class="list-pic">
+                        <image src="../../images/classify_goods.png" class="classifyGoods" />
+                        <view class="tit">美素佳儿{{idx}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class="right-list">
+            <view class="title">
+                <image src="../../images/classify.png" class="classifyPic" />
+                <view class="text">{{(dataList[0].li)+1}}</view>
+            </view>
+            <view class="list">
+                <navigator url="/pages/classifyList/classifyList?id={{item}}" wx:for="{{6}}" wx:for-index="idx" data-idx="idx" wx:index="idx">
+                    <view class="list-pic">
+                        <image src="../../images/classify_goods.png" class="classifyGoods" />
+                        <view class="tit">美素佳儿{{idx}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</template>

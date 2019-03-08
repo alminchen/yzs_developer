@@ -1,0 +1,22 @@
+<!--pages/search/search.wxml-->
+<view class='wrapper'>
+  <view class='inner'>
+    <view class='search'><image src="../../images/search_03.png" class="searchIcon" />
+      <input class='searchIpt' placeholder='搜索您想要的商品或品牌'></input><text class='searchTtx'>搜索</text>
+    </view>
+    <view class='history'>
+      <view class='history-head'>
+        <text class='his-tit'>历史搜索</text><image class='clear' src='../../images/clear.png'></image>
+      </view>
+      <view class='history-list'>
+        <text class='list-show' wx:for="{{10}}" wx:for-index="idx" wx:key="idx">女士衬衫{{idx}}</text>
+      </view>
+    </view>
+    <view class='hot-search'>
+      <view class='hot-head'><text class='his-tit'>热门搜索</text></view>
+      <view class='hot-list'>
+        <text class='hot-show {{idx==0?"in":""}}' wx:for="{{10}}" wx:for-index="idx" wx:key="idx">港版美赞臣低价抢{{idx}}</text>
+      </view>
+    </view>
+  </view>
+</view>

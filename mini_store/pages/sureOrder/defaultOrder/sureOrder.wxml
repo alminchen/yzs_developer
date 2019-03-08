@@ -1,0 +1,74 @@
+<!--pages/sureOrder/sureOrder.wxml-->
+<view class='wrapper'>
+  <view class='inner'>
+    <scroll-view scroll-y class='scroll-box' style='height:{{leftHeight}}px'>
+      <view class='addSelect'>
+        <navigator url='/pages/address/address'>
+          <view class='no-address' wx:if="{{addressLsit.length == 0}}">
+            <text class='no-text'>还没有地址信息，点击添加地址</text>
+            <image class='arrow' src='../../../images/address_right.png'></image>
+          </view>
+        </navigator>
+        <navigator url='/pages/address/address'>
+          <view class='has-address' wx:if="{{addressLsit.length > 0}}">
+            <image class='dw' src='../../../images/adr-icon.png'></image>
+            <view class='top'>
+              <text class='name'>张三</text>
+              <text class='phone'>12345678901</text>
+            </view>
+            <view class='bott'>广东省深圳市福田区八卦岭地铁站B出口汉富中心3楼云之商科技有限公司</view>
+            <image class='arrow-has' src='../../../images/address_right.png'></image>
+          </view>
+        </navigator>
+        <image class='bottom' src='../../../images/line.png'></image>
+      </view>
+      <view class='goods-list'>
+        <view class='title'>
+          <image class='goodsPic' src='../../../images/menu.png'></image> 商品清单
+        </view>
+        <view class='goods-show' wx:for="{{3}}" wx:for-index="idx" wx:key="idx">
+          <view class='goods-pic'>
+            <view class='pic'>
+              <image class='picHas' src='../../../images/classify_goods.png'></image>
+            </view>
+            <view class='has-text'>
+              <view class='has-title'>港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉2段900g ...</view>
+              <view class='spec same'>规格：3罐装</view>
+              <view class='date same'>效期：2019年2月</view>
+              <view class='post same'>运费：包邮</view>
+              <view class='old-price same'>折合单价:
+                <text class='old-color'>￥280.00</text>
+              </view>
+              <view class='price'>
+                <text class='price-color'>￥</text>1200.00</view>
+              <view class='nums'>x5</view>
+            </view>
+          </view>
+        </view>
+        <view class='show-more'>
+          <text class='show-text'>展开其余3件商品</text>
+          <image class='show-pic' src='../../../images/arrow.png'></image>
+        </view>
+
+        <view class='all-datas'>
+          <view class='all-list'>
+            <text class='text'>商品总额</text>
+            <text class='list-price'>￥8000.00</text> </view>
+          <view class='all-list middle'>
+            <text class='text'>税费</text>
+            <text class='list-price'>￥20.00</text> </view>
+          <view class='all-list'>
+            <text class='text'>运费</text>
+            <text class='list-price'>￥100.00</text> </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class='all-price'>
+      <view class='all-price-count'>实付金额:
+        <text class='price-nums'>￥8000.00</text>
+      </view>
+      <button class='go-pay'>去支付</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>支持移动设备的响应式js lightbox插件</title>
+	<link rel="stylesheet" href="dist/baguetteBox.css">
+	<style type="text/css">
+		/*  */
+	</style>
+</head>
+<body>
+
+
+    <div class="baguetteBoxOne gallery">
+        <a href="img/big/2-1.png" data-caption="Golden Gate Bridge">
+            <img src="img/thumbs/2-1.png" alt="Golden Gate Bridge">
+        </a>
+        <a href="img/big/2-2.png" title="Midnight City">
+            <img src="img/thumbs/2-2.png" alt="Midnight City">
+        </a>
+        <a href="img/big/2-3.png">
+            <img src="img/thumbs/2-3.png" alt="">
+        </a>
+        <a href="img/big/2-4.png">
+            <img src="img/thumbs/2-4.png" alt="">
+        </a>
+       	
+    </div>
+
+	<div class="baguetteBoxOne gallery" style="width: 100%">
+			<a href="img/big/banner.jpg" >
+				<img src="img/thumbs/banner.jpg" alt="Golden Gate Bridge" width="100%">
+			</a>
+			<a href="img/big/banner2.jpg">
+				<img src="img/thumbs/banner2.jpg" alt="Midnight City" width="100%">
+			</a>
+			<a href="img/big/banner3.jpg">
+				<img src="img/thumbs/banner3.jpg" alt="" width="100%">
+			</a>
+			<a href="img/big/banner4.jpg">
+				<img src="img/thumbs/banner4.jpg" alt="" width="100%">
+			</a>
+			   
+		</div>
+    
+		
+	
+	<script src="dist/baguetteBox.js" async></script>
+	<script src="js/highlight.min.js" async></script>
+	<!--[if lt IE 9]>
+	<script>
+	var oldIE = true;
+	</script>
+	<![endif]-->
+	<script>
+	window.onload = function() {
+	    baguetteBox.run('.baguetteBoxOne');
+	};
+	</script>
+</body>
+</html>

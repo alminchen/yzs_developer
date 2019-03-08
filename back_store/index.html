@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录-X-admin2.0</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <style>
+
+        .rightmenu {
+            position: absolute;
+            width: 80px;
+            z-index: 9999;
+            display: none;
+            background-color: #fff;
+            padding: 2px;
+            color: #333;
+            border: 1px solid #eee;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .rightmenu li {
+            text-align: center;
+            display: block;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .rightmenu li:hover {
+            background-color: #666;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo"><a href="./index.html">X-admin v2.0</a></div>
+        <div class="left_open">
+            <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+        </div>
+        <!-- <ul class="layui-nav left fast-add" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">+新增</a>
+            <dl class="layui-nav-child"> 
+              <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+              <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+               <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+            </dl>
+          </li>
+        </ul> -->
+        <ul class="layui-nav right" lay-filter="">
+            <li class="layui-nav-item">
+                <a href="javascript:;">admin</a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd><a onclick="x_admin_show('个人信息','')">个人信息</a></dd>
+                    <!-- <dd><a onclick="x_admin_show('切换帐号','')">切换帐号</a></dd> -->
+                    <dd><a href="./login.html">退出</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+        </ul>
+
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav" style="bottom:0;">
+        <div id="side-nav">
+            <ul id="nav">
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe723;</i>
+                        <cite>商品管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a _href="./html/product/productList/productList.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>商品列表</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/product/addProduct/addProduct.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>新增商品</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/product/classify/classify.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>分类管理</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/product/brand/brand.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>品牌管理</cite>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe723;</i>
+                        <cite>订单物流</cite>
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a _href="./html/logistics/order-list.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>订单列表自营</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/logistics/add-temp.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>运费模板</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/logistics/wl-company.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>快递公司</cite>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe723;</i>
+                        <cite>统计结算</cite>
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a _href="./html/finacal/deposit/applyDeposit.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>提现申请</cite>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a _href="./html/finacal/platform/platform.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>自营订单结算记录</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/finacal/settlement/settlement.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>自营-未结算订单</cite>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe726;</i>
+                        <cite>店铺管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a _href="./html/store/store-set.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>店铺设置</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/store/store-info.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>店铺信息</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/store/store-catagory.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>经营类目</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/store/store-area.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>地址管理</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/store/ident.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>特殊行业认证</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/store/account.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>账号管理</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./html/store/admin.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>角色管理</cite>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="x-slide_left"></div> -->
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content" style="bottom:0;">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+            <ul class="layui-tab-title">
+                <li class="home"><i class="layui-icon">&#xe68e;</i>我的桌面</li>
+            </ul>
+            <ul class="rightmenu">
+                <li data-type="closeOther">关闭其他</li>
+                <li data-type="closeall">关闭所有</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content-bg"></div>
+</body>
+
+</html>

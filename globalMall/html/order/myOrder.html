@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+</head>
+<body>
+
+   <div class="my-order ">
+       <div class="wrap">
+          <h3 class="order-index">首页 > 个人中心 > 我的订单</h3>
+           <div class="order-box">
+               <ul class="order-list clearfix">
+                   <li class="redBox">全部</li>
+                   <li>待付款</li>
+                   <li>待发货</li>
+                   <li>待收货</li>
+                   <li>待收货</li>
+               </ul>
+               <div class="order-search clearfix">
+                   <div class="order-inp clearfix fl">
+                       <div class="order-inp-block">
+                           <input type="text"  placeholder="请输入您想要搜索的商品名称货品牌">
+                       </div>
+                       <button class="order-search-btn" type="button"><i class="order-search-icon"></i></button>
+                   </div>
+                   <div class="order-page fr">
+                       <span class="page-gray">上一页</span>
+                       <span>下一页</span>
+                   </div>
+
+               </div>
+
+               <table class="order-table"  style="border-collapse:collapse" cellspacing="0" >
+                   <thead>
+                   <tr class="thead">
+                       <th>商品名称</th>
+                       <th>数量</th>
+                       <th>单价</th>
+                       <th>买家</th>
+                       <th>实付金额</th>
+                       <th>订单状态</th>
+                       <th>操作</th>
+                   </tr>
+                   </thead>
+                   <tbody class="tbody">
+                   <tr>
+                       <td colspan="8" class="clearfix order-txt">
+                           <p>订单编号：201589398778</p>
+                           <p>下单时间：2018-10-10 18：25：36</p>
+                           <p>深圳是信营国际电子商务有限公司</p>
+                           <a href="javascript:;">联系客服</a>
+                       </td>
+                   </tr>
+                   <tr class="tr-border">
+                       <td class="pro-img">
+                           <img src="../../images/milk.jpg" alt="">
+                           <div class="pro-content">
+                               <p class="pro-txt">韩国bikit guard儿童防蚊纽扣婴儿防蚊扣橙色韩国bikit guard儿...</p>
+                               <p>2罐装&nbsp;&nbsp;保税区：不限</p>
+                           </div>
+
+                       </td>
+                       <td>x5</td>
+                       <td>￥180.00</td>
+                       <td class="buy-msg">
+                           <p><i></i>张三</p>
+                           <p><i></i>12348968761</p>
+                       </td>
+                       <td>
+                           <p>￥280.00</p>
+                           <p class="price-gray">(含运费：￥0.00)</p>
+                       </td>
+                       <td>
+                           <p>待支付</p>
+                           <a href="./payOrder.html" class="order-xq">订单详情</a>
+                       </td>
+                       <td class="order-edit clearfix">
+                           <a href="javascript:;" class="edit-red">取消订单</a>
+                           <a href="../payPage/payPage.html">去支付</a>
+                           <a href="javascript:;">去支付</a>
+                           <a href="javascript:;">去支付</a>
+                       </td>
+                   </tr>
+                   </tbody>
+                   <tbody class="tbody">
+                   <tr>
+                       <td colspan="8" class="clearfix order-txt">
+                           <p>订单编号：201589398778</p>
+                           <p>下单时间：2018-10-10 18：25：36</p>
+                           <p>深圳是信营国际电子商务有限公司</p>
+                           <a href="javascript:;">联系客服</a>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td class="pro-img">
+                           <img src="../../images/milk.jpg" alt="">
+                           <div class="pro-content">
+                               <p class="pro-txt">韩国bikit guard儿童防蚊纽扣婴儿防蚊扣橙色韩国bikit guard儿...</p>
+                               <p>2罐装&nbsp;&nbsp;保税区：不限</p>
+                           </div>
+
+                       </td>
+                       <td>x5</td>
+                       <td>￥180.00</td>
+                       <td class="buy-msg">
+                           <p><i></i>张三</p>
+                           <p><i></i>12348968761</p>
+                       </td>
+                       <td>
+                           <p>￥280.00</p>
+                           <p class="price-gray">(含运费：￥0.00)</p>
+                       </td>
+                       <td>
+                           <p>待支付</p>
+                           <a href="javascript:;" class="order-xq">订单详情</a>
+                       </td>
+                       <td class="order-edit clearfix">
+                           <a href="javascript:;" class="edit-red">取消订单</a>
+                           <a href="javascript:;">去支付</a>
+                           <a href="javascript:;">去支付</a>
+                           <a href="javascript:;">去支付</a>
+                       </td>
+                   </tr>
+                   </tbody>
+               </table>
+
+           </div>
+           <div class="order-pagination">
+               <ul class="pagi-list">
+                   <li><</li>
+                   <li class="pagi-red">1</li>
+                   <li>2</li>
+                   <li>3</li>
+                   <li>4</li>
+                   <li>></li>
+               </ul>
+           </div>
+       </div>
+   </div>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 二级导航
+       $(".nav-box").hover(function(){
+        $(".two-nav").stop().slideDown(200);
+        },
+        function(){
+            $(".two-nav").stop().slideUp(200);
+        });
+
+        $(".two-nav>li").hover(function(){
+         $(this).addClass("on");
+        },
+        function(){
+            $(this).removeClass("on");
+        })
+     });
+
+</script>
+</html>

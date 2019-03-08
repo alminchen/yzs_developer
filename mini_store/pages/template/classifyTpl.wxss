@@ -1,0 +1,67 @@
+.right-inner .top {
+    width: 530rpx;
+    height: 200rpx;
+    overflow: hidden;
+}
+
+.right-inner .ad {
+    width: 100%;
+    margin: auto;
+    height: 200rpx;
+}
+
+.right-inner .right-list {
+    width: 100%;
+    padding-top: 60rpx;
+    overflow: hidden;
+}
+
+.right-list .title {
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    margin-bottom: 45rpx;
+}
+
+.right-list image.classifyPic {
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.right-list .text {
+    display: inline-block;
+    font-size: 26rpx;
+    color: #141508;
+    margin-left: 20rpx;
+    line-height: 25px;
+    font-family: "Miscro YaHei";
+}
+
+.right-list .list {
+    width: 100%;
+    overflow: hidden;
+    margin-left: -2px;
+}
+
+.right-list .list-pic {
+    width: 168rpx;
+    float: left;
+    margin-left: 8rpx;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+}
+
+.right-list .classifyGoods {
+    width: 168rpx;
+    height: 168rpx;
+    overflow: hidden;
+}
+
+.right-list .tit {
+    width: 100%;
+    height: 63rpx;
+    line-height: 63rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #585757;
+}

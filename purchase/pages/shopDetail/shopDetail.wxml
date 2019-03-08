@@ -1,0 +1,96 @@
+<view class='wrapper'>
+  <swiper indicator-dots="{{true}}" autoplay="{{autoplay}}" interval="5000" duration="500" class='pic-box' indicator-active-color="#6a7efc">
+    <block wx:for="{{imgUrls}}" wx:for-index="idx" wx:key="idx">
+      <swiper-item class='pic-item'>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='countrybox'>
+    <view class='country_and_text'>
+      <view class='country_pic'>
+        <image src='../../images/country.png' class='pic'></image>
+      </view>
+      <text class='country_text'>德国</text>
+    </view>
+    <view class='brand_pic'>
+      <image class='brand' src='../../images/brand.png'></image>
+    </view>
+  </view>
+  <view class='title'>悦诗风吟Innisfree济州岛火山岩泥毛孔清洁洗颜乳洗150ml（京东自营 深层清洁 去黑头角质 洗面奶男面女通用）商品名称最多50字</view>
+  <view class='rules'>
+    <view class='rules_box'>
+      <view class='rules_spec'>
+        <text class='text'>  规格：</text>
+        <text class='text_spec'>一段/3个月/两罐装</text>
+      </view>
+      <view class='rules_price'>
+        <text class='text'>采购价：</text>
+        <text class='text_price'>￥300.00</text>
+      </view>
+    </view>
+  </view>
+  <view class='rules'>
+    <view class='rules_box'>
+      <view class='rules_spec'>
+        <text class='text'>  规格：</text>
+        <text class='text_spec'>一段/3个月/两罐装</text>
+      </view>
+      <view class='rules_spec'>
+        <text class='text'>  库存：</text>
+        <text class='text_spec'>500</text>
+      </view>
+      <view class='rules_price ma40'>
+        <text class='text'>采购价：</text>
+        <text class='text_price'>￥800.00</text>
+      </view>
+      <view class='rules_price '>
+        <text class='text'>建议零售价：</text>
+        <text class='text_price'>￥800.00</text>
+      </view>
+    </view>
+  </view>
+  <view class='pic_and_preview'>
+    <text class='pic_and_text'>图文详情</text>
+    <view class='pic_preview'>
+      <image src='../../images/detail.png' class='pic_show'></image>
+    </view>
+  </view>
+  <view class='mark'>
+    <view class='mark-inner'>
+      <textarea placeholder='其他说明：' class='mark-text' maxlength="500" disabled='{{supplierFlag?true:false}}'></textarea>
+      <!-- <view class='nums'>(0/500)</view> -->
+    </view>
+  </view>
+  <view class='showmsg' bindtap='showSupplier'>
+    <view class='text'>查看供应商信息</view>
+    <view class='arrow-right'>
+      <image src='../../images/arrow_right.png' class='right_pic'></image>
+    </view>
+  </view>
+</view>
+<view class='detail-mask {{supplierFlag?"show":""}}' catchtouchmove="myCatchTouch" bindtap='hideMask'>
+  <view class='detail-inner'>
+    <view class='detailbox-list'>
+      <view class='detail-name'>
+        <view class='name'>供应商名称：</view>
+        <view class='realname'>深圳市信营国际电子商务有限公司</view>
+      </view>
+      <view class='frname'>
+        <text class='frmsg'>法人姓名：</text>
+        <text class='frnameshow'>上官瑞谦</text>
+      </view>
+      <view class='frname'>
+        <text class='frmsg'>微信号码：</text>
+        <text class='frnameshow'>98689978899</text>
+      </view>
+      <view class='frname'>
+        <text class='frmsg'>手机号码：</text>
+        <text class='frnameshow'>13869879868</text>
+      </view>
+    </view>
+    <view class='close' bindtap='hideSupplier'>
+      <image class='close-pic' src='../../images/close.png'></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,253 @@
+.promotion-mian {
+  width: 100%;
+  background: rgb(248, 248, 248);
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.promotion-mian .promotion-pic {
+  width: 100%;
+  overflow: hidden;
+}
+
+.promotion-mian .promotion-inner {
+  width: 1180px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.promotion-inner .promotion-title {
+  width: 100%;
+  margin-top: 20px;
+  height: 48px;
+  line-height: 48px;
+  background: #fff;
+  box-sizing: border-box;
+  border: 1px solid #d6d6d6;
+}
+
+.promotion-title .title {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  padding-left: 21px;
+}
+
+.promotion-title .time {
+  float: right;
+  padding-right: 30px;
+  font-size: 16px;
+  color: #fff;
+  padding-left: 10px;
+  background: #f5174a;
+  position: relative;
+  z-index: 21;
+}
+
+.promotion-title .time::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 48px solid transparent;
+  border-bottom: 48px solid #f5174a;
+  position: absolute;
+  left: -49px;
+  top: -48px;
+  z-index: -1;
+}
+
+.promotion-title em {
+  font-style: normal;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background: #fff;
+  color: #f5174a;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.promotion-list {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.promotion-list ul {
+  margin-left: -20px;
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+
+.promotion-list li {
+  width: 578px;
+  height: 218px;
+  float: left;
+  border: 1px solid #d6d6d6;
+  margin: 20px 0 0 20px;
+  background: #fff;
+}
+
+.promotion-list .list_inner {
+  padding: 17px;
+  position: relative;
+}
+
+.list_inner .has_pic {
+  width: 186px;
+  height: 186px;
+  float: left;
+  margin-right: 20px;
+}
+
+.list_inner .has_text {
+  font-size: 16px;
+  color: #333333;
+  width: 337px;
+  float: left;
+}
+
+.list_inner .title {
+  margin: 16px 0;
+  line-height: 23px;
+  overflow: hidden;
+  text-align: left;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position: relative;
+}
+
+.list_inner .price_box {
+  width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  color: #333;
+  padding-top: 22px;
+  border-top: 1px dashed #d6d6d6;
+}
+
+.list_inner .price {
+  font-size: 24px;
+  color: #f5174a;
+}
+
+.list_inner del {
+  font-size: 14px;
+  color: #999;
+  padding-left: 14px;
+}
+
+.list_inner .btn {
+  width: 100%;
+  overflow: hidden;
+}
+
+.list_inner .right_now {
+  display: block;
+  width: 210px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  background: #f5174a;
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.list_inner .right_now a {
+  display: block;
+  width: 210px;
+  height: 36px;
+  color: #fff;
+}
+
+.list_inner .country {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.promotion-inner .page {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+}
+
+.page .page_inner {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.page_inner span,
+.page_inner dl {
+  /* float: left; */
+  font-size: 13px;
+  color: #666;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* .page_inner dl{
+    margin-left: 25px;
+    width: 320px;
+    overflow: hidden;
+} */
+.page_inner dl dd {
+  width: 40px;
+  height: 40px;
+  /* float: left; */
+  display: inline-block;
+  *display: block;
+  *float: left;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  background: #fff;
+  margin-right: 10px;
+}
+
+.page_inner dl span {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page_inner a {
+  color: #333;
+}
+
+.page_inner dd.color_ {
+  background: #f5174a;
+  color: #fff;
+  border: none;
+}
+
+.page_inner dd.color_ a {
+  color: #fff;
+}
+
+.page_inner .disabled {
+  color: #333;
+  background-color: #d6d6d6;
+  border-color: #d6d6d6;
+  cursor: not-allowed;
+  pointer-events: none;
+}

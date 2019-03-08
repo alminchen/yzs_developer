@@ -1,0 +1,62 @@
+/* pages/classify/classify.wxss */
+@import "../template/classifyTpl.wxss";
+.wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wrapper .inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.inner .left{
+    width: 180rpx;
+    height: 100%;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+.inner .left .left-tab{
+    width: 100%;
+    height: 96rpx;
+    background: #f8f8f8;
+    line-height: 96rpx;
+    text-align: center;
+    position: relative;
+    color: #585757;
+    font-size: 28rpx;
+}
+.inner .left-tab.in{
+    color: #010101;
+    background: #ffffff;
+}
+.inner .left-tab.in::after{
+    content: "";
+    width: 8rpx;
+    height: 100%;
+    background: #f5174a;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.inner .right{
+    flex: 1;
+    padding: 0 20rpx;
+    overflow: hidden;
+}
+
+.wrapper .right .scrollView{
+    width: 100%;
+    overflow: hidden;
+}
+.scrollView .right-inner{
+    width: 100%;
+    overflow: hidden;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+

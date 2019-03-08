@@ -1,0 +1,55 @@
+.tip{
+  	font-size: 14px;
+	  color: #f5174a;
+    height: 70rpx;
+    line-height: 70rpx;
+ 	  background-color: #fef8d7;
+    padding-left:30rpx;
+}
+
+.logis-title{
+	font-size: 14px;
+	color: #232326;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom:1rpx solid #dbdbdb;
+  padding-left:30rpx;
+}
+.bag-wrap .bag:last-child .space{
+  height:0;
+}
+.bag{
+  font-size:14px;
+}
+.bag-express{
+  padding:34rpx 30rpx;
+   display: flex;
+   justify-content: space-between;
+
+}
+.express-left{
+   display: flex;
+   align-items: center;
+}
+.express-left image{
+    margin-right:10rpx;
+    width:32rpx;
+    height:32rpx;
+}
+.express-info{
+  padding:0 20rpx;
+  
+}
+.bag-pro{
+  margin:34rpx 0;
+  white-space: nowrap;
+  width:100%;
+}
+.bag-pro image{
+  width: 136rpx;
+  height: 136rpx;
+  margin-left:30rpx;
+}
+.total{
+  margin:0 0 80rpx 30rpx; 
+}

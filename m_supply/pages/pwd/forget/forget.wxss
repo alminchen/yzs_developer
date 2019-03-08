@@ -1,0 +1,61 @@
+page{
+  background-color: #f5f7fa;
+}
+
+.form-list{
+  padding-left:30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  font-size:16px;
+  height: 114rpx;
+	border-radius: 5rpx;
+  border-bottom:1rpx solid #dbdbdb;
+
+}
+.pwd-txt{
+  font-size: 16px;
+	color: #010101;
+}
+.input-placeholder{
+   color: #999999;
+   
+}
+
+.pwd-inp{
+  background-color: #fff;
+  padding-left:20rpx;
+  height: 114rpx;
+  line-height: 114rpx;
+
+}
+.pwd-btn{
+  margin:70rpx 30rpx 0;
+  height: 90rpx;
+	background-color: #999999;
+	border-radius: 5rpx;
+	opacity: 0.9;
+  color: #ffffff;
+  
+}
+button{
+    border-radius: 0;
+}
+button::after{
+   border:none;
+   border-radius: 0;
+}
+.getCode{
+  border-right:1rpx solid #dbdbdb;
+}
+.getMsg{ 
+  width: 220rpx;
+	height: 100%;
+	background-color: #ffffff;
+  line-height:  114rpx;
+  text-align: center;
+  color: #4b89fc;
+  font-size:16px;
+  margin:0;
+}

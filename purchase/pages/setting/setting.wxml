@@ -1,0 +1,22 @@
+<view class='wrapper'>
+  <view class='sameCss'>
+    <text class='txt lf30'>账号</text>
+    <view class='sameIpt'>未登录</view>
+  </view>
+  <navigator url='/pages/changepwd/changepwd' hover-class='none'>
+    <view class='sameCss'>
+      <text class='txt lf30'>修改密码</text>
+      <view class='sameIpt'>
+        <image class='cell-arrow' src='../../images/arrow.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator url='/pages/forget/forget' hover-class='none'>
+    <view class='sameCss'>
+      <text class='txt lf30'>忘记密码</text>
+      <view class='sameIpt'>
+        <image class='cell-arrow' src='../../images/arrow.png'></image>
+      </view>
+    </view>
+  </navigator>
+</view>

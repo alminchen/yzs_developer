@@ -1,0 +1,57 @@
+<!-- pages/classify/classify.wxml -->
+<view class='wrapper'>
+  <view class="inner">
+    <view class="left" style="height:{{leftHeight}}px">
+      <scroll-view scroll-x="false" scroll-y="{{true}}" scroll-left="{{0}}" style="height:{{leftHeight}}px">
+        <view class="left-tab {{idx == active?'in':''}}" wx:for="{{10}}" wx:for-index="idx" data-cur="tty{{idx}}" data-idx='{{idx}}' wx:key="idx" catchtap='getDataList'>
+          {{item}}
+        </view>
+      </scroll-view>
+    </view>
+    <view class="right">
+      <scroll-view scroll-y="true" scroll-with-animation='true' scroll-x="{{false}}" class="" scroll-top="{{0}}" style="height:{{leftHeight}}px" scroll-left="{{0}}" scroll-into-view="{{contentActive}}" bindscroll="onSroll">
+        <view class="right-inner" wx:for="{{10}}" id='tty{{index}}' wx:key="*this">
+          <view class="top">
+            <image class="ad" src="../../images/ad_03.png"></image>
+          </view>
+          <view class="right-list">
+            <view class="title">
+              <image src="../../images/classify.png" class="classifyPic" />
+              <view class="text">{{(dataList[0].li)+1}}</view>
+            </view>
+            <view class="list">
+              <view class="list-pic">
+                <image src="../../images/classify_goods.png" class="classifyGoods" />
+                <view class="tit">美素佳儿{{index}}</view>
+              </view>
+            </view>
+            <view class="list">
+              <view class="list-pic">
+                <image src="../../images/classify_goods.png" class="classifyGoods" />
+                <view class="tit">美素佳儿{{index}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="right-list">
+            <view class="title">
+              <image src="../../images/classify.png" class="classifyPic" />
+              <view class="text">{{(dataList[0].li)+1}}</view>
+            </view>
+            <view class="list">
+              <view class="list-pic">
+                <image src="../../images/classify_goods.png" class="classifyGoods" />
+                <view class="tit">美素佳儿{{index}}</view>
+              </view>
+            </view>
+            <view class="list">
+              <view class="list-pic">
+                <image src="../../images/classify_goods.png" class="classifyGoods" />
+                <view class="tit">美素佳儿{{index}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,54 @@
+<!--pages/addidcard/addidcard -->
+<view class='wrapper'>
+  <view class='inner'>
+    <scroll-view scroll-y style='height:{{leftHeight}}px'bindscroll="scroll">
+      <view class='ipt'>
+        <view class='ipt-name ipt-same'>
+          <view class='ipt-text'>姓名：</view>
+          <view class='ipt-in'>
+            <input class='ipt-input' placeholder='请输入真实姓名'></input>
+          </view>
+        </view>
+        <view class='idcard-num ipt-same'>
+          <view class='ipt-text'>身份证：</view>
+          <view class='ipt-in'>
+            <input class='ipt-input' type='idcard' placeholder='请输入姓名对应的身份证号码' maxlength="18"></input>
+          </view>
+        </view>
+      </view>
+      <view class='attention'>
+        <view class='tips'>
+          <image class='tips-pic' src='../../images/attetion.png'></image>
+          <text class='tips-text'>温馨提示：请上传原始比例的身份证正反面，请勿裁剪涂改，请保持身份信息清晰显示，否则无法通过审核！</text>
+        </view>
+        <view class='upload'>
+          <view class='up-pic mar30'>
+            <image class='up-image' src='../../images/upload.png' bindtap='uploadPic'></image>
+            <view class='up-text'>身份证人像面</view>
+          </view>
+          <view class='up-pic'>
+            <image class='up-image' src='../../images/upload.png' bindtap='uploadPic'></image>
+            <view class='up-text'>身份证国徽面</view>
+          </view>
+        </view>
+        <view class='upload'>
+          <view class='up-pic mar30'>
+            <image class='up-image' src='../../images/idcard_idx.png'></image>
+            <view class='up-text'>人像面示例</view>
+          </view>
+          <view class='up-pic'>
+            <image class='up-image' src='../../images/idcard_bak.png'></image>
+            <view class='up-text'>国徽面示例</view>
+          </view>
+        </view>
+      </view>
+      <view class='attention-text'>
+        <view class='attention-post'>根据海关相关规定，购买跨境商品需要相关手续，需要您上传身份证信息用于商品入境申请。</view>
+        <view class='attention-tips'>声明：货栈全权负责提交信息至海关办理相关手续，绝不传播或用于其他地方，请放心填写。</view>
+      </view>
+    </scroll-view>
+    <view class='saveAndUse'>
+      <view class='saveBtn'>保存并使用</view>
+    </view>
+  </view>
+</view>

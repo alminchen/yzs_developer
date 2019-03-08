@@ -1,0 +1,155 @@
+<form bindsubmit="formSubmit">
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/tel_icon.png' class="lab-img"></image>
+      <view class="lab-txt">手机号码
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="number" placeholder-class="input-placeholder" name="tel" placeholder="请输入您的手机号码" maxlength="11" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/yzm_icon.png' class="lab-img"></image>
+      <view class="lab-txt">验证码
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="number" placeholder-class="input-placeholder" name="tel" placeholder="请输入手机验证码" maxlength="4" />
+      <button disabled='{{disabled}}' class="yzm" bindtap="getVerificationCode">{{time}}</button>
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/pwd_icon.png' class="lab-img"></image>
+      <view class="lab-txt">密码
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="password" placeholder-class="input-placeholder" placeholder="请输入登录密码" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/pwd_icon.png' class="lab-img"></image>
+      <view class="lab-txt">确认密码
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="password" placeholder-class="input-placeholder" placeholder="请再次输入密码" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/user_icon.png' class="lab-img"></image>
+      <view class="lab-txt">姓名
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="text" placeholder-class="input-placeholder" placeholder="请输入法人姓名" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/gs_icon.png' class="lab-img"></image>
+      <view class="lab-txt">公司名称
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="text" placeholder-class="input-placeholder" placeholder="请输入公司名称" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/dz_icon.png' class="lab-img"></image>
+      <view class="lab-txt">所在地区
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <addr-select bind:select="selectArea" style='width:100%;'>
+        <input class="form-inp" type="text" name="area" placeholder-class="input-placeholder" placeholder="点击选择您的公司所在地区" value='{{address[0]&&address[0].name}}{{address[1]&&address[1].name}}{{address[2]&&address[2].name}}' disabled='true' />
+        <input name="provice" hidden='hidden' value='{{address[0]&&address[0].name}}'></input>
+        <input name="city" hidden='hidden' value='{{address[1]&&address[1].name}}'></input>
+        <input name="district" hidden='hidden' value='{{address[2]&&address[2].name}}'></input>
+      </addr-select>
+      <image class="sel-icon" src='../../images/more.png'></image>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="text" placeholder-class="input-placeholder" placeholder="请输入公司名称" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/yw_icon.png' class="lab-img"></image>
+      <view class="lab-txt">主营业务
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{zyArray}}" style='width:100%;'>
+        <input class="form-inp" type="text" value="{{zyArray[index]}}" placeholder-class="input-placeholder" placeholder="请选择公司的主营业务" />
+      </picker>
+      <image class="sel-icon" src='../../images/more.png'></image>
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/yqr_icon.png' class="lab-img"></image>
+      <view class="lab-txt">邀请人
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <input class="form-inp" type="text" placeholder-class="input-placeholder" placeholder="请输入邀请人姓名" />
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/dz_icon.png' class="lab-img"></image>
+      <view class="lab-txt">归属地
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="inp-box">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{gsdArray}}" style='width:100%;'>
+        <input class="form-inp" type="text" value="{{gsdArray[index]}}" placeholder-class="input-placeholder" placeholder="请选择归属地区" />
+      </picker>
+      <image class="sel-icon" src='../../images/more.png'></image>
+    </view>
+  </view>
+  <view class="form-box">
+    <view class="form-lab">
+      <image src='../../images/rzxx_icon.png' class="lab-img"></image>
+      <view class="lab-txt">认证信息
+        <text style='color:red;'>*</text>
+      </view>
+    </view>
+    <view class="upload-box">
+      <view class="upload-list">
+        <image src='{{idCardIn == ""?"../../images/upload.png":idCardIn}}' data-src='0' class="uploadImg"  bindtap="chooseImage" wx:if="{{imgBoolean}}" mode="aspectFill"></image>
+        <view class="upload-txt">身份证人像照</view>
+      </view>
+      <view class="upload-list">
+      <image src='{{idCardIn1 == ""?"../../images/upload.png":idCardIn1}}' data-src='1' class="uploadImg"  bindtap="chooseImage" wx:if="{{imgBoolean}}" mode="aspectFill"></image>
+        <view class="upload-txt">身份证国徽照</view>
+      </view>
+      <view class="upload-list">
+    <image src='{{idCardIn2 == ""?"../../images/upload.png":idCardIn2}}' data-src='2' class="uploadImg"  bindtap="chooseImage" wx:if="{{imgBoolean}}" mode="aspectFill"></image>
+        <view class="upload-txt">门头/公司LOGO</view>
+      </view>
+      <view class="upload-list">
+        <image src='{{idCardIn3 == ""?"../../images/upload.png":idCardIn3}}' data-src='3' class="uploadImg"  bindtap="chooseImage" wx:if="{{imgBoolean}}" mode="aspectFill"></image>
+        <view class="upload-txt">场地/公司内部照</view>
+      </view>
+    </view>
+
+  </view>
+</form>

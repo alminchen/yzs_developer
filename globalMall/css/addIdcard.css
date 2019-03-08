@@ -1,0 +1,169 @@
+img {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.addIdcard {
+    width: 100%;
+    overflow: hidden;
+}
+
+.addIdcard .add_inner {
+    padding: 0 20px;
+    overflow: hidden;
+    margin-top: 40px;
+    width: 937px;
+}
+
+.add_inner .tips {
+    width: 100%;
+    height: 80px;
+    background: #fef8d7;
+}
+
+.add_inner .tips_ma {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.add_inner .tips p {
+    font-size: 14px;
+    color: #222;
+    padding-left: 26px;
+    position: relative;
+}
+
+.add_inner .name {
+    font-weight: bold
+}
+
+.add_inner .tips .name::after {
+    content: "";
+    display: inline-block;
+    width: 19px;
+    height: 16px;
+    background: url(../images/tips_03.png) no-repeat left center;
+    vertical-align: middle;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+.add_inner .tips .text {
+    font-size: 12px;
+    color: #f5174a;
+    margin-top: 10px;
+}
+
+
+.add_inner .add_datas {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 65px;
+}
+
+.add_inner .add_datas p,
+.add_datas div {
+    line-height: 32px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.add_inner .add_datas input {
+    width: 320px;
+    height: 32px;
+    border: none;
+    outline: none;
+    border: 1px solid #d6d6d6;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.add_datas label {
+    position: relative;
+    /* padding-left: 10px; */
+}
+
+.add_datas label.has::after {
+    content: "*";
+    display: inline-block;
+    color: #f5174a;
+    font-size: 16px;
+    position: absolute;
+    left: -10px;
+}
+
+.add_datas dl {
+    width: 200px;
+
+    box-sizing: border-box;
+    float: left;
+    margin-right: 20px;
+}
+
+.add_datas dl dd {
+    width: 100%;
+    height: 125px;
+    overflow: hidden;
+    position: relative;
+}
+
+.add_datas dl dd input[type="file"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.add_datas dl dt {
+    width: 100%;
+    line-height: 31px;
+    text-align: center;
+    font-size: 12px;
+    color: #595959;
+}
+
+.add_datas .datas_tips {
+    clear: both;
+    margin-top: 20px;
+    overflow: hidden;
+    margin-left: 70px;
+}
+.add_datas .datas_tips p{
+    font-size: 12px;
+    line-height: normal;
+    margin-bottom: 5px;
+    color: #f5174a;
+    padding-left: 0;
+}
+
+.add_datas .datas_tips .please{
+    color: #999;
+}
+
+.add_datas .sureBtn{
+    margin-left: 70px;
+    margin-top: 35px;
+}
+
+.sureBtn span{
+    display: block;
+    width: 128px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background: #f5174a;
+    font-size: 14px;
+    border-radius: 3px;
+    user-select: none;
+    cursor: pointer;
+
+}

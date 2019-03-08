@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>确定订单</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/inland.css">
+    <link rel="stylesheet" href="../../css/citySelect/citySelect.css">
+</head>
+
+<body>
+    <div class="order-main" id="inlandIndex">
+        <div class="inner">
+            <div class="address_show">
+                <h3>收货地址</h3>
+                <div class="list_address">
+                    <ul>
+                        <li class="address" v-for="(item, index) in 5" :key="index" :class="index==0?'on':''">
+                            <div class="list_inner" :class="index==0?'on':''" >
+                                <p class="first">
+                                    <span class="name">张三</span>
+                                    <span class="del" @click.stop="delAddress"></span>
+                                    <span class="edit" @click.stop="editAddress"></span>
+                                </p>
+                                <p class="phone">12234567890</p>
+                                <p class="address">广东省 深圳市 福田区</p>
+                                <p class="detail_address">八卦岭地铁站B出口541栋 汉富中心3楼303云之商科技有限公司</p>
+                                <span :class="index==0?'default':''" v-if="index==0&&defaultImg">默认地址</span>
+                            </div>
+                            <div class="fix_address" style="display:none;">
+                                <div class="inner_fix">
+                                    <div class="ipt"><input type="text" placeholder="收货人姓名"></div>
+                                    <div class="ipt"><input type="text" placeholder="手机号码"></div>
+                                    <div class="add_select">
+                                        <div class="city-picker-selector" :id="'citysSelect'+index"></div>
+                                    </div>
+                                    <div class="ipt"><input type="text" placeholder="详细地址"></div>
+                                    <div class="add_btn">
+                                        <span class="cancel" @click.stop="hideAddress">取消</span><span class="sure"
+                                            @click.stop="saveAddress">确定</span>
+                                    </div>
+                                    <div class="saveDefault">
+                                        <span class="default_save" @click.stop="saveAndSetDefault">保存并设为默认地址</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="add_address">
+                            <div class="add_inner" @click.stop="addAddress"></div>
+                            <div class="fix_address" id="add_select" style="display:none;">
+                                <div class="inner_fix">
+                                    <div class="ipt"><input type="text" placeholder="收货人姓名"></div>
+                                    <div class="ipt"><input type="text" placeholder="手机号码"></div>
+                                    <div class="add_select">
+                                        <div class="city-picker-selector" id="city-picker-selector2"></div>
+                                    </div>
+                                    <div class="ipt"><input type="text" placeholder="详细地址"></div>
+                                    <div class="add_btn">
+                                        <span class="cancel" @click.stop="hideAddress">取消</span><span class="sure" @click.stop="saveAddress">确定</span>
+                                    </div>
+                                    <div class="saveDefault">
+                                        <span class="default_save" @click.stop="saveAndSetDefault">保存并设为默认地址</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sureorder-list">
+                <div class="order-list-inner">
+                    <h3>商品清单</h3>
+                    <div class="sureorder_show">
+                        <ul>
+                            <li class="top">
+                                <div class="sureorder-left">
+                                    <div class="title line">商品信息</div>
+                                </div>
+                                <div class="sureorder-right">
+                                    <div class="sure_list_order_1 line">规格</div>
+                                    <div class="sure_list_order_2 line">折合单价</div>
+                                    <div class="sure_list_order_3 line">数量</div>
+                                    <div class="sure_list_order_4">金额</div>
+                                </div>
+                            </li>
+                            <li class="sureorder_list_detail" v-for="(item, index) in 3" :key="index">
+                                <div class="sureorder-left">
+                                    <div class="title">
+                                        <div class="pic_tit">
+                                            <img src="../../images/goods_03.png" alt="">
+                                        </div>
+                                        <div class="sureorder_msg">
+                                            <p class="title_text">新西兰爱他美婴幼儿奶粉1段900g(凹凸程度:重) 2018年8月到期......</p>
+                                            <p>效期：2018-06-18</p>
+                                            <p>运费：包邮</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sureorder-right">
+                                    <div class="sure_list_order_1">3罐装</div>
+                                    <div class="sure_list_order_2">￥180.00</div>
+                                    <div class="sure_list_order_3">1</div>
+                                    <div class="sure_list_order_4"><span class="price">￥800.00</span></div>
+                                </div>
+                            </li>
+                            <li class="show-more">展开其余三件商品 <span></span></li>
+                        </ul>
+                    </div>
+                    <div class="message_list">
+                        <p class="mar100">商品总额：￥180.00</p>
+                        <p>税费：￥16.00</p>
+                        <p>运费：￥100.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sure_submit">
+                <div class="account-inner"><span class="price">合计：<em>￥296.00</em></span><span class="account-btn"><a href="../order/myOrder.html">提交订单</a></span></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/citySelect/citydata.min.js"></script>
+<script src="../../js/citySelect/cityPicker-2.0.3.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#inlandIndex",
+        data: {
+            defaultImg: true,
+        },
+        mounted() {
+
+        },
+        methods: {
+            editAddress: function (e) {
+                var id = $(e.target).parent().parent().siblings().find('.city-picker-selector').prop('id');
+                var par1 = $(e.target).parent().parent();
+                var par2 = $(e.target).parent().parent().siblings();
+                // par1.hide();
+                par1.parent().siblings().find('.fix_address').hide();
+                par1.parent().siblings().find('.list_inner').fadeIn();
+                par2.fadeIn('slow');
+                this.citySelect(id, '广东省, 广州市,天河区')
+            },
+            citySelect: function (id, area) {
+                var selector1 = $('#' + id).cityPicker({
+                    dataJson: cityData,
+                    renderMode: true,
+                    search: false,
+                    autoSelected: false,
+                    code: 'cityCode',
+                    level: 3,
+                    onChoiceEnd: function () {
+                        console.log(this.values)
+                        // 选择完的地址提交 ajax可以在这里执行
+                    }
+                });
+                selector1.setCityVal(area)
+            },
+            addAddress: function () {
+                // $('.add_inner').hide();
+                $('#add_select').fadeIn();
+                var selector2 = $('#city-picker-selector2').cityPicker({
+                    dataJson: cityData,
+                    renderMode: true,
+                    search: false,
+                    autoSelected: false,
+                    code: 'cityCode',
+                    level: 3,
+                    onChoiceEnd: function () {
+                        console.log(this.values)
+                    }
+                });
+            },
+            hideAddress: function (e) {
+                var par1 = $(e.target).parent().parent().parent();
+                var par2 = $(e.target).parent().parent().parent().siblings();
+                par1.hide();
+                // par2.fadeIn();
+            },
+            saveAddress: function (e) {
+                var par1 = $(e.target).parent().parent().parent();
+                var par2 = $(e.target).parent().parent().parent().siblings();
+                par1.hide();
+                // par2.fadeIn();
+            },
+            saveAndSetDefault: function (e) {
+                var par1 = $(e.target).parent().parent().parent();
+                var par2 = $(e.target).parent().parent().parent().siblings();
+                par1.hide();
+                // par2.fadeIn();
+            },
+            delAddress:function(e){
+                $(e.target).parent().parent().parent().remove();
+            }
+        },
+    })
+</script>
+
+</html>

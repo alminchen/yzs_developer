@@ -1,0 +1,15 @@
+<view class="lump">    
+</view>
+<view class="head-box">
+    <image src="../../images/head.png" class="head-icon"></image>
+    <view class="head-tel">
+    13569868798
+    </view>
+    <view class="head-lab">
+    供应商
+    </view>
+</view>
+<navigator  url="/pages/setting/setting" class="setting" hover-stay-time="0">
+     <text class="setTxt">设置</text>
+     <image src="../../images/btn-arrow.png" class="setImg"></image>
+</navigator>

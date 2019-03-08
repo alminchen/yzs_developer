@@ -1,0 +1,25 @@
+page{
+  background-color: #f5f7fa;
+}
+
+
+.setting{
+  padding:0 30rpx;
+  height:102rpx;
+   background-color:#fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #dbdbdb;
+}
+.setTxt{
+  font-size: 16px;
+	color: #010101;
+}
+.setImg{
+  width:17rpx;
+  height:30rpx;
+}
+.zhc{
+  color: #999999;
+}

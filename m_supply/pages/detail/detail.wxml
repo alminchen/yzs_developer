@@ -1,0 +1,253 @@
+<view class="swiperContainer">
+  <swiper bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="2500" duration="500">
+    <block wx:for="{{imgUrls}}" wx:key="this">
+      <swiper-item wx:key="this">
+        <image src="{{item}}" class="slide-image" mode="center" mode='widthFix' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="imageCount">{{current+1}}/{{imgUrls.length}}</view>
+</view>
+
+<view class="detail-wrap" hidden='{{!detailShow}}'>
+  <view class="ware-title">
+    <view class="ware-head">
+      <view class="head-left">
+        <image src="../../images/country.png" class="country"></image>
+        <text class="left-txt">德国</text>
+      </view>
+      <image src="../../images/info-logo.png" class="info-logo"></image>
+    </view>
+    <view class="newLine ware-txt">悦诗风吟Innisfree济州岛火山岩泥毛孔清洁洗颜乳 洗150ml（京东自营 深层清洁 去黑头角质 洗面奶 男面女通用）商品名称最多50字
+    </view>
+  </view>
+
+  <view class="param">
+    <view class="param-list">规格：
+      <text class="param-val">一段/3个月/两罐装</text>
+    </view>
+    <view class="param-list">库存：
+      <text class="param-val">500</text>
+    </view>
+    <view class="param-list">价格：
+      <text class="param-red">￥800.00</text>
+    </view>
+  </view>
+  <view class="img-txt">
+    <view class="img-title">图文详情</view>
+    <image class="ware-bg" src="../../images/infoimg.jpg"></image>
+  </view>
+  <view class="textarea-wrp">
+    <view class="area-title">其他说明：</view>
+    <view class="explain">其他说明：其他说明：其他说明：其他说明：其他说明：</view>
+    <!-- <textarea auto-focus="true" maxlength="250"  class="detail-area"/>
+      <view class="word-num">(限500字以内)</view> -->
+  </view>
+  <view class="status-box">
+    <text class="status-txt">状态</text>
+    <text>未启用</text>
+  </view>
+  <view class="handle-btn">
+    <view class="btn-list bdr" catchtap='deleteBtn'>删除</view>
+    <view class="btn-list" catchtap='statusFunc'>禁用</view>
+    <view class="btn-edit" catchtap='editBtn'>编辑</view>
+  </view>
+</view>
+
+
+<view class="edit-wrap" hidden='{{detailShow}}'>
+  <form bindsubmit="formSubmit">
+    <view class="goods-box">
+      <view class="goods-list">
+        <view class="goods-left">
+          <text class="mark-red">*</text> 商品分类：
+        </view>
+        <view class="goods-right">
+          <input class="form-inp" disabled="true" value='' type="text" placeholder-class="input-placeholder" placeholder="" />
+          <view class="right-arrow">
+            <text class="right-txt">请选择</text>
+            <image class="arrow-img" src='../../images/right-a.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class="goods-list good-name">
+        <view class="goods-left">
+          <text class="mark-red">*</text> 商品名称：
+        </view>
+        <view class="goods-right ">
+          <input class="form-inp longInp" type="text" maxlength="50" placeholder-class="input-placeholder" placeholder="请输入商品名称(最多50字)" />
+        </view>
+      </view>
+      <view class="goods-list">
+        <view class="goods-left">
+          <text class="mark-red">*</text> 商品品牌：
+        </view>
+        <view class="goods-right">
+          <input class="form-inp" type="text" disabled="true" value='' placeholder-class="input-placeholder" placeholder="" />
+          <view class="right-arrow">
+            <text class="right-txt">请选择</text>
+            <image class="arrow-img" src='../../images/right-a.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class="goods-list">
+        <view class="goods-left">
+          <text class="mark-red">*</text> 商品系列：
+        </view>
+        <view class="goods-right">
+          <input class="form-inp" type="text" disabled="true" value='' placeholder-class="input-placeholder" placeholder="" />
+          <view class="right-arrow">
+            <text class="right-txt">请选择</text>
+            <image class="arrow-img" src='../../images/right-a.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class="goods-list">
+        <view class="goods-left">
+          <text class="mark-red">*</text> 商品产地：
+        </view>
+        <view class="goods-right">
+          <input class="form-inp" type="text" disabled="true" value='' placeholder-class="input-placeholder" placeholder="" />
+          <view class="right-arrow">
+            <text class="right-txt">请选择</text>
+            <image class="arrow-img" src='../../images/right-a.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <block wx:for="{{formatArr}}" wx:key="*this">
+      <view class="goods-box check-box">
+        <view class="goods-wrap">
+          <view class="goods-list">
+            <view class="goods-left format">
+              规格：
+              <input class="form-inp" type="text" name="sku{{item.id}}"   value="{{item.sku}}" placeholder-class="input-placeholder" placeholder="请输入商品规格" />
+            </view>
+            <view class="goods-right">
+              <view class="right-arrow" wx:if='{{!item.uploadSrc !="" && !item.uploadSrc != undefind }}'>
+                <image data-cur="{{item.id}}" class="camera" src='../../images/camera.png' hidden='{{!uploadShow}}' bindtap="chooseImage"></image>
+              </view>
+            </view>
+          </view>
+          <view class="goods-list good-name">
+            <view class="goods-left">
+              库存：
+            </view>
+            <view class="goods-right ">
+              <input class="form-inp" type="text"  name="num{{item.id}}"   value="{{item.num}}" placeholder-class="input-placeholder" placeholder="请输入商品库存" />
+            </view>
+          </view>
+          <view class="goods-list good-name">
+            <view class="goods-left">
+              <text class="mark-red">*</text>采购价：
+            </view>
+            <view class="goods-right ">
+              <input class="form-inp" type="text" name="price{{item.id}}"  value="{{item.price}}" placeholder-class="input-placeholder" placeholder="请输入商品采购价" />
+            </view>
+          </view>
+          <view class="goods-list good-name">
+            <view class="goods-left">
+              建议零售价：
+            </view>
+            <view class="goods-right ">
+              <input class="form-inp" type="text" name="sell{{item.id}}"  value="{{item.sell}}" placeholder-class="input-placeholder" placeholder="请输入商品零售价" />
+            </view>
+          </view>
+          <!-- <view class="sku-box" wx:if='{{!uploadShow}}'> -->
+          <view class="sku-box" wx:if='{{item.uploadSrc !="" && item.uploadSrc != undefind }}'>
+            <image class="sku-img"  src='{{uploadSrc == ""?"../../images/edit-img.png":item.uploadSrc}}' mode="aspectFill"></image>
+            <view class="sku-btn">
+              <view class="sku-btn-list" catchtap='chooseImage' data-cur="{{item.id}}">更换</view>
+              <view class="sku-btn-list" data-cur="{{item.id}}" catchtap='deleteImg'>删除</view>
+            </view>
+          </view>
+        </view>
+
+        <view class="edit-check" hidden='{{!allEditHide && !status}}'>
+          <view class="check-btn" catchtap='checkTap' data-index='{{index}}'>
+            <image class="check-img" src="../../images/bigCheck.png" hidden='{{!item.check}}'></image>
+            <image class="check-img" src="../../images/bigChecked.png" hidden='{{item.check}}'></image>
+          </view>
+        </view>
+
+      </view>
+    </block>
+    <view class="add-wares" catchtap= "{{!allEditHide ?'addTemp':''}}" >
+      添加商品规格
+    </view>
+
+    <view class="goods-box">
+      <view class="goods-list">
+        <view class="goods-left">
+          图文详情
+        </view>
+        <view class="goods-right">
+          <input class="form-inp" disabled="true" value='' type="text" placeholder-class="input-placeholder" placeholder="" />
+          <view class="right-arrow">
+            <text class="right-txt">未添加</text>
+            <image class="arrow-img" src='../../images/right-a.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class="goods-list">
+        <view class="goods-left">
+          其他说明
+        </view>
+        <view class="goods-right">
+          <input class="form-inp" disabled="true" value='' type="text" placeholder-class="input-placeholder" placeholder="" />
+          <view class="right-arrow">
+            <text class="right-txt">未添加</text>
+            <image class="arrow-img" src='../../images/right-a.png'></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="goods-list" style="margin-bottom:98rpx;">
+        <view class="goods-left">
+          状态
+        </view>
+        <view class="goods-right">
+          <view class="check-view">
+            <switch checked="{{switchChecked}}" bindchange="switchChange" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="submit-edit" hidden='{{allEditHide}}'>
+      <view class="lot-check" catchtap="allEdit">批量操作</view>
+      <button class="lot-check" form-type="submit" catchtap="finish">完成</button>     
+    </view>
+    <view class="submit-edit" hidden='{{!allEditHide}}'>
+      <view class="lot-check editback" catchtap= "{{selarr.length>0?'deleteshopTap':''}}">删除</view>
+      <view class="lot-check editback" catchtap= "{{selarr.length>0?'adjust':''}}">调价</view>
+       <view class="lot-check editback" catchtap="finish">返回</view>
+    </view>
+  </form>
+</view>
+
+<!-- 调价弹出层 -->
+<view class="modal-mask" hidden='{{priceModal}}'>
+  <view class="modal">
+    <view class="modal-top">
+      <radio-group class="radio-group"  bindchange="radioChange">
+        <radio class="radio" value="上调" color="#4b89fc" checked="{{!addstatus}}">
+          <text class="add-price">上调</text>
+        </radio>
+        <radio class="radio" value="下调" color="#4b89fc" checked="{{addstatus}}">
+          <text class="add-price">下调</text>
+        </radio>
+      </radio-group>
+
+      <view class="price-num">
+        <input class="price-inp"  type="number" name="addNum"  bindinput ="addNumInput" placeholder-class="price-placeholder" placeholder="请输入上调/下调的价格" />
+      </view>
+      <view class="price-txt"> 上调：调整后采购价格=原价格+上调价格</view>
+       <view class="price-txt">下调：调整后采购价格=原价格-下调价格</view>
+    </view>
+    <view class="modal-btn">
+        <view class="modal-comfirm bdr" catchtap='offModal'>取消</view>
+         <view class="modal-comfirm" catchtap='addPrice'>确定</view>
+    </view>
+  </view>
+</view>

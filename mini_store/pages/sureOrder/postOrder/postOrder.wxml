@@ -1,0 +1,65 @@
+<!--pages/sureOrder/sureOrder.wxml-->
+
+<!--pages/sureOrder/sureOrder.wxml-->
+<view class='wrapper'>
+  <view class='inner'>
+    <scroll-view scroll-y class='scroll-box' style='height:{{leftHeight}}px'>
+      <view class='goods-list'>
+        <view class='goods-show' wx:for="{{3}}" wx:for-index="idx" wx:key="idx">
+          <view class='goods-pic'>
+            <view class='pic'>
+              <image class='picHas' src='../../../images/classify_goods.png'></image>
+            </view>
+            <view class='has-text'>
+              <view class='has-title'>港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉2段900g ...</view>
+              <view class='spec same'>规格：3罐装</view>
+              <view class='date same'>效期：2019年2月</view>
+              <view class='post same'>运费：包邮</view>
+              <view class='old-price same'>折合单价:
+                <text class='old-color'>￥280.00</text>
+              </view>
+              <view class='price'>
+                <text class='price-color'>￥</text>1200.00</view>
+              <view class='nums'>x5</view>
+            </view>
+          </view>
+          <view class='select-box'>
+            <view class='add_select same-line'>
+              <text class='add_text same-text'>收货地址：</text>
+              <navigator url='/pages/address/address'><text class='select same-wid'>还没有地址信息，点击选择地址</text></navigator>
+              <image class='same-arrow' src='../../../images/address_right.png'></image>
+            </view>
+            <view class='id_select same-line'>
+              <text class='id_text same-text'>身份认证：</text>
+              <navigator url='/pages/idcardlist/idcardlist'><text class='slect same-wid'>还没有身份验证信息，点击选择身份证</text></navigator>
+              <image class='same-arrow' src='../../../images/address_right.png'></image>
+            </view>
+          </view>
+        </view>
+        <view class='show-more'>
+          <text class='show-text'>展开其余3件商品</text>
+          <image class='show-pic' src='../../../images/arrow.png'></image>
+        </view>
+
+        <view class='all-datas'>
+          <view class='all-list'>
+            <text class='text'>商品总额</text>
+            <text class='list-price'>￥8000.00</text> </view>
+          <view class='all-list middle'>
+            <text class='text'>税费</text>
+            <text class='list-price'>￥20.00</text> </view>
+          <view class='all-list'>
+            <text class='text'>运费</text>
+            <text class='list-price'>￥100.00</text> </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class='all-price'>
+      <view class='all-price-count'>实付金额:
+        <text class='price-nums'>￥8000.00</text>
+      </view>
+      <button class='go-pay'>去支付</button>
+    </view>
+  </view>
+</view>

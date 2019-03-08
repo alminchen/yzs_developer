@@ -1,0 +1,59 @@
+<!--pages/mYorder/mYorder.wxml-->
+<import src="../template/myorder.wxml" />
+<view class='search {{searchShow?"":"fadeIn"}}'>
+  <image src="../../images/search_03.png" class="searchIcon" />
+  <input class='searchIpt' placeholder='商品名称、订单号、手机号、收货人姓名'></input>
+</view>
+<view class='top-tab'>
+  <view class='top-tab-inner'>
+    <view class='tab-item {{currentTopItem == idx?"in":""}}' wx:for="{{topTabItems}}" wx:for-index="idx" wx:key="idx" data-idx='{{idx}}' bindtap='switchTab'>{{item}}</view>
+    <view class='tab-line-active' style="transform:translateX({{slideOffset}}px);width:{{tabW}}px"></view>
+  </view>
+</view>
+<swiper class='swiper' style="height:{{searchShow?swiperHeight:swiperHeight+56}}px" current='{{currentTopItem}}' duration='300' bindchange='bindChange'>
+  <!-- all -->
+  <swiper-item class='swiper-item'>
+    <scroll-view class='scroll' scroll-y style='height:100%;' bindscrolltolower="loadMoreData" bindscroll="scrollTest" scroll-top="{{scrollTop}}">
+      <block wx:for="{{allList}}" wx:for-index="idx" wx:key="idx">
+        <template is="myorder" data="{{item,idx}}" />
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- noPay -->
+  <swiper-item class='swiper-item'>
+    <scroll-view class='scroll' scroll-y style='height:100%;' bindscrolltolower="loadMoreData" bindscroll="scrollTest" scroll-top="{{scrollTop}}">
+      <block wx:for="{{payList}}" wx:for-index="idx" wx:key="idx">
+        <template is="myorder" data="{{idx}}" />
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- holdDeliver -->
+  <swiper-item class='swiper-item'>
+    <scroll-view class='scroll' scroll-y style='height:100%;' bindscrolltolower="loadMoreData" bindscroll="scrollTest" scroll-top="{{scrollTop}}">
+      <block wx:for="{{sendList}}" wx:for-index="idx" wx:key="idx">
+        <template is="myorder" data="{{idx}}" />
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- holeHarvest -->
+  <swiper-item class='swiper-item'>
+    <scroll-view class='scroll' scroll-y style='height:100%;' bindscrolltolower="loadMoreData" bindscroll="scrollTest" scroll-top="{{scrollTop}}">
+      <block wx:for="{{inList}}" wx:for-index="idx" wx:key="idx">
+        <template is="myorder" data="{{idx}}" />
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- end -->
+  <swiper-item class='swiper-item'>
+    <scroll-view class='scroll' scroll-y style='height:100%;' bindscrolltolower="loadMoreData" bindscroll="scrollTest" scroll-top="{{scrollTop}}">
+      <block wx:for="{{completeList}}" wx:for-index="idx" wx:key="idx">
+        <template is="myorder" data="{{idx}}" />
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+</swiper>

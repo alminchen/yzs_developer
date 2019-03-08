@@ -1,0 +1,27 @@
+<!--pages/idcardlist/idcardlist.wxml-->
+<view class='wrapper'>
+  <view class='inner'>
+    <scroll-view class='idcard-box' scroll-y style='height:{{leftHeight}}px'>
+      <view class='idcard-list' wx:for="{{10}}" wx:for-index="idx" wx:key="idx" data-idx="{{idx}}">
+
+        <view class='list-inner'>
+          <navigator url='/pages/address/address' hover-class="none" hover-stay-time="0">
+            <view class='top'>
+              <text class='text'>姓名：</text>
+              <text class='name'>张三</text>
+            </view>
+            <view class='idcard'>
+              <text class='idcard-text'>身份证号：</text>
+              <text class='idcard-num'>51302219890531390</text>
+            </view>
+          </navigator>
+          <image class='close' src='../../images/del.png'></image>
+        </view>
+
+      </view>
+    </scroll-view>
+    <view class='addNew'>
+      <text class='add-newaddress' bindtap='goAddIdcard'>新增实名认证</text>
+    </view>
+  </view>
+</view>

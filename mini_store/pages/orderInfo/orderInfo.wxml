@@ -1,0 +1,115 @@
+<view class="order-head">
+    <image src='../../images/orderbg1.png'></image>
+    <view class="order-txt">
+        <text>待付款</text>
+        <text>剩余：2时21分30秒</text>
+    </view>
+</view>
+
+<view class="order-ads">
+    <view class="ads-txt">
+     <text>张三</text>
+     <text>123****4567</text>
+    </view>
+    <navigator class="adr-box">
+       <image src="../../images/adr-icon.png"></image>
+      <text class="newLine">广东省深圳市福田区八卦岭地铁站B出口541栋汉富中心3楼云之商科技有限公司</text>
+    </navigator>
+</view>
+
+<view class="space"></view>
+  <view class="info-wrap">
+  <view class="title-bar">商品信息</view>
+      <view class="info-section">
+      <view class="info-box">
+          <image src="../../images/order-pro.png"></image>
+          <view class="section-txt">
+              <text class="section-title newLine">港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉2段900g ...</text>
+              <text class="param-gray">规格：3罐装</text>
+              <text class="param-gray">效期：2019年2月</text>
+              <text class="param-gray">运费：包邮</text>
+              <view class="price-num param-gray">
+              <text>折合单价：<text  class="param-yellow">￥280.00</text></text> 
+              <text class="param-black">x2</text>
+              </view> 
+          </view>
+      </view>
+      <view class="info-price">
+           <view>商品总额：<text class="param-red">￥400.00</text></view>
+           <view class="submit" style='display:none;'>确认收货</view>
+      </view>
+  </view>
+  <view class="info-section">
+      <view class="info-box">
+          <image src="../../images/order-pro.png"></image>
+          <view class="section-txt">
+              <text class="section-title newLine">港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉2段900g ...</text>
+              <text class="param-gray">规格：3罐装</text>
+              <text class="param-gray">效期：2019年2月</text>
+              <text class="param-gray">运费：包邮</text>
+              <view class="price-num param-gray">
+              <text>折合单价：<text  class="param-yellow">￥280.00</text></text> 
+              <text class="param-black">x2</text>
+              </view> 
+          </view>
+      </view>
+      <view class="info-price">
+          商品总额：<text class="param-red">￥400.00</text>
+           <view class="submit" style='display:none;'>确认收货</view>
+      </view>
+  </view>
+  <view class="btn-arrow sel-more">展开其余3件商品</view>
+</view>
+
+  <view class="space"></view>
+  <view class="account">
+    <view class="title-bar">结算信息</view>
+    <view class="account-list">
+        <view class="account-item">
+          <text class="param-gray">商品总额</text>
+          <text class="param-black">￥100.00 </text>
+        </view>
+         <view class="account-item">
+          <text class="param-gray">配送费用</text>
+          <text class="param-black">￥0.00  </text>
+        </view>
+         <view class="account-item">
+          <text class="param-gray">税费</text>
+          <text class="param-black">￥0.00  </text>
+        </view>
+         <view class="account-item">
+          <text class="param-black">商品总额</text>
+          <text class="main-color">￥100.00</text>
+        </view>
+    </view>  
+  </view>
+ <view class="space"></view>
+ <view class="info-nunber">
+     <view class="title-bar">订单信息</view>
+     <view class="info-item">
+        <text class="param-gray">订单编号：</text>
+        <text class="param-black">231287985723212123 </text>
+        <button>复制</button>
+     </view>
+       <view class="info-item">
+        <text class="param-gray">下单时间：</text>
+        <text class="param-black">2017-11-30 12:32:16  </text>
+     </view>     
+ </view>
+
+ <view class="space "></view>
+ <view class="remark">
+     <view class="title-bar">备注信息</view>
+     <view class="remark-area">
+          <textarea  placeholder-style="color:#bfbfbf;" placeholder="请输入备注信息" />
+     </view>
+ </view>
+ <view class="remark-txt ellip">
+   注：香港仓发货与海外仓发货，会造成收货时间差异，请耐心等待！   
+ </view>
+
+ <view class="btn-list">
+      <button>联系客服</button>
+       <button>取消订单</button>
+       <button class="btn-main">去支付</button>
+ </view>

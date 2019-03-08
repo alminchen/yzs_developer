@@ -1,0 +1,24 @@
+<view class='wrapper'>
+  <view class='input boxSiz'>
+    <icon type="search" size="30rpx" class='search' />
+    <input placeholder="根据商品名称、品牌、产地进行模糊搜索" class='ipt' />
+  </view>
+  <view class='inner-list'>
+    <view class='inner-left'>
+      <navigator url="/pages/shoplist/shoplist" hover-class="none">
+        <view class='picbox'>
+          <image src='../../images/shop.png' class='left-pic'></image>
+        </view>
+        <text class='txt'>查看商品</text>
+      </navigator>
+    </view>
+    <view class='inner-left rt'>
+      <navigator hover-class="none" url='/pages/changelist/changelist'>
+        <view class='picbox'>
+          <image src='../../images/mon.png' class='rt-pic'></image>
+        </view>
+        <text class='txt'>采购价格变更商品</text>
+      </navigator>
+    </view>
+  </view>
+</view>

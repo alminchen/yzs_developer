@@ -1,0 +1,33 @@
+<template name="myorder">
+  <view class='scroll-box'>
+    <view class='srcoll-inner'>
+      <view class='orders'>
+        <text class='order-number'>订单编号:{{item}}</text>
+        <text class='order-status'>待付款</text>
+      </view>
+      <scroll-view class='scroll-pic' wx:if="{{idx!==4}}" scroll-x style='width:100%;white-space: nowrap;'>
+        <view class='sroll-x'>
+          <image class='otder-img' src='../../images/classify_goods.png' wx:for="{{7}}" wx:for-index="idx" wx:key="idx"></image>
+        </view>
+      </scroll-view>
+      <view class='only-one' wx:if="{{idx==4}}">
+        <view class='one-pic'>
+          <image class='one-ing' src='../../images/classify_goods.png'></image>
+        </view>
+        <view class='only-text'>
+          <view class='one-title newLine'>【保税】日本花王（Merries）婴儿纸尿裤中号M64片（6-11kg宝宝适用）</view>
+          <view class='one-spec'>3罐装</view>
+        </view>
+      </view>
+      <view class='all-datas'>
+        <text class='all-in'>共4见商品</text>
+        <text class='all-price'>合计：<text class='money'>￥</text>
+        <text class='big-txt'>8000.</text>
+        <text class='zero'>00</text> </text>
+      </view>
+      <view class='to-pay'>
+        <text class='pay'>去支付</text>
+      </view>
+    </view>
+  </view>
+</template>

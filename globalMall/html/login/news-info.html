@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/citySelect/citySelect.css">
+    <script src="../../js/vue.min.js"></script>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+</head>
+
+<body>
+<div class="login_head">
+    <div class="wrap clearfix">
+        <span class="login_logo fl"></span>
+        <ul class="login_nav fr">
+            <li><a href="javascript:;" class="login_active">首页</a></li>
+            <li class="login_twoNav">
+                <a href="javascript:;" class="zs-active">招商加盟 <!--<i class="login-sel"></i>--></a>
+                <div class="twoNav-dd">
+                    <dd><a href="" class="nav-active">门店加盟</a></dd>
+                    <dd><a href="" class="nav-active">商家入驻</a></dd>
+                </div>
+            </li>
+            <li><a href="about.html">关于我们</a></li>
+            <li class="login_twoNav">
+                <a href="javascript:;" class="zs-active">新闻资讯</a>
+                <div class="twoNav-dd">
+                    <dd><a href="" class="nav-active">新闻列表</a></dd>
+                    <dd><a href="" class="nav-active">行内新闻</a></dd>
+                </div>
+            </li>
+            <li><a href="javascript:;">供应商登录</a></li>
+        </ul>
+    </div>
+</div>
+
+     <div class="news-wrap">
+          <p class="new-head">当前位置：新闻资讯>新闻详情</p>
+           <h1 class="newInfo-title">货栈线上商城专场招商采购会圆满结束</h1>
+           <p class="news-caption">商栈品宣部&nbsp;&nbsp;商栈互联&nbsp;&nbsp;2018.12.11</p>
+         <div class="info-content">
+             <p class="info-p"> 经过多日的精心筹备，货栈S2B线上商城玩具日用专场招商采购会于2018年11月3日下午2:00在深圳福田盛大召开。会议邀请了来自全国各地的17家近30名供应商参与。</p>
+             <img  class="info-img" src="../../images/new-txt.png" alt="">
+             <p class="info-p"> 在轻快明亮的音乐声中，会议主持人BD拓展部总监余海清宣布会议开始并对各位供应商的到来表示热烈欢迎。</p>
+             <img  class="info-img" src="../../images/new-txt.png" alt="">
+         </div>
+     </div>
+
+    <div class="login-bottom">
+        <div class="wrap">
+            <ul class="clearfix">
+                <li class="clearfix bottom-item">
+                    <span class="bottom-icon fl"></span>
+                    <div class="fl bottom-txt">
+                        <h4>免费服务热线</h4>
+                        <p>400-9928-680</p>
+                    </div>
+                </li>
+                <li class="clearfix bottom-item">
+                    <span class="bottom-icon fl"></span>
+                    <div class="fl bottom-txt">
+                        <h4>SUPPLIER APPLICATION</h4>
+                        <p>商家入驻申请</p>
+                    </div>
+                </li>
+                <li class="clearfix bottom-item">
+                    <span class="bottom-icon fl"></span>
+                    <div class="fl bottom-txt">
+                        <h4>STORE APPLICATION</h4>
+                        <p>门店申请加盟</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="login_footer">
+        <p>ICP备案网站信息：粤ICP备18122912号-1 Copyright 2015 深圳海中供应链有限公司 Inc.,</p>
+    </div>
+</body>
+
+</html>
+<script src="../../js/citySelect/citydata.min.js"></script>
+<script src="../../js/citySelect/cityPicker-2.0.3.js"></script>
+<script>
+    var selector2 = $('#citysSelect').cityPicker({
+        dataJson: cityData,
+        renderMode: true,
+        search: false,
+        autoSelected: false,
+        code: 'cityCode',
+        level: 3,
+        onChoiceEnd: function () {
+            console.log(this.values)
+        }
+    });
+</script>

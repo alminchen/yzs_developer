@@ -1,0 +1,91 @@
+page {
+  width: 100%;
+  background: #f8f8f8;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper .input {
+  width: 100%;
+  height: 88rpx;
+  background: #6a7efc;
+  position: relative;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  -webkit-box-align: center;
+}
+
+.input .ipt {
+  width: 100%;
+  height: 70rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  padding-left: 80rpx;
+  box-sizing: border-box;
+}
+
+.input .search {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  left: 70rpx;
+  top: 30rpx;
+}
+
+.wrapper .inner-list {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  margin-top: 30rpx;
+  display: flex;
+}
+
+.wrapper .inner-left {
+  width: 330rpx;
+  background: #fff;
+  flex: 1;
+  height: 420rpx;
+  border-radius: 10rpx;
+}
+
+.wrapper .inner-left.rt {
+  margin-left: 30rpx;
+}
+
+.picbox {
+  width: 100%;
+  margin-top: 100rpx;
+  margin-bottom: 64rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  -webkit-box-align: center;
+}
+
+.inner-left .left-pic {
+  width: 110rpx;
+  height: 122rpx;
+  margin: auto;
+}
+
+.inner-left .txt {
+  width: 100%;
+  display: block;
+  font-size: 34rpx;
+  color: #111418;
+  text-align: center;
+}
+
+.inner-left .rt-pic {
+  width: 126rpx;
+  height: 126rpx;
+  margin: auto;
+}

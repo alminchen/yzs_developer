@@ -1,0 +1,83 @@
+/* pages/setpwd/setpwd.wxss */
+
+page {
+  background: #f8f8f8;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper .sameCss {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  min-height: 114rpx;
+  font-size: 32rpx;
+}
+
+.wrapper .txt {
+  color: #010101;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+}
+
+.wrapper .lf60 {
+  padding-left: 60rpx;
+}
+
+.wrapper .lf30 {
+  padding-left: 30rpx;
+}
+
+.wrapper .sameIpt {
+  flex: 1;
+  width: 100%;
+  color: #525252;
+  padding-right: 30rpx;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.wrapper .sameInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #555;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.wrapper .sameCss::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #ececec;
+  transform: scaleY(0.5);
+  transform-origin: 0 100%;
+}
+
+.wrapper .btn-area {
+  margin-top: 70rpx;
+  padding: 0 30rpx;
+}
+
+.wrapper .btnBlue {
+  background: #6a7efc;
+}
+
+.wrapper .disabled {
+  background: #dbdbdb;
+  border: none;
+  pointer-events: none;
+}

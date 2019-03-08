@@ -1,0 +1,121 @@
+<view class="cart-head">
+  <view class="head-left">货栈商城</view>
+  <view class="head-right" catchtap='adminTap'>
+    {{adminShow?'完成':'编辑'}}
+  </view>
+</view>
+<view class="swiper-tab">
+  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">国内仓发货({{tabNum}})</view>
+  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">保税区直供({{tabNum}})</view>
+  <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">海外直邮({{tabNum}})</view>
+</view>
+
+
+<swiper current="{{currentTab}}" duration="300" style='height:{{swiperHeight}}px' bindchange="swiperTab">
+
+  <swiper-item>
+    <scroll-view scroll-y style='height:{{scrollViewheight}}px'>
+      <view class="item-wrap">
+        <view class="item-box">
+          <view class="list-box" wx:for="{{shopcarData}}" wx:key="{{this}}">
+            <view class="item-list">
+              <view data-index='{{index}}' catchtap='checkTap'>
+                <image src='../../images/check.png' class="check-icon" hidden='{{item.check}}'></image>
+                <image src='../../images/checked.png' class="check-icon" hidden='{{!item.check}}'></image>
+              </view>
+              <image src='../../images/bear.png' class="item-img"></image>
+              <view class="list-content">
+                <view class="newLine content-title">港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉2段900g ...</view>
+                <view class="param-gray">规格：3罐装</view>
+                <view class="param-gray">效期：2019年2月</view>
+                <view class="param-gray">折合单价：
+                  <text class="param-yellow">￥280.00</text>
+                </view>
+                <view class="price">
+                  <view class="main-color fbold">￥{{item.price}}</view>
+                  <view class="amount">
+                    <image data-index='{{index}}' class="add-icon" src="../../images/reduce.png" data-types='minus' catchtap='numchangeTap' hidden='{{item.num<2}}'></image>
+                    <image data-index='{{index}}' class="add-icon" src="../../images/reduce1.png" data-types='minus' catchtap='numchangeTap' hidden='{{item.num>=2}}'>-</image>
+                    <view class="price-num">{{item.num}}</view>
+                    <image data-types='add' class="add-icon" data-index='{{index}}' src="../../images/add.png" catchtap='numchangeTap'></image>
+                  </view>
+                </view>
+              </view>
+
+            </view>
+            <view class="ads-wrap">
+              <view class="ads-item center">
+                <view class="ads-txt">
+                  <view class="ads-name param-gray f16">配送至：
+                    <text class="param-black ">张三  135****3659</text>
+                  </view>
+                  <view class="ads-dz f14 newLine">广东省深圳市福田区八卦岭地铁站B出口汉富中心3楼303商栈互联科技有限公司
+                  </view>
+                </view>
+                <image src="../../images/btn_arrow.png" class="ads-img"></image>
+              </view>
+              <view class="ads-item center">
+                <view class="ads-txt">
+                  <view class="ads-name param-gray f16">收货人：
+                    <text class="param-black ">  135****3659</text>
+                  </view>
+                </view>
+                <image src="../../images/btn_arrow.png" class="ads-img"></image>
+              </view>
+            </view>
+          </view>
+
+          <view class="freight">运费
+            <text class="main-color freight-num">￥10.00</text>
+          </view>
+
+
+        </view>
+
+
+        <view class="abate" wx:if="{{del}}">
+          <view class="abate-title center">
+            <view class="abate-sp">失效商品3件</view>
+            <view class="abate-d" catchtap='deleteAbate'>一键清除</view>
+          </view>
+          <view class="item-list abate-list" wx:for="{{abate}}">
+            <view class="abate-txt abate-color">失效</view>
+            <image src='../../images/bear.png' class="item-img"></image>
+            <view class="list-content">
+              <view class="newLine content-title abate-color">港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉2段900g ...</view>
+              <view class="param-gray abate-color">规格：3罐装</view>
+              <view class="param-gray abate-color">折合单价：￥280.00</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </scroll-view>
+    <view class="total center">
+      <view class="total-left">
+        <view data-index='{{index}}' catchtap='checkTap'>
+          <image src='../../images/check.png' class="check-icon" hidden='{{allsel}}' catchtap='allcheckTap'></image>
+          <image src='../../images/checked.png' class="check-icon" hidden='{{!allsel}}' catchtap='allcheckTap'></image>
+        </view>
+        <view class="all">全选</view>
+      </view>
+      <view class="total-right">
+        <view class="all-num" hidden='{{adminShow}}'>合计
+          <text class="main-color">￥{{total}}</text>
+        </view>
+        <view class="delete-all f16" hidden='{{adminShow}}'>去结算</view>
+        <view class="delete-all f16" catchtap='deleteshopTap' hidden='{{!adminShow}}'>删除</view>
+      </view>
+    </view>
+  </swiper-item>
+
+
+
+
+  <swiper-item>
+    <view>保税区直供</view>
+  </swiper-item>
+  <swiper-item>
+    <view>海外直邮</view>
+  </swiper-item>
+</swiper>

@@ -1,0 +1,14 @@
+.agreen{
+  margin:40rpx  44rpx 0 34rpx;
+  padding-bottom:50rpx;
+  color:#666;
+}
+.agreen-title{
+   color:#000;
+   margin-bottom:40rpx;
+
+}
+.agreen-txt{
+   color:#666;
+   margin-bottom:40rpx;
+}

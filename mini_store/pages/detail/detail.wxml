@@ -1,0 +1,28 @@
+<!-- 首页轮播图分区 -->
+<view class='slider'>
+    <swiper indicator-dots="true" autoplay="{{ true }}" interval="2500" duration="500" circular>
+        <swiper-item>
+            <image src="../../images/banner.png "  class="slide-img"  mode="aspectFill" />
+        </swiper-item>
+        <swiper-item>
+           <image src="../../images/banner.png "   class="slide-img"  mode="aspectFill" />
+        </swiper-item>
+    </swiper>
+    <view class="slide-info">
+    图文详情
+    </view>
+ </view>
+
+ <view class="ware-txt">
+     <view class="ware-price">
+       <view class="price-num main-color">￥866.00-1200.00</view>
+       <view class="price-hot">热度：600</view>
+     </view> 
+     <view class="ware-title">
+        <view class="title-txt newLine">【香港直邮】韩国春雨papa recipe 保湿舒缓补水修护 25g*10片/盒 蜂蜜面膜...</view>
+         <view class="share">
+           <image class="share_icon" src="../../images/share.png"></image>
+           分享
+         </view>
+     </view>
+ </view>

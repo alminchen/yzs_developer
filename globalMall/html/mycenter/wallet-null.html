@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>身份证列表</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script type="text/javascript" src="../../js/es5-shim.min.js"></script>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/date-time-picker.min.js"></script>
+
+</head>
+
+<body>
+   <div class="null-wrap" id="app">
+       <div class="wrap">
+           <div class="null-title">
+               个人中心>钱包明细
+           </div>
+           <div class="null-box">
+               <div class="record">
+                   <div class="wallet-item">
+                       <div class="clearfix wallet-item-list">
+                           <div class="clearfix fl list-inp">
+                               <label class="fl inp-lab">时间：</label>
+                               <div class="time-select fl">
+                                   <input type="text" class="wallet-inp" id="start-time" placeholder="请选择时间范围起始" > - <input type="text" placeholder="请选择时间范围结束" class=" wallet-inp" id="end-time">
+                               </div>
+                           </div>
+                           <div class="clearfix fl list-inp">
+                               <label class="fl inp-lab">交易状态：</label>
+                               <select  class="fl wallet-sel">
+                                   <option>请选择</option>
+                                   <option>待付款</option>
+                                   <option>已付款</option>
+                               </select>
+                           </div>
+                       </div>
+                       <div class="clearfix wallet-item-list">
+                           <div class="clearfix fl list-inp">
+                               <label class="fl inp-lab">交易单号：</label>
+                               <div class="time-select fl">
+                                   <input type="text" class="wallet-inp"  value="">
+                               </div>
+                           </div>
+                           <div class="clearfix fl list-inp">
+                               <label class="fl inp-lab">交易单号：</label>
+                               <div class="time-select fl">
+                                   <input type="text" class="wallet-inp"   value="">
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+
+
+                   <div class="wallet-setting clearfix">
+                       <a class="excel" href="javascript:;">重置</a>
+                       <a class="excel" href="javascript:;">搜索</a>
+                       <a class="excel" href="javascript:;">Excel导出</a>
+                   </div>
+
+                   <table  class="wallet-table" style="border-collapse:collapse" cellspacing="0" >
+                       <thead>
+                       <tr class="thead">
+                           <th>时间</th>
+                           <th>交易单号</th>
+                           <th>充值金额</th>
+                           <th>赠送金额</th>
+                           <th>账户余额</th>
+                           <th>充值方式</th>
+                           <th>状态</th>
+                           <th>备注</th>
+                       </tr>
+                       </thead>
+                       <tbody class="tbody">
+                       <tr v-for="count in 5">
+                           <td>2018-11-07 10:03:06</td>
+                           <td>XF20181206234509258</td>
+                           <td class="main-color">￥20000.00</td>
+                           <td class="main-color">￥200.00</td>
+                           <td>￥19.00</td>
+                           <td>微信</td>
+                           <td>成功</td>
+                           <td>成功充值2000元</td>
+                       </tr>
+                       </tbody>
+                   </table>
+
+                   <table  class="wallet-table" style="border-collapse:collapse" cellspacing="0"  v-show="false">
+                       <thead>
+                       <tr class="thead">
+                           <th>时间</th>
+                           <th>交易单号</th>
+                           <th>订单号</th>
+                           <th>消费金额</th>
+                           <th>账户余额</th>
+                           <th>备注</th>
+                       </tr>
+                       </thead>
+                       <tbody class="tbody">
+                       <tr v-for="count in 5">
+                           <td>2018-11-07 10:03:06</td>
+                           <td>XF20181206234509258</td>
+                           <td class="main-color">2356888955566</td>
+                           <td>￥19.00</td>
+                           <td class="main-color">￥200.00</td>
+                           <td>订单支付</td>
+                       </tr>
+                       </tbody>
+                   </table>
+               </div>
+               <div class="bag-null clearfix" v-show="false">
+                    <img class="fl " src="../../images/bag-null.png" alt="">
+                    <span class="fl bag-null-txt">您还没有任何 支付明细哦~</span>
+               </div>
+           </div>
+       </div>
+   </div>
+</body>
+
+<script src="../../js/vue.min.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        mounted:function () {
+            $('#start-time').dateTimePicker({
+                limitMax: $('#end-time')
+            });
+
+            $('#end-time').dateTimePicker({
+                limitMin: $('#start-time')
+            });
+        }
+    });
+</script>
+
+</html>

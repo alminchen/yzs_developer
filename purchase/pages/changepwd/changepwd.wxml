@@ -1,0 +1,19 @@
+<view class='wrapper'>
+  <form bindsubmit="formSubmitChange">
+    <view class='telphone sameCss'>
+      <text class='txt lf60'>账号：</text>
+      <view class='sameIpt'>
+        <text class='sameInput'>{{phomeNum}}</text>
+      </view>
+    </view>
+    <view class='verifycode sameCss'>
+      <text class='txt lf60'>密码：</text>
+      <view class='sameIpt'>
+        <input class='code sameInput' password="true" bindinput='oldpwdIpt' name="oldpwd" placeholder='请输入密码'></input>
+      </view>
+    </view>
+    <view class='btn-area'>
+      <button form-type="submit" class='{{oldpwd!==""?"":"nextStep"}} btnBlue' type='primary' hover-class="none">下一步</button>
+    </view>
+  </form>
+</view>

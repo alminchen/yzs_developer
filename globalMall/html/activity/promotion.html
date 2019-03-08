@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大促活动</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/promotion.css">
+</head>
+
+<body>
+    <div class="promotion-mian" id="promotion">
+        <div class="promotion-pic">
+            <img src="../../images/activity_dc_02.png" alt="">
+        </div>
+        <div class="promotion-inner">
+            <div class="promotion-title">
+                <span class="title">大促活动</span>
+                <span class="time">
+                    距离结束还剩：<em>18</em>时<em>36</em>分<em>20</em>秒
+                </span>
+            </div>
+            <div class="promotion-list">
+                <ul>
+                    <li v-for="(item, index) in 12" :key="index">
+                        <div class="list_inner">
+                            <div class="country">
+                                <img src="../../images/Germany.png" alt="">
+                            </div>
+                            <div class="has_pic">
+                                <img src="../../images/goods_03.png" alt="">
+                            </div>
+                            <div class="has_text">
+                                <p class="title">【官方授权】 港版美赞臣安儿宝A+ 婴幼儿配方奶粉 2段（6~12个月）900g</p>
+                                <p class="price_box">货栈价：<span class="price">￥180.00</span><del>￥120.00</del> </p>
+                                <p class="btn"><span class="right_now"><a href="../shopDetail/skeilldetail.html">立即抢购</a></span></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="page">
+                    <div class="page_inner" id="pageBox">
+
+                        <!-- <dl id="pageBox">
+                            <dd>
+                                <</dd> <dd class="color_">1
+                            </dd>
+                            <dd>2</dd>
+                            <dd>3</dd>
+                            <dd>4</dd>
+                            <dd>></dd>
+                        </dl> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#promotion",
+        mounted: function () {
+            var total = 200, //数据总条数
+                pageNumber = 1, //当前页
+                pageSize = 10, //每页显示的条数
+                edges = 2, //两侧显示的页码数 大于1
+                playes = 3, //主页码区显示的页码数 大于3
+                pages = Math.ceil(total / pageSize); //总页数
+
+            renderPageItem();
+
+            function renderPageItem() {
+                $ul = $('<dl class="pagination"></dl>');
+                var start = 1;
+                var end = pages;
+                if (playes % 2) {
+                    //playes是奇数
+                    start = pageNumber - Math.floor(playes / 2) <= 0 ? 1 : pageNumber - Math.floor(playes /
+                        2);
+                    end = pageNumber + Math.floor(playes / 2);
+                } else {
+                    //playes是偶数
+                    start = pageNumber - (playes / 2 - 1);
+                    end = pageNumber + playes / 2;
+                    console.log(start, end)
+                }
+
+                if (start <= edges + 1) {
+                    start = 1;
+                    if (end < playes && playes < pages) {
+                        end = playes;
+                    }
+                } else {
+                    for (var i = 1; i <= edges; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                    $ul.append('<dd><span>...</span></dd>')
+                }
+                if (end < pages - edges) {
+                    for (var i = start; i <= end; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                    $ul.append('<dd><span>...</span></dd>');
+                    for (var i = pages - edges + 1; i <= pages; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                } else {
+                    end = pages;
+                    if (start > pages - playes + 1) {
+                        start = pages - playes + 1
+                    }
+                    for (var i = start; i <= end; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                }
+                $ul.prepend(renderPrevItem());
+                $ul.append(renderNextItem());
+                $('#pageBox').empty().append($ul);
+            }
+
+            function renderItem(i) {
+                if (i > 0) {
+                    $item = $('<dd><a href="javascript:;" id="' + i + '">' + i + '</a></dd>');
+                    if (i == pageNumber) {
+                        $item.addClass('color_');
+                    }
+                    $item.on('click', (function (num) {
+                        return function () {
+                            pageNumber = num;
+                            renderPageItem();
+                        }
+                    })(i));
+                    return $item
+                }
+            }
+
+            function renderPrevItem() {
+                $prev = $('<dd><a href="javascript:;">&laquo;</a></dd>');
+                if (pageNumber == 1) {
+                    $prev.addClass('disabled');
+                } else {
+                    $prev.on('click', function () {
+                        pageNumber = pageNumber - 1;
+                        renderPageItem();
+                    })
+                }
+                return $prev;
+            }
+
+            function renderNextItem() {
+                $next = $('<dd><a href="javascript:;">&raquo;</a></dd>');
+                if (pageNumber == pages) {
+                    $next.addClass('disabled');
+                } else {
+                    $next.on('click', function () {
+                        pageNumber = pageNumber + 1;
+                        renderPageItem();
+                    })
+                }
+                return $next;
+            }
+        },
+        methods: {
+            
+        }
+    })
+</script>
+
+</html>

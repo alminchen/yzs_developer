@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/shopDetail.css">
+    <style>
+        .right-box .right-price{
+            margin-top: 0;
+        }
+        .right-box .skill{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-style: normal;
+            padding-left: 140px;
+            box-sizing: border-box;
+            background: #f5174a;
+            color: #fff;
+            font-size: 16px;
+            position: relative;
+        }
+        .right-box .skill-text::after{
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-bottom: 25px solid #ffed64;
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            z-index: -1;
+        }
+        .right-box .skill-text::before{
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-top: 25px solid #ffed64;
+            position: absolute;
+            right:-15px;
+            bottom: -15px;
+            z-index: -1;
+        }
+        .right-box .skill-text{
+            display: inline-block;
+            width: 72px;
+            height: 25px;
+            background: #ffed64;
+            line-height: 25px;
+            text-align: center;
+            font-size: 14px;
+            color:#f5174a;
+            position: absolute;
+            left: 30px;
+            top: 8px;
+            z-index: 2312;
+        }
+        .right-box .time em{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- head start -->
+    <div class="head">
+        <!-- head top start -->
+        <div class="wrap clearfix">
+            <div class="head-left clearfix">
+                <p class="city-txt">深圳市</p>
+                <span class="sel-icon"></span>
+            </div>
+            <div class="head-right">
+                <ul class="head-list">
+                    <li><a href="javascript:;">登录</a></li>
+                    <li><a href="javascript:;">免费注册</a></li>
+                    <li><a href="javascript:;">手机货栈</a></li>
+                    <li><a href="javascript:;">每日签到</a></li>
+                    <li><a href="javascript:;">我的订单</a></li>
+                    <li><a href="javascript:;">个人中心</a></li>
+                    <li><a href="javascript:;">在线充值</a></li>
+                    <li><a href="javascript:;">客服中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- head top end -->
+    <!-- head logo start -->
+    <div class="head-search wrap clearfix">
+        <a class="head-logo" href="javascript:;"><img src="../../images/logo.png" alt=""></a>
+        <div class="scar">
+            <span class="scar-icon"></span>
+            <p>进货车</p>
+            <i class="scar-msg">8</i>
+        </div>
+        <div class="search-box">
+            <div class="search-inp clearfix">
+                <div class="inp-block">
+                    <input type="text" class="inp" placeholder="请输入您想要搜索的商品名称货品牌">
+                </div>
+                <button class="search-btn" type="button">搜索</button>
+            </div>
+            <ul class="search-list">
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+                <li><a href="javascript:;">美赞臣</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- head logo end -->
+    <!-- head nav start -->
+    <div class="head-nav wrap clearfix">
+        <div class="nav-box">
+            <div class="nav-icon">
+                <span class="folding"></span>
+                商品分类
+            </div>
+            <ul class="two-nav">
+                <li>
+                    <h3>正版奶粉</h3>
+                    <div class="two-nav-active clearfix">
+                        <div class="two-nav-left fl">
+                            <div class="two-nav-left-wrap clearfix">
+                                <div class="two-nav-title fl">
+                                    <p class="fl">护肤品</p>
+                                    <i class="nav-title-arrow fl"></i>
+                                </div>
+                                <dl class="two-nav-list fr">
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+
+                                </dl>
+                            </div>
+                            <div class="two-nav-left-wrap clearfix">
+                                <div class="two-nav-title fl">
+                                    <p class="fl">护肤品</p>
+                                    <i class="nav-title-arrow fl"></i>
+                                </div>
+                                <dl class="two-nav-list fr">
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                </dl>
+                            </div>
+                            <div class="two-nav-left-wrap clearfix">
+                                <div class="two-nav-title fl">
+                                    <p class="fl">护肤品</p>
+                                    <i class="nav-title-arrow fl"></i>
+                                </div>
+                                <dl class="two-nav-list fr">
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="two-nav-right fr">
+                            <img src="../../images/nav_img.jpg" alt="">
+                            <img src="../../images/nav_img.jpg" alt="">
+                            <img src="../../images/nav_img.jpg" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h3>正版奶粉</h3>
+                    <div class="two-nav-active clearfix">
+                        <div class="two-nav-left fl">
+                            <div class="two-nav-left-wrap clearfix">
+                                <div class="two-nav-title fl">
+                                    <p class="fl">护肤品</p>
+                                    <i class="nav-title-arrow fl"></i>
+                                </div>
+                                <dl class="two-nav-list fr">
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="" class="nav-red">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+
+                                </dl>
+                            </div>
+                            <div class="two-nav-left-wrap clearfix">
+                                <div class="two-nav-title fl">
+                                    <p class="fl">护肤品</p>
+                                    <i class="nav-title-arrow fl"></i>
+                                </div>
+                                <dl class="two-nav-list fr">
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                </dl>
+                            </div>
+                            <div class="two-nav-left-wrap clearfix">
+                                <div class="two-nav-title fl">
+                                    <p class="fl">护肤品</p>
+                                    <i class="nav-title-arrow fl"></i>
+                                </div>
+                                <dl class="two-nav-list fr">
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                    <dd><a href="">护肤套装</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="two-nav-right fr">
+                            <img src="../../images/nav_img.jpg" alt="">
+                            <img src="../../images/nav_img.jpg" alt="">
+                            <img src="../../images/nav_img.jpg" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+        <ul class="nav-list">
+            <li><a href="javascript:;">供应商入驻</a></li>
+            <li><a href="javascript:;">积分商城</a></li>
+            <li><a href="javascript:;">海外直邮</a></li>
+            <li><a href="javascript:;">供应链金融</a></li>
+            <li><a href="javascript:;">仓储物流</a></li>
+            <li><a href="javascript:;">限时秒杀</a></li>
+            <li><a href="javascript:;">特价清仓</a></li>
+        </ul>
+    </div>
+    <!-- head nav end -->
+    <!-- head end -->
+    <div class="detail-banner" id="detailIndex">
+        <div class="detail-inner">
+            <div class="banner">
+                <div class="large_box">
+                    <ul>
+                        <li v-for="(item, index) in 6" :key="index"><a href="../../images/banner_03.png" class="jqzoom"><img
+                                    src="../../images/banner_03.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="small_box">
+                    <span class="btn left_btn"></span>
+                    <div class="small_list">
+                        <ul>
+                            <li :class="index == 0?'on':''" v-for="(item, index) in 6" :key="index">
+                                <img src="../../images/smallBan_03.png" alt="">
+                                <div class="bun_bg"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="btn right_btn"></span>
+                </div>
+            </div>
+            <div class="right-box">
+                <div class="right-inner">
+                    <div class="country">
+                        <img src="../../images/Germany.png" alt="1"> <span>德国</span>
+                    </div>
+                    <div class="right-tit">
+                        <span class="area">保税区发货</span>【保税】荷兰牛栏Nutrilon诺优能婴幼儿奶粉 3段(10~12个月) 800g 婴幼儿奶粉
+                    </div>
+                    <div class="skill">
+                        <span class="skill-text">秒杀活动</span>
+                        <span class="time">距离结束还剩:<em>12</em>时<em>23</em>分<em>50</em>秒</span>
+                    </div>
+                    <div class="right-price">
+                        <span class="price"><em>￥</em>80.00~<em>￥</em>880.00</span>
+                        <span class="tips">热度：200</span>
+                        <span class="text">货栈专享价格</span>
+                    </div>
+                    <div class="address_select">
+                        <div class="text-add wid70">配送地址</div>
+                        <div id="super_citys" class="select_citys">
+                            <div class="provinces">
+                                <input class="input1" type="hidden" value="0" name="">
+                                <input class="input2" type="hidden" value="0" name="">
+                                <div>请选择省份</div>
+                                <ul class="shadow_ul">
+                                    <li><input type="hidden" value="0"><span>请选择省份</span></li>
+                                </ul>
+                            </div>
+                            <div class="city">
+                                <input class="input1" type="hidden" value="0" name="">
+                                <input class="input2" type="hidden" value="0" name="">
+                                <div>请选择城市</div>
+                                <ul>
+                                    <li><input type="hidden" value="0"><span>请选择城市</span></li>
+                                </ul>
+                            </div>
+                            <div class="area">
+                                <input class="input1" type="hidden" value="0" name="">
+                                <input class="input2" type="hidden" value="0" name="">
+                                <div>请选择地区</div>
+                                <ul>
+                                    <li><input type="hidden" value="0"><span>请选择地区</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grading">
+                        <div class="grading-txt wid70">段位</div>
+                        <div class="grading-list">
+                            <ul>
+                                <li v-for="(item, index) in 10" :key="index" class="select">1段</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grading">
+                        <div class="grading-txt wid70">规格</div>
+                        <div class="grading-list">
+                            <ul>
+                                <li v-for="(item, index) in 10" :key="index">1段</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grading">
+                        <div class="grading-txt wid70">尺码</div>
+                        <div class="grading-list">
+                            <ul>
+                                <li v-for="(item, index) in 10" :key="index">1段</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grading nums-wrapper">
+                        <div class="grading-txt wid70">采购数量</div>
+                        <div class="grading-list numbers">
+                            <sapn class="minus">-</sapn>
+                            <input type="number" class="nums" value="2">
+                            <span class="add">+</span>
+                        </div>
+                        <span class="tips">库存1件</span>
+                    </div>
+                    <div class="show-buy-price">
+                        <span class="buy-price">￥100.00</span><span class="unit-price">折合单价：￥100.00/件</span>
+                    </div>
+                    <div class="oper-btn">
+                        <a href="javascript:;">加入清单</a>
+                        <a href="javascript:;">加入进货车</a>
+                        <a href="javascript:;" class="right_now">立即下单</a>
+                    </div>
+                    <div class="shop-tips">
+                        <p>*本商品由商家gys804直接发货</p>
+                        <p>注：编辑收货信息后，可能会由不同商家发货</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-msg">
+        <div class="msg-inner">
+            <div class="msg-ul">
+                <ul>
+                    <li class="in">商品信息</li>
+                    <li>商品信息</li>
+                    <li>商品信息</li>
+                </ul>
+            </div>
+            <div class="big-pic">
+                <img src="../../images/big-pic.png" alt="">
+            </div>
+            <div class="same shopparams">
+                <h3>商品参数</h3>
+                <table cellspacing="0">
+                    <tr>
+                        <th width="150" class="no">产地</th>
+                        <td width="1030" style="text-align:left;text-indent: 20px;">美国</td>
+                    </tr>
+                    <tr>
+                        <th width="150">产地</th>
+                        <td width="1030" style="text-align:left;text-indent: 20px;">美国</td>
+                    </tr>
+                    <tr>
+                        <th width="150">产地</th>
+                        <td width="1030" style="text-align:left;text-indent: 20px;">美国</td>
+                    </tr>
+                    <tr>
+                        <th width="150" class="last">产地</th>
+                        <td width="1030" style="text-align:left;text-indent: 20px; border-bottom: 1px solid #d6d6d6">美国</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="same pic_show">
+                <h3>图文详情</h3>
+                <div class="detail_pic">
+                    <img src="../../images/nuo.jpg" alt="">
+                </div>
+            </div>
+            <div class="same detail_tips">
+                <h3>保税区FAQ</h3>
+                <div class="tips_list">
+                    <div class="tips_1 tips">
+                        <p class="faq-title">1.什么是保税区?
+                            <i class="arr_up" style="display:none;"></i><i class="arr_down"></i>
+                        </p>
+                        <p class="faq-content">保税区是传统的海淘升级进化后的一个体验专区。传统海淘，流程不规范，货品几经转手，很难保证一定是正品。到达时间久，动辄20多天-30多天才能到货品。物流中出现爆罐等物损难以解决。保税区，货品海关全程监管，一旦清仓货物直达客户指定地址，无被替换风险，海关背书，平台正品担保。下单后3-7个工作日到货，速度极大提升。到货发现爆罐等物损，7天无理由退换货。</p>
+                    </div>
+                    <div class="tips_2 tips">
+                        <p class="faq-title">2.为什么比一般的进口便宜?<i class="arr_up" style="display:none;"></i><i class="arr_down"></i></p>
+                        <p class="faq-content">普通的贸易进口，要承担的关税，贸易商利润，中间商利润，渠道成本等等，所以到达消费者手里时候，商品价格就比原先高很多。阳光海淘是将进口商品先存入保税区，先不必缴纳进口关税，然后个人消费者购买时，可以享受一定金额以下免收关税，同时把通道扁平化，免去了贸易商中间渠道商的经营成本。这样进口商品到达消费者手中时商品的成本优势展现出来了。</p>
+                    </div>
+                    <div class="tips_3 tips">
+                        <p class="faq-title">3.这么便宜是正品吗?<i class="arr_up" style="display:none;"></i><i class="arr_down"></i></p>
+                        <p class="faq-content">所有的货品从入关检查开始，到出关指定物流发货，全程保税区监管仓库处理，供货方和提货方都无法接触到货品，之后物流直接送达消费者指定地址。跨境入关检查严格，全程监管无替换风险，最大程度保证了货品的正品度。收到的货上面的物流单号可以显示整个商品的流通过程，都是从保税区的监管仓发出。</p>
+                    </div>
+                    <div class="tips_4 tips">
+                        <p class="faq-title">4.订单什么时候发货？大概多久能收到货?<i class="arr_up" style="display:none;"></i><i class="arr_down"></i></p>
+                        <p class="faq-content">一般情况下，您的订单将在当天包装出库。海关清关需要2~3工作日的时间，所以您的订单将于3个工作日内送关发货。发货之后，您可以在我的订单中查看物流情况。一般情况下，您将在接下去的1~5工作日内收到这些来自海外的商品。具体时间根据具体收货地址而定。</p>
+                    </div>
+                    <div class="tips_5 tips">
+                        <p class="faq-title">5.是否支持退货?<i class="arr_up" style="display:none;"></i><i class="arr_down"></i></p>
+                        <p class="faq-content">从海拍客平台所购商品，在满足退货的前提下，予以退货退款，给您无忧的售后体验。</p>
+                    </div>
+                    <div class="attention">
+                        <p class="atten-tit">购买须知</p>
+                        <p class="content">1,您在本网站上向海拍客商家用户购买的境外商品，仅限个人自用不得进行再销售。商品本身可能无中文标签，您可以查看网站的翻译或者在线联系我们的客服。</p>
+                        <p class="content">2,您购买的境外商品适用的品质、健康、标识等项目使用标准均按照原产国使用标准（比如本站所销售的欧洲奶粉为欧洲标准，所售美国奶粉为美国标准，所售澳洲奶粉则为澳洲标准），可能与我国标准有所不同，所以在使用过程中产生的危害或损失以及其他风险，将由您个人承担。</p>
+                        <p class="content">3,您在本（公司）网站上向海拍客商家用户购买保税仓发货的境外商品时，自动视为委托海拍客商家在跨境平台订购、支付和向海关进行申报、代缴税款，并同意海拍客商家委托其他商家代理行使和履行以上权利义务，税款和委托代理服务费用均已包含在本价格中。本人承诺如实提供身份及收货信息，并承担法律责任。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-box wrap">
+            <div class="footer-server">
+                <div class="server-item">
+                    <span class="server-icon"></span>
+                    <div class="server-txt">
+                        <h3>正品保障</h3>
+                        <p>PICC承保 购物无忧</p>
+                    </div>
+                </div>
+                <div class="server-item clearfix">
+                    <span class="server-icon"></span>
+                    <div class="server-txt">
+                        <h3>天天特价</h3>
+                        <p>为您精选优质品牌</p>
+                    </div>
+                </div>
+                <div class="server-item clearfix">
+                    <span class="server-icon"></span>
+                    <div class="server-txt">
+                        <h3>无忧售后</h3>
+                        <p>为您呈现不一样的服务</p>
+                    </div>
+                </div>
+                <div class="server-item clearfix">
+                    <span class="server-icon"></span>
+                    <div class="server-txt">
+                        <h3>帮助中心</h3>
+                        <p>您的购物指南</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer-content clearfix">
+                <div class="foot-content-box">
+                    <dl class="foot-list">
+                        <dt>客服电话</dt>
+                        <dd class="tel-red">400-684-0668</dd>
+                        <dd>周一到周日：9:00-18:30</dd>
+                        <dd>联系我们</dd>
+                    </dl>
+                    <dl class="foot-list">
+                        <dt>货栈商品</dt>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                    </dl>
+                    <dl class="foot-list">
+                        <dt>货栈商品</dt>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                    </dl>
+                    <dl class="foot-list">
+                        <dt>货栈商品</dt>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                    </dl>
+                    <dl class="foot-list">
+                        <dt>货栈商品</dt>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                        <dd>国内仓发货商品</dd>
+                    </dl>
+                </div>
+                <div class="qrcode clearfix">
+                    <span class="qrcode-wechat"></span>
+                    <span class="qrcode-wechat"></span>
+                </div>
+            </div>
+            <div class="foot-address">
+                <p>深圳商栈互联科技有限公司 地址：广东省深圳市福田区八卦岭地铁站B出口541栋汉富中心3楼303</p>
+                <p>ICP备案网站信息：粤ICP备18122912号-1 Copyright 2015 深圳海中供应链有限公司 Inc.,</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/carousel.min.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/citySelect/city.js"></script>
+<script src="../../js/citySelect/index.js"></script>
+<script>
+    $(document).ready(function () {
+        // 二级导航
+        $(".nav-box").hover(function () {
+                $(".two-nav").stop().slideDown(200);
+            },
+            function () {
+                $(".two-nav").stop().slideUp(200);
+            });
+
+        $(".two-nav>li").hover(function () {
+                $(this).addClass("on");
+            },
+            function () {
+                $(this).removeClass("on");
+            })
+    });
+    var vm = new Vue({
+        el: "#detailIndex",
+        mounted() {
+            $(".banner").thumbnailImg({
+                large_elem: ".large_box",
+                small_elem: ".small_list",
+                left_btn: ".left_btn",
+                right_btn: ".right_btn"
+            });
+            $('.faq-title').on('click', function () {
+                $(this).siblings('.faq-content').slideToggle("slow");
+                $(this).find(".arr_up").toggle();
+                $(this).find(".arr_down").toggle();
+                $(this).hasClass('color-red') ? $(this).removeClass('color-red') : $(this).addClass(
+                    'color-red')
+            })
+        }
+    })
+</script>
+
+</html>

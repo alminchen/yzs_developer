@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../../css/font.css">
+    <link rel="stylesheet" href="../../../../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .layui-elem-field .layui-col-xs4 {
+            /* text-align: center; */
+            height: 100px;
+        }
+
+        .layui-elem-field .layui-col-xs4 span {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .layui-elem-field .layui-col-xs4 span.step_num {
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            background: #ddd;
+            border-radius: 50%;
+            text-align: center;
+            margin: 10px 30px 10px;
+        }
+
+        .layui-elem-field .layui-col-xs4 span.step_client {
+            margin-left: 20px;
+        }
+
+        .layui-elem-field .layui-col-xs4 .step {
+            position: relative;
+            overflow: hidden;
+            top: 20px;
+        }
+
+        .layui-elem-field .layui-col-xs4 .step .step_num::before {
+            content: "";
+            display: inline-block;
+            width: 60%;
+            height: 3px;
+            background: #ddd;
+            position: absolute;
+            right: 5%;
+            top: 40px
+        }
+
+        .layui-elem-field .layui-col-xs4 .step .step_num.stepNone::before {
+            content: "";
+            background: transparent;
+        }
+
+        .layui-btn,.layui-inline{
+       margin-bottom: 10px;
+       margin-left: 20px
+     }
+     .layui-btn .layui-icon{
+       vertical-align: middle;
+     }
+     .editproduct.x-so input.layui-input{
+         width: auto;
+     }
+     .posrel{
+         position: relative;
+     }
+     .posrel input[type='file']{
+         width: 140px;
+         height: 140px;
+         position: absolute;
+         left: 0;
+         top: 0;
+         opacity: 0;
+     }
+     .posrel img{
+         width: 140px;
+         height: 140px;
+         vertical-align: middle;
+     }
+     .x-so .wid10 input.layui-input{
+         width: 100px!important;
+     }
+
+
+     .layui-elem-field.layui-scroll{
+         width: 100%;
+         min-height: 300px;
+         max-height: 300px;
+         overflow: hidden;
+     }
+
+     .layui-elem-field.layui-scroll .layui-field-box{
+         width: 98%;
+         max-height: 320px;
+         /* box-sizing: border-box; */
+         overflow: hidden;
+         overflow-y: auto;
+     }
+
+    
+    </style>
+</head>
+
+<body>
+    <div class="x-body">
+        <fieldset class="layui-elem-field">
+            <div class="layui-field-box">
+                <div class="layui-row" style="width:800px;margin:auto;">
+                    <div class="layui-col-xs4">
+                        <div class="step">
+                            <span class="step_client">客户下单</span>
+                            <span class="step_num">1</span>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4">
+                        <div class="step">
+                            <span class="step_client">客户下单</span>
+                            <span class="step_num">2</span>
+
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4">
+                        <div class="step">
+                            <span class="step_client">客户下单</span>
+                            <span class="step_num stepNone">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="first">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-xs4">
+                    <fieldset class="layui-elem-field layui-scroll">
+                        <div class="layui-field-box">
+                            <form class="layui-form layui-col-md12 x-so">
+                                <div class="layui-form-item" pane="">
+                                    <div class="layui-input-block" style="margin-left:0;">
+                                        <input type="radio" name="bjp" value="保健品" title="保健品" checked="" lay-skin="primary"><br />
+                                        <input type="radio" name="bjp" value="保健品" title="保健品1" lay-skin="primary"><br />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-col-xs4">
+                    <fieldset class="layui-elem-field layui-scroll">
+                        <div class="layui-field-box">
+                            <form class="layui-form layui-col-md12 x-so">
+                                <div class="layui-form-item" pane="">
+                                    <div class="layui-input-block" style="margin-left:0;">
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-col-xs4">
+                    <fieldset class="layui-elem-field layui-scroll">
+                        <div class="layui-field-box">
+                            <form class="layui-form layui-col-md12 x-so">
+                                <div class="layui-form-item" pane="">
+                                    <div class="layui-input-block" style="margin-left:0;">
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作"><br />
+                                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><br />
+                                        <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏"><br />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <blockquote class="layui-elem-quote layui-quote-nm" >您当前选择的是：营养保健 >
+                男士保健品、女士保健品</blockquote>
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="margin-left:20px;">
+                    <button class="layui-btn layui-btn-primary" type="button" style="width:100px;"><a href="./autoAddDatas.html">下一步</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

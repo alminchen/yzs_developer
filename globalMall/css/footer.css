@@ -1,0 +1,153 @@
+.head {
+  height: 28px;
+  background-color: #f8f8f8;
+}
+.head-left {
+  float: left;
+}
+.head-left .city-txt {
+  line-height: 28px ;
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13px;
+  color: #424144;
+}
+.head-left .sel-icon {
+  float: left;
+  width: 9px;
+  height: 6px;
+  display: block;
+  background-image: url("../images/sel_icon.png");
+  -webkit-background-size: cover;
+  background-size: cover;
+  margin: 10px 0 0 12px;
+}
+.head-right {
+  float: right;
+}
+.head-list {
+  margin-top: 3px;
+}
+.head-list li {
+  display: inline-block;
+}
+.head-list li:last-child a {
+  border-right: none;
+}
+.head-list li a {
+  line-height: 12px;
+  display: block;
+  padding: 0 12px;
+  border-right: 1px solid #666;
+  font-size: 13px;
+  color: #424144;
+}
+.head-search {
+  margin-top: 33px;
+}
+.head-search .head-logo {
+  float: left;
+}
+.search-box {
+  float: right;
+}
+.search-box .search-list {
+  margin-top: 4px;
+}
+.search-box .search-list li {
+  display: inline-block;
+}
+.search-box .search-list li a {
+  line-height: 12px;
+  display: block;
+  padding: 0 12px;
+  border-right: 1px solid #ccc;
+  font-size: 14px;
+  color: #424144;
+}
+.search-box .search-list li:last-child a {
+  border-right: none;
+}
+.search-inp .inp-block {
+  float: left;
+  width: 526px;
+  height: 36px;
+  border: solid 3px #f5174a;
+  border-right: none;
+}
+.search-inp .inp-block .inp {
+  margin: 5px 0 0 10px;
+  outline-style: none;
+  border: none;
+  width: 480px;
+  height: 26px;
+  font-size: 13px;
+  color: #666;
+}
+.search-inp .inp-block .inp::-webkit-input-placeholder {
+  font-size: 13px;
+  color: #adaaaa;
+}
+.search-inp .inp-block .inp::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 13px;
+  color: #adaaaa;
+}
+.search-inp .inp-block .inp:-ms-input-placeholder {
+  font-size: 13px;
+  color: #adaaaa;
+}
+.search-inp .search-btn {
+  float: left;
+  font-weight: bold;
+  border: none;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  width: 130px;
+  height: 42px;
+  line-height: 42px;
+  background-color: #f5174a;
+  outline-style: none;
+}
+.scar {
+  margin-left: 20px;
+  float: right;
+  width: 120px;
+  height: 42px;
+  background-color: #f5174a;
+  position: relative;
+}
+.scar p {
+  text-align: center;
+  font-size: 14px;
+  line-height: 42px;
+  color: #ffffff;
+}
+.scar .scar-icon {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  display: block;
+  top: 12px;
+  left: 13px;
+  background-image: url("../images/car.png");
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.scar .scar-msg {
+  position: absolute;
+  width: 24px;
+  height: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  color: #f5174a;
+  top: 13px;
+  right: 12px;
+  font-style: inherit;
+  text-align: center;
+  line-height: 16px;
+}
+/*# sourceMappingURL=footer.css.map */

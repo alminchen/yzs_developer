@@ -1,0 +1,159 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.new-main {
+    width: 100%;
+    overflow: hidden;
+}
+
+.new-main .new-inner {
+    padding: 0 20px;
+    overflow: hidden;
+    margin-top: 40px;
+    width: 937px;
+}
+
+.new-inner .tips {
+    width: 937px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #f5174a;
+    line-height: 30px;
+    background: #fef8d7;
+    text-indent: 30px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.new-inner .new_datas {
+    width: 100%;
+    overflow: hidden;
+}
+
+.new_datas .product {
+    width: 100%;
+    padding-left: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.product h3 {
+    font-size: 14px;
+    color: #333;
+}
+
+.product .many_list {
+    padding-left: 60px;
+    overflow: hidden;
+}
+
+.many_list p {
+    line-height: 32px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.many_list input {
+    width: 320px;
+    height: 32px;
+    border: none;
+    outline: none;
+    border: 1px solid #d6d6d6;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.many_list label {
+    position: relative;
+    /* padding-left: 10px; */
+}
+
+.many_list label.has::after {
+    content: "*";
+    display: inline-block;
+    color: #f5174a;
+    font-size: 16px;
+    position: absolute;
+    left: -10px;
+}
+
+.many_list p i {
+    position: absolute;
+    left: 370px;
+    top: 13px;
+    color: #007AFF;
+    font-size: 20px;
+    z-index: 99999;
+    display: inline-block;
+    background: red;
+    width: 10px;
+    height: 7px;
+    background: url(../images/center_arr_down.png) no-repeat center center;
+}
+
+.many_list select {
+    width: 320px;
+    height: 32px;
+    padding: 0 10px;
+    line-height: 32px;
+    border: none;
+    outline: none;
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+}
+
+.many_list select option:not([value]) {
+    color: #d6d6d6
+}
+
+.new_datas .teax h3 {
+    padding: 23px 0;
+}
+
+.many_list textarea {
+    width: 600px;
+    box-sizing: border-box;
+    height: 140px;
+    resize: none;
+    padding: 15px;
+    outline: none;
+}
+
+.new_datas .teax input {
+    padding-left: 30px;
+}
+
+.many_list em {
+    color: #999;
+    font-style: normal;
+    font-size: 14px;
+    position: absolute;
+    left: 10px;
+    top: 0
+}
+
+.new_datas .sureBtn{
+    padding-left: 90px;
+}
+
+.sureBtn span{
+    display: block;
+    width: 122px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #fff;
+    background: #f5174a;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+}

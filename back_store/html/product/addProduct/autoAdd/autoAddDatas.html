@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>销售单 -- 订单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../../css/font.css">
+    <link rel="stylesheet" href="../../../../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        a{ color: #00f;cursor: pointer; }
+        a:hover{ color: #00f; }
+        .layui-elem-quote {
+            line-height: normal;
+        }
+        .list ul{
+            width: 60%;
+            overflow: hidden;
+            border: 1px dashed #999;
+        }
+        .list li{
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .list li:not(:last-child){
+            border-bottom: 1px solid #999;
+        }
+        .list p{
+            line-height: 40px;
+        }
+
+        .list .pic{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .list img{
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
+        .up_pic{ width: 150px;height: 150px; position: relative;}
+        .up_pic input[type="file"]{
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0
+        }
+        .up_tips{
+            width: 96%;
+            border: 1px dashed #999;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .up_tips p{
+            line-height: 40px;
+        }
+        
+
+        .list .pois{
+            width: 100%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .list .span{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: none;
+        }
+        .list .span a{
+            width: 48%;
+            display: inline-block;
+            text-align: center;
+            background: #fff;
+            border:1px solid #999;
+        }
+
+        .list .span input[type="file"]{
+            opacity: 0;
+            width: 50px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            cursor: pointer;
+        }
+        .lpadPic{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .lpadPic input{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+                <cite>导航元素</cite></a>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:2.5em;margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+            title="刷新">
+            <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+        <div class="layui-row" style="padding-bottom:100px;">
+            <form class="layui-form layui-col-md12 x-so">
+                <blockquote class="layui-elem-quote layui-quote-nm">填写商品资料</blockquote>
+                <div class="layui-inline">
+                    <label for="">商品类目：&nbsp;&nbsp;&nbsp;</label>
+                    <span>美妆个护/保健品》香水彩妆》口红</span><a href="jiavascript:;" onclick="history.back(-1)" style="margin-left:20px;">修改</a>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <span class="x-red">*</span>
+                    <label>&nbsp;商品分类：</label>
+                    <div class="layui-input-inline">
+                        <select name="contrller">
+                            <option value="">订单状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">已确认</option>
+                            <option value="2">已收货</option>
+                            <option value="3">已取消</option>
+                            <option value="4">已完成</option>
+                            <option value="5">已作废</option>
+                        </select>
+                    </div><a href="javascript:;" style="margin:0 10px 0 10px;" onclick="prompt()">新增</a>
+                    <div class="layui-input-inline">
+                        <select name="contrller">
+                            <option value="">订单状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">已确认</option>
+                            <option value="2">已收货</option>
+                            <option value="3">已取消</option>
+                            <option value="4">已完成</option>
+                            <option value="5">已作废</option>
+                        </select>
+                    </div><a href="javascript:;" style="margin:0 10px 0 10px;" onclick="prompt()">新增</a>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label>贸易类型：&nbsp;&nbsp;&nbsp;</label>
+                    <div class="layui-input-inline">
+                        <select name="contrller">
+                            <option value="">订单状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">已确认</option>
+                            <option value="2">已收货</option>
+                            <option value="3">已取消</option>
+                            <option value="4">已完成</option>
+                            <option value="5">已作废</option>
+                        </select>
+                    </div>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label>商品品牌：&nbsp;&nbsp;&nbsp;</label>
+                    <div class="layui-input-inline">
+                        <select name="contrller">
+                            <option value="">订单状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">已确认</option>
+                            <option value="2">已收货</option>
+                            <option value="3">已取消</option>
+                            <option value="4">已完成</option>
+                            <option value="5">已作废</option>
+                        </select>
+                    </div><a href="javascript:;" style="margin:0 10px 0 10px;" onclick="prompt()">新增</a>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <span class="x-red">*&nbsp;</span>
+                    <label for="">商品名称：</label>
+                    <input type="text" name="userphone" placeholder="" autocomplete="off" class="layui-input" style="width:300px;"><span
+                        class="x-red" style="margin-left:20px;">最多50个字</span>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label for="">商品编码：&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" name="userphone" placeholder="选填" autocomplete="off" class="layui-input" style="width:300px;">
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;margin-left: 20px;">
+                    <label>&nbsp;&nbsp;产地：&nbsp;&nbsp;&nbsp;</label>
+                    <div class="layui-input-inline">
+                        <select name="contrller">
+                            <option value="">订单状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">已确认</option>
+                            <option value="2">已收货</option>
+                            <option value="3">已取消</option>
+                            <option value="4">已完成</option>
+                            <option value="5">已作废</option>
+                        </select>
+                    </div><a href="javascript:;" style="margin:0 10px 0 10px;" onclick="prompt()">新增</a>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;margin-left: 20px;">
+                    <label for="">&nbsp;&nbsp;重量：&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" name="userphone" placeholder="" autocomplete="off" class="layui-input">
+                    <div class="layui-input-inline" style="margin-left:20px;">
+                        <select name="contrller">
+                            <option value="">请选择重量单位</option>
+                            <option value="0">吨(t)</option>
+                            <option value="1">千克(kg)</option>
+                            <option value="2">克(g)</option>
+                            <option value="3">斤</option>
+                            <option value="4">两</option>
+                        </select>
+                    </div>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;margin-left: 20px;">
+                    <label for="">&nbsp;&nbsp;体积：&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" name="userphone" placeholder="" autocomplete="off" class="layui-input">
+                    <div class="layui-input-inline" style="margin-left:20px;">
+                        <select name="contrller">
+                            <option value="">请选择体积单位</option>
+                            <option value="0">立方米(m³)</option>
+                            <option value="1">立方分米(dm³)</option>
+                            <option value="2">立方厘米(cm³)</option>
+                        </select>
+                    </div>
+                </div><br />
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top:20px;">填写销售属性</blockquote>
+                <div class="list">
+                    <ul>
+                        <li>
+                            <p style="margin-bottom:10px"> 规格： <input class="layui-input" type="text" autocomplete="off"></p>
+                            <p style="margin-bottom:10px"><span class="x-red">*</span><span>价格：</span><input class="layui-input"
+                                    type="text" autocomplete="off"></p>
+                            <p style="margin-bottom:10px"><span class="x-red">*</span><span>库存：</span><input class="layui-input"
+                                    type="text" autocomplete="off"></p>
+                            <div class="pic">
+                                <div class="pois"><img src="../../../../images/1.jpg">
+                                    <div class="span"><input type="file"><a href="javascript:;">更换</a><a href="javascript:;">删除</a></div>
+                                </div>
+                            </div>
+                            <div class="lpadPic"><input type="file"><img src="../../../../images/upimg.png"></div>
+                        </li>
+                    </ul>
+                    <xblock style="width: 60%; margin-top:10px;box-sizing: border-box;">
+                        <button class="layui-btn" type="button" onclick="addProductRules()"><i class="layui-icon"></i>添加商品规格</button>
+                    </xblock>
+                </div>
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top:20px;">商品图片</blockquote>
+
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label for="" style="display:inline-block;width:99px;vertical-align: top;"><span class="x-red">*&nbsp;&nbsp;</span>商品图片：</label>
+                    <div class="up_pic" style="display: inline-block;">
+                        <input type="file">
+                        <img src="../../../../images/upimg.png" alt="">
+                    </div>
+                    <div class="up_tips" style="margin-left:100px;">
+                        <p>1. 默认第一张为商品主图、商品图片最多5张</p>
+                        <p>2. 主图大小为800*800px，商品上下或左右贴到模板中参考线的边，每张不得大于1MB；</p>
+                    </div>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label for="" style="display:inline-block;width:99px;    vertical-align: top;"><span class="x-red">*&nbsp;&nbsp;</span>商品视频：</label>
+                    <div class="up_pic" style="display: inline-block;">
+                        <input type="file">
+                        <img src="../../../../images/upimg.png" alt="">
+                    </div>
+                    <label for="">视频最大不可超过2M</label>
+                </div><br />
+                <div class="layui-form-item layui-form-text" style="margin-top:20px; clear: both;">
+                    <label class="" style="display:inline-block;width:99px;vertical-align: top;"><span class="x-red">*&nbsp;</span>商品详情图：</label>
+                    <div class="layui-input-block" style="display:inline-block;margin-left: 0;width: 650px">
+                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                    <div class="up_tips" style="margin-left:105px;width: 650px">
+                        <p>1. 奶粉、辅食、食品类需有配方表、食用方法，建议涉及安装的商品有安装说明；</p>
+                        <p>2. 详情切片按顺序上传，建议2-5片，宽度固定为750px，高度自定</p>
+                    </div>
+                </div><br />
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top:20px;">运费/其他</blockquote>
+                <div class="layui-inline" style="margin-top:20px;">
+                    <span class="x-red">*</span>
+                    <label>&nbsp;运费模板：</label>
+                    <div class="layui-input-inline">
+                        <select name="contrller">
+                            <option value="">订单状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">已确认</option>
+                            <option value="2">已收货</option>
+                            <option value="3">已取消</option>
+                            <option value="4">已完成</option>
+                            <option value="5">已作废</option>
+                        </select>
+                    </div><a href="javascript:;" style="margin:0 10px 0 10px" onclick="prompt();">新增运费模板</a>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label for="">上架时间：&nbsp;&nbsp;&nbsp;</label>
+                    <span>2018-12-20 12:12:02</span>
+                </div><br />
+                <div class="layui-inline" style="margin-top:20px;">
+                    <label for="">下架时间：&nbsp;&nbsp;&nbsp;</label>
+                    <span>2018-12-20 12:12:02</span>
+                </div><br />
+
+                <div class="layui-form-item" style="margin-top:60px;">
+                    <div class="layui-input-block" style="">
+                        <button type="button" class="layui-btn layui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function prompt() {
+            layer.prompt({
+                title: "新增"
+            }, function (value, index, elem) {
+                alert(value); //得到value
+                layer.close(index);
+            });
+        }
+
+        function del(id) {
+            layer.confirm('确定删除吗？', {
+                icon: 3,
+                title: '提示'
+            }, function (index) {
+                console.log(id)
+                layer.close(index);
+            });
+        }
+
+        $(".pois").on("mouseover", function () {
+            $(this).find(".span").show();
+        }).on("mouseout", function () {
+            $(this).find(".span").hide();
+        })
+        function addProductRules() {
+            $(".list ul").append(
+                $("<li/>").append(
+                    $("<p/>", {
+                        "text": "   规格：  ",
+                        "style": "margin-bottom:10px"
+                    }).append(
+                        $("<input/>", {
+                            "class": "layui-input",
+                            "type": "text",
+                            "autocomplete": "off"
+                        })
+                    ),
+                    $("<p/>", {
+                        "style": "margin-bottom:10px"
+                    }).append(
+                        $("<span/>", {
+                            "class": "x-red",
+                            "text": "*"
+                        }),
+                        $("<span/>", {
+                            "text": "价格："
+                        }),
+                        $("<input/>", {
+                            "class": "layui-input",
+                            "type": "text",
+                            "autocomplete": "off"
+                        })
+                    ),
+                    $("<p/>", {
+                        "style": "margin-bottom:10px"
+                    }).append(
+                        $("<span/>", {
+                            "class": "x-red",
+                            "text": "*"
+                        }),
+                        $("<span/>", {
+                            "text": "库存："
+                        }),
+                        $("<input/>", {
+                            "class": "layui-input",
+                            "type": "text",
+                            "autocomplete": "off"
+                        })
+                    ),
+                    $("<div/>", {
+                        "class": "pic",
+                    }).append(
+                        $("<div/>", {
+                            "class": "pois"
+                        }).append(
+                            $("<img />", {
+                                "src": "../../../../images/1.jpg",
+                            }),
+                            $("<div/>", {
+                                "class": "span"
+                            }).append(
+                                $("<input/>", {
+                                    "type": "file"
+                                }),
+                                $("<a/>", {
+                                    "href": "javascript:;",
+                                    "text": "更换"
+                                }),
+                                $("<a/>", {
+                                    "href": "javascript:;",
+                                    "text": "删除",
+                                    "click": function () {
+                                        del();
+                                    }
+                                }),
+                            )
+                        )
+                    ),
+                    $("<div/>", {
+                        "class": "lpadPic"
+                    }).append(
+                        $("<input/>", {
+                            "type": "file"
+                        }),
+                        $("<img />", {
+                            "src": "../../../../images/upimg.png"
+                        })
+                    )
+                )
+            );
+            $(".pois").on("mouseover", function () {
+                $(this).find(".span").show();
+            }).on("mouseout", function () {
+                $(this).find(".span").hide();
+            })
+        }
+    </script>
+</body>
+
+</html>

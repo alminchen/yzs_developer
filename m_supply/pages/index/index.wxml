@@ -1,0 +1,14 @@
+
+<import src="../../template/search/search.wxml" />
+ <template is="search" />
+<view></view>
+<view class="index-wrap">
+    <navigator url=''  class="index-box" hover-stay-time="0">
+         <image src="../../images/addw.png" class="addw"></image>
+         <view class="addw-txt">添加商品</view>
+    </navigator>
+    <navigator url=''  class="index-box" hover-stay-time="0">
+         <image src="../../images/lookw.png" class="addw"></image>
+         <view class="addw-txt">查看商品</view>
+    </navigator>
+</view>

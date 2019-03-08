@@ -1,0 +1,12 @@
+<view  class="setting" >
+     <text class="setTxt">账号</text>
+     <text class="setTxt zhc">未登录</text>
+</view>
+<navigator  url="" class="setting" hover-stay-time="0">
+     <text class="setTxt">修改密码</text>
+     <image src="../../images/btn-arrow.png" class="setImg"></image>
+</navigator>
+<navigator  url="" class="setting" hover-stay-time="0">
+     <text class="setTxt">忘记密码</text>
+     <image src="../../images/btn-arrow.png" class="setImg"></image>
+</navigator>

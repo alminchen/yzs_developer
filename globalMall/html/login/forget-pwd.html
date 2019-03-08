@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/vue.min.js"></script>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+</head>
+<body style="background-color: #f9f9f9;">
+    <div class="forget-box" id="app">
+        <div class="forget-img">
+            <img  src="../../images/forget_logo.png" alt="">
+        </div>
+        <div class="forget-wrap">
+            <form action="">
+                <div class="wrap-set"v-show="false">
+                    <p class="reset-txt">重新设置密码</p>
+                    <div class="tel1 tel2">
+                        <input type="password" class="inp" placeholder="请输入新密码" >
+                    </div>
+                    <div class="tel1 tel2">
+                        <input type="password" class="inp" placeholder="再次输入密码">
+                    </div>
+                    <button class="forget-btn" type="button" >确定</button>
+                </div>
+                <div class="wrap-verify" v-show="false">
+                    <p class="reset-txt">账号安全设置</p>
+                    <p class="verify-txt">验证码已经发送到绑定手机号: <span class="main-color">12345678901</span> </p>
+                    <div class="verify-box clearfix">
+                        <div class="tel1 tel2 fl verify-inp" >
+                            <input type="text" class="inp" placeholder="请输入短信验证码" >
+                        </div>
+                        <a href="javascript:; " id="againCode" class="fr again-code">点击获取</a>
+                    </div>
+                    <button  class="forget-btn" type="button" >确定</button>
+                </div>
+
+                <div class="wrap-verify"  >
+                    <p class="reset-txt">重置密码</p>
+                    <div class="tel1 tel2">
+                        <input type="text" class="inp" placeholder="请输入手机号码" >
+                    </div>
+                    <div class="verify-box clearfix">
+                        <div class="tel1 tel2 fl verify-inp" >
+                            <input type="text" class="inp" placeholder="图片验证码" >
+                        </div>
+                        <a href="javascript:; "><img class="fr" width="114" src="../../images/code_icon.png" alt=""></a>
+                    </div>
+                    <button  class="forget-btn" type="button" >确定</button>
+                </div>
+                <div class="wrap-verify"   v-show="false" >
+                    <p class="reset-txt">重置密码</p>
+                    <img class="reset-img" src="../../images/smile.png" alt="">
+                    <p class="reset-success">重置密码成功</p>
+                    <button   class="forget-btn" type="button" >立即登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="login_footer">
+        <p>ICP备案网站信息：粤ICP备18122912号-1 Copyright 2015 深圳海中供应链有限公司 Inc.,</p>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+
+    $(function() {
+        //获取验证码
+        var isBegin = false ;
+        var interval;
+        var count;
+        //总倒计时
+        var totalTime = 60;
+        $("#againCode").on("click", function() {
+            $(this).addClass('againActive');
+            if(isBegin) {
+                return;
+            }
+            //倒计时
+            count = 0;
+            $("#againCode").text((totalTime - count) + "s后重新获取");
+            interval = setInterval(function() {
+                count++;
+                $("#againCode").text((totalTime - count) + "s后重新获取");
+                if(count >= totalTime) {
+                    clearInterval(interval);
+                    isBegin = false;
+                    $("#againCode").text("重新获取");
+                    $("#againCode").removeClass('againActive');
+                }
+            }, 1000);
+            isBegin = true;
+
+            //发送验证码请求
+            //.....
+        });
+
+    });
+</script>

@@ -1,0 +1,15 @@
+<view class="setting" style='height:{{leftHeight}}px'>
+ <view>
+   <view class="wx-txt">
+  店主微信：<text class="setting-tel">123456789</text>
+  </view>
+  <navigator  url="/pages/login/login"  class="shop-tel" hover-stay-time="0">
+     <text>店主手机号码：手机号登录</text>
+     <image src="../../images/btn_arrow.png"></image>
+  </navigator>
+ </view>
+
+  <view class="agreen-box">
+      <navigator url="/pages/agreement/agreement" class="btn-agreen"   hover-stay-time="0">服务协议</navigator>     
+  </view>
+</view>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>个人中心</title>
+</head>
+
+<body>
+     <div class="edit-pwd" id="app">
+        <div class="step-box">
+            <img class="step_img" src="../../images/pwd-step1.png" alt="">
+            <p class="step1-txt">手机号认证</p>
+            <p class="step2-txt">重置支付密码</p>
+            <p class="step3-txt">修改完成</p>
+        </div>
+         <div class="yz-phone" style="display:block ">
+             <p class="phone-num">验证手机：13689630268</p>
+             <div class="clearfix list-inp" style="margin: 0 0 14px 127px; display: none">
+                 <label class="fl inp-lab">支付密码：</label>
+                 <div class="time-select fl">
+                     <input type="password" class="wallet-inp" placeholder="请输入 6位数字的支付密码" value="">
+                 </div>
+             </div>
+                <div class="pwd-yzm clearfix">
+                    <label class="fl">短信验证码：</label>
+                    <div class="pwd-box fl">
+                        <input type="text" class="pwd-inp" placeholder="短信验证码">
+                    </div>
+                    <div class="get-yzm fl" id="getCodeBtn"><span></span>获取验证码</div>
+                </div>
+             <div class="next-btn" id="next-btn">下一步</div>
+         </div>
+
+        <div class="set_pwd" style="display: none">
+            <div class="pwd-yzm clearfix">
+                <label class="fl" style="margin-right:15px;">新密码：</label>
+                <div class="pwd-box set_pwd_inp fl">
+                    <input type="password" class="pwd-inp" placeholder="请输入6-20位字符或数字组合的密码">
+                </div>
+            </div>
+            <div class="pwd-yzm clearfix">
+                <label class="fl">确认支付密码：</label>
+                <div class="pwd-box set_pwd_inp fl">
+                    <input type="password" class="pwd-inp" placeholder="请再次输入6-20位字符或数字组合的密码">
+                </div>
+            </div>
+            <div class="next-btn" id="next-btn1">确定</div>
+        </div>
+
+         <div class="set_success" style="display: none">
+             <p class="success-pwd"><img class="suc-icon" src="../../images/success.png" alt="">恭喜您，支付密码重置成功！</p>
+             <div class="next-btn" style="margin:50px auto 0;">返回进货车</div>
+         </div>
+         
+     </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+
+    $(function() {
+        //获取验证码
+        var isBegin = false ;
+        var interval;
+        var count;
+        //总倒计时
+        var totalTime = 60;
+        $("#getCodeBtn").on("click", function() {
+            $(this).addClass('codeActive');
+            if(isBegin) {
+                return;
+            }
+            //倒计时
+            count = 0;
+            $("#getCodeBtn").html( "<span>"+(totalTime - count)+"s</span>重新获取");
+            interval = setInterval(function() {
+                count++;
+                $("#getCodeBtn").html("<span>"+(totalTime - count)+"s</span>重新获取");
+                if(count >= totalTime) {
+                    clearInterval(interval);
+                    isBegin = false;
+                    $("#getCodeBtn").text("获取验证码");
+                    $("#getCodeBtn").removeClass('codeActive');
+                }
+            }, 1000);
+            isBegin = true;
+
+            //发送验证码请求
+            //.....
+        });
+
+
+
+        $("#next-btn").click(function () {
+            var getCode = $(".pwd-inp").val();
+            if(getCode ===''){
+                alert('验证码不能为空');
+                return false;
+            } else if(/^\d{4}$/.test(getCode)){
+            }else{
+                alert('验证码不符合要求');
+                return false;
+            }
+            $(this).parent().hide();
+            $(".set_pwd").show();
+            $(".step_img").attr('src', '../../images/pwd-step2.png');
+        })
+
+        $("#next-btn1").click(function () {
+            $(this).parent().hide();
+            $(".set_success").show();
+            $(".step_img").attr('src', '../../images/pwd-step3.png');
+        })
+
+
+
+    });
+
+
+
+</script>
+
+</html>

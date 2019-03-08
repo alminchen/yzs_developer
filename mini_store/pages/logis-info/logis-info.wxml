@@ -1,0 +1,39 @@
+<view class="space">
+</view> 
+<view class="logis-head">
+   <image src="../../images/car_icon.png"></image>
+   <view class="head-txt">
+       <view>物流状态：<text class="main-color">已签收</text></view>
+       <view>承运来源：百世快递 </view>
+       <view>运单编号：45666588</view>                                              
+   </view>
+</view>
+<view class="space"></view>
+
+<view class="step">
+<view class="wl-step">物流跟踪</view>
+   <view class="step-item">
+      <view class="round round-active"></view>
+      <view class="step-txt">
+            <view class="f14">已签收</view>
+            <view class="f12">深圳市，小米已签收</view>
+            <view class="f12 qst">2018-06-18 15:24:36</view>
+      </view> 
+   </view>
+    <view class="step-item">
+      <view class="round"></view>
+      <view class="step-txt">
+            <view class="f14 qst">派送中</view>
+            <view class="f12 qst">[深圳市]福田市民中心派件员万鹏辉<text class="main-color">15658988457</text>正在为您派件</view>
+            <view class="f12 qst">2018-06-18 15:24:36</view>
+      </view> 
+   </view>
+    <view class="step-item">
+      <view class="round"></view>
+      <view class="step-txt">
+            <view class="f14 qst">运输中</view>
+            <view class="f12 qst">[深圳市]快件已到达福田市民中心</view>
+            <view class="f12 qst">2018-06-18 15:24:36</view>
+      </view> 
+   </view>  
+</view>

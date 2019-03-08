@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>欢迎页面-X-admin2.0</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="../../css/font.css">
+<link rel="stylesheet" href="../../css/xadmin.css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+	<link rel="stylesheet" href="../../css/RegionalChoice.css">
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../lib/layui/layui.js"
+	charset="utf-8"></script>
+<script type="text/javascript" src="../../js/xadmin.js"></script>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style>
+.my-temp label {
+	width: 110px;
+	text-align: center;
+	padding-right: 0;
+}
+
+tr td {
+	text-align: center;
+}
+
+.layui-table th {
+	text-align: center;
+}
+
+.add-table-temp {
+	text-align: center;
+	display: block;
+	border: 1px solid #ccc;
+	width: 60px;
+	height: 30px;
+	margin: 20px auto;
+	line-height: 30px;
+}
+</style>
+</head>
+
+<body>
+	<div class="dialog">
+		<div id="cityshow"></div>
+	</div>
+	<div id="rrapp">
+		<div class="x-body">
+			<div class="my-temp">
+				<form class="layui-form">
+					<div class="layui-form-item">
+						<label class="layui-form-label"> <span class="x-red">*</span>运费模板名称：
+						</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" required=""
+								v-model="szBusinessShippingTemplate.templateTitle"
+								lay-verify="required" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<!--<div class="layui-form-item">-->
+						<!--<label class="layui-form-label"-->
+							<!--style="width:100px; text-align: right"><span-->
+							<!--class="x-red">*</span>类型：</label>-->
+						<!--<div class="layui-input-block" style="position: relative">-->
+							<!--<input type="radio" name="type" value="1" title="先收款后发货"-->
+								<!--checked="">-->
+							<!--<div class="layui-unselect layui-form-radio layui-form-radioed">-->
+								<!--<i class="layui-anim layui-icon layui-anim-scaleSpring"></i>-->
+								<!--<div>先收款后发货</div>-->
+							<!--</div>-->
+							<!--<input type="radio" name="type" value="2" title="货到付款">-->
+							<!--<div class="layui-unselect layui-form-radio">-->
+								<!--<i class="layui-anim layui-icon"></i>-->
+								<!--<div>货到付款</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<div class="layui-form-item">
+						<label class="layui-form-label"
+							style="width:80px; padding-bottom:0"> <span class="x-red">*</span>计价方式：
+						</label>
+					</div>
+					<div class="layui-tab layui-tab-brief">
+						<ul class="layui-tab-title">
+							<li class="layui-this">按重量</li>
+							<li>按体积</li>
+							<li>按件数(普通计费)</li>
+							<li>按件数(阶梯计费)</li>
+						</ul>
+						<div class="layui-tab-content">
+							<div class="layui-tab-item layui-show" data-type="1">
+
+								<label class="layui-form-label">重量设置：</label>
+								<table class="layui-table" id='tbody'>
+									<thead>
+										<tr>
+											<th><span class="x-red">*</span>区域设置</th>
+											<th><span class="x-red">*</span>首重/kg</th>
+											<th><span class="x-red">*</span>首费/元</th>
+											<th>续重/kg</th>
+											<th>续费/元</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody >
+										<tr id="table-item">
+											<td><a href="javascript:;" class="edit" onclick="addArea(this)">选择</a>
+												<div class="name_str"></div></td>
+											<td>
+												<div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div>
+											</td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td class="td-manage"><a title="删除" href="javascript:;"
+												onclick="member_del(this)"> 删除 </a></td>
+										</tr>
+									</tbody>
+								</table>
+								<a href="javascript:;" id="add-table-temp"
+									class="add-table-temp">添加</a>
+
+							</div>
+
+							<div class="layui-tab-item" data-type="2">
+								<label class="layui-form-label">体积设置：</label>
+
+								<table class="layui-table" id='tbody1'>
+									<thead>
+										<tr>
+											<th><span class="x-red">*</span>区域设置</th>
+											<th><span class="x-red">*</span>首体积/kg</th>
+											<th><span class="x-red">*</span>首费/元</th>
+											<th>续体积/kg</th>
+											<th>续费/元</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody >
+										<tr id="table-item1">
+											<td><a href="javascript:;" class="edit" onclick="addArea(this)">选择</a>
+												<div class="name_str"></div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td class="td-manage"><a title="删除" href="javascript:;"
+												onclick="member_del(this)"> 删除 </a></td>
+										</tr>
+									</tbody>
+								</table>
+								<a href="javascript:;" id="add-table-temp1"
+									class="add-table-temp">添加</a>
+							</div>
+
+							<div class="layui-tab-item" data-type="3">
+								<label class="layui-form-label">件数设置：</label>
+								<table class="layui-table" id='tbody2'>
+									<thead>
+										<tr>
+											<th><span class="x-red">*</span>区域设置</th>
+											<th><span class="x-red">*</span>首件/kg</th>
+											<th><span class="x-red">*</span>首费/元</th>
+											<th>续件/个</th>
+											<th>续费/元</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody >
+										<tr id="table-item4">
+											<td><a href="javascript:;" class="edit">选择</a>
+												<div class="name_str"></div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td><div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														class="layui-input">
+												</div></td>
+											<td class="td-manage"><a title="删除" href="javascript:;"
+												onclick="member_del(this)"> 删除 </a></td>
+										</tr>
+									</tbody>
+								</table>
+								<a href="javascript:;" id="add-table-temp4"
+									class="add-table-temp">添加</a>
+							</div>
+							<div class="layui-tab-item" data-type="4">
+								<label class="layui-form-label">件数设置：</label>
+
+								<table class="layui-table"  id='tb2'>
+									<thead>
+										<tr>
+											<th><span class="x-red">*</span>区域设置</th>
+											<th><span class="x-red">*</span>商品件数 / 个
+												（注：如填写1-9件，是包含1和9件的）</th>
+											<th><span class="x-red">*</span>单价件 / 元</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<tr class="tb-child">
+											<td rowspan="2"><a href="javascript:;" class="edit">选择</a>
+												<div class="name_str"></div></td>
+											<td>
+												<div class="layui-form-item">
+													<div class="layui-inline">
+														<div class="layui-input-inline" style="width: 80px;">
+															<input type="text" name="price_min" autocomplete="off"
+																class="layui-input">
+														</div>
+														<div class="layui-form-mid">至</div>
+														<div class="layui-input-inline" style="width: 80px;">
+															<input type="text" name="price_max" autocomplete="off"
+																class="layui-input">
+														</div>
+														<label class="layui-form-label"
+															style="width:16px; padding:9px 0">个</label>
+													</div>
+
+												</div>
+											</td>
+											<td>
+												<div class="layui-input-inline" >
+													<input type="text" name="price_min" autocomplete="off"
+													 class="layui-input">
+												</div>
+											</td>
+											<td class="td-manage" rowspan="2"><a title="删除"
+												href="javascript:;"> 删除 </a></td>
+										</tr>
+										<tr class="tb-child">
+
+											<td>
+												<div class="layui-form-item">
+													<div class="layui-inline">
+														<div class="layui-input-inline" style="width: 80px;">
+															<input type="text" name="price_max" autocomplete="off"
+																class="layui-input">
+														</div>
+														<label class="layui-form-label"
+															style="width:60px; padding:9px 0">个及以上</label>
+													</div>
+
+												</div>
+											</td>
+											<td>
+												<div class="layui-input-inline">
+													<input type="tel" name="phone" autocomplete="off"
+														   class="layui-input">
+												</div>
+											</td>
+									    </tr>
+									</tr>
+									</tbody>
+								</table>
+								<a href="javascript:;" id="add-table2" class="add-table-temp">添加</a>
+							</div>
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin:40px 0 0 0 ;">
+						<label class="layui-form-label"
+							style="width:100px; text-align: left"><span class="x-red">*</span>状态：</label>
+						<div class="layui-input-block">
+							<input type="radio" name="status" value="1" title="启用" checked="">
+							<div class="layui-unselect layui-form-radio layui-form-radioed">
+								<i class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+								<div>启用</div>
+							</div>
+							<input type="radio" name="status" value="2" title="关闭">
+							<div class="layui-unselect layui-form-radio">
+								<i class="layui-anim layui-icon"></i>
+								<div>关闭</div>
+							</div>
+						</div>
+
+					</div>
+					<label class="layui-form-label" style="text-align: left">
+						详细描述： </label>
+					<div class="layui-form-item ">
+						<textarea placeholder="请输入内容" class="layui-textarea"
+							v-model="szBusinessShippingTemplate.templateRemark"></textarea>
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn" lay-filter="add" lay-submit=""
+							id='btn-verify' type="button">保存</button>
+
+					</div>
+				</form>
+				<div class="layui-form-item ">
+
+					<button class="layui-btn" lay-filter="close" lay-submit="">
+						关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						选择区域
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="test-div">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+					<button type="button" class="btn btn-primary btntest1">
+						确定
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="../../js/jquery-2.1.1.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/RegionalChoice.js"></script>
+	<script src="../../js/vue.min.js"></script>
+	<script>
+
+        $(function ($) {
+            //------生成地区
+            GetRegionPlug();
+
+        });
+        function addArea(obj) {
+            // $(".allcheck").off("click");
+            // var allCheck= $(".allcheck").attr("data-switch");
+            if($(".allcheck").attr("data-switch") === "true"){
+                $(".allcheck").on("click",function () {
+                    $(".place").find("input").prop("checked", true);
+                    ShowTipNum();
+                    $(this).attr("data-switch","false");
+                    // $(this).off("click");
+                    $(".clearCheck").click(
+                        function () {
+                            $(".allcheck").attr("data-switch","true");
+                            $(".place").find("input").prop("checked", false);
+                            $(".ratio").html("");
+                        }
+                    )
+                })
+            }
+            var that = $(obj);
+            var thatContent= that.text();
+            $('#myModal').modal('show');
+            offCheck(thatContent);
+            //------选择后确定按钮
+            $(".btntest1").unbind("click").click(function () {
+                var areaArr= GetChecked().area;
+                var areas = GetChecked().area.join(",");//已选择的城市名
+                var areaCode = GetChecked().areaCode.join(",");//已选择的城市id名
+                if(areas !== ""){
+                    thatContent= $(that).html(areas).text();//显示在页面
+
+                }else{
+                    $(that).html("请选择");//显示在页面
+                }
+                $(that).attr("data-code",areaCode);//存入当前属性里
+                $('#myModal').modal('hide');//完后隐藏模态框
+                console.log(thatContent);
+            });
+
+        }
+
+        $('#myModal').on('hidden.bs.modal', function (e) {
+            banCheck();
+        })
+	</script>
+
+
+
+	<script>
+		var form;
+		layui.use([ 'form', 'layer', 'element' ], function() {
+			form = layui.form;
+			form.render();
+			//自定义验证规则
+			form.verify({
+				/* number : [ /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/, '只能填数字' ] */
+				number : function(value, item) { //value：表单的值、item：表单的DOM对象
+					if (!new RegExp("^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$").test(value)) {
+						return '必填，且只能填数字';
+					}
+	
+				}
+			});
+			form.on('submit(add)', function(data) {
+				vm.szBusinessShippingTemplate.templateType = $("input[name='type']:checked").val();
+				vm.szBusinessShippingTemplate.templateStatus = $("input[name='status']:checked").val();
+
+				vm.saveOrUpdate();
+			});
+			form.on('submit(close)', function(data) {
+				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+				parent.layer.close(index);
+			});
+		})
+		var vm = new Vue({
+			el : '#rrapp',
+			data : {
+				szBusinessShippingTemplate : {
+				},
+				szBusinessShippingMethod : {
+                    // methodFirst:"",   //首重
+                    // methodFirstfee:"",  //首费
+                    // methodAdd:"",     //续重
+                    // methodAddfee:"",  //续费
+                    // methodFrom:"",    //从
+                    // methodEnd:"",     //到
+                    // methodFromfee:"",  //从什么到什么的费用
+                    // methodUp:"",      //以上
+                    // methodUpfee:"",
+					// methodType:''
+					//以上费用
+				},
+                methodArrays: [], //存szBusinessShippingMethod对象数组
+				areas : [],  //区域地址ID字符串
+				       //1：按重量 2：按体积   ...
+			},
+			methods : {
+				init : function() {},
+				saveOrUpdate : function(event) {
+					$("input[name='rd']:checked").val();
+					var url = "../../../szbusinessshippingtemplate/save";
+					$.ajax({
+						type : "POST",
+						url : url,
+						data : {
+							szBusinessShippingTemplate : vm.szBusinessShippingTemplate,
+							methods : vm.methods,
+							areas : vm.areas,
+						},
+						traditional : true, //这里设置为true 
+						contentType : "application/json",
+						success : function(r) {
+							if (r.code === 0) {
+								alert('添加成功', function(index) {
+									x_admin_close();
+									window.parent.location.reload();
+								});
+							} else {
+								alert(r.msg);
+							}
+						}
+					});
+				}
+			},
+			created : function() {
+				this.init();
+			}
+		})
+		layui.use([ 'form', 'layer' ], function() {
+			$ = layui.jquery;
+			var form = layui.form,
+				layer = layui.layer;
+	
+		});
+
+		// 元素添加
+		addTable("add-table-temp", "table-item", 'tbody');
+		addTable("add-table-temp1", "table-item1", 'tbody1');
+		addTable("add-table-temp4", "table-item4", 'tbody2');
+		addTable("add-table-temp5", "table-item5", 'tbody3');
+	
+		/*删除*/
+		function member_del(obj, id) {
+			var $parent = $(obj).parents('table').find('tbody');
+			console.log($parent);
+			if ($parent.length == 1) {
+				layer.msg('保留一条', {
+					icon : 1,
+					time : 1000
+				});
+			} else {
+				layer.confirm('确认要删除吗？', function(index) {
+					//发异步删除数据
+					$(obj).parents("tbody").remove();
+					layer.msg('已删除!', {
+						icon : 1,
+						time : 1000
+					});
+				});
+			}
+	
+		}
+		function addTable(id, ele, parent) {
+			$('#' + id).on('click', function() {
+                var trHtml = "<tbody>"
+                    +"<tr id=\"table-item\">"
+                    +"	<td><a href=\"javascript:;\" class=\"edit\" onclick=\"addArea(this)\">选择</a>"
+                    +"		<div class=\"name_str\"></div></td>"
+                    +"	<td>"
+                    +"		<div class=\"layui-input-inline\">"
+                    +"			<input type=\"tel\" name=\"phone\" autocomplete=\"off\""
+                    +"				class=\"layui-input\">"
+                    +"		</div>"
+                    +"	</td>"
+                    +"	<td><div class=\"layui-input-inline\">"
+                    +"			<input type=\"tel\" name=\"phone\" autocomplete=\"off\""
+                    +"				class=\"layui-input\">"
+                    +"		</div></td>"
+                    +"	<td><div class=\"layui-input-inline\">"
+                    +"			<input type=\"tel\" name=\"phone\" autocomplete=\"off\""
+                    +"				class=\"layui-input\">"
+                    +"		</div></td>"
+                    +"	<td><div class=\"layui-input-inline\">"
+                    +"			<input type=\"tel\" name=\"phone\" autocomplete=\"off\""
+                    +"				class=\"layui-input\">"
+                    +"		</div></td>"
+                    +"	<td class=\"td-manage\"><a title=\"删除\" href=\"javascript:;\""
+                    +"		onclick=\"member_del(this)\"> 删除 </a></td>"
+                    +"</tr>"
+                    +" 	</tbody>";
+				$('#' + parent).append(trHtml);
+			})
+		}
+
+
+	</script>
+	<script>var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+	<script>
+
+
+
+        $('#add-table2').on('click', function() {
+            var html = "<tbody>"
+                +" 	<tr>"
+                +" 		<tr class=\"tb-child\">"
+                +" 			<td rowspan=\"2\"><a href=\"javascript:;\" class=\"edit\">选择</a>"
+                +" 				<div class=\"name_str\"></div></td>"
+                +" 			<td>"
+                +" 				<div class=\"layui-form-item\">"
+                +" 					<div class=\"layui-inline\">"
+                +" 						<div class=\"layui-input-inline\" style=\"width: 80px;\">"
+                +" 							<input type=\"text\" name=\"price_min\" autocomplete=\"off\""
+                +" 								class=\"layui-input\">"
+                +" 						</div>"
+                +" 						<div class=\"layui-form-mid\">至</div>"
+                +" 						<div class=\"layui-input-inline\" style=\"width: 80px;\">"
+                +" 							<input type=\"text\" name=\"price_max\" autocomplete=\"off\""
+                +" 								class=\"layui-input\">"
+                +" 						</div>"
+                +" 						<label class=\"layui-form-label\""
+                +" 							style=\"width:16px; padding:9px 0\">个</label>"
+                +" 					</div>"
+                +" "
+                +" 				</div>"
+                +" 			</td>"
+                +" 			<td>"
+                +" 				<div class=\"layui-input-inline\" >"
+                +" 					<input type=\"text\" name=\"price_min\" autocomplete=\"off\""
+                +" 					 class=\"layui-input\">"
+                +" 				</div>"
+                +" 			</td>"
+                +" 			<td class=\"td-manage\" rowspan=\"2\"><a title=\"删除\""
+                +" 				href=\"javascript:;\"> 删除 </a></td>"
+                +" 		</tr>"
+                +" 		<tr class=\"tb-child\">"
+                +" "
+                +" 			<td>"
+                +" 				<div class=\"layui-form-item\">"
+                +" 					<div class=\"layui-inline\">"
+                +" 						<div class=\"layui-input-inline\" style=\"width: 80px;\">"
+                +" 							<input type=\"text\" name=\"price_max\" autocomplete=\"off\""
+                +" 								class=\"layui-input\">"
+                +" 						</div>"
+                +" 						<label class=\"layui-form-label\""
+                +" 							style=\"width:60px; padding:9px 0\">个及以上</label>"
+                +" 					</div>"
+                +" "
+                +" 				</div>"
+                +" 			</td>"
+                +" 			<td>"
+                +" 				<div class=\"layui-input-inline\">"
+                +" 					<input type=\"tel\" name=\"phone\" autocomplete=\"off\""
+                +" 						   class=\"layui-input\">"
+                +" 				</div>"
+                +" 			</td>"
+                +" 	    </tr>"
+                +" 	</tr>"
+                +" 	</tbody>";
+            $('#tb2').append(html);
+        })
+
+
+        $('#btn-verify').on('click', function() {
+
+            if ($(".layui-tab-item").hasClass("layui-show")) {
+                $('.layui-show').find('input').attr("lay-verify", "number");
+            } else {
+                $(".layui-tab-item").find('input').removeAttr("lay-verify");
+
+            }
+
+            var arrInp = [];
+            // vm.szBusinessShippingMethod.methodType= parseInt($('.layui-show').attr('data-type'));
+            $('.layui-show tbody').each(function (index) {
+                var childInp= [];
+                $(this).find('input').each(function () {
+                    childInp.push($(this).val()	);
+                })
+                arrInp.push(childInp);
+
+                console.log(arrInp);
+            })
+			$.each(arrInp,function (index) {
+			// vm.szBusinessShippingMethod.methodFirst = $(this)[0];
+			// vm.szBusinessShippingMethod.methodFirstfee = $(this)[1];
+			// vm.szBusinessShippingMethod.methodAdd = $(this)[2];
+			// vm.szBusinessShippingMethod.methodAddfee = $(this)[3];
+				if(parseInt($('.layui-show').attr('data-type')) === 4){
+                    vm.$set(vm.szBusinessShippingMethod,index,{
+                        methodFirst:'',   //首重
+                        methodFirstfee:'',  //首费
+                        methodAdd:'',     //续重
+                        methodAddfee:'',  //续费
+                        methodFrom:$(this)[0],    //从
+                        methodEnd: $(this)[1],     //到
+                        methodFromfee:$(this)[2],  //从什么到什么的费用
+                        methodUp:$(this)[3],      //以上
+                        methodUpfee:$(this)[4] ,   //以上费用
+                        methodType:parseInt($('.layui-show').attr('data-type'))
+                    })
+                }else{
+                    vm.$set(vm.szBusinessShippingMethod,index,{
+                        methodFirst:$(this)[0],   //首重
+                        methodFirstfee:$(this)[1],  //首费
+                        methodAdd:$(this)[2],     //续重
+                        methodAddfee:$(this)[3],  //续费
+                        methodFrom:"",    //从
+                        methodEnd:"",     //到
+                        methodFromfee:"",  //从什么到什么的费用
+                        methodUp:"",      //以上
+                        methodUpfee:"" ,   //以上费用
+                        methodType:parseInt($('.layui-show').attr('data-type'))
+                    })
+                }
+
+            });
+            console.log(vm.szBusinessShippingMethod);
+        });
+	</script>
+</body>
+
+</html>

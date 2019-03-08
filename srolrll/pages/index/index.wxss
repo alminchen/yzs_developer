@@ -1,0 +1,128 @@
+/* pages/classify/classify.wxss */
+.wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wrapper .inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.inner .left{
+    width: 180rpx;
+    height: 100%;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+.inner .left .left-tab{
+    width: 100%;
+    height: 96rpx;
+    background: #f8f8f8;
+    line-height: 96rpx;
+    text-align: center;
+    position: relative;
+    color: #585757;
+    font-size: 28rpx;
+}
+.inner .left-tab.in{
+    color: #010101;
+    background: #ffffff;
+}
+.inner .left-tab.in::after{
+    content: "";
+    width: 8rpx;
+    height: 100%;
+    background: #f5174a;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.inner .right{
+    flex: 1;
+    padding: 0 20rpx;
+    overflow: hidden;
+}
+
+.wrapper .right .scrollView{
+    width: 100%;
+    overflow: hidden;
+}
+.scrollView .right-inner{
+    width: 100%;
+    overflow: hidden;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+.right-inner .top {
+    width: 530rpx;
+    height: 200rpx;
+    overflow: hidden;
+}
+
+.right-inner .ad {
+    width: 100%;
+    margin: auto;
+    height: 200rpx;
+}
+
+.right-inner .right-list {
+    width: 100%;
+    padding-top: 60rpx;
+    overflow: hidden;
+}
+
+.right-list .title {
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    margin-bottom: 45rpx;
+}
+
+.right-list image.classifyPic {
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.right-list .text {
+    display: inline-block;
+    font-size: 26rpx;
+    color: #141508;
+    margin-left: 20rpx;
+    line-height: 25px;
+    font-family: "Miscro YaHei";
+}
+
+.right-list .list {
+    width: 100%;
+    overflow: hidden;
+    margin-left: -2px;
+}
+
+.right-list .list-pic {
+    width: 168rpx;
+    float: left;
+    margin-left: 8rpx;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+}
+
+.right-list .classifyGoods {
+    width: 168rpx;
+    height: 168rpx;
+    overflow: hidden;
+}
+
+.right-list .tit {
+    width: 100%;
+    height: 63rpx;
+    line-height: 63rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #585757;
+}

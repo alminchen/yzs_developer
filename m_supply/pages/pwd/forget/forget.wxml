@@ -1,0 +1,13 @@
+<form bindsubmit="formSubmit">
+ 
+  <view class="form-list"> 
+      <text class="pwd-txt">账号：</text>
+      <input type="password" placeholder-class="input-placeholder" class="pwd-inp"  placeholder="请输入手机号码" maxlength="11" />
+  </view>
+   <view class="form-list"> 
+      <text class="pwd-txt">验证码：</text>
+      <input type="password" placeholder-class="input-placeholder" class="pwd-inp getCode"  maxlength="4" placeholder="请输入短信验证码"  />
+      <button disabled='{{disabled}}' class="getMsg" bindtap="getVerificationCode">{{time}}</button>
+  </view>
+  <button form-type='submit' class="pwd-btn">下一步</button>
+</form>

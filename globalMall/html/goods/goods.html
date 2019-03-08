@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品类别</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/goods.css">
+</head>
+
+<body>
+    <div class="goods_main" id="goodsList">
+        <div class="goods_inner">
+            <div class="choose_list">
+                <ul>
+                    <li class="choose_li" v-for="(item, index) in choose" :key="index"><span class="text">{{item}}</span><a
+                            href="javascript:;" class="close" @click="delFn(index)">x</a></li>
+                </ul>
+            </div>
+            <div class="types_list">
+                <ul>
+                    <li v-for="(item, i) in dataList" :key="i">
+                        <span class="type">{{item.title}}</span>
+                        <a href="javascript:;" v-for="(item1, j) in item.list" :key="j" @click.stop="showFn(item1,i,j)"
+                            :class="item.index == j?'active':''">{{item1}}<em @click.stop="delFn(i)">x</em></a>
+                        <span class="more" v-if="i == 2">更多</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="sort">
+                <div class="sort_inner">
+                    <span class="type">排序：</span>
+                    <a href="javascript:;" class="color_red">全部</a>
+                    <a href="javascript:;">销量<em class="xl"></em></a>
+                    <a href="javascript:;">价格<em class="pr"></em></a>
+                    <span class="checkboxFive">
+                        <input type="checkbox" value="1" id="checkboxFiveInput" name="">
+                        <label for="checkboxFiveInput"></label>
+                    </span>
+                    <span class="checkbox_1">国内仓发货</span>
+                    <span class="checkboxFive ma20">
+                        <input type="checkbox" value="1" id="checkboxFiveInput1" name="">
+                        <label for="checkboxFiveInput1"></label>
+                    </span>
+                    <span class="checkbox_1">保税区发货</span>
+                    <span class="checkboxFive ma20">
+                        <input type="checkbox" value="1" id="checkboxFiveInput2" name="">
+                        <label for="checkboxFiveInput2"></label>
+                    </span>
+                    <span class="checkbox_1">海外直邮</span>
+                </div>
+            </div>
+
+            <div class="list_show">
+                <ul>
+                    <li v-for="(item, index) in 36" :key="index">
+                        <a href="../shopDetail/detail.html">
+                            <div class="list_show_inner">
+                                <div class="country"><img src="../../images/Germany.png" alt=""></div>
+                                <div class="has_pic">
+                                    <img src="../../images/goods_03.png" alt="">
+                                    <div class="area">新品上市</div>
+                                </div>
+                                <div class="has_text">
+                                    <p class="hot_area"><span class="hot_fl">热度：200</span><span class="hot_fr">保税区发布</span></p>
+                                    <p class="title">【官方授权】港版美赞臣 安儿宝A+ 婴幼儿配方奶粉3段（1~3岁）900g ...</p>
+                                    <p class="price"><em>￥</em>180.00-300.00</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="page">
+                    <div class="page_inner" id="pageBox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#goodsList",
+        data: {
+            choose: {
+                0: "尿不湿1",
+                1: "尿不湿1",
+                2: "尿不湿1",
+            },
+            dataList: [{
+                    title: '类目',
+                    list: ["尿不湿1", "尿不湿2", "尿不湿3", "尿不湿4", "华为", "三星", "OPPO", "vivo", "乐视", "尿不湿6", "中兴",
+                        "索尼"
+                    ],
+                    index: 0
+                },
+                {
+                    title: '分类',
+                    list: ["尿不湿1", "尿不湿2", "尿不湿3", "尿不湿4", "尿不湿5", "尿不湿6"],
+                    index: 0
+                },
+                {
+                    title: '品牌',
+                    list: ["尿不湿1", "尿不湿2", "尿不湿3", "尿不湿4", "尿不湿5"],
+                    index: 0
+                }
+            ]
+        },
+        mounted: function () {
+            var total = 200, //数据总条数
+                pageNumber = 1, //当前页
+                pageSize = 10, //每页显示的条数
+                edges = 2, //两侧显示的页码数 大于1
+                playes = 3, //主页码区显示的页码数 大于3
+                pages = Math.ceil(total / pageSize); //总页数
+
+            renderPageItem();
+
+            function renderPageItem() {
+                $ul = $('<dl class="pagination"></dl>');
+                var start = 1;
+                var end = pages;
+                if (playes % 2) {
+                    //playes是奇数
+                    start = pageNumber - Math.floor(playes / 2) <= 0 ? 1 : pageNumber - Math.floor(playes /
+                        2);
+                    end = pageNumber + Math.floor(playes / 2);
+                } else {
+                    //playes是偶数
+                    start = pageNumber - (playes / 2 - 1);
+                    end = pageNumber + playes / 2;
+                    console.log(start, end)
+                }
+
+                if (start <= edges + 1) {
+                    start = 1;
+                    if (end < playes && playes < pages) {
+                        end = playes;
+                    }
+                } else {
+                    for (var i = 1; i <= edges; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                    $ul.append('<dd><span>...</span></dd>')
+                }
+                if (end < pages - edges) {
+                    for (var i = start; i <= end; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                    $ul.append('<dd><span>...</span></dd>');
+                    for (var i = pages - edges + 1; i <= pages; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                } else {
+                    end = pages;
+                    if (start > pages - playes + 1) {
+                        start = pages - playes + 1
+                    }
+                    for (var i = start; i <= end; i++) {
+                        $ul.append(renderItem(i));
+                    }
+                }
+                $ul.prepend(renderPrevItem());
+                $ul.append(renderNextItem());
+                $('#pageBox').empty().append($ul);
+            }
+
+            function renderItem(i) {
+                if (i > 0) {
+                    $item = $('<dd><a href="javascript:;" id="' + i + '">' + i + '</a></dd>');
+                    if (i == pageNumber) {
+                        $item.addClass('color_');
+                    }
+                    $item.on('click', (function (num) {
+                        return function () {
+                            pageNumber = num;
+                            renderPageItem();
+                        }
+                    })(i));
+                    return $item
+                }
+            }
+
+            function renderPrevItem() {
+                $prev = $('<dd><a href="javascript:;">&laquo;</a></dd>');
+                if (pageNumber == 1) {
+                    $prev.addClass('disabled');
+                } else {
+                    $prev.on('click', function () {
+                        pageNumber = pageNumber - 1;
+                        renderPageItem();
+
+                    })
+                }
+                return $prev;
+            }
+
+            function renderNextItem() {
+                $next = $('<dd><a href="javascript:;">&raquo;</a></dd>');
+                if (pageNumber == pages) {
+                    $next.addClass('disabled');
+                } else {
+                    $next.on('click', function () {
+                        pageNumber = pageNumber + 1;
+                        renderPageItem();
+                    })
+                }
+                return $next;
+            }
+        },
+        methods: {
+            showFn(val, i, j) {
+                this.$set(this.choose, i, val)
+                this.dataList[i].index = j;
+            },
+            delFn(key) {
+                // this.$delete(this.choose, key);vue 2.0以上已被删除,但是在vue 2.0可以正常使用
+                delete this.choose[key];
+                this.dataList[key].index = -1;
+            }
+        }
+    })
+</script>
+
+</html>

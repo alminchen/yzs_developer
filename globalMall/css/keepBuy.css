@@ -1,0 +1,246 @@
+*,
+::after,
+::before,
+div {
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+.keep-main {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.keep-main .keep-inner {
+    padding: 0 20px;
+    margin-top: 40px;
+    box-sizing: border-box;
+}
+
+.keep-inner .keep-nav {
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    background: #f8f8f8;
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+}
+
+.keep-nav ul {
+    overflow: hidden;
+    float: left;
+}
+
+.keep-nav li {
+    float: left;
+    padding: 0 30px;
+    font-size: 14px;
+    color: #333;
+    border-right: 1px solid #d6d6d6;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+}
+
+.keep-inner li.on_pic {
+    text-indent: -10px;
+}
+
+.keep-inner li.on_pic::after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 7px;
+    background: url(../images/center_arr_down.png) no-repeat left center;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+}
+
+.keep-nav span {
+    float: right;
+    font-size: 12px;
+    padding-right: 20px;
+    user-select: none;
+}
+
+.keep-nav a,
+.keep-main em {
+    font-style: normal;
+    display: inline-block;
+}
+
+.keep-nav a {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    background: url(../images/center_left.png) no-repeat left center;
+}
+
+.keep-nav .prev {
+    margin-left: 10px;
+}
+
+.keep-nav .next {
+    background: url(../images/center_right.png) no-repeat left center;
+    margin-left: 6px;
+}
+
+.keep-nav em {
+    font-size: 14px;
+    color: #f5174a;
+}
+
+.keep-inner .search{
+    margin-top:20px; 
+    clear: both;
+    width: 342px;
+    height: 36px;
+    overflow: hidden;
+    line-height: 36px;
+    border: 1px solid #d6d6d6;
+    font-size: 0;
+}
+
+.keep-inner .search input{
+    width: 280px;
+    border: none;
+    outline: none;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+.keep-inner .search span{
+    display: inline-block;
+    width: 60px;
+    height: 36px;
+    background: url(../images/center_search_03.png) no-repeat left center #d6d6d6;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+.keep-inner .keep-list{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.keep-list ul{
+    margin-left: -17px;
+    overflow: hidden;
+    box-sizing: content-box;
+    margin-bottom: 60px;
+}
+
+.keep-list li{
+    width: 222px;
+    height: 322px;
+    border: 1px solid #d6d6d6;
+    overflow: hidden;
+    float: left;
+    margin: 20px 0 0 17px;
+}
+
+.keep-list .has_pic{
+    width: 220px;
+    height: 220px;
+    overflow: hidden;;
+}
+
+.keep-list .has_text{
+    margin-top: 15px;
+    padding: 0 12px;
+}
+
+.keep-list .price{
+    line-height: 38px;
+    font-size: 20px;
+    color: #f5174a;
+}
+
+.keep-list em{
+    font-size: 14px;
+}
+
+.keep-list .title{
+    font-size: 12px;
+    color: #747474;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.keep-inner .page {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+  }
+  
+  .page .page_inner {
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .page_inner span,
+  .page_inner dl {
+    /* float: left; */
+    font-size: 13px;
+    color: #666;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* .page_inner dl{
+      margin-left: 25px;
+      width: 320px;
+      overflow: hidden;
+  } */
+  .page_inner dl dd {
+    width: 40px;
+    height: 40px;
+    /* float: left; */
+    display: inline-block;
+    *display: block;
+    *float: left;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    background: #fff;
+    margin-right: 10px;
+  }
+  
+  .page_inner dl span {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .page_inner a {
+    color: #333;
+  }
+  .page_inner dd.color_ {
+    background: #f5174a;
+    color: #fff;
+    border: none;
+  }
+  .page_inner dd.color_ a {
+    color: #fff;
+  }
+  
+  .page_inner .disabled {
+    color: #333;
+    background-color: #d6d6d6;
+    border-color: #d6d6d6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }

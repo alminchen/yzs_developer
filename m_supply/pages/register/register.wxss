@@ -1,0 +1,77 @@
+@import "/lib/weui.wxss";
+.form-box{
+  margin:0 30rpx 36rpx;
+}
+.form-lab{
+  display: flex;
+  justify-content: flex-start;
+}
+.lab-img{
+  margin-right:20rpx;
+  width:34rpx;
+  height:40rpx;
+}
+.inp-box{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+   height:102rpx;
+   border-bottom:1rpx solid #f1f0f0;
+}
+.form-inp{
+  font-size:14px;
+  height:102rpx;
+ 
+}
+.input-placeholder{
+   color: #a9a9a9;
+   
+}
+.sel-icon{
+  width:38rpx;
+  height:10rpx;
+}
+button{
+ margin:0
+}
+button::after{
+ margin:0;
+}
+.yzm{
+  width: 180rpx;
+	height: 60rpx;
+	background-color: #81acfd;
+	border-radius: 5px;
+  font-size: 14px;
+  line-height: 60rpx;
+  color:#fff;
+ 
+}
+.picker{
+  color: #a9a9a9;
+  font-size:14px;
+}
+
+.upload-box{
+  flex-wrap: wrap;
+   display: flex;
+   justify-content: flex-start;
+   margin-top:38rpx ;
+  
+}
+.upload-list{
+  margin:0 15rpx 30rpx 0;
+   width:220rpx;
+}
+.upload-list:nth-child(3n){
+  margin-right:0;
+}
+.uploadImg{
+  width:220rpx;
+  height:220rpx;
+}
+.upload-txt{
+  font-size: 14px;
+ color: #424144;
+  text-align: center;
+}

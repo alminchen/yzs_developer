@@ -1,0 +1,36 @@
+<!-- pages/classifyList/classifyList.wxml -->
+<view class="wrapper">
+  <view class="inner">
+    <view class="search">
+      <image src="../../images/search_03.png" class="searchIcon" />
+      <input type="text" placeholder="搜索您想要的商品或品牌" class="searchIpt" />
+      <text class="searchTtx">搜索</text>
+    </view>
+    <view class="list-box">
+      <view class="list-types">
+        <view class="types {{tabIdx==idx?'in':''}}" wx:for="{{10}}" wx:for-index="idx" data-idx="{{idx}}" wx:key="idx" bindtap='tabChange'>综合</view>
+      </view>
+      <scroll-view class="list-wrapper" scroll-y="{{true}}" style="height:{{leftHeight}}px" bindscrolltolower="loadMoreData">
+        <view class="list-ul">
+          <navigator url="/pages/detail/detail" wx:for="{{10}}" wx:for-index="idx" wx:key="idx">
+            <view class="list-show">
+              <view class="img">
+                <image class="imgSrc" src="../../images/classify_goods.png" />
+              </view>
+              <view class="textAndPic">
+                <view class="country">
+                  <image class="countryPic" src="../../images/Germany.png" />
+                  <text class="countryTit">德国</text>
+                </view>
+                <view class="headTid">英国爱他美Aptamil婴幼儿奶粉2段（6~12个月）900g</view>
+                <view class="post">海外直邮</view>
+                <view class="price">
+                  <text class="iconMon">￥</text>99.00-600.00</view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

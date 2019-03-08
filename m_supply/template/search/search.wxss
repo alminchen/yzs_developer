@@ -1,0 +1,29 @@
+
+.search {
+  padding: 24rpx;
+  height: 70rpx;
+  display: flex;
+  position: relative;
+  background-color:#4b89fc;
+}
+
+.search .searchIpt {
+  flex: 1;
+  background-color: #f8f8f8;
+  border-radius: 35rpx;
+  height: 100%;
+  font-size: 28rpx;
+  padding: 0 10rpx;
+  padding-left: 100rpx;
+  color: #666;
+}
+
+.search .searchIcon {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  left: 80rpx;
+  top: 44rpx;
+}
+
+

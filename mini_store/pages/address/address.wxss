@@ -1,0 +1,86 @@
+/* pages/address/address.wxss */
+.wrapper{
+  width: 100%;
+  background: #f8f8f8;
+  overflow: hidden;
+}
+.wrapper .inner{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.inner .address-list{
+  padding: 0 20rpx;
+  overflow: hidden;
+}
+.inner .address-show{
+    padding: 43rpx 142rpx 43rpx 73rpx;
+    background: #fff;
+    border-radius: 15rpx;
+    position: relative;
+    margin: 20rpx 0 20rpx 0;
+}
+.inner .address-top{
+  width: 100%;
+  font-size: 32rpx;
+  color: #222;
+  margin-bottom: 25rpx;
+}
+.inner .phone{
+  margin-left: 48rpx;
+}
+.inner .default{
+  padding: 1rpx 8rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #f5174a;
+  border-radius: 14rpx;
+  vertical-align: middlel;
+  margin-left: 38rpx;
+}
+
+.inner .address-detail{
+  font-size: 28rpx;
+  color: #424144;
+  max-height: 88rpx;
+}
+.inner .address-txt{
+  line-height: 44rpx;
+}
+
+.inner .operation{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.inner .edit{
+  width: 30rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -12rpx;
+  right: 77rpx;
+}
+
+.inner .del{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -10rpx;
+  right: 20rpx;
+}
+.inner .addNew{
+  padding: 10rpx 20rpx;
+  overflow: hidden;
+  background: #fff;
+}
+.addNew .add-newaddress{
+  display: block;
+  width: 100%;
+  padding: 20rpx 0;
+  color: #fff;
+  text-align: center;
+  background-color: #f5174a;
+}

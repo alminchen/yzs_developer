@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../css/font.css">
+    <link rel="stylesheet" href="../../../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .layui-table a{
+            display: block;
+            width: 100%;
+            color: #00f;
+            line-height: 25px;
+        }
+        .layui-table a:hover{
+            color: #00f;
+        }
+        .layui-table th,.layui-table td{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x-body">
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 x-so">
+                <div class="layui-inline"><label for="">分类名称：</label>
+                    <input type="text" name="userphone" placeholder="请输入想要搜索的标签名称" autocomplete="off" class="layui-input"
+                        style="width:200px;"></div>
+                <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button"><i class="layui-icon">&#xe615;</i></button>
+            </form>
+            <xblock style="clear:both;width:115px;">
+                <button class="layui-btn  layui-btn-primary" type="button" onclick="x_admin_show('新增品牌','./addCate.html',700,500)"><i
+                        class="layui-icon"></i>添加分类</button>
+            </xblock>
+            <table class="layui-table layui-form" style="width:800px;">
+                <thead>
+                    <tr>
+                        <th>分类名称</th>
+                        <th>分类图片</th>
+                        <th>排序</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="x-cate">
+                    <tr cate-id='1' fid='0'>
+                        <td><i class="layui-icon x-show" status='true'>&#xe623;</i>一级分类名称</td>
+                        <td><img src="../../../images/1.jpg" alt=""></td>
+                        <td>一级分类名称</td>
+                        <td class="td-status"><span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+                        <td class="td-manage">
+                            <a title="禁用" onclick="member_stop(this,'10001')" href="javascript:;">禁用</a>
+                            <a title="编辑" href="javascript:;">编辑</a>
+                            <a title="删除" href="javascript:;">删除</a>
+                            <a href="javascript:;" title="添加子分类" onclick="x_admin_show('新增品牌','./addCate.html',700,500)">添加子分类</a>
+                        </td>
+                    </tr>
+                    <tr cate-id='2' fid='1'>
+                        <td><i class="layui-icon x-show" status='true'>&#xe623;</i>二级分类名称</td>
+                        <td>热销</td>
+                        <td>化妆品</td>
+                        <td class="td-status"><span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+                        <td class="td-manage">
+                            <a title="禁用" onclick="member_stop(this,'10001')" href="javascript:;">禁用</a>
+                            <a title="编辑" href="javascript:;">编辑</a>
+                            <a title="删除" href="javascript:;">删除</a>
+                            <a href="javascript:;" title="添加子分类" onclick="x_admin_show('新增品牌','./addCate.html',700,500)">添加子分类</a>
+                        </td>
+                    </tr>
+                    <tr cate-id='3' fid='2'>
+                        <td>三级分类名称</td>
+                        <td>热销</td>
+                        <td>化妆品</td>
+                        <td class="td-status"><span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+                        <td class="td-manage">
+                            <a title="禁用" onclick="member_stop(this,'10001')" href="javascript:;">禁用</a>
+                            <a title="编辑" href="javascript:;">编辑</a>
+                            <a title="删除" href="javascript:;">删除</a>
+                            <a href="javascript:;" title="添加子分类" onclick="x_admin_show('新增品牌','./addCate.html',700,500)">添加子分类</a>
+                        </td>
+                    </tr>
+                    <tr cate-id='4' fid='0'>
+                        <td><i class="layui-icon x-show" status='true'>&#xe623;</i>一级分类名称</td>
+                        <td>热销</td>
+                        <td>化妆品</td>
+                        <td class="td-status"><span class="layui-btn layui-btn-normal layui-btn-mini layui-btn-disabled">已禁用</span></td>
+                        <td class="td-manage">
+                            <a title="启用" onclick="member_stop(this,'10001')" href="javascript:;">启用</a>
+                            <a title="编辑" href="javascript:;">编辑</a>
+                            <a title="删除" href="javascript:;">删除</a>
+                            <a href="javascript:;" title="添加子分类" onclick="x_admin_show('新增品牌','./addCate.html',700,500)">添加子分类</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        function member_stop(obj, id) {
+            if ($(obj).attr('title') == '启用') {
+                layer.confirm('启用后，该分类及分类下商品将在前端显示，确定启用吗?', function (index) {
+                    $(obj).attr('title', '禁用')
+                    $(obj).text("禁用")
+                    $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html(
+                        '已启用');
+                    layer.msg('已启用!', {
+                        icon: 1,
+                        time: 1000
+                    });
+
+                })
+            }
+            if ($(obj).attr('title') == '禁用') {
+                layer.confirm('禁用后，该分类及分类下商品将在前端显示，确定禁用吗?', function (index) {
+                    $(obj).attr('title', '启用')
+                    $(obj).text("启用")
+                    $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html(
+                        '已禁用');
+                    layer.msg('已禁用!', {
+                        icon: 5,
+                        time: 1000
+                    });
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

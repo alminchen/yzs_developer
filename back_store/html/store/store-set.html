@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/xadmin.css">
+    <link rel="stylesheet" href="../../css/citySelect.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      .layui-upload{
+        width: 150px;
+        margin:0 auto;
+      }
+      .layui-upload p{
+      text-align: center;
+      }
+      .layui-upload button{
+        margin-left:26px;
+      }
+
+      .my-pro-content h2{
+        padding-bottom:10px;
+      }
+      .my-pro-content p{
+        line-height: 30px;
+      }
+      .upload-wrap{
+        margin:30px 0 30px 22px;
+      }
+      .upimg{
+        width:145px;
+        height:140px;
+      }
+      .x-body .layui-input-inline{
+        width:250px;
+      }
+    </style>
+  </head>
+  
+  <body>
+  <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">商家中心</a>
+            <a href="">店铺</a>
+            <a>
+                <cite>店铺信息</cite></a>
+        </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+       title="刷新">
+      <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+  </div>
+    <div class="x-body">
+      <form class="layui-form" action="">
+        <p style="font-size:16px; margin-left:22px;">店铺名称：诸葛亮的小店</p>
+        <div class="upload-wrap clearfix">
+          <p class="x-left" style="margin-top:50px;">店铺LOGO：</p>
+          <div class="upimg x-left" id="test10">
+            <img src="../../images/upimg.png" alt="">
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 开店梦想：</label>
+          <div class="layui-input-inline">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+          </div>
+          <p style="padding-top:10px; color: #999999;">最多输入20个字</p>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 库存预警：</label>
+          <div class="layui-input-inline">
+            <input type="text" value="0"  autocomplete="off"  class="layui-input">
+          </div>
+          <p style="padding-top:10px; color: #999999;"> 库存少于预警数则报警提示</p>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 店铺地址：</label>
+          <div class="layui-input-inline" style="width:680px;">
+            <div class="">
+              <div class="city-picker-selector " id="citysSelect"></div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 详细地址：</label>
+          <div class="layui-input-inline">
+            <input type="text" value="XX街335号"  autocomplete="off" class="layui-input">
+          </div>
+          <p style="padding-top:10px; color: #999999;"> 库存少于预警数则报警提示</p>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="../../js/citySelect/citydata.min.js"></script>
+    <script src="../../js/citySelect/cityPicker-2.0.3.js"></script>
+    <script>
+        var selector2 = $('#citysSelect').cityPicker({
+            dataJson: cityData,
+            renderMode: true,
+            search: false,
+            autoSelected: false,
+            code: 'cityCode',
+            level: 3,
+            onChoiceEnd: function () {
+                console.log(this.values)
+            }
+        });
+
+      layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+      });
+
+       /*用户-停用*/
+      function member_stop(obj,id){
+          layer.confirm('确认要停用吗？',function(index){
+
+              if($(obj).attr('title')=='启用'){
+
+                //发异步把用户状态进行更改
+                $(obj).attr('title','停用')
+                $(obj).find('i').html('&#xe62f;');
+
+                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+                layer.msg('已停用!',{icon: 5,time:1000});
+
+              }else{
+                $(obj).attr('title','启用')
+                $(obj).find('i').html('&#xe601;');
+
+                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+                layer.msg('已启用!',{icon: 5,time:1000});
+              }
+              
+          });
+      }
+
+      /*用户-删除*/
+      function member_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
+          });
+      }
+
+
+      function delAll (argument) {
+
+        var data = tableCheck.getData();
+  
+        layer.confirm('确认要删除吗？'+data,function(index){
+            //捉到所有被选中的，发异步进行删除
+            layer.msg('删除成功', {icon: 1});
+            $(".layui-form-checked").not('.header').parents('tr').remove();
+        });
+      }
+    </script>
+
+    <script>var _hmt = _hmt || []; (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+    <script>
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage
+                ,layer = layui.layer;
+
+            //总页数大于页码总数
+            laypage.render({
+                elem: 'pagination'
+                ,count: 80 //数据总数
+                ,jump: function(obj){
+                    console.log(obj)
+                }
+            });
+
+        });
+
+        // 文件上传：
+        layui.use('upload', function(){
+            var $ = layui.jquery
+                ,upload = layui.upload;
+
+            //拖拽上传
+            upload.render({
+                elem: '#test10'
+                ,url: '/upload/'
+                ,done: function(res){
+                    console.log(res)
+                }
+            });
+
+        });
+
+
+    </script>
+  </body>
+
+</html>

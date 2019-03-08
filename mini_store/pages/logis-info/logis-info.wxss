@@ -1,0 +1,64 @@
+.logis-head{
+   display: flex;
+   font-size:14px;
+   padding:40rpx 24rpx;
+   justify-content: flex-start;
+}
+.logis-head image{
+   width: 56rpx;
+   height:56rpx;
+   margin:14rpx 22rpx 0 0 ;
+}
+.head-txt view{
+  padding-bottom:10rpx;
+}
+.wl-step{
+     margin-left:24rpx;
+     padding:36rpx 0;
+    color: #6a6c70;
+    font-size:14px;
+     border-bottom:1rpx solid #e4e4e4;
+}
+
+.step-item{
+  z-index: -4;
+  position: relative;
+  margin-left:40rpx;
+   border-left:1rpx solid #e4e4e4;
+}
+.step-txt{
+  padding-top:30rpx;
+  margin-left:50rpx;
+  padding-right:30rpx;
+  color: #222222;
+  padding-bottom:30rpx;
+  border-bottom:1rpx solid #eeebeb;
+}
+.qst{
+ color: #6e6e70;
+
+}
+.round{
+  top:40rpx;
+  left:-8rpx;
+  position: absolute;
+  width: 16rpx;
+	height: 16rpx;
+	background-color: #bfbfbf;
+  border-radius: 50%;
+}
+.round-active{
+  background-color:#54bf43;
+}
+.round-active::after{
+  z-index: -2;
+  left:-12rpx;
+  top:-12rpx;
+  content:"";
+  width: 32rpx;
+	height: 32rpx;
+	border: solid 4rpx  rgba(84, 191, 67, 0.6);
+  position: absolute;
+  border-radius: 50%; 
+  background-color:#fff;
+}

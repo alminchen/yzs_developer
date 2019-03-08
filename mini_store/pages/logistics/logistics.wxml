@@ -1,0 +1,81 @@
+<view class='tip'>
+     2个包裹已发出
+</view>
+
+<view class="logis-title">
+    以下商品被拆分成两个包裹
+</view>
+<view class="bag-wrap">
+    <view class="bag">
+         <view class="bag-express">
+              <view class="express-left">
+                 <image src="../../images/clock.png"></image>
+                 <text class="main-color">待签收</text>
+              </view>
+              <view class="express-right param-gray">
+              百世快递：12345678901568
+              </view>
+        </view>
+        <view class="express-info">
+        【深圳】深圳市,【小明/12635687906】
+        </view>
+        <scroll-view scroll-x class="bag-pro">
+          <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+        
+        </scroll-view>
+        <view class="total">共<text class="main-color">5</text>件商品</view>
+        <view class="space"></view>
+    </view>
+     <view class="bag">
+         <view class="bag-express">
+              <view class="express-left">
+                 <image src="../../images/clock.png"></image>
+                 <text class="main-color">待签收</text>
+              </view>
+              <view class="express-right param-gray">
+              百世快递：12345678901568
+              </view>
+        </view>
+        <view class="express-info">
+        【深圳】深圳市,【小明/12635687906】
+        </view>
+        <scroll-view scroll-x class="bag-pro">
+          <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+        
+        </scroll-view>
+        <view class="total">共<text class="main-color">5</text>件商品</view>
+        <view class="space"></view>
+    </view>
+     <view class="bag">
+         <view class="bag-express">
+              <view class="express-left">
+                 <image src="../../images/clock.png"></image>
+                 <text class="main-color">待签收</text>
+              </view>
+              <view class="express-right param-gray">
+              百世快递：12345678901568
+              </view>
+        </view>
+        <view class="express-info">
+        【深圳】深圳市,【小明/12635687906】
+        </view>
+        <scroll-view scroll-x class="bag-pro">
+          <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+            <image src="../../images/xfl.png"></image>
+        
+        </scroll-view>
+        <view class="total">共<text class="main-color">5</text>件商品</view>
+        <view class="space"></view>
+    </view>
+</view>

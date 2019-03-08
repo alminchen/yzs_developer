@@ -1,0 +1,45 @@
+<view class="person-head">
+    <image src="../../images/person_bg.png" class="person_bg"></image>   
+     <view class="person-box">
+         <image src="../../images/head.png"></image>
+         <text class="ellip">深圳市信营国际电子商务有限公司</text>
+     </view>
+</view>
+<view class="option-box">
+   <navigator class="option-item bdr" url='/pages/mYorder/mYorder?id=0' hover-class="none" hover-stay-time="0">
+         <view class="msg-icon">
+            <image src="../../images/order.png" ></image>
+         </view>
+         <view class="option-txt">全部订单</view>
+   </navigator>
+    <navigator class="option-item bdr" url='/pages/mYorder/mYorder?id=1' hover-class="none" hover-stay-time="0">
+         <view >
+            <image src="../../images/dfk.png" ></image>
+         </view>
+         <view class="option-txt">待付款</view>
+   </navigator>  
+    <navigator class="option-item" url='/pages/mYorder/mYorder?id=2' hover-class="none" hover-stay-time="0">
+          <view >
+            <image src="../../images/dfh.png" ></image>
+         </view>
+         <view class="option-txt">待发货</view>
+   </navigator>  
+    <navigator class="option-item bdr" url='/pages/mYorder/mYorder?id=3' hover-class="none" hover-stay-time="0">
+        <view >
+            <image src="../../images/dsh.png" ></image>
+         </view>
+         <view class="option-txt">待收货</view>
+   </navigator> 
+   <navigator class="option-item bdr" url='/pages/address/address' hover-class="none" hover-stay-time="0">
+          <view>
+            <image src="../../images/wddz.png" ></image>
+         </view>
+         <view class="option-txt">我的地址</view>
+   </navigator>  
+   <navigator class="option-item" hover-class="none" hover-stay-time="0">
+         <view>
+            <image src="../../images/config.png" ></image>
+         </view>
+         <view class="option-txt">账户设置</view>
+   </navigator>   
+</view>

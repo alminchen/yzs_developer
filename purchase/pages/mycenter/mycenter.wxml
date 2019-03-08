@@ -1,0 +1,19 @@
+<view class="wrapper">
+  <view class='inner'>
+    <view class='inner-box'>
+      <image class='pic' src='../../images/login.png'></image>
+      <view class='text'>
+        <text class='account'>12345678901</text>
+        <text class='type'>采购</text>
+      </view>
+    </view>
+  </view>
+  <navigator url='/pages/setting/setting' hover-class='none'>
+    <view class='sameCss'>
+      <text class='txt lf30'>设置</text>
+      <view class='sameIpt'>
+        <image class='cell-arrow' src='../../images/arrow.png'></image>
+      </view>
+    </view>
+  </navigator>
+</view>

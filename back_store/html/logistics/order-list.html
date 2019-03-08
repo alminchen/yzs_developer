@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .layui-btn,.layui-inline{
+       margin-bottom: 10px;
+       margin-left: 20px
+     }
+     .layui-btn .layui-icon{
+       vertical-align: middle;
+     }
+     #user-dialog p{
+         margin:20px ;
+     }
+     .order-time span{
+         margin-right:50px;
+     }
+     .transfer{
+         display: none;
+         margin:30px 0 0 30px;
+     }
+        .transfer p{
+           margin-bottom:20px;
+        }
+        .x-orange{
+            color:#FF6666;
+        }
+        .send-type{
+            display: none;
+        }
+        .send-type .layui-input-block{
+            margin-left:50px;
+        }
+        .send-type  .layui-form-radio{
+            margin-top:0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">商家中心</a>
+            <a href="">订单物流</a>
+            <a>
+                <cite>订单列表</cite></a>
+        </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+       title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+    <div class="x-body">
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this">自营商品订单</li>
+                <li>自营订单售后</li>
+                <li>平台商品订单</li>
+                <li>平台订单售后</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-row">
+                        <form class="layui-form layui-col-md12 x-so">
+                            <div class="layui-inline"><label>下单时间：</label><input class="layui-input" placeholder="开始时间" name="start" id="start"></div>
+                            <div class="layui-inline"><label style="margin-left:-20px;">至</label>
+                                <input class="layui-input" placeholder="结束时间" name="end" id="end"></div>
+                            <div class="layui-inline"><label for="">订单编号：</label>
+                                <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline">
+                                <label>订单状态：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">全部</option>
+                                        <option value="1">自营</option>
+                                        <option value="1">平台</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label>支付方式：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">微信支付</option>
+                                        <option value="1">支付宝支付</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label>配送方式：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">门店自提</option>
+                                        <option value="1">货到付款</option>
+                                        <option value="1">第三方物流</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline"><label for="">收货人：</label>
+                                <input type="text" name="username" placeholder="姓名/手机" autocomplete="off" class="layui-input"></div>
+
+                            <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button" style="margin-left: 0;"><i class="layui-icon">&#xe615;</i></button>
+                            <button class="layui-btn" lay-submit="" lay-filter="reset" type="reset"><i class="layui-icon">&#xe9aa;</i></button>
+
+                        </form>
+                    </div>
+                    <div class="layui-tab  layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">全部</li>
+                            <li>待付款</li>
+                            <li>待接单<span class="layui-badge">9</span></li>
+                            <li>待发货<span class="layui-badge">9</span></li>
+                            <li>已发货</li>
+                            <li>已完成</li>
+                            <li>已关闭</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th>订单编号</th>
+                                        <th>下单时间</th>
+                                        <th>商品数量</th>
+                                        <th>买家信息</th>
+                                        <th>订单总金额:￥</th>
+                                        <th>商品金额:￥</th>
+                                        <th>配送方式</th>
+                                        <th>运费:￥</th>
+                                        <th>订单状态</th>
+                                        <th>支付方式</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>XSD2018120814200700000020</td>
+                                        <td>2018-12-25 12:01:25</td>
+                                        <td>3</td>
+                                        <td ><a href="javascript:;" style="color:blue" onclick="userInfo()">张良</a></td>
+                                        <td>1196.00</td>
+                                        <td>1196.00</td>
+                                        <td>门店自提</td>
+                                        <td>0.00</td>
+                                        <td>待接单</td>
+                                        <td>支付宝支付</td>
+                                        <td>
+                                            <a style="color:blue;" href="javascript:;" onclick="x_admin_show('查看详情','./order-info.html')">查看</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="refuse()">拒绝</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="getOrder()">接单</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="sendType()">发货</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">2</div>
+                            <div class="layui-tab-item">3</div>
+                            <div class="layui-tab-item">4</div>
+                            <div class="layui-tab-item">5</div>
+                            <div class="layui-tab-item">6</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row">
+                        <form class="layui-form layui-col-md12 x-so">
+                            <div class="layui-inline"><label>申请时间：</label><input class="layui-input" placeholder="开始时间" name="start" id="start"></div>
+                            <div class="layui-inline"><label style="margin-left:-20px;">至</label>
+                                <input class="layui-input" placeholder="结束时间" name="end" id="end"></div>
+                            <div class="layui-inline"><label for="">订单编号：</label>
+                                <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline"><label for="">退货/款编号：</label>
+                                <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline">
+                                <label>退款类型：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">全部</option>
+                                        <option value="1">部分退货退款</option>
+                                        <option value="1">整单退货退款</option>
+                                        <option value="2">仅退款</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label>配送方式：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">门店自提</option>
+                                        <option value="1">货到付款</option>
+                                        <option value="1">第三方物流</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button" style="margin-left: 0;"><i class="layui-icon">&#xe615;</i></button>
+                            <button class="layui-btn" lay-submit="" lay-filter="reset" type="reset"><i class="layui-icon">&#xe9aa;</i></button>
+
+                        </form>
+                    </div>
+                    <div class="layui-tab  layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">全部</li>
+                            <li>待审核</li>
+                            <li>待寄回<span class="layui-badge">9</span></li>
+                            <li>待收货<span class="layui-badge">9</span></li>
+                            <li>待付款</li>
+                            <li>已完成</li>
+                            <li>已拒绝</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th>退货/款编号</th>
+                                        <th>买家</th>
+                                        <th>商品数量</th>
+                                        <th>订单总金额:￥</th>
+                                        <th>商品金额:￥</th>
+                                        <th>配送方式</th>
+                                        <th>运费:￥</th>
+                                        <th>应退金额:￥</th>
+                                        <th>实退金额:￥</th>
+                                        <th>订单状态</th>
+                                        <th>退货/款单状态</th>
+                                        <th>寄回物流单号</th>
+                                        <th>退款类型</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="14" class="order-time"><span style="color:#FF6633">申请时间：2018-12-25 12:01:25</span>下单时间：2018-12-25 12:01:25<span></span><span>订单编号：2265688323655645465</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>XSD2018120814200700000020</td>
+                                        <td ><a href="javascript:;" style="color:blue" onclick="userInfo()">张良</a></td>
+                                        <td>3</td>
+                                        <td >1196.00</td>
+                                        <td>1196.00</td>
+                                        <td>门店自提</td>
+                                        <td>0.00</td>
+                                        <td>1196.00</td>
+                                        <td>--</td>
+                                        <td>待接单</td>
+                                        <td>待审核</td>
+                                        <td></td>
+                                        <td>仅退款</td>
+                                        <td>
+                                            <a style="color:blue;" href="javascript:;" onclick="x_admin_show('查看明细','./integral-detail.html')">查看</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="refuse()">拒绝</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="getOrder()">接单</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="sendType()">发货</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="transfer()">转账</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">2</div>
+                            <div class="layui-tab-item">3</div>
+                            <div class="layui-tab-item">4</div>
+                            <div class="layui-tab-item">5</div>
+                            <div class="layui-tab-item">6</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row">
+                        <form class="layui-form layui-col-md12 x-so">
+                            <div class="layui-inline"><label>下单时间：</label><input class="layui-input" placeholder="开始时间" name="start" id="start"></div>
+                            <div class="layui-inline"><label style="margin-left:-20px;">至</label>
+                                <input class="layui-input" placeholder="结束时间" name="end" id="end"></div>
+                            <div class="layui-inline"><label for="">订单编号：</label>
+                                <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline">
+                                <label>订单状态：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">全部</option>
+                                        <option value="1">自营</option>
+                                        <option value="1">平台</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label>支付方式：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">微信支付</option>
+                                        <option value="1">支付宝支付</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label>配送方式：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">门店自提</option>
+                                        <option value="1">货到付款</option>
+                                        <option value="1">第三方物流</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline"><label for="">收货人：</label>
+                                <input type="text" name="username" placeholder="姓名/手机" autocomplete="off" class="layui-input"></div>
+
+                            <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button" style="margin-left: 0;"><i class="layui-icon">&#xe615;</i></button>
+                            <button class="layui-btn" lay-submit="" lay-filter="reset" type="reset"><i class="layui-icon">&#xe9aa;</i></button>
+
+                        </form>
+                    </div>
+                    <div class="layui-tab  layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">全部</li>
+                            <li>待付款</li>
+                            <li>待接单<span class="layui-badge">9</span></li>
+                            <li>待发货<span class="layui-badge">9</span></li>
+                            <li>已发货</li>
+                            <li>已完成</li>
+                            <li>已关闭</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th>订单编号</th>
+                                        <th>下单时间</th>
+                                        <th>商品数量</th>
+                                        <th>买家信息</th>
+                                        <th>订单总金额:￥</th>
+                                        <th>商品平台销售金额:￥</th>
+                                        <th>商品店铺销售金额:￥</th>
+                                        <th>运费:￥</th>
+                                        <th class="x-orange">预计收入:￥</th>
+                                        <th>订单状态</th>
+                                        <th>支付方式</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>XSD2018120814200700000020</td>
+                                        <td>2018-12-25 12:01:25</td>
+                                        <td>3</td>
+                                        <td ><a href="javascript:;" style="color:blue" onclick="userInfo()">张良</a></td>
+                                        <td>1196.00</td>
+                                        <td>1196.00</td>
+                                        <td>1196.00</td>
+                                        <td>门店自提</td>
+                                        <td class="x-orange">0.00</td>
+                                        <td>待接单</td>
+                                        <td>支付宝支付</td>
+                                        <td>
+                                            <a style="color:blue;" href="javascript:;" onclick="x_admin_show('查看详情','./wl-info.html')">查看</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="refuse()">拒绝</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="getOrder()">接单</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="sendType()">发货</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">2</div>
+                            <div class="layui-tab-item">3</div>
+                            <div class="layui-tab-item">4</div>
+                            <div class="layui-tab-item">5</div>
+                            <div class="layui-tab-item">6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row">
+                        <form class="layui-form layui-col-md12 x-so">
+                            <div class="layui-inline"><label>申请时间：</label><input class="layui-input" placeholder="开始时间" name="start" id="start"></div>
+                            <div class="layui-inline"><label style="margin-left:-20px;">至</label>
+                                <input class="layui-input" placeholder="结束时间" name="end" id="end"></div>
+                            <div class="layui-inline"><label for="">订单编号：</label>
+                                <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline"><label for="">退货/款编号：</label>
+                                <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input"></div>
+                            <div class="layui-inline">
+                                <label>退款类型：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">全部</option>
+                                        <option value="1">部分退货退款</option>
+                                        <option value="1">整单退货退款</option>
+                                        <option value="2">仅退款</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label>配送方式：</label>
+                                <div class="layui-input-inline">
+                                    <select name="contrller">
+                                        <option value="">请选择</option>
+                                        <option value="0">门店自提</option>
+                                        <option value="1">货到付款</option>
+                                        <option value="1">第三方物流</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button" style="margin-left: 0;"><i class="layui-icon">&#xe615;</i></button>
+                            <button class="layui-btn" lay-submit="" lay-filter="reset" type="reset"><i class="layui-icon">&#xe9aa;</i></button>
+
+                        </form>
+                    </div>
+                    <div class="layui-tab  layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">全部</li>
+                            <li>待审核</li>
+                            <li>待寄回<span class="layui-badge">9</span></li>
+                            <li>待收货<span class="layui-badge">9</span></li>
+                            <li>待付款</li>
+                            <li>已完成</li>
+                            <li>已拒绝</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th>退货/款编号</th>
+                                        <th>买家</th>
+                                        <th>商品数量</th>
+                                        <th>订单总金额:￥</th>
+                                        <th>商品金额:￥</th>
+                                        <th>配送方式</th>
+                                        <th>运费:￥</th>
+                                        <th>应退金额:￥</th>
+                                        <th>实退金额:￥</th>
+                                        <th>订单状态</th>
+                                        <th>退货/款单状态</th>
+                                        <th>寄回物流单号</th>
+                                        <th>退款类型</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="14" class="order-time"><span style="color:#FF6633">申请时间：2018-12-25 12:01:25</span>下单时间：2018-12-25 12:01:25<span></span><span>订单编号：2265688323655645465</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>XSD2018120814200700000020</td>
+                                        <td ><a href="javascript:;" style="color:blue" onclick="userInfo()">张良</a></td>
+                                        <td>3</td>
+                                        <td >1196.00</td>
+                                        <td>1196.00</td>
+                                        <td>门店自提</td>
+                                        <td>0.00</td>
+                                        <td>1196.00</td>
+                                        <td>--</td>
+                                        <td>待接单</td>
+                                        <td>待审核</td>
+                                        <td></td>
+                                        <td>仅退款</td>
+                                        <td>
+                                            <a style="color:blue;" href="javascript:;" onclick="x_admin_show('查看详情','./order-info.html')">查看</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="refuse()">拒绝</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="getOrder()">接单</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="sendType()">发货</a>
+                                            <a style="color:blue;" href="javascript:;" onclick="transfer()">转账</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">2</div>
+                            <div class="layui-tab-item">3</div>
+                            <div class="layui-tab-item">4</div>
+                            <div class="layui-tab-item">5</div>
+                            <div class="layui-tab-item">6</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   <div id="user-dialog" style="display: none;">
+      <p><i class="layui-icon layui-icon-username" style="font-size: 24px; margin-right:10px;"></i>  <span>张亮</span></p>
+      <p><i class="layui-icon layui-icon-cellphone" style="font-size: 24px; margin-right:10px;"></i>  <span>18520807514</span></p>
+      <p><i class="layui-icon layui-icon-location" style="font-size: 24px; margin-right:10px;"></i>  <span>福田区八卦岭371栋</span></p>
+   </div>
+
+  <div id="refuse" style="display: none;">
+      <form class="layui-form" action="" style="margin-top:60px;">
+          <div class="layui-form-item">
+              <label class="layui-form-label" style="width:120px;"><span class="x-red">*</span>请选择拒绝原因：</label>
+              <div class="layui-input-inline">
+                  <select name="modules" lay-verify="required" lay-search="">
+                      <option value="">请选择</option>
+                      <option value="">1</option>
+                      <option value="1">2</option>
+                      <option value="2">3</option>
+                  </select>
+              </div>
+          </div>
+          <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">备注：</label>
+              <div class="layui-input-block">
+                  <textarea style="width:300px;" placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+          </div>
+      </form>
+  </div>
+
+  <div class="transfer" >
+       <p>订单总金额：￥1110</p>
+       <p>订单总金额：￥1110</p>
+       <p>运费：￥1110</p>
+       <p>应退金额：￥1110</p>
+      <div class="clearfix x-left transfer-inp" >
+          <label for="" class="x-left">实退金额：￥</label>
+          <input type="text" class="x-left"  placeholder=""></div>
+  </div>
+
+   <div class="send-type">
+      <p style="text-align: center; margin:30px 0; font-size:16px;">请勾选发货方式</p>
+       <div class="layui-form-item">
+           <form class="layui-form" action="">
+           <div class="layui-input-block">
+               <input type="radio" name="type" value="无需发货" title="无需发货" checked="">
+               <div style="height:34px;line-height: 34px;"><input type="radio" name="type" value="自配送" title="自配送"><span style="color:#999;">店铺自己配送，无需物流公司配送</span></div>
+               <div><input type="radio" name="type" value="第三方物流" title="第三方物流"><span style="color:#999;">选择物流公司配送订单</span></div>
+           </div>
+           </form>
+       </div>
+   </div>
+    <script>
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#start' //指定元素
+            });
+
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#end' //指定元素
+            });
+        });
+
+        /*用户-停用*/
+        function member_stop(obj, id) {
+            layer.confirm('确认要停用吗？', function (index) {
+
+                if ($(obj).attr('title') == '启用') {
+
+                    //发异步把用户状态进行更改
+                    $(obj).attr('title', '停用')
+                    $(obj).find('i').html('&#xe62f;');
+
+                    $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html(
+                        '已停用');
+                    layer.msg('已停用!', {
+                        icon: 5,
+                        time: 1000
+                    });
+
+                } else {
+                    $(obj).attr('title', '启用')
+                    $(obj).find('i').html('&#xe601;');
+
+                    $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html(
+                        '已启用');
+                    layer.msg('已启用!', {
+                        icon: 5,
+                        time: 1000
+                    });
+                }
+
+            });
+        }
+
+        /*用户-删除*/
+        function member_del(obj, id) {
+            layer.confirm('确认要删除吗？', function (index) {
+                //发异步删除数据
+                $(obj).parents("tr").remove();
+                layer.msg('已删除!', {
+                    icon: 1,
+                    time: 1000
+                });
+            });
+        }
+
+
+
+        function delAll(argument) {
+
+            var data = tableCheck.getData();
+
+            layer.confirm('确认要删除吗？' + data, function (index) {
+                //捉到所有被选中的，发异步进行删除
+                layer.msg('删除成功', {
+                    icon: 1
+                });
+                $(".layui-form-checked").not('.header').parents('tr').remove();
+            });
+        }
+
+        // 用户信息提示框
+        function userInfo(){
+            layer.open({
+                type: 1,
+                btn:'确定',
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                btnAlign: 'c',
+                title: "用户信息", //标题
+                area: ['300px', '300px'],
+                offset: 'c', //右下角弹出
+                content: $("#user-dialog"), //iframe的url，no代表不显示滚动条
+            });
+        }
+
+
+
+        // 拒绝提示框
+        function refuse(){
+            layer.open({
+                type: 1,
+                btn:["取消","确定"],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                btnAlign: 'c',
+                title: "拒绝", //标题
+                area: ['480px', '400px'],
+                offset: 'c', //右下角弹出
+                content: $("#refuse"), //iframe的url，no代表不显示滚动条
+            });
+        }
+        
+        function getOrder() {
+            layer.open({
+                type: 1,
+                btn:["取消","确定"],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                btnAlign: 'c',
+                title: "接单", //标题
+                area: ['220px', '220px'],
+                offset: 'c', //右下角弹出
+                content: "<p style='text-align: center;margin-top:30px;'>确认接单吗？</p>", //iframe的url，no代表不显示滚动条
+            });
+
+        }
+
+        // 转账提示框
+        function transfer(){
+            layer.open({
+                type: 1,
+                btn:["取消","转账"],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                btnAlign: 'c',
+                title: "转账", //标题
+                area: ['400px', '400px'],
+                offset: 'c', //右下角弹出
+                content: $(".transfer"), //iframe的url，no代表不显示滚动条
+            });
+        }
+
+
+        // 发货弹框
+        function sendType(){
+            layer.open({
+                type: 1,
+                btn:["取消","确定"],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                btnAlign: 'c',
+                title: "用户信息", //标题
+                area: ['400px', '400px'],
+                offset: 'c', //右下角弹出
+                content: $(".send-type"), //iframe的url，no代表不显示滚动条
+            });
+        }
+    </script>
+</body>
+
+</html>

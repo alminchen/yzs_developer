@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/myAddress.css">
+    <link rel="stylesheet" href="../../css/citySelect/citySelect.css">
+    <title>我的收货地址</title>
+</head>
+
+<body>
+    <div class="myaddress-main" id="myAddress">
+        <div class="myaddress-inner">
+            <div class="tips">注：收货地址中如存在体验店、母婴店、自提、旁边、附近、隔壁、后面等词汇，可能造成清关不通过，建议您修改！</div>
+            <div class="address_show">
+                <div class="list_address">
+                    <ul>
+                        <li class="address" v-for="(item, index) in 5" :key="index" :class="index==0?'on':''">
+                            <div class="list_inner" :class="index==0?'on':''">
+                                <p class="first">
+                                    <span class="name">张三</span>
+                                    <span class="del" @click.stop="delAddress"></span>
+                                    <span class="edit" @click.stop="editAddress"></span>
+                                </p>
+                                <p class="phone">12234567890</p>
+                                <p class="address">广东省 深圳市 福田区</p>
+                                <p class="detail_address">八卦岭地铁站B出口541栋 汉富中心3楼303云之商科技有限公司</p>
+                                <span :class="index==0?'default':''" v-if="index==0&&defaultImg">默认地址</span>
+                            </div>
+                            <div class="fix_address" style="display:none;">
+                                <div class="inner_fix">
+                                    <div class="ipt"><input type="text" placeholder="收货人姓名"></div>
+                                    <div class="ipt"><input type="text" placeholder="手机号码"></div>
+                                    <div class="add_select">
+                                        <div class="city-picker-selector" :id="'citysSelect'+index"></div>
+                                    </div>
+                                    <div class="ipt"><input type="text" placeholder="详细地址"></div>
+                                    <div class="add_btn">
+                                        <span class="cancel" @click.stop="hideAddress">取消</span><span class="sure"
+                                            @click.stop="saveAddress">确定</span>
+                                    </div>
+                                    <div class="saveDefault">
+                                        <span class="default_save" @click.stop="saveAndSetDefault">保存并设为默认地址</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="add_address">
+                            <div class="add_inner" @click.stop="addAddress"></div>
+                            <div class="fix_address" id="add_select" style="display:none;">
+                                <div class="inner_fix">
+                                    <div class="ipt"><input type="text" placeholder="收货人姓名"></div>
+                                    <div class="ipt"><input type="text" placeholder="手机号码"></div>
+                                    <div class="add_select">
+                                        <div class="city-picker-selector" id="city-picker-selector2"></div>
+                                    </div>
+                                    <div class="ipt"><input type="text" placeholder="详细地址"></div>
+                                    <div class="add_btn">
+                                        <span class="cancel" @click.stop="hideAddress">取消</span><span class="sure"
+                                            @click.stop="saveAddress">确定</span>
+                                    </div>
+                                    <div class="saveDefault">
+                                        <span class="default_save" @click.stop="saveAndSetDefault">保存并设为默认地址</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/citySelect/citydata.min.js"></script>
+<script src="../../js/citySelect/cityPicker-2.0.3.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#myAddress",
+        data: {
+            defaultImg: true,
+        },
+        methods: {
+            editAddress: function (e) {
+                var id = $(e.target).parent().parent().siblings().find('.city-picker-selector').prop('id');
+                var par1 = $(e.target).parent().parent();
+                var par2 = $(e.target).parent().parent().siblings();
+                // par1.hide();
+                par1.parent().siblings().find('.fix_address').hide();
+                par1.parent().siblings().find('.list_inner').fadeIn();
+                par2.fadeIn('slow');
+                this.citySelect(id, '广东省, 广州市,天河区')
+            },
+            citySelect: function (id, area) {
+                var selector1 = $('#' + id).cityPicker({
+                    dataJson: cityData,
+                    renderMode: true,
+                    search: false,
+                    autoSelected: false,
+                    code: 'cityCode',
+                    level: 3,
+                    onChoiceEnd: function () {
+                        console.log(this.values)
+                        // 选择完的地址提交 ajax可以在这里执行
+                    }
+                });
+                selector1.setCityVal(area)
+            },
+            addAddress: function () {
+                // $('.add_inner').hide();
+                $('#add_select').fadeIn();
+                var selector2 = $('#city-picker-selector2').cityPicker({
+                    dataJson: cityData,
+                    renderMode: true,
+                    search: false,
+                    autoSelected: false,
+                    code: 'cityCode',
+                    level: 3,
+                    onChoiceEnd: function () {
+                        console.log(this.values)
+                    }
+                });
+            },
+            hideAddress: function (e) {
+                var par1 = $(e.target).parent().parent().parent();
+                var par2 = $(e.target).parent().parent().parent().siblings();
+                par1.hide();
+                // par2.fadeIn();
+            },
+            saveAddress: function (e) {
+                var par1 = $(e.target).parent().parent().parent();
+                var par2 = $(e.target).parent().parent().parent().siblings();
+                par1.hide();
+                par2.fadeIn();
+            },
+            saveAndSetDefault: function (e) {
+                var par1 = $(e.target).parent().parent().parent();
+                var par2 = $(e.target).parent().parent().parent().siblings();
+                par1.hide();
+                // par2.fadeIn();
+            },
+            delAddress: function (e) {
+                $(e.target).parent().parent().parent().remove();
+            }
+        }
+    })
+</script>
+
+</html>

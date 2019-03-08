@@ -1,0 +1,51 @@
+*,
+::after,
+::before,
+div {
+    box-sizing: border-box;
+}
+
+.idcard-mian {
+    width: 100%;
+    overflow: hidden;
+}
+
+.idcard-mian .idcard-inner {
+    padding: 0 20px;
+    margin-top: 40px;
+}
+
+.idcard-inner ul {
+    overflow: hidden;
+    margin-left: -15px;
+}
+
+.idcard-inner li {
+    width: 300px;
+    height: 90px;
+    float: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #222;
+    margin: 0 0 15px 15px;
+    padding: 0 13px;
+}
+
+.idcard-inner .list.on{
+    background: url(../images/idcard_select.png) no-repeat left center;
+    border: none;
+}
+.idcard-inner p {
+    line-height: 44px;
+    text-indent: 10px;
+}
+
+.idcard-inner p.name {
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.idcard-inner .add{
+    padding: 0;
+    border: none;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>账单详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/keeper.min.css">
+    <!-- <link rel="stylesheet" href="../../css/billingDetails.min.css"> -->
+</head>
+
+<body>
+    <section class="g-flexview" id="billingDetails">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center">
+                <div class="navbar-ipt">
+                    <span class="navbar-title">账单详情</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="drag"></div>
+            <div class="billing-wrap">
+                <div class="billing-pic-text">
+                    <div class="billing-pic-bank">
+                        <img src="../../images/keeper/shopowner__bank.png" alt="">
+                    </div>
+                    <div class="billing-text">资产提现-到中国工商银行</div>
+                    <div class="billing-price">-800.00</div>
+                </div>
+                <div class="billing-msg">
+                    <ul class="billing-ul">
+                        <li class="billing-li">
+                            <div class="billing-inner">
+                                <div class="billing-left">当前状态</div>
+                                <div class="billing-right billing-wrait">提现申请中请耐心等候</div>
+                            </div>
+                        </li>
+                        <li class="billing-li" v-if="status">
+                            <div class="billing-inner">
+                                <div class="billing-left">失败原因</div>
+                                <div class="billing-right">提现超额</div>
+                            </div>
+                        </li>
+                        <li class="billing-li">
+                            <div class="billing-inner">
+                                <div class="billing-left">提现金额</div>
+                                <div class="billing-right">￥800.00</div>
+                            </div>
+                        </li>
+                        <li class="billing-li">
+                            <div class="billing-inner">
+                                <div class="billing-left">手续费</div>
+                                <div class="billing-right">￥0.08</div>
+                            </div>
+                        </li>
+                        <li class="billing-li">
+                            <div class="billing-inner">
+                                <div class="billing-left">申请时间</div>
+                                <div class="billing-right">2018-11-11 12:00:00</div>
+                            </div>
+                        </li>
+                        <li class="billing-li" v-if="!status">
+                            <div class="billing-inner">
+                                <div class="billing-left">到账时间</div>
+                                <div class="billing-right">2018-11-14 12:00:00</div>
+                            </div>
+                        </li>
+                        <li class="billing-li">
+                            <div class="billing-inner">
+                                <div class="billing-left">提现方式</div>
+                                <div class="billing-right">中国工商银行</div>
+                            </div>
+                        </li>
+                        <li class="billing-li">
+                            <div class="billing-inner">
+                                <div class="billing-left">流水号</div>
+                                <div class="billing-right">12121212121212121</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- <footer class="m-tabbar">
+            <a href="#" class="tabbar-item tabbar-active">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">首页</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">分类</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">进货车</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">我的</span>
+            </a>
+        </footer> -->
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#billingDetails",
+            data() {
+                return {
+                    num: 0,
+                    status:false
+                }
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

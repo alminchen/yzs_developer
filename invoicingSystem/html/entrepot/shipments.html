@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>货区设置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../../js/layui/css/layui.css?v=2.2.2" media="all">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css?v2.0.1-simple" media="all">
+    <style>
+        .layui-form.pro{ overflow-y: hidden;overflow-x: scroll;margin-bottom: 10px;}
+        .layui-form.pro .scrollBox{
+            width: 150%;
+            overflow: hidden;
+        }
+        #add_subdata .layui-input,
+            .layui-textarea {
+                width: 250px;
+            }
+            .layui-textarea{
+                resize: none;
+            }
+        #add_subdata label{
+            width: 112px;
+            display: inline-block;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-fluid larry-wrapper">
+        <div class="layui-row layui-col-space30">
+            <div class="layui-col-xs24">
+                <!--头部搜索-->
+                <!-- &#xe654; -->
+                <section class="panel panel-padding">
+                    <form class="layui-form" action="">
+                        <div class="layui-form">
+                            <div class="layui-inline">
+                                <button lay-submit class="layui-btn layui-btn-primary" type="button" onclick="addOpen(this)"><i
+                                        class="layui-icon">&#xe654;</i>
+                                    添加</button>
+                            </div>
+                            <!-- <div class="layui-inline" style="margin-left:20px;">
+                                <button lay-submit class="layui-btn layui-btn-primary" type="button">API授权</button>
+                            </div> -->
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">地区编号：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">地区名称：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                </div>
+                            </div>
+                            <!-- <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">仓库名称：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                </div>
+                            </div> -->
+                            <div class="layui-inline">
+                                <button lay-submit class="layui-btn layui-btn-primary" lay-filter="search" type="button">查询</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!--列表-->
+                <section class="panel panel-padding">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-form pro">
+                                <div class="scrollBox">
+                                    <table class="layui-table">
+                                        <thead>
+                                            <tr>
+                                                <th width="2%">
+                                                    <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i
+                                                            class="layui-icon"></i></div>
+                                                </th>
+                                                <th>序号</th>
+                                                <th>货主编号</th>
+                                                <th>寄件省</th>
+                                                <th>寄件省代码</th>
+                                                <th>寄件市</th>
+                                                <th>寄件市代码</th>
+                                                <th>寄件区县</th>
+                                                <th>寄件区县代码</th>
+                                                <th>寄件人电话</th>
+                                                <th>寄件人省份证号</th>
+                                                <th>寄件人姓名</th>
+                                                <th>详细地址</th>
+                                                <th>默认地址</th>
+                                                <th>创建人</th>
+                                                <th>创建时间</th>
+                                                <th>修改人</th>
+                                                <th>修改时间</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary"
+                                                        data-id="1"><i class="layui-icon"></i></div>
+                                                </td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                                <td>10</td>
+                                                <td>11</td>
+                                                <td>21</td>
+                                                <td>31</td>
+                                                <td>41</td>
+                                                <td>51</td>
+                                                <td>61</td>
+                                                <td>71</td>
+                                                <td>81</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary"
+                                                        data-id="2"><i class="layui-icon"></i></div>
+                                                </td>
+                                                <td>w</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                                <td>11</td>
+                                                <td>21</td>
+                                                <td>31</td>
+                                                <td>41</td>
+                                                <td>51</td>
+                                                <td>61</td>
+                                                <td>71</td>
+                                                <td>81</td>
+                                                <td>91</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="layui-form">
+                                <div class="layui-inline">
+                                    <button lay-submit class="layui-btn layui-btn-primary" type="button" onclick="editData(this)"><i
+                                            class="layui-icon">&#xe642;</i>修改</button>
+                                </div>
+                                <div class="layui-inline" style="margin-left:20px;">
+                                    <button lay-submit class="layui-btn layui-btn-primary" type="button" onclick="delRow(this)"><i
+                                            class="layui-icon">&#xe640;</i>删除</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="add_subdata layui-fluid larry-wrapper" id="add_subdata">
+        <div class=" panel panel-padding layui-col-xs24">
+            <form class="layui-form " action="">
+                <div class="layui-form-pane">
+                    <div class="layui-inline">
+                        <label>货主编码：</label>
+                        <div class="layui-input-inline">
+                            <select name="city" jq-verify="required" jq-error="请选择地区" lay-filter="verify">
+                                <option value=""></option>
+                                <option value="0">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-pane">
+                    <div class="layui-inline">
+                        <label for="">寄件人：</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-pane">
+                    <div class="layui-inline">
+                        <label for="">寄件人身份证号：</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="keyword" placeholder="" autocomplete="off" maxlength="18">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-pane">
+                    <div class="layui-inline">
+                        <label for="">联系电话：</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="keyword" placeholder="" autocomplete="off" maxlength="11">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-pane">
+                    <div class="layui-inline">
+                        <label>省市区：</label>
+                        <div class="layui-input-inline">
+                            <select name="city" jq-verify="required" jq-error="请选择地区" lay-filter="verify">
+                                <option value=""></option>
+                                <option value="0">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-pane">
+                    <div class="layui-inline">
+                        <label for="">寄件详细地址：</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="margin-top:20px;">
+                    <div class="layui-input-block" style="margin-left:50px;">
+                        <button class="layui-btn" jq-submit="" jq-filter="submit" type="button">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script src="../../js/layui/layui.js"></script>
+<script src="../../js/common.js"></script>
+<!-- <script type="text/javascript" src="../../js/version.js"></script> -->
+<script>
+    // layui.use('cat-list');
+    var $, layer, form;
+    layui.use(['jquery', 'layer', 'form'], function () {
+        $ = layui.$, layer = layui.layer, form = layui.form;
+        $(".layui-form-checkbox").click(function (event) {
+            if ($(this).hasClass('layui-form-checked')) {
+                $(this).removeClass('layui-form-checked');
+                if ($(this).hasClass('header')) {
+                    $(".layui-form-checkbox").removeClass('layui-form-checked');
+                }
+            } else {
+                $(this).addClass('layui-form-checked');
+                if ($(this).hasClass('header')) {
+                    $(".layui-form-checkbox").addClass('layui-form-checked');
+                }
+            }
+        });
+    });
+
+
+    function addOpen(arg) {
+        layer.open({
+            type: 1,
+            title: "添加/修改发货地址信息",
+            content: $("#add_subdata"),
+            closeBtn: "1",
+            shade: .3,
+            shadeClose: true,
+            scrollbar: true,
+            area: ['500px', '500px'],
+            success: function () {
+                // 按钮点击操作在这里完成
+            }
+        })
+    };
+
+    function delRow(arg) {
+        var select = $(arg).parent().parent().siblings().find("tbody .layui-form-checked");
+        if (select.length == 0) {
+            layer.msg('请先选择想要删除的项目', {
+                icon: 2,
+                time: 2000
+            }, function () {
+                return false;
+            });
+            return false;
+        };
+        layer.confirm('确定删除吗？', {
+            icon: 3,
+            title: '提示'
+        }, function (index) {
+            if ($('.layui-unselect.header.layui-form-checkbox').hasClass("layui-form-checked")) {
+                $('.layui-unselect.header.layui-form-checkbox').removeClass("layui-form-checked");
+            }
+            $(arg).parent().parent().siblings().find("tbody .layui-form-checked").parent().parent().remove();
+            layer.close(index);
+        })
+    };
+
+    function editData(arg) {
+        var select = $(arg).parent().parent().siblings().find("tbody .layui-form-checked");
+        if (select.length > 1 || select.length == 0) {
+            layer.msg('请选择需要编辑的项目并且只能编辑一个', {
+                icon: 2,
+                time: 2000
+            }, function () {
+                if ($('.layui-unselect.header.layui-form-checkbox').hasClass("layui-form-checked")) {
+                    $('.layui-unselect.header.layui-form-checkbox').removeClass("layui-form-checked");
+                };
+                $(arg).parent().parent().siblings().find("tbody .layui-unselect.layui-form-checkbox").removeClass(
+                    "layui-form-checked");
+                return false;
+            });
+            return false;
+        };
+        layer.open({
+            type: 1,
+            title: "添加/修改发货地址信息",
+            content: $("#add_subdata"),
+            closeBtn: "1",
+            shade: .3,
+            shadeClose: true,
+            scrollbar: true,
+            area: ['500px', '500px'],
+            success: function () {
+                var id = $(arg).parent().parent().siblings().find("tbody .layui-form-checked").attr(
+                    'data-id');
+                console.log(id);
+            }
+        })
+    };
+</script>
+
+</html>

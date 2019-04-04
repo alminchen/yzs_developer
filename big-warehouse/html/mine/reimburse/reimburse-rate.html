@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>申请退款</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../../css/ydui.css?v=2">
+    <script src="../../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../../css/reimburse-rate.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="reimburse">
+
+        <header class="m-navbar">
+            <a href="JavaScript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">申请退款</span></div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="rate-main">
+                <div class="rate-head">
+                    <div class="rate-time">
+                        <span class="text">您还有6天26分30秒处理退货信息</span>
+                        <span class="countdown">如果您逾期未退货，本次退货将关闭</span>
+                    </div>
+                    <div class="time-pic">
+                        <img src="../../../images/time_03.png" alt="">
+                    </div>
+                </div>
+                <div class="rate-step">
+                    <h3>退款进度</h3>
+                    <div class="step-by-step">
+                        <dl v-for="(item,index) in 3" ::key="index">
+                            <i :class="index == 0?'success':''"></i>
+                            <dt>审核通过</dt>
+                            <dd>2018-10-22 12:00:00</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="rate-address">
+                    <h3>退货地址</h3>
+                    <div class="address">广东省深圳市福田区八卦三路八卦岭地铁站B出口云之商科技有限公司</div>
+                </div>
+            </div>
+        </div>
+        <!-- <footer class="m-tabbar refund-foot">
+            <div class="concat-wrap">
+                <span class="concat">联系客服</span>
+            </div>
+        </footer> -->
+    </section>
+    <script src="../../../js/jquery-2.1.1.js"></script>
+    <script src="../../../js/swiper.min.js"></script>
+    <script src="../../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#reimburse",
+            data() {
+                return {
+                    message: 1,
+                    showAndClose: true,
+                    indexList: []
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

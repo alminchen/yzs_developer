@@ -1,0 +1,571 @@
+html,
+body {
+    overflow: hidden;
+}
+.m-navbar{
+    display: none;
+    opacity: 0;
+    height: 0;
+    transition: display 1s,opacity 1s,height 1s;
+}
+.banner {
+    height: 7.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner span.back_idx{
+    display: inline-block;
+    width: .6rem;
+    height: .6rem;
+    background: url(../images/detail_bax.png) no-repeat left center;
+    background-size: 100% 100%;
+    position: absolute;
+    left: .3rem;
+    top: .2rem;
+    z-index: 231;
+}
+.banner .swiper-pagination {
+    left: auto;
+    right: 7px;
+    bottom: 7px;
+    width: auto;
+    padding: 2px 7px;
+    border-radius: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, .3);
+}
+
+.buy_area {
+    padding-top: .28rem;
+}
+
+.buy_price {
+    /* padding: 0 .2rem; */
+    height: 1rem;
+    /* line-height: 1rem; */
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    -o-display: flex;
+    display: flex;
+}
+
+.buy_price .price {
+    flex: 1;
+    padding-left: .2rem;
+    font-size: .42rem;
+    color: #fff;
+    background: rgb(245, 23, 74);
+    position: relative;
+}
+
+.buy_price .price.midd{
+    line-height: 1rem;
+}
+.buy_price .price::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: .3rem solid transparent;
+    border-bottom: 1rem solid rgb(245, 23, 74);
+    position: absolute;
+    right: -.32rem;
+    top: -.3rem
+}
+
+.buy_price .attention {
+    font-family: "Microsoft YaHei";
+    width: 2.76rem;
+    text-align: right;
+    line-height: 1rem;
+    padding-right: .2rem;
+    background: rgb(245, 85, 13);
+    font-size: .3rem;
+    color: rgb(38, 30, 178)
+}
+
+.buy_price .hight-price {
+    margin-right: .38rem
+}
+
+.buy_price .inventory {
+    /* font-weight: normal; */
+    font-size: .3rem;
+    padding: .1rem .2rem;
+    border-radius: 5px;
+    color: rgb(245, 85, 13);
+    border: 2px solid rgb(245, 85, 13)
+}
+
+.buy_area .fn_wrap {
+    padding: .4rem .2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.buy_area .fn_wrap .fn.fn_goods_name {
+    min-height: 36px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding-right: 1rem;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.buy_area .fn_wrap .share{
+    display: inline-block;
+    width: 1.12rem;
+    height: .5rem;
+    background: url(../images/detail_share.png) no-repeat left center;
+    background-size: 100% 100%;;
+    position: absolute;
+    right: 0;
+    top: 0.4rem
+}
+.buy_area .fn_wrap .fn {
+    position: relative;
+    color: rgb(34, 34, 34);
+    overflow: hidden;
+    font-size: .3rem;
+    font-weight: 400;
+    line-height: .38rem;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.detail_parms {
+    padding: 0 .2rem;
+}
+
+.detail_gap {
+    padding-top: 0.2rem;
+    background: rgb(248, 248, 248);
+    margin: -1px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.detail_parms .parms_name {
+    font-size: 0.28rem;
+    color: rgb(153, 153, 153);
+    margin: .44rem 0 .3rem 0;
+}
+
+.pad40 {
+    padding-bottom: .4rem
+}
+
+td:first-child {
+    width: 2.1rem;
+    text-align: center;
+}
+
+table {
+    border: 1px solid rgb(242, 242, 242);
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid rgb(242, 242, 242);
+    height: 0.78rem;
+    line-height: .78rem;
+}
+
+td:not(:first-child) {
+    text-indent: 0.2rem;
+}
+
+.pic_ad_txt {
+    padding: 0;
+    overflow: hidden;
+}
+
+.pic_ad_name {
+    padding: 0 .2rem
+}
+
+.pic_and_txt {
+    width: 100%;
+}
+
+.pic_and_txt img {
+    width: 100%;
+    display: block;
+    margin: auto
+}
+
+.pic_and_txt .isToBottom {
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    background: rgb(248, 248, 248);
+    font-size: .28rem;
+    color: rgb(153, 153, 153);
+}
+
+.m-tabbar {
+    height: .98rem;
+    padding: 0;
+}
+
+.m-tabbar a {
+    flex: none;
+}
+
+.m-tabbar a {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+}
+
+.m-tabbar .tabbar-border {
+    width: 1.1rem;
+    position: relative;
+}
+
+.m-tabbar .tabbar-border:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: rgb(241, 241, 241);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tabbar-item .badge {
+    top: .07rem;
+    left: 70%;
+}
+
+.badge-danger {
+    background: #fff;
+    color: rgb(245, 23, 74)
+}
+
+.badge:after {
+    border: 2px solid rgb(245, 23, 74);
+}
+
+.m-tabbar .tabbar-border .icon {
+    display: block;
+    /* width: .36rem;
+    height: .36rem; */
+    background-image: url(../images/bg.png);
+    background-repeat: no-repeat;
+    background-size: 7.5rem;
+    margin: .2rem auto .05rem;
+}
+
+.m-tabbar .tabbar-border .txt {
+    font-family: "Microsoft YaHei";
+    font-size: .2rem;
+    color: rgb(107, 105, 107)
+}
+
+.m-tabbar .tabbar-border .icon1 {
+    width: .27rem;
+    height: .32rem;
+    background-position: -.18rem -9.8rem;
+}
+
+.m-tabbar .tabbar-border .icon2 {
+    width: .35rem;
+    height: .32rem;
+    background-position: -.18rem -10.22rem
+}
+
+.m-tabbar .tabbar-border .icon3 {
+    width: .32rem;
+    height: .32rem;
+    background-position: -.175rem -9.38rem
+}
+
+.m-tabbar .tabber-same {
+    width: 2.1rem;
+    line-height: .98rem;
+    font-size: .3rem;
+    color: #fff;
+}
+
+.m-tabbar .tabbar-rightnow {
+    background: rgb(255, 154, 8)
+}
+
+.m-tabbar .tabbar-addcar {
+    background: rgb(245, 23, 74)
+}
+
+.car-list {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 100%;
+    left: 0;
+    z-index: 11111;
+}
+
+.car-list .cell-item {
+    padding-left: 0;
+}
+
+.car-list .cell-right {
+    padding-right: 0;
+}
+
+.car-list .cell-item:not(:last-child):after {
+    margin-left: 0;
+}
+
+.car-list .cell-left {
+    line-height: .5rem;
+    font-size: .26rem;
+    font-weight: bold;
+    color: rgb(153, 153, 153);
+}
+
+.carlist-inner {
+    width: 100%;
+    height: 10.3rem;
+    background: #fff;
+    /* transform: translateY(1rem) */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1231321;
+    -webkit-transform: translate3d(0, 620px, 0);
+    transform: translate3d(0, 620px, 0);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(0, 0, .25, 1);
+    transition: -webkit-transform .2s cubic-bezier(0, 0, .25, 1);
+    transition: transform .2s cubic-bezier(0, 0, .25, 1);
+    transition: transform .2s cubic-bezier(0, 0, .25, 1), -webkit-transform .2s cubic-bezier(0, 0, .25, 1);
+}
+
+.car-list.show {
+    top: 0;
+}
+
+.carlist-inner .car-main {
+    padding: 0 .2rem;
+    z-index: 2131;
+    position: relative;
+}
+
+
+.car-main .close{
+    width: .3rem;
+    height: .3rem;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 11111;
+    text-align: center
+}
+
+.car-main .close-pic{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/off.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+.car-list.show .carlist-inner {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.car-main .car-top {
+    width: 100%;
+    display: flex;
+    padding-bottom: .56rem;
+    position: relative;
+}
+
+.car-main .car-top::after {
+    content: "";
+    width: 106%;
+    height: 1px;
+    background: rgb(241, 241, 241);
+    position: absolute;
+    left: -.2rem;
+    right: -.2rem;
+    bottom: 0;
+    transform: scaleY(.5);
+    transform-origin: 0 100%;
+}
+
+.car-main .car-pic {
+    width: 2rem;
+    height: 1.58rem;
+    transform: translateY(-0.42rem);
+    margin-right: .3rem;
+}
+
+.car-main .car-pic img {
+    width: 100%;
+    height: 2rem;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.car-main .car-title {
+    flex: 1
+}
+
+.car-main .car-pice {
+    display: block;
+    width: 100%;
+    padding-top: .3rem;
+    padding-bottom: .2rem;
+    font-size: .26rem;
+    color: rgb(34, 34, 34)
+}
+
+.car-main em {
+    margin-left: 3px;
+    color: rgb(245, 23, 74);
+    font-weight: bold
+}
+
+.car-main .car-tit {
+    display: inline-block;
+    font-size: .27rem;
+    color: rgb(34, 34, 34);
+    position: relative;
+    line-height: .38rem
+}
+
+.car-main .car-tit img {
+    display: inline-block;
+    width: .4rem;
+    height: .28rem;
+    vertical-align: text-bottom;
+    margin-right: .1rem
+}
+
+.car-age {
+    width: 100%;
+}
+
+.car-age .car-age-txt {
+    padding: .3rem 0;
+    font-size: .26rem;
+    color: rgb(153, 153, 153);
+    font-weight: bold
+}
+
+.car-age-list {
+    padding-bottom: .3rem
+}
+
+.sameLine {
+    position: relative;
+}
+
+.sameLine::after {
+    content: "";
+    width: 106%;
+    height: 1px;
+    background: rgb(241, 241, 241);
+    position: absolute;
+    left: -.2rem;
+    right: -.2rem;
+    bottom: 0;
+    transform: scaleY(.5);
+    transform-origin: 0 100%;
+}
+
+.car-age-list li {
+    width: 1.42rem;
+    height: .56rem;
+    line-height: .56rem;
+    text-align: center;
+    border: 1px solid rgb(228, 228, 228);
+    color: rgb(34, 34, 34);
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: .28rem;
+    margin-bottom: .1rem
+}
+
+.car-age-list .car-age-active {
+    border: 1px solid rgb(245, 23, 74);
+    color: rgb(245, 23, 74)
+}
+
+.car-main .car-nums {
+    padding: .3rem 0;
+    overflow: hidden;
+}
+
+.car-nums .nums-txt {
+    line-height: .5rem;
+    font-size: .26rem;
+    font-weight: bold;
+    color: rgb(153, 153, 153);
+    /* float: left; */
+    display: inline-block;
+    vertical-align: text-bottom
+}
+
+.car-nums .m-spinner {
+    /* float: right; */
+    display: inline-block;
+    vertical-align: sub;
+    margin-left: 60%;
+    border: none
+}
+
+.car-nums .m-spinner>a {
+    height: .5rem;
+    line-height: .5rem;
+    background-color: #fff !important;
+}
+
+.car-nums .m-spinner>input {
+    height: .5rem;
+    background: #F8F8F8;
+}
+
+.car-main .car-btns {
+    padding: .2rem 0;
+    display: flex;
+}
+
+.car-btns span {
+    flex: 1;
+    text-align: center;
+    font-size: .3rem;
+    color: rgb(36, 37, 36);
+    padding: .25rem 0;
+    border-radius: 5px;
+}
+
+.car-btns .btns-lows {
+    background: #fff;
+    border: 1px solid rgb(218, 218, 218);
+    margin-right: .16rem
+}
+
+.car-btns .btns-sure {
+    background: rgb(245,23,74);
+    color: #fff
+}

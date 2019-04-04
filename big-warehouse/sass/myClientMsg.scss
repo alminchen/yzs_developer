@@ -1,0 +1,116 @@
+$fontSize30:.3rem;
+$color333:#333;
+$colorEcecec:#ececec;
+$wid80:.8rem;
+$color999:#999;
+$fontSize26:.26rem;
+$colorF52555:#f52555;
+
+// img {
+//     display: block;
+//     width: 100%;
+// }
+
+#myClientMsg .cell-item:not(:last-child):after {
+    width: 95%;
+    border-color: $colorEcecec;
+}
+
+#myClientMsg .g-scrollview {
+    background: #fff;
+
+    &:after {
+        border: none;
+        height: 0;
+    }
+
+    .drag {
+        width: 100%;
+        height: .2rem;
+        background: #f8f8f8;
+    }
+}
+
+#myClientMsg .m-cell {
+    margin-bottom: 0;
+    margin-top: .2rem;
+
+    &:after {
+        border: none;
+    }
+
+    .pic80 {
+        width: $wid80;
+        height: $wid80;
+    }
+
+    .sameRight {
+        color: $color999;
+        font-size: $fontSize30;
+        font-weight: 400
+    }
+
+    .colorRight {
+        font-size: $fontSize30;
+        color: $colorF52555;
+    }
+}
+
+
+.myclientmsg-order-head {
+    width: 100%;
+    height: $wid80;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    font-size: $fontSize30;
+    color: $color333;
+    justify-content: center;
+    background: #f8f8f8;
+
+    .mylicentmsg-span-same {
+        display: inline-block;
+        width: 2.3rem;
+    }
+
+    .mylicentmsg-span-other {
+        flex: 1
+    }
+}
+
+.myclientmsg-orders-list {
+    .myclientmsg-orders-li {
+        border-bottom: 1px solid $colorEcecec;
+    }
+
+    .myclientmsg-orders-inner {
+        width: 100%;
+        display: flex;
+        text-align: center;
+
+        span {
+            display: block;
+            height: 1.1rem;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+        }
+    }
+
+    .sameSpan {
+        width: 2.3rem;
+        text-align: center;
+        font-size: $fontSize26;
+        color: $color999;
+    }
+
+    .myclientmsg-orders-numbers {
+        flex: 1;
+        color: $colorF52555;
+        font-size: $fontSize26;
+        font-weight: bold
+    }
+
+}

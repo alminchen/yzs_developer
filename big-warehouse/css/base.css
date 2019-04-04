@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+body {
+  font-family: 'Microsoft yahei';
+  background-color: #f6f3f7;
+}
+img {
+  display: block;
+}
+ul,
+li,
+ol {
+  list-style: none;
+}
+a {
+  display: block;
+  text-decoration: none;
+}
+/*# sourceMappingURL=base.css.map */

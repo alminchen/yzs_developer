@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>门店注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/mobileSelect.css">
+    <link rel="stylesheet" href="../../css/store.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="storeIndex">
+
+        <header class="m-navbar">
+            <!-- <a href="#" class="navbar-item"><i class="back-ico"></i></a> -->
+            <div class="navbar-center"><span class="navbar-title">门店注册</span></div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="store-main">
+                <div class="store-intro">
+                    <div class="intro-inner">
+                        <div class="intro-txt">货栈包括香港货栈和国内云之商货栈。公司以诚信共赢、开创经营理念，创造良好的企业环境，以全新的管理模式，完善的IT技术，周到的服务，卓越的品质为生存根本，我们始终坚持用户至上用心服务于客户，坚持用自己的服务去打动客户。云之商货栈是一家IT、物流、金融服务、以跨境业务为</div>
+                        <span class="more"></span>
+                    </div>
+                </div>
+                <div class="store-data">
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine tel">
+                            <div class="cell-left">手机号码</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right"><input type="text" class="cell-input" placeholder="请输入手机号码（该手机号码作为登录的账号）"
+                                    maxlength="11" /></div>
+                        </div>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine code ">
+                            <div class="cell-left">验证码</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right"><input type="text" class="cell-input" placeholder="请输入手机验证码"
+                                    maxlength="6" /></div>
+                            <span class="verifyCode" id="J_GetCode">获取验证码</span>
+                        </div>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine name">
+                            <div class="cell-left">姓名</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right"><input type="text" class="cell-input" placeholder="请输入联系人" /></div>
+                        </div>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine store">
+                            <div class="cell-left">门店名称</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right"><input type="text" class="cell-input" placeholder="请选择您的门店名称" /></div>
+                        </div>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine address">
+                            <div class="cell-left">门店地址</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right cell-arrow"><input type="text" class="cell-input" placeholder="请选择您的门店地址"
+                                    id="J_Address" onfocus="this.blur();"
+                                    unselectable="on" /></div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right"><input type="text" class="cell-input" placeholder="请填写街道号码" /></div>
+                        </div>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine spec">
+                            <div class="cell-left">门店类型</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right cell-arrow"><input type="text" class="cell-input" placeholder="请选择您的门店类型"
+                                    id="J_types" onfocus="this.blur();"
+                                    unselectable="on" /></div>
+                        </div>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item cell-mine inviter">
+                            <div class="cell-left no-m">邀请人</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-right"><input type="text" class="cell-input" placeholder="请输入邀请人手机号码" /></div>
+                        </div>
+                    </div>
+                    <div class="m-cell picno">
+                        <div class="cell-item cell-mine picture">
+                            <div class="cell-left no-m">拍照上传</div>
+                        </div>
+                        <div class="cell-item padd36">
+                            <dl>
+                                <dd>
+                                    <input type="file" name="" id="" accept="image/*">
+                                    <img src="../../images/regist_sc.png" alt="">
+                                </dd>
+                                <dt>门店正面照</dt>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <input type="file" name="" id="" accept="image/*">
+                                    <img src="../../images/regist_sc.png" alt="">
+                                </dd>
+                                <dt>门店内部照</dt>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <input type="file" name="" id="" accept="image/*">
+                                    <img src="../../images/regist_sc.png" alt="">
+                                </dd>
+                                <dt>营业执照</dt>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <input type="file" name="" id="" accept="image/*">
+                                    <img src="../../images/regist_sc.png" alt="">
+                                </dd>
+                                <dt>身份证人像照（选填）</dt>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <input type="file" name="" id="" accept="image/*">
+                                    <img src="../../images/regist_sc.png" alt="">
+                                </dd>
+                                <dt>身份证国徽照（选填）</dt>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="m-cell paddBom">
+                        <div class="radioBtn"><input id="item0" type="checkbox" checked value=""> <label for="item0"
+                                class="radio_label"></label></div>
+                        <span class="txt">我已阅读并同意<a href="">《货栈平台协议》</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="m-tabbar">
+            <a href="javascript:;" class="tabbar-item">
+                <span>提交审核</span>
+            </a>
+        </footer>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script src="../../js/ydui.city.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <script src="../../js/mobileSelect.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#storeIndex",
+            data() {
+                return {
+
+                }
+            },
+            mounted() {
+                //发送验证
+                var $getCode = $('#J_GetCode');
+                /* 定义参数 */
+                $getCode.on('click', function () {
+                    /* ajax 成功发送验证码后调用【start】 */
+                    YDUI.dialog.loading.open('发送中');
+                    $getCode.sendCode({
+                        disClass: 'btn-disabled',
+                        secs: 60,// 时间
+                        run: false,
+                        runStr: '{%s}秒后重新获取', // 点击之后的显示
+                        resetStr: '重新获取验证码' // 时间走完之后显示的文字
+                    });
+                    setTimeout(function () {
+                        $getCode.sendCode('start');
+                        YDUI.dialog.toast('已发送', 'success', 1500);
+                        YDUI.dialog.loading.close();
+                    }, 1500);
+                });
+                // 类别选择
+                var J_Types = ['母婴品类', '美妆类'];
+                var mobileSelect1 = new MobileSelect({
+                    trigger: '#J_types',
+                    title: '请选主营业务',
+                    wheels: [{
+                        data: J_Types // 类别
+                    }],
+                    position: [1], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                    transitionEnd: function (indexArr, data) {
+                        // console.log(data);
+                    },
+                    callback: function (indexArr, data) {
+                        $("#J_types").val(data);
+                    }
+                });
+                // 地址选择
+                var $address = $('#J_Address');
+                $address.citySelect();
+                $address.on('click', function () {
+                    $address.citySelect('open');
+                });
+                $address.on('done.ydui.cityselect', function (ret) {
+                    $(this).val(ret.provance + ' ' + ret.city + ' ' + ret.area);
+                });
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

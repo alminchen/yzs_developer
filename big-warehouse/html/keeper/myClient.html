@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>全部客户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <!-- <link rel="stylesheet" href="../../css/myClient.min.css"> -->
+    <link rel="stylesheet" href="../../css/keeper.min.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="myClient">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center">
+                <div class="navbar-ipt">
+                    <span class="navbar-title">全部客(20)</span>
+                </div>
+            </div>
+            <a href="#" class="navbar-item mySearch">
+                <img src="../../images/keeper/shopowner_search.png" alt="">
+            </a>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="myclient_has">
+                <div class="myclient_head">
+                    <div class="client_head_inner">
+                        <span class="head_title_msg">客户信息</span>
+                        <span class="head_title_count">购买次数</span>
+                        <span class="head_title_time">最近购买时间</span>
+                    </div>
+                </div>
+            </div>
+            <div class="myclicent_list">
+                <ul class="myclient-ul">
+                    <li class="myclient-li" v-for="(item, index) in 10" :key="index">
+                        <a href="">
+                            <div class="myclient-li-inner">
+                                <div class="myclient_has_pic_and_msg">
+                                    <div class="myclient_pic"><img src="../../images/keeper/shopowner_tx.png" alt=""></div>
+                                    <div class="my_client_msg">
+                                        <span class="myclient_name">客户名称</span>
+                                        <span class="myclient_wx_msg">微信号sunwukong</span>
+                                    </div>
+                                </div>
+                                <div class="myclient_buy_count">3</div>
+                                <div class="myclient_buy_time">2018-12-21 21:00:00</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <footer class="m-tabbar">
+            <a href="#" class="tabbar-item tabbar-active">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">首页</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">分类</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">进货车</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">我的</span>
+            </a>
+        </footer> -->
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#myClient",
+            data() {
+                return {
+                    num: 0,
+                    myClientList: [],
+                }
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+                this.getMyClientList();
+                this.myClientLoadMore();
+            },
+            methods: {
+                getMyClientList: function () {
+                    console.log(0)
+                },
+                myClientLoadMore: function () {
+                    var self = this;
+                    var scrollBox = document.querySelector('.g-scrollview');
+                    var scrollHeight = $('.myclicent_list').height();
+                    var winHei = $(window).height();
+                    var time = Math.floor((Number(Math.random() * 500) + 500));
+                    scrollBox.onscroll = function () {
+                        var scrollDistance = scrollBox.scrollTop;
+                        if (scrollDistance + winHei > scrollHeight) {
+                            self.getMyClientList();
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

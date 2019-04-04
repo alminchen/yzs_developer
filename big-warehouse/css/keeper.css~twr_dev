@@ -1,0 +1,602 @@
+.navbar-item .add-ico {
+  display: block;
+  background-image: url(../images/shoper/shopowner_add.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.34rem;
+  height: 0.34rem;
+  margin-right: 0.2rem;
+}
+.income-wrap {
+  background-color: #fff;
+  border-radius: 0.2rem;
+  margin: 0.2rem 0.2rem 0 0.2rem;
+}
+.income {
+  padding: 0.88rem 0;
+  border-bottom: 0.01rem solid #ececec;
+}
+.income-txt {
+  text-align: center;
+  padding: 0 0 0.3rem 0;
+  font-size: 0.3rem;
+  color: #808080;
+}
+.income-num {
+  text-align: center;
+  font-size: 0.48rem;
+  color: #f5174a;
+}
+.yester-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0.3rem;
+}
+.yester-txt {
+  font-size: 0.3rem;
+  color: #808080;
+}
+.shoper-items {
+  background-color: #fff;
+  border-radius: 0.2rem;
+  margin: 0.2rem 0.2rem 0 0.2rem;
+}
+.asset-list {
+  display: flex;
+  padding: 0.36rem 0.3rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.01rem solid #ececec;
+}
+.asset-list:nth-child(2) .asset-icon {
+  background-image: url(../images/shoper/shopowner_customer.png);
+  width: 0.35rem;
+  height: 0.4rem;
+}
+.asset-list:nth-child(3) .asset-icon {
+  background-image: url(../images/shoper/shopowner_assets.png);
+  width: 0.34rem;
+  height: 0.36rem;
+}
+.asset-list:nth-child(4) .asset-icon {
+  background-image: url(../images/shoper/shopowner_share.png);
+  width: 0.33rem;
+  height: 0.33rem;
+}
+.asset-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.asset-txt {
+  font-size: 0.3rem;
+  color: #808080;
+  margin-left: 0.2rem;
+}
+.asset-icon {
+  display: block;
+  background-image: url(../images/shoper/shopowner_menu.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.34rem;
+  height: 0.38rem;
+}
+.asset-arrow {
+  display: block;
+  background-image: url(../images/shoper/shop_right.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.14rem;
+  height: 0.26rem;
+}
+.add-modal {
+  font-size: 0.34rem;
+  z-index: 3;
+  color: #fff;
+  width: 3rem;
+  position: absolute;
+  top: 0.9rem;
+  right: 0.22rem;
+  border-radius: 0.1rem;
+  background-color: #4c4c4c;
+}
+.add-modal li:last-child .modal-asset {
+  border-bottom: 0;
+}
+.add-modal::before {
+  right: 0.2rem;
+  top: -0.18rem;
+  position: absolute;
+  content: "";
+  border-left: 0.15rem solid transparent;
+  border-right: 0.15rem solid transparent;
+  border-bottom: 0.2rem solid #4c4c4c;
+  width: 0;
+}
+.modal-asset {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0.4rem 0 0.4rem 0.36rem;
+  border-bottom: 0.01rem solid #5f5f5f;
+}
+.modal-asset .modal-icon {
+  display: block;
+  background-image: url(../images/shoper/shopowner_account.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.35rem;
+  height: 0.34rem;
+}
+.modal-asset .modal-real {
+  display: block;
+  background-image: url(../images/shoper/shopowner__id.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.34rem;
+  height: 0.34rem;
+}
+.modal-asset .modal-code {
+  display: block;
+  background-image: url(../images/shoper/shopowner_ewm.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.34rem;
+  height: 0.34rem;
+}
+.modal-txt {
+  padding-left: 0.2rem;
+}
+.add-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+.cap-info {
+  font-size: 0.3rem;
+  letter-spacing: 0.02rem;
+  color: #333333;
+}
+.spacing {
+  width: 7.5rem;
+  height: 0.2rem;
+  background-color: #f8f8f8;
+}
+.cash-box {
+  border-bottom: 0.01rem solid #ececec;
+  text-align: center;
+}
+.cash-box .cash-txt {
+  padding: 1rem 0 0.36rem 0;
+  font-size: 0.28rem;
+  letter-spacing: 0.02rem;
+  color: #999999;
+}
+.cash-box .cash-num {
+  font-size: 0.54rem;
+  letter-spacing: 0.03rem;
+  color: #010101;
+  padding-bottom: 1rem;
+}
+.cash-box .cashBtn {
+  width: 6.3rem;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  line-height: 0.88rem;
+  height: 0.88rem;
+  background-color: #f52555;
+  border-radius: 0.05rem;
+  font-size: 0.3rem;
+  letter-spacing: 0.02rem;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+.accounts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.38rem 0.3rem;
+  border-bottom: 0.01rem solid #ececec;
+}
+.accounts-txt {
+  font-size: 0.3rem;
+  letter-spacing: 0.02rem;
+  color: #333333;
+}
+.accounts-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.accounts-box .accounts-num {
+  font-size: 0.3rem;
+  letter-spacing: 0.02rem;
+  color: #f52555;
+}
+.accounts-box .accounts-right {
+  display: block;
+  background-image: url(../images/shoper/shop_right.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.14rem;
+  height: 0.26rem;
+  margin-left: 0.12rem;
+}
+.accounts-box .accounts-gray {
+  font-size: 0.28rem;
+  line-height: 0.36rem;
+  letter-spacing: 0.02rem;
+  color: #999999;
+}
+.declare-box {
+  margin: 0.5rem 0 0 0.3rem;
+}
+.declare {
+  padding-bottom: 0.2rem;
+  font-size: 0.28rem;
+  letter-spacing: 0.02rem;
+  color: #020202;
+}
+.declare .redLab {
+  color: #f52555;
+}
+.declare-info {
+  line-height: 0.4rem;
+  font-size: 0.26rem;
+  letter-spacing: 0.02rem;
+  color: #999999;
+}
+.cash_title {
+  text-align: center;
+  font-size: 0.36rem;
+  letter-spacing: 0.02rem;
+  color: #1d1e22;
+  margin: 0.46rem 0 0.2rem 0;
+}
+.cashType {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.38rem 0.3rem;
+  border-bottom: 0.01rem solid #e4e4e4;
+}
+.cashType:last-child {
+  border-bottom: 0;
+}
+.cashType_txt {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.28rem;
+  letter-spacing: 0.02rem;
+  color: #212829;
+}
+.cashType_txt .cashType_img {
+  display: block;
+  background-image: url(../images/shoper/shopowner__card.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.51rem;
+  height: 0.51rem;
+  margin-right: 0.34rem;
+}
+.cashType_txt .cash_wx {
+  background-image: url(../images/shoper/wc.png);
+}
+.cashType_txt .cash_zfb {
+  background-image: url(../images/shoper/zfb_img.png);
+}
+.type_check {
+  display: block;
+  background-image: url(../images/shoper/shopowner_checked.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.37rem;
+  height: 0.37rem;
+}
+.close_i {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.3rem;
+  background-image: url(../images/shoper/closeIcon.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.27rem;
+  height: 0.26rem;
+}
+.search_icon {
+  display: block;
+  background-image: url(../images/shoper/shopowner_search.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.39rem;
+  height: 0.34rem;
+}
+.account-info {
+  padding-bottom: 0.5rem;
+  margin: 0 0.3rem;
+  border-bottom: 0.01rem solid #ececec;
+}
+.act-list {
+  margin-top: 0.52rem;
+  font-size: 0.28rem;
+  letter-spacing: 0.02rem;
+  color: #999999;
+}
+.act-list .act-num {
+  font-size: 0.28rem;
+  letter-spacing: 0.02rem;
+  color: #333333;
+  margin-left: 0.75rem;
+}
+.act-ads {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.act-ads .ads-man {
+  flex: 0 0 1.3rem;
+}
+.act-right {
+  font-size: 0.28rem;
+  margin-left: 0.75rem;
+}
+.wxInp_box {
+  margin: 0.3rem 0.3rem 0 0.3rem;
+  padding: 0 0.3rem;
+  background-color: #fff;
+  border-radius: 0.1rem;
+}
+.wxInp {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.36rem 0;
+  border-bottom: 0.01rem dashed #999;
+}
+.wxInp .wxInp_txt {
+  margin-right: 0.3rem;
+  font-size: 0.3rem;
+  color: #020202;
+}
+.wxInp .wx_input {
+  font-size: 0.28rem;
+  border: 0;
+  height: 0.38rem;
+  line-height: 0.38rem;
+}
+.wxInp:last-child {
+  border-bottom: 0;
+}
+.wxInp input::-webkit-input-placeholder {
+  color: #999;
+  font-size: 0.28rem;
+  line-height: 0.38rem;
+}
+.wxInp input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #999;
+  font-size: 0.28rem;
+  line-height: 0.38rem;
+}
+.wxInp input:-ms-input-placeholder {
+  color: #999;
+  font-size: 0.28rem;
+  line-height: 0.38rem;
+}
+.next-bind {
+  border-radius: 0.05rem;
+  background-color: #f52555;
+  color: #fff;
+  font-size: 0.32rem;
+  text-align: center;
+  padding: 0.3rem 0;
+  display: block;
+  margin: 0.7rem 0.3rem 0.3rem 0.3rem;
+}
+.wxTips {
+  font-size: 0.28rem;
+  margin: 0 0.6rem 0 0.4rem;
+}
+.wxTips .wxTips_h3 {
+  color: #333;
+}
+.wxTips .wx_red {
+  color: #f52555;
+}
+.wxTips .wxTips_info {
+  color: #8c8c8c;
+  margin-top: 0.15rem;
+}
+.wxInp_box .verify_wx {
+  justify-content: space-between;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.wxInp_box .verify_wx .getBtnC {
+  padding: 0.36rem 0.3rem;
+  border-left: 0.01rem solid #ececec;
+  display: block;
+  font-size: 0.28rem;
+  color: #f52555;
+}
+.wxInp_box .verify_code {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.wxInp_box .selBank {
+  justify-content: space-between;
+}
+.wxInp_box .selBank .selBank_right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.wxInp_box .selBank .selBank_right .selBank_txt {
+  font-size: 0.28rem;
+  color: #999;
+}
+.wxInp_box .selBank .selBank_right .selBank_img {
+  display: block;
+  background-image: url(../images/shoper/shop_right.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.14rem;
+  height: 0.26rem;
+  margin-left: 0.12rem;
+}
+.verify_box {
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+.verify_box .wxInp {
+  border-bottom: 0.01rem solid #ececec;
+}
+.bankType {
+  padding: 0.2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.01rem solid #e4e4e4;
+}
+.bankType .bank_icon {
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  margin-right: 0.35rem;
+}
+.bankType .bank_txt {
+  font-size: 0.3rem;
+  color: #333;
+}
+.bankCancel {
+  text-align: center;
+  padding: 0.3rem 0;
+  font-size: 0.32rem;
+  color: #212829;
+}
+.remind {
+  background-color: #fef8d7;
+  font-size: 0.3rem;
+  color: #515151;
+  padding: 0.1rem 0 0.1rem 0.3rem;
+}
+.cash-right {
+  display: block;
+  background-image: url(../images/shoper/shop_right.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.14rem;
+  height: 0.26rem;
+  margin-left: 0.12rem;
+}
+.cash_wechat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cash_wechat .cash_wx {
+  display: block;
+  background-image: url(../images/shoper/wc.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 0.52rem;
+  height: 0.52rem;
+  margin-right: 0.13rem;
+}
+.cash_wrap {
+  justify-content: space-between;
+}
+.tx_title {
+  font-size: 0.3rem;
+  letter-spacing: 0.02rem;
+  color: #222222;
+  padding: 0.36rem 0 0.28rem 0;
+}
+.tx_box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.42rem 0;
+  border-bottom: 0.01rem solid #ececec;
+}
+.tx_box .tx_m {
+  font-size: 0.64rem;
+  letter-spacing: 0.04rem;
+  color: #222222;
+}
+.tx_inp {
+  border: 0;
+  width: 3rem;
+  height: 0.6rem;
+  font-size: 0.6rem;
+}
+.tx_all {
+  font-size: 0.26rem;
+  letter-spacing: 0.02rem;
+  color: #999999;
+  margin: 0.4rem 0;
+}
+.sureBtn {
+  text-align: center;
+  display: block;
+  height: 0.88rem;
+  line-height: 0.88rem;
+  background-color: #f52555;
+  border-radius: 0.05rem;
+  font-size: 0.3rem;
+  letter-spacing: 0.02rem;
+  color: #ffffff;
+}
+.tx_padding {
+  padding-bottom: 0.4rem;
+}
+.sure_info {
+  border-radius: 0.1rem;
+  background-color: #fff;
+  position: absolute;
+  width: 6.3rem;
+  left: 50%;
+  top: 35%;
+  margin-left: -3.15rem;
+}
+.sure_info h3 {
+  text-align: center;
+  margin: 0.57rem 0 0.47rem 0;
+  color: #333;
+  font-size: 0.34rem;
+}
+.sure_wrap {
+  margin-left: 1.5rem;
+}
+.sure_wrap .sure_txt {
+  font-size: 0.3rem;
+  color: #808080;
+  margin-bottom: 0.1rem;
+}
+.confirm_b {
+  border-top: 0.01rem solid #ececec;
+  margin-top: 0.65rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.confirm_b a {
+  font-size: 0.3rem;
+  width: 50%;
+  height: 0.88rem;
+  line-height: 0.88rem;
+}
+.sure-b {
+  background-color: #f52555;
+  color: #fff;
+}

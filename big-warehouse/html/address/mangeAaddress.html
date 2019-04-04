@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+
+    <link rel="stylesheet" href="../../css/manageAddress.css">
+    <link rel="stylesheet" href="../../layui/css/layui.css">
+    <title>管理收货地址</title>
+</head>
+
+<body>
+    <section class="g-flexview " id="addressAdd">
+         <header class="m-navbar search-edit">
+            <a href="#" class="navbar-item">
+                <i class="back-ico"></i>
+            </a>
+            <div class="navbar-center">
+                <div class="address-search">
+                    <div class="search-inner">
+                        <i class="serach-icon"></i>
+                        <input type="text" placeholder="请输入收货人或手机号码..." @focus="inputFlag" @blur="inputFlag">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="g-scrollview" >
+            <p class="ads-tip">注:收货地址中如存在体验店、母婴店、自提、旁边、附近、 隔壁、后面等词汇，可能造成清关不通过，建议您修改！</p>
+            <div class="no-address" v-if="addressList.length==0 && addShow">
+                <div class="address_pic">
+                    <img src="../../images/address.png" alt="">
+                </div>
+                <span class="no-address-span">您还没有收货地址哟！</span>
+                <div class="tips-address" v-if="addressList.length==0 && showAddress">
+                    <div class="tips-inner">
+                        <p>您的收货地址为空，是否添加新的收货地址</p>
+                        <p>
+                            <span class="cancel" @click="hideMask();">取消</span>
+                            <span class="sureSub" @click="goAddress();">确定</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="address-list" v-if="addressList.length > 0">
+
+                <ul class="address-ul">
+                    <li class="address-li" v-for="(item,index) in list" data-type="0" :key="index">
+                        <div class="list" @touchstart.capture="touchStart" @touchend.capture="touchEnd" @click="skip">
+                            <div class="list-inner">
+                                <div class="radioBtn">
+                                    <input :id="'item'+index" type="radio" name="item" :checked="item.checked" @click="isChecked(index)">
+                                    <label :for="'item'+index" class="radio_label"></label>
+                                </div>
+                                <div class="address_item">
+                                    <ul>
+                                        <li class="item-name">
+                                            <span class="name">张三</span>
+                                            <span class="phone">12345678901</span>
+                                            <span class="default" v-if="item.isDefault==1?true:false">默认</span>
+                                        </li>
+                                        <li class="item-address"> 广东省深圳市福田区八卦岭地铁B出口541栋汉富中心3楼云之商科技有限公司</li>
+                                    </ul>
+                                </div>
+                                <div class="editPic" @click="editAddress">
+                                    <span class="edit"></span>
+                                </div>
+                            </div>
+                            <div class="delete" :data-index="index" @click="deleteItem">删除</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <footer class="m-tabbar">
+            <div class="addNewAddress" @click="goAddress">
+                <span class="add_address" >新增地址</span>
+            </div>
+        </footer>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/ydui.js"></script>
+<script src="../../layui/layui.js"></script>
+<script>
+    layui.use(['layer'], function () {
+        var layer = layui.layer;
+    });
+    var vm = new Vue({
+        el: "#addressAdd",
+        data() {
+            return {
+                showAddress: false,
+                addShow:false,
+                addressList: [],
+                startX: 0,
+                endX: 0,
+                radioSelect: '',
+                isCheck: true,
+                inputBlur:false,
+                list: [{
+                        title: 'Chrome更新了',
+                        tips: '不再支持Flash视频播放',
+                        isDefault: 1,
+                        checked: true
+                    },
+
+                ],
+                managerFlag: false
+            }
+        },
+        mounted() {
+            if(this.list.length >0 ){
+                this.addressList = this.list;
+            }else {
+                this.addShow = true;
+                this.showAddress = true;
+                this.addressList = [];
+            }
+
+        },
+        methods: {
+            inputFlag:function(){
+                this.inputBlur = !this.inputBlur;
+                console.log(this.inputBlur)
+            },
+
+            editAddress: function () {
+                layer.open({
+                    type: 2,
+                    area: ['100%', '100%'],
+                    fix: false, //不固定
+                    maxmin: false,
+                    shadeClose: true,
+                    shade: 0,
+                    title: ['编辑地址', 'text-align:center'],
+                    closeBtn: 0,
+                    content: '../address/changeAddress.html?v=2',
+                });
+            },
+            isChecked: function (index) {
+                // console.log(this.list[index].checked)
+                for (var i in this.list) {
+                    if (index == i) {
+                        this.list[index].checked = true
+                    } else {
+                        this.list[i].checked = false
+                    }
+                }
+                if (this.managerFlag == false) {
+                    return false;
+                } else {
+                    parent.getAddress(this.list[index]);
+                    var idx = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(idx);
+                }
+
+            },
+            hideMask: function () {
+                this.showAddress = false;
+            },
+            goAddress: function () {
+                this.showAddress = false;
+                // window.location.href = './addressAdd.html'
+                layer.open({
+                    type: 2,
+                    area: ['100%', '100%'],
+                    fix: false, //不固定
+                    maxmin: false,
+                    shadeClose: true,
+                    shade: 0,
+                    title: ['新增地址', 'text-align:center'],
+                    closeBtn: 0,
+                    content: './addressAdd.html?v=2',
+                });
+            },
+            skip() {
+                if (this.checkSlide()) {
+                    this.restSlide();
+                } else {
+                    // alert('You click the slide!')
+                }
+            },
+            //滑动开始
+            touchStart(e) {
+                this.startX = e.touches[0].clientX;
+            },
+            //滑动结束
+            touchEnd(e) {
+
+                let parentElement = e.currentTarget.parentElement;
+                this.endX = e.changedTouches[0].clientX;
+
+                if (parentElement.dataset.type == 0 && this.startX - this.endX > 30) {
+                    this.restSlide();
+                    parentElement.dataset.type = 1;
+                }
+
+                if (parentElement.dataset.type == 1 && this.startX - this.endX < -30) {
+                    this.restSlide();
+                    parentElement.dataset.type = 0;
+                }
+
+                this.startX = 0;
+                this.endX = 0;
+            },
+            //判断当前是否有滑块处于滑动状态
+            checkSlide() {
+                let listItems = document.querySelectorAll('.address-li');
+
+                for (let i = 0; i < listItems.length; i++) {
+                    if (listItems[i].dataset.type == 1) {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            restSlide() {
+                let listItems = document.querySelectorAll('.address-li');
+
+                for (let i = 0; i < listItems.length; i++) {
+                    listItems[i].dataset.type = 0;
+                }
+            },
+            //删除
+            deleteItem(e) {
+                let index = e.currentTarget.dataset.index;
+                this.restSlide();
+                this.addressList.splice(index, 1);
+            }
+        },
+    })
+    function getManager(bool){
+        vm.managerFlag = bool;
+    }
+    function getDeatailAddress(){
+        console.log(11)
+    }
+</script>
+
+</html>

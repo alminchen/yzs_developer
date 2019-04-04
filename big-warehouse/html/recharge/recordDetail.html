@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/recordDetail.min.css">
+    <title>账单详情</title>
+</head>
+
+<body>
+    <section class="g-flexview">
+        <header class="m-navbar">
+            <a href="javascript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">账单详情</span>
+            </div>
+        </header>
+        <div class="g-scrollview" id="recordDetail">
+            <div class="drag"></div>
+            <div class="record-detail">
+                <div class="record-type">
+                    <p class="type_money">+2000</p>
+                    <p class="type_orgin">余额充值</p>
+                </div>
+                <div class="record-list">
+                    <dl>
+                        <dd>当前状态</dd>
+                        <dt>充值成功</dt>
+                    </dl>
+                    <dl>
+                        <dd>订单号</dd>
+                        <dt>235659984544555 </dt>
+                    </dl>
+                    <dl>
+                        <dd>充值时间</dd>
+                        <dt>2018-11-26 09：15：24</dt>
+                    </dl>
+                    <dl>
+                        <dd>充值方式</dd>
+                        <dt>微信支付</dt>
+                    </dl>
+                    <dl>
+                        <dd>交易流水号</dd>
+                        <dt>XY201811260902231456 </dt>
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#recordDetail",
+        data: {
+
+        },
+        mounted: function () {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

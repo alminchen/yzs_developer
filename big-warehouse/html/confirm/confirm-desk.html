@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Title</title>
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .quit-dialog{
+            overflow: hidden;
+            width: 6.3rem;
+            height:3.36rem;
+            background-color: #ffffff;
+            border-radius: 0.1rem;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin-left:-3.15rem;
+            margin-top:-1.68rem;
+        }
+        .quit-txt{
+            font-size: 0.34rem;
+            color: #343434;
+            text-align: center;
+            margin-top: 0.7rem;
+        }
+        .quit-btn{
+            border-top:1px solid #ececec;
+            display: flex;
+            border-bottom:1px solid #ececec;
+            margin-top:1.32rem;
+        }
+        .quit-btn a{
+            font-size:0.3rem;
+            line-height:0.88rem;
+            height:0.88rem;
+            text-align: center;
+            width:50%;
+        }
+        .quit-btn a:last-child{
+            color:#fff;
+            background-color: #f52555;;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="g-flexview" id="keyboard">
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title" style="width:45%">收银台</span>
+                <ul class="desk-time">
+                    <li>1</li>
+                    <li>:</li>
+                    <li>59</li>
+                    <li>:</li>
+                    <li>33</li>
+                </ul>
+            </div>
+        </header>
+        <div class="g-scrollview">
+            <div class="desk-wrap">
+                <div class="desk-warn clearfix">
+                    <p class="desk-pay">支付金额：</p>
+                    <p class="desk-pay-num">￥280.00</p>
+                </div>
+                <div class="pay-way">
+                    <p>选择支付方式</p>
+                </div>
+
+                <div class="m-cell">
+                    <div class="cell-item">
+                        <div class="cell-left"><i class="pay-wechat"></i>微信支付</div>
+                        <label class="cell-right">
+                            <input type="radio" name="checkbox" />
+                            <i class="cell-checkbox-icon"></i>
+                        </label>
+                    </div>
+                    <div class="cell-item">
+                        <div class="cell-left"><i class="pay-wechat"></i>支部宝支付</div>
+                        <label class="cell-right">
+                            <input type="radio" name="checkbox" />
+                            <i class="cell-checkbox-icon"></i>
+                        </label>
+                    </div>
+                    <div class="cell-item" >
+                        <div class="cell-left"><i class="pay-wechat"></i>余额</div>
+                        <label class="cell-right">
+                            <input type="radio" name="checkbox" id="J_OpenKeyBoard" />
+                            <i class="cell-checkbox-icon"></i>
+                        </label>
+                    </div>
+                </div>
+                <a href="javascript:;" class="pay-money">立即支付</a>
+            </div>
+        </div>
+        <div class="m-keyboard" id="J_KeyBoard">
+            <!-- 自定义内容区域 -->
+            <div style="text-align: right;padding: .15rem .8rem 0;"><a href="javascript:;" style="color: #666;font-size: .24rem;">忘记密码</a></div>
+            <!-- 自定义内容区域 -->
+        </div>
+    </section>
+
+    <!--退出弹窗-->
+    <div class="dialog-server">
+       <div class="quit-dialog">
+           <p class="quit-txt">您确定要退出吗？</p>
+            <div class="quit-btn">
+                <a href="javascript:;" class="quit-btn1">退出</a>
+                <a href="javascript:;" class="quit-btn1">继续支付</a>
+            </div>
+       </div>
+    </div>
+</body>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/ydui.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#keyboard",
+        mounted() {
+            var $keyboard = $('#J_KeyBoard');
+
+            /* 初始化参数 */
+            $keyboard.keyBoard({
+                disorder: false,
+                /* 是否打乱数字顺序 */
+                title: '货栈安全键盘' /* 显示标题 */
+            });
+
+            /* 打开键盘 */
+            $('#J_OpenKeyBoard').on('click', function () {
+                $keyboard.keyBoard('open');
+            });
+
+            /* 六位密码输入完毕后执行 */
+            $keyboard.on('done.ydui.keyboard', function (ret) {
+                console.log(ret.password)
+                YDUI.dialog.loading.open('验证支付密码');
+                setTimeout(function () {
+                    /* 显示错误信息 */
+                    YDUI.dialog.loading.close();
+                    $keyboard.keyBoard('error', '对不起，您的支付密码不正确，请重新输入。');
+                }, 1500);
+
+                /* 关闭键盘 */
+                /* $keyboard.keyBoard('close'); */
+            });
+        },
+        methods: {
+           
+        }
+    })
+    $(function () {
+        $('.back-ico').click(function () {
+            $('.dialog-server').show();
+
+        })
+        $('.quit-btn1').click(function () {
+            $('.dialog-server').hide();
+        })
+    })
+
+</script>
+
+</html>

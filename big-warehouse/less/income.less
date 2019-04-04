@@ -1,0 +1,170 @@
+.navbar-item .add-ico{
+  display: block;
+  background-image: url(../images/shoper/shopowner_add.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 34/100rem;
+  height:34/100rem;
+  margin-right: 0.2rem;
+
+}
+.income-wrap{
+  background-color: #fff;
+  border-radius: 20/100rem;
+  margin:20/100rem 20/100rem 0 20/100rem;
+}
+.income{
+  padding:88/100rem 0;
+  border-bottom:1/100rem solid #ececec;
+}
+.income-txt{
+   text-align: center;
+   padding:0 0 30/100rem 0;
+   font-size: 30/100rem;
+   color:#808080;
+}
+.income-num{
+  text-align: center;
+
+  font-size: 48/100rem;
+  color:#f5174a;
+}
+.yester-box{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding:35/100rem 30/100rem;
+}
+.yester-txt{
+  font-size: 30/100rem;
+  color:#808080;
+}
+.shoper-items{
+  background-color: #fff;
+  border-radius: 20/100rem;
+  margin:20/100rem 20/100rem 0 20/100rem;
+}
+.asset-list{
+  display: flex;
+  padding:36/100rem 30/100rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1/100rem  solid #ececec;
+  &:nth-child(2){
+    .asset-icon{
+      background-image: url(../images/shoper/shopowner_customer.png);
+      width: 35/100rem;
+      height:40/100rem;
+    }
+  }
+  &:nth-child(3){
+    .asset-icon{
+      background-image: url(../images/shoper/shopowner_assets.png);
+      width: 34/100rem;
+      height:36/100rem;
+    }
+  }
+  &:nth-child(4){
+    .asset-icon{
+      background-image: url(../images/shoper/shopowner_share.png);
+      width: 33/100rem;
+      height:33/100rem;
+    }
+  }
+}
+.asset-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.asset-txt{
+  font-size: 30/100rem;
+  color:#808080;
+  margin-left:20/100rem;
+}
+.asset-icon{
+  display: block;
+  background-image: url(../images/shoper/shopowner_menu.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 34/100rem;
+  height:38/100rem;
+}
+.asset-arrow{
+  display: block;
+  background-image: url(../images/shoper/shop_right.png);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 14/100rem;
+  height:26/100rem;
+}
+.add-modal{
+  font-size:34/100rem;
+  z-index: 3;
+  color:#fff;
+  width:3rem;
+  position:absolute;
+  top:0.9rem;
+  right:0.22rem;
+  border-radius: 10/100rem;
+  background-color: #4c4c4c;
+  li:last-child{
+    .modal-asset{
+      border-bottom:0;
+    }
+  }
+  &::before{
+    right:20/100rem;
+    top:-18/100rem;
+   position: absolute;
+   content: "";
+   border-left:15/100rem solid transparent;
+   border-right:15/100rem solid transparent;
+   border-bottom:20/100rem solid #4c4c4c;
+   width:0;
+  }
+
+}
+.modal-asset{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding:40/100rem 0 40/100rem 36/100rem;
+  border-bottom:1/100rem  solid #5f5f5f;
+
+  .modal-icon{
+    display: block;
+    background-image: url(../images/shoper/shopowner_account.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 35/100rem;
+    height:34/100rem;
+  }
+  .modal-real{
+    display: block;
+    background-image: url(../images/shoper/shopowner__id.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 34/100rem;
+    height:34/100rem;
+  }
+  .modal-code{
+    display: block;
+    background-image: url(../images/shoper/shopowner_ewm.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 34/100rem;
+    height:34/100rem;
+  }
+}
+.modal-txt{
+  padding-left:20/100rem;
+}
+.add-screen{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999
+}

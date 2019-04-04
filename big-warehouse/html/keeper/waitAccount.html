@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>待结算</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/ydui.flexible.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <style>
+        .m-navbar .head-caption{
+            font-size: 0.34rem;
+            letter-spacing: 0.02rem;
+            color: #222222;
+        }
+       .act-list .end_color{
+            color: #f52555;
+        }
+    </style>
+</head>
+<body style="background: #fff">
+<section class="g-flexview" id="app" >
+    <header class="m-navbar">
+        <a href="capital.html" class="navbar-item"><i class="back-ico"></i></a>
+                <div class="navbar-center"><span class="navbar-title head-caption">待结算</span>
+            </div>
+            <a href="#" class="navbar-item"><i class="search_icon"></i></a>
+    </header>
+    <div class="spacing"></div>
+    <div class="g-scrollview">
+         <div class="account-info">
+             <p class="act-list">订单编号 <span class="act-num">23128798572321212123</span></p>
+             <p class="act-list">下单时间 <span class="act-num">2017-11-30 11:10:56</span></p>
+             <p class="act-list">交易金额 <span class="act-num">￥300.00</span></p>
+             <p class="act-list">我的收益 <span class="act-num">￥300.00</span></p>
+             <p class="act-list">订单状态 <span class="act-num end_color">已完成</span></p>
+             <div class="act-ads">
+                 <p class="act-list ads-man">收件人</p>
+                 <div class="act-right">
+                     <p class="act-num " style="margin-bottom:0.2rem;">孙悟空  18825968978</p>
+                     <p class="act-num ">广东省深圳是市福田区541栋汉富中心3楼商栈互联科技有限公司 </p>
+                 </div>
+             </div>
+         </div>
+    </div>
+    <!--<footer class="m-tabbar" style="padding: 0">-->
+        <!---->
+    <!--</footer>-->
+
+
+</section>
+</body>
+</html>
+<script src="../../js/vue.min.js"></script>
+<script>
+ var vm = new Vue({
+    el:"#app",
+     data:{
+
+
+     },
+     methods:{
+
+     }
+ })
+</script>

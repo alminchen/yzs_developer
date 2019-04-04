@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/font/iconfont.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>忘记密码</title>
+</head>
+
+<body>
+    <section class="g-flexview">
+        <!-- <header class="m-navbar">
+            <a href="#" class="navbar-item">
+                <i class="back-ico"></i>
+            </a>
+            <div class="navbar-center">
+                <span class="navbar-title">NavBar</span>
+            </div>
+        </header> -->
+        <div class="g-scrollview" id="forget">
+            <div class="forget" v-if="showNext">
+                <div class="phoneNum">
+                    <div class="m-cell">
+                        <div class="cell-item">
+                            <div class="cell-right">
+                                <i class="cell-bg"></i>
+                                <input type="text" class="cell-input" placeholder="请输入账号" v-model="phoneNum" maxlength="11" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="next_forget">
+                    <span class="next-step" @click="getSure();">下一步</span>
+                </div>
+                <div class="get-code" v-if="nextBtn">
+                    <div class="code-center">
+                        <p class="code-p1">
+                            <span class="code-ipt">
+                                <input type="text" placeholder="请输入图片验证码">
+                            </span>
+                            <span class="code-img">
+                                <img src="../../images/verfily.png" alt="">
+                            </span>
+                        </p>
+                        <p class="code-p2">
+                            <span class="cancel" @click="cancelBtn();">取消</span>
+                            <span class="sure" @click="sureBtn();">确定</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="sendCode" v-if="getCodeFlag">
+                <h3>短信验证码已发送到绑定手机号{{phoneNum}}</h3>
+                <div class="m-cell mar0">
+                    <div class="cell-item">
+                        <div class="cell-left">验证码：</div>
+                        <div class="cell-right">
+                            <input type="text" class="cell-input" placeholder="短信验证码" maxlength="6" v-model="verfilyCode" />
+                            <span class="getSecCode" :class="count?'put_disabled':''" @click="getCode();">{{count == 0?'重新获取验证码':count+'秒后重新获取'}}</span>
+                        </div>
+                    </div>
+                    <div class="cell-item">
+                        <div class="cell-left">设置密码：</div>
+                        <div class="cell-right">
+                            <input type="text" class="cell-input" placeholder="重置密码" v-model="pwd" v-if="!showIpt" />
+                            <input type="password" class="cell-input" placeholder="支持字母、数字、特殊字符" v-model="pwd" v-if="showIpt" />
+                            <i class="clearBtn iconfont icon-qingchu" v-if="pwd.length>0" @click="clearPwd();"></i>
+                            <i class="showEye iconfont icon-yanjing-xiexian" :class="showIpt?'':'icon-yanjing-shi'" @click="changeEye();"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="resetBtn">
+                    <span class="resetSub" :class="verfilyCode.length>0 &&pwd.length>0 ?'':'put_disabled'">重置密码</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.js"></script>
+<script src="../../js/ydui.js"></script>
+<script>
+    var dialog = '';
+    ! function (win, $) {
+        dialog = win.YDUI.dialog;
+    }(window, jQuery);
+    var vm = new Vue({
+        el: "#forget",
+        data() {
+            return {
+                message: "1",
+                showNext: true,
+                phoneNum: '',
+                nextBtn: false,
+                verfilyCode: '',
+                pwd: '',
+                count: 0,
+                time: null,
+                getCodeFlag: false,
+                showIpt: true
+            }
+        },
+        mounted() {
+
+        },
+        methods: {
+            getSure: function () {
+                if (this.phoneNum == '' || this.phoneNum == null) {
+                    dialog.toast('用户账号不能为空', 'none', 1000);
+                    return false;
+                } else {
+                    this.phoneNum = this.phoneNum.replace(/^(\d{4})\d{4}(\d+)/, "$1****$2");
+                    this.nextBtn = true;
+                }
+            },
+            cancelBtn: function () {
+                this.nextBtn = false;
+            },
+            sureBtn: function () {
+                this.nextBtn = false;
+                this.showNext = false;
+                this.getCodeFlag = true;
+                this.getCode();
+            },
+            getCode() {
+                var TIME_COUNT = 60;
+                var _this = this;
+                if (!this.timer) {
+                    this.count = TIME_COUNT;
+                    this.timer = setInterval(function () {
+                        if (_this.count > 0 && _this.count <= TIME_COUNT) {
+                            _this.count--;
+                        } else {
+                            clearInterval(_this.timer);
+                            _this.timer = null;
+                        }
+                    }, 1000)
+                }
+            },
+            clearPwd: function () {
+                this.pwd = '';
+            },
+            changeEye: function () {
+                this.showIpt = !this.showIpt;
+            }
+        }
+    })
+</script>
+
+</html>

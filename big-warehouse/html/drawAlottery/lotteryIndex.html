@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>我要抽奖</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2" />
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/lotteryIndex.min.css" />
+  </head>
+
+  <body>
+    <section class="g-flexview" id="lotteryIndex">
+      <header class="m-navbar">
+        <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+        <div class="navbar-center">
+          <div class="navbar-ipt">
+            <span class="navbar-title">我要抽奖</span>
+          </div>
+        </div>
+      </header>
+      <div class="g-scrollview">
+        <div class="lotteryIndex-wrap">
+          <div class="lucky-wheel">
+            <div class="lucky-title">
+              <div class="lucky-list" @click.stop="showWinnerListFun"></div>
+            </div>
+          </div>
+          <div class="wheel-main">
+            <div class="wheel-pointer-box">
+              <div
+                class="wheel-pointer"
+                @click.stop="rotate_handle"
+                :style="{transform:rotate_angle_pointer,transition:rotate_transition_pointer}"
+              ></div>
+            </div>
+            <div class="wheel-inject-bg">
+              <div
+                class="wheel-bg"
+                :style="{transform:rotate_angle,transition:rotate_transition}"
+              >
+                <div class="prize-list">
+                  <div class="prize-item" v-for="(item,index) in prize_list">
+                    <div class="prize-type">{{ item.name }}</div>
+                    <div class="prize-pic">
+                      <img :src="item.icon" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main">
+            <div class="main-inner">
+              <div class="tip">
+                <div class="tip-title">
+                  <span class="title-pic"></span>
+                </div>
+                <div class="tip-content">
+                  <p>
+                    1、活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规活
+                    动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规
+                  </p>
+                  <p>
+                    2、动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规
+                  </p>
+                  <p>
+                    3、动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规动规则活动规则活动规则活动规则活动规
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="winner-list" v-if="winnerlistShow">
+            <div class="winner-inner">
+              <div class="winner-title">
+                <span class="winner-pic"></span>
+              </div>
+              <div class="winner-listbox">
+                <vue-seamless-scroll
+                  class="winner-wraper"
+                  :data="listData"
+                  :class-option="classOption"
+                >
+                  <ul class="winner-ul">
+                    <li
+                      class="winner-item"
+                      v-for="(item,index) in listData"
+                      :key="index"
+                    >
+                      <span class="winner-phone">恭喜137****8698抽中</span>
+                      <span class="winner-prod">一部 iPhoneXiPhoneX </span>
+                    </li>
+                  </ul>
+                </vue-seamless-scroll>
+              </div>
+            </div>
+          </div>
+          <div class="toast" v-show="toast_control">
+            <div class="toast-container">
+              <div class="toast-inner">
+                <div class="toast-pic" :class="{ no_in:!hasPrice }">
+                  <img :src="toast_pictrure" alt="" />
+                </div>
+                <div class="toast-title" v-if="hasPrice">恭喜你，抽中</div>
+                <div :class="hasPrice?'toast-subtit':'no_in_title'">
+                  {{ toast_title }}
+                </div>
+                <div class="btn_detail_or">
+                  <a
+                    :href="hasPrice?'./lotteryRecordDetail.html':'javascript:;'"
+                    >{{ hasPrice ? "查看详情" : "再接再厉" }}</a
+                  >
+                </div>
+                <div class="clsoe-btn" @click.stop="close_toast"></div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="toast-mask"
+            @click.stop="maskClikHide"
+            v-if="mask_ctrl"
+          ></div>
+        </div>
+      </div>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script src="../../js/vue-seamless-scroll.min.js"></script>
+
+    <script>
+      var vm = new Vue({
+        el: "#lotteryIndex",
+        data() {
+          return {
+            mask_ctrl: false,
+            winnerlistShow: false,
+            // 滚动数据
+            listData: [
+              {
+                title: "无缝滚动第一行无缝滚动第一行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第二行无缝滚动第二行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第三行无缝滚动第三行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第四行无缝滚动第四行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第五行无缝滚动第五行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第六行无缝滚动第六行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第七行无缝滚动第七行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第八行无缝滚动第八行",
+                date: "2017-12-16"
+              },
+              {
+                title: "无缝滚动第九行无缝滚动第九行",
+                date: "2017-12-16"
+              }
+            ],
+            toast_control: false, //抽奖结果弹出控制器
+            hasPrice: false, //是否中奖
+            start_rotading_degree: 0, //初始化旋转角度
+            rotate_angle: 0, //将要旋转的角度
+            start_rotading_degree_pointer: 0, //指针初始化旋转角度
+            rotate_angle_pointer: 0, //指针将要旋转的角度
+            rotate_transition: "transform 6s ease-in-out", //初始化选中过度的属性控制
+            rotate_transition_pointer: "transform 12s ease-in-out", //初始化指针过度属性控制
+            click_flag: true, //是否可以继续旋转
+            index: 0, //中奖结果,
+            prize_list: [
+              {
+                id: 3,
+                icon: "../../images/lucky/iphone.png", // 奖品图片
+                name: "iPhoneX1", // 奖品名称
+                isPrize: 1 // 该奖项是否为奖品
+              },
+              {
+                id: 1,
+                icon: "../../images/lucky/iphone.png",
+                name: "iPhoneX2",
+                isPrize: 1
+              },
+              {
+                id: 2,
+                icon: "../../images/lucky/iphone.png", // 奖品图片,
+                name: "iPhoneX3",
+                isPrize: 1
+              }
+              // {
+              //     icon: "../../images/lucky/iphone.png", // 奖品图片
+              //     name: "iPhoneX4",
+              //     isPrize: 1
+              // },
+              // {
+              //     icon: "../../images/lucky/iphone.png", // 奖品图片
+              //     name: "iPhoneX5",
+              //     isPrize: 1
+              // },
+              // {
+              //     icon: "../../images/lucky/no_winner.png", // 奖品图片
+              //     name: "未中奖",
+              //     isPrize: 0
+              // },
+            ]
+          };
+        },
+        created: function() {},
+        mounted() {
+          this.new_prize_list_fun();
+        },
+        methods: {
+          // 点击抽奖按钮
+          rotate_handle() {
+            // 获取后台的中奖结果。
+            this.index = 10;
+            // 开始旋转圆盘
+            this.rotating();
+          },
+          rotating() {
+            if (!this.click_flag) return;
+            var type = 0; //圆盘滚动,预留指针滚动
+            var during_time = 5;
+            var result_index = this.index; //中奖的结果的下边，对应数据的下标
+            //var result_angle = [360, 300, 240, 180, 120, 60]; //最终会旋转到下标的位置所需要的度数
+            var rand_circle = 6; //旋转的圈数
+            this.click_flag = false;
+            // 找到未中奖的位置
+            var noInIndx = this.prize_list.findIndex(item => {
+              return item.isPrize == 0;
+            });
+            console.log(noInIndx);
+            if (type == 0) {
+              var rotate_angle =
+                this.start_rotading_degree +
+                rand_circle * 360 +
+                (this.index < this.prize_list.length
+                  ? 360 - this.index * 60
+                  : 360 - noInIndx * 60) -
+                (this.start_rotading_degree % 360);
+              this.start_rotading_degree = rotate_angle;
+              this.rotate_angle = "rotate(" + rotate_angle + "deg)";
+              setTimeout(() => {
+                this.click_flag = true;
+                this.game_over();
+              }, during_time * 1000 + 1500);
+            }
+          },
+          game_over() {
+            this.toast_control = true;
+            this.mask_ctrl = !this.mask_ctrl;
+            this.hasPrice = this.prize_list[this.index]
+              ? this.prize_list[this.index].isPrize
+              : "";
+          },
+          showWinnerListFun() {
+            this.mask_ctrl = !this.mask_ctrl;
+            this.winnerlistShow = !this.winnerlistShow;
+          },
+          maskClikHide() {
+            this.toast_control = false;
+            this.mask_ctrl = !this.mask_ctrl;
+            this.winnerlistShow = false;
+          },
+          close_toast() {
+            this.toast_control = false;
+            this.mask_ctrl = !this.mask_ctrl;
+            this.winnerlistShow = false;
+          },
+          new_prize_list_fun() {
+            var new_prize_list = [];
+            var len = this.prize_list.length;
+            if (len < 6) {
+              for (var i = 0; i < 6 - len; i++) {
+                new_prize_list.push({
+                  id: 0,
+                  icon: "", // 奖品图片
+                  name: "再接再厉",
+                  isPrize: 0
+                });
+              }
+              this.prize_list.push.apply(this.prize_list, new_prize_list);
+              this.prize_list.sort(() => {
+                return 0.5 - Math.random();
+              });
+            }
+          }
+        },
+        computed: {
+          classOption() {
+            return {
+              step: 0.5,
+              limitMoveNum: 5,
+              hoverStop: false,
+              direction: 1
+            };
+          },
+          toast_title() {
+            return this.hasPrice
+              ? this.prize_list[this.index].name
+              : "很遗憾，未抽中奖品T_T";
+          },
+          toast_pictrure() {
+            return this.hasPrice
+              ? this.prize_list[this.index].icon
+              : "../../images/lucky/no_winner.png";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

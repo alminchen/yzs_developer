@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/singinDtail.min.css">
+    <title>余额充值</title>
+</head>
+
+<body>
+    <section class="g-flexview" id="signDetail" v-cloak>
+        <header class="m-navbar">
+            <a href="javascript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">积分明细</span></div>
+            <!-- <a href="" class="navbar-item">积分明细</a> -->
+        </header>
+        <div class="g-scrollview">
+            <div class="wrapper" v-if="detailList.lenth > 0">
+                <div class="pics">
+                    <img src="../../images/singDetail.png" alt="">
+                </div>
+                <div class="wrap"></div>
+                <div class="detail-box">
+                    <ul class="detail-ul">
+                        <li class="detail-li" v-for="(item,index) in 10" :key="index">
+                            <div class="detail-list">
+                                <div class="types">每日签到</div>
+                                <div class="time">2018-11-06 12:19:36</div>
+                                <span class="nums">+5</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="null-data" v-if="detailList.length == 0">
+                <div class="wrap"></div>
+                <div class="null-box">
+                    <div class="img">
+                        <img src="../../images/null_03.png" alt="">
+                    </div>
+                    <div class="null-tips">
+                        <span class="null">暂时还没有明细哦~</span>
+                        <span class="singn">签到即可得积分哦~</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    let sw = true;
+    var vm = new Vue({
+        el: "#signDetail",
+        data: {
+            nullList: [],
+            detailList: [],
+
+        },
+        mounted: function () {
+            // var curDate = new Date();
+            // var startDate = new Date(curDate.setDate(curDate.getDate() + 2));
+            // console.log(startDate)
+
+            // 滚动加载更多,已实现效果,绑定数据即可
+            var scrollBox = document.querySelector('.g-scrollview');
+            var _this = this;
+            scrollBox.onscroll = function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $('.detail-box').height();
+                var windowHeight = $(this).height();
+                var time = Math.ceil((Math.random().toFixed(1)) * 500 + 500);
+                if (scrollTop + windowHeight >= (scrollHeight + 100)) {
+                    if (_this.nullList.length > 0) {
+                        _this.loadMore(1, time)
+                    }
+                }
+            }
+        },
+        methods: {
+            loadMore: function (index, time) {
+                console.log(index, time)
+                if (sw) {
+                    sw = false;
+                    // $.ajax({})
+                    // 请求完成之后把sw赋值为true;
+                    // 请求完成先把之赋值给nullList 之后在把数据拼接到datailList上，使用JS的concat连接数据
+                    // time模拟网络延时，使用setTimeout
+                }
+            }
+        }
+    })
+</script>
+
+</html>

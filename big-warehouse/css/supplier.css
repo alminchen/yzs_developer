@@ -1,0 +1,51 @@
+.store-data .cell-item.cell-mine.nopadd{
+    padding-left: 0;
+}
+
+/* .store-data .wid304{
+    width: 2.84rem;   
+}
+
+.store-data dd{
+    width: 2.84rem;
+    height: 4rem;
+    position: relative;
+}
+
+.store-data .wid335{
+    width: 3.35rem;
+    height: 2rem;
+}
+
+.store-data .wid335 dd{
+    width: 3.35rem;
+    height: 2rem;
+    overflow: hidden;
+} */
+
+
+.store-data .cell-item.cell-mine.license::before {
+    background: url(../images/regist_mc.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+
+.store-data .cell-item.cell-mine.work::before {
+    background: url(../images/regist__yw.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+/* regist__yqr */
+.store-data .cell-item.cell-mine.area::before {
+    background: url(../images/regist__mj.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .cell-item.cell-mine.container::before {
+    background: url(../images/regist__yqr.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .cell-item.cell-mine.pwd::before{
+    background: url(../images/pwd.png) no-repeat left center;
+    background-size: 100% 100%;
+}

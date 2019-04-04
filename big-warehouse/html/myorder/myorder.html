@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/myorder.css?v=33">
+    <title>我的订单</title>
+</head>
+
+<body>
+    <section class="g-flexview" id="myordercenter">
+        <header class="m-navbar" :class="fiexd?'headFix':''">
+            <a href="#" class="navbar-item">
+                <i class="back-ico"></i>
+            </a>
+            <div class="navbar-center">
+                <input type="text" placeholder="请输入你已购买的商品..." class="navcenter-ipt">
+            </div>
+        </header>
+        <div class="g-scrollview">
+            <div class="m-tab">
+                <!-- 这里添加data-ydui-tab就可以啦 -->
+                <div class="navFIx">
+                    <div style="width:100%">
+                        <ul class="tab-nav" :class="fiexd?'fiexd':''">
+                            <li class="tab-nav-order" :class="num ==0?'tab-active':''" @click="getOrderList(0,1,1)"
+                                data-flag="true">
+                                <a href="javascript:;">全部</a>
+                            </li>
+                            <li class="tab-nav-order" :class="num ==1?'tab-active':''" @click="getOrderList(1,2,1)"
+                                data-flag="true">
+                                <a href="javascript:;">待审核</a>
+                            </li>
+                            <li class="tab-nav-order" :class="num ==2?'tab-active':''" @click="getOrderList(2,3,1)"
+                                data-flag="true">
+                                <a href="javascript:;">待发货</a>
+                            </li>
+                            <li class="tab-nav-order" :class="num ==3?'tab-active':''" @click="getOrderList(3,4,1)"
+                                data-flag="true">
+                                <a href="javascript:;">待收货</a>
+                            </li>
+                            <li class="tab-nav-order" :class="num ==4?'tab-active':''" @click="getOrderList(4,5,1)"
+                                data-flag="true">
+                                <a href="javascript:;">已完成</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-panel" :class="fiexd?'ifTop':''">
+                    <div class="tab-panel-item tab-active" v-scroll="loadMore">
+                        <ul>
+                            <li class="myorder-li" v-for="(item,index) in 10" :key="index">
+                                <div class="myorder-wrap">
+                                    <div class="myorder-title">
+                                        <span class="myorder-ordernum">订单编号：0001842</span>
+                                        <span class="myorder-status">待付款</span>
+                                    </div>
+                                    <div class="myorder-list">
+                                        <span v-for="(item, index) in 10" :key="index">
+                                            <img src="../../images/good.png" alt="index">
+                                        </span>
+                                    </div>
+                                    <div class="myorder-price">
+                                        <div class="myorder-allprice">
+                                            <span class="myorder-quality">共5件商品</span>
+                                            <span class="myorder-priceshow">合计:<em class="priceType">￥</em><i>65</i><em
+                                                    class="dott">.00</em>
+                                            </span>
+                                        </div>
+                                        <div class="operation-btn">
+                                            <span class="order-step">再次购买</span>
+                                            <span class="buy-one-align">查看物流</span>
+                                            <span class="order-sure">确认收货</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="myorder-li">
+                                <div class="myorder-wrap">
+                                    <div class="myorder-title">
+                                        <span class="myorder-ordernum">订单编号：0001842</span>
+                                        <span class="myorder-status">待付款</span>
+                                    </div>
+                                    <div class="myorder-list-one">
+                                        <div class="only-one">
+                                            <div class="has-pic">
+                                                <img src="../../images/good.png" alt="">
+                                            </div>
+                                            <div class="has-txt">
+                                                <div class="text">暗杀了多好华东安东花生豆哈我的宏安红豆爱三等奖</div>
+                                                <div class="spec">3罐装</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="myorder-price">
+                                        <div class="myorder-allprice">
+                                            <span class="myorder-quality">共1件商品</span>
+                                            <span class="myorder-priceshow">合计:<em class="priceType">￥</em><i>65</i><em
+                                                    class="dott">.00</em>
+                                            </span>
+                                        </div>
+                                        <div class="operation-btn">
+                                            <span class="order-step">再次购买</span>
+                                            <span class="buy-one-align">查看物流</span>
+                                            <span class="order-sure">确认收货</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/ydui.js?v=21"></script>
+<script>
+    var loadFlag = true;
+    var vm = new Vue({
+        el: "#myordercenter",
+        data() {
+            return {
+                fiexd: false,
+                nullList: [],
+                orderList: [],
+                num: 0,
+                page: 1,
+                type: 0
+            }
+        },
+        mounted() {
+            this.getOrderList(0, 1, 1);
+        },
+        methods: {
+            loadMore: function () {
+                console.log(this.num, this.type, this.page)
+                // if (this.nullList.length == 0) {
+                //     return false
+                // } else {
+                //     this.getOrderList(this.num, this.type, this.page)
+                // }
+            },
+            getOrderList: function (index, type, page) {
+                this.num = index;
+                this.page = page;
+                this.type = type;
+                var _this = this;
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 'fast');
+                // console.log(this.num, this.type, this.page)
+                if (loadFlag == true) {
+                    loadFlag = false;
+                    // $.ajax({
+                    //     url: "",
+                    //     data: {
+                    //         page:this.page,
+                    //         type:this.type
+                    //     },
+                    //     beforeSend:function(){
+                    //         //发送请求之前可操作
+                    //     },
+                    //     success: function (res) {
+                    //         _this.nullList = res.xx;
+                    //         _this.orderList = _this.orderList.concat(_this.nullList);
+                    //         loadFlag = true;
+                    //         _this.page++;
+                    //     }
+                    // })
+                }
+
+            },
+        },
+        directives: { // 自定义指令
+            scroll: {
+                bind: function (el, binding) {
+                    window.addEventListener('scroll', function () {
+                        // console.log(window.pageYOffset)
+                        if (window.pageYOffset >= 0) {
+                            vm.fiexd = true
+                        } else {
+                            vm.fiexd = false;
+                        }
+                        // console.log(window.pageYOffset+window.innerHeight,el.clientHeight)
+                        if (window.pageYOffset + window.innerHeight + 2 >= el.clientHeight) {
+                            // console.log(1)
+                            var fnc = binding.value;
+                            fnc();
+                        }
+                    })
+                }
+            }
+        }
+    })
+</script>
+
+</html>

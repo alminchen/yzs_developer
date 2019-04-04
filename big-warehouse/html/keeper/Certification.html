@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>实名认证</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/ydui.flexible.js"></script>
+
+    <style>
+        .no-certification{
+            width: 100%;
+            text-align: center;
+        }
+        .no-certification img{
+            width: 100%;
+        }
+        .no-certification-pic {
+            width: 2.71rem;
+            height: 1.65rem;
+            display: inline-block;
+            margin-top: 1.8rem;
+        }
+
+        .no-certification-text {
+            font-size: .3rem;
+            color: #999;
+            margin-top: .3rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="g-flexview" id="certification">
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">实名认证</span>
+            </div>
+        </header>
+        <div class="g-scrollview">
+            <div class="real-wrap">
+                <div class="real-wrapper" v-if="certificationList.length > 0">
+                    <a href="">
+                        <div class="real-box">
+                            <h3>姓名：张三</h3>
+                            <div class="real-txt clearfix">
+                                <p>身份证：51302219890531390</p>
+                                <label class="cell-right">
+                                    <input type="checkbox" name="checkbox" />
+                                    <i class="cell-checkbox-icon"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="real-box">
+                            <h3>姓名：张三</h3>
+                            <div class="real-txt clearfix">
+                                <p>身份证：51302219890531390</p>
+                                <label class="cell-right">
+                                    <input type="checkbox" name="checkbox" />
+                                    <i class="cell-checkbox-icon"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="no-certification" v-if="certificationList.length == 0">
+                <div class="no-certification-pic">
+                    <img src="../../images/xm.png" alt="">
+                </div>
+                <div class="no-certification-text">暂时实名认证信息哦~</div>
+            </div>
+        </div>
+        <footer class="m-tabbar">
+            <div class="add-name">
+                <a href="./addIdCard.html" class="add-name-sure">新增实名认证</a>
+            </div>
+        </footer>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/swiper.min.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/ydui.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#certification",
+        data() {
+            return {
+                certificationList: ['1']
+            }
+        },
+        created: function () {
+
+        },
+        mounted: function () {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

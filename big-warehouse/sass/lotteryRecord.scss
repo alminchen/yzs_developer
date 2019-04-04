@@ -1,0 +1,156 @@
+@import "./reset.scss";
+
+.gray {
+    width: 100%;
+    height: .2rem;
+    background: #f8f8f8;
+}
+
+.lucky-nav {
+    width: 100%;
+    height: .9rem;
+    background: #fff;
+    padding: 0 .3rem;
+    font-size: .28rem;
+    color: #333;
+    position: fixed;
+    left: 0;
+    border-bottom: 1px solid #ececec;
+    z-index: 213;
+    // top: 0;
+
+    .lucky-nav-list {
+        width: 100%;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        height: 100%;
+
+        span {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            display: flex;
+            height: 100%;
+            justify-items: center;
+            align-items: center;
+            justify-content: center;
+
+            &::after {
+                content: "";
+                display: block;
+                width: 0;
+                height: .04rem;
+                background: #f5174a;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                margin-left: -0.5rem;
+                opacity: 0;
+                transition: all .5s ease;
+            }
+        }
+
+    }
+
+    span.active {
+        color: #f5174a;
+
+        &::after {
+            width: 1rem;
+            opacity: 1;
+        }
+
+    }
+
+    .bottom-line {
+        display: block;
+        width: 1rem;
+        height: .04rem;
+        background: #f5174a;
+        transition: all 1s ease;
+        // transform: translateX(.3rem)
+    }
+
+}
+
+.lucky-list {
+    padding-top: .9rem;
+    height: 100%;
+    position: relative;
+
+    .top-tip {
+        position: absolute;
+        top: -.9rem;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #555;
+    }
+
+    .list-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .lucky-item {
+        padding: .4rem .3rem;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .lucky-name,
+    .lucky-time {
+        color: #808080;
+        display: flex;
+    }
+
+    .lucky-name {
+        margin-bottom: .25rem;
+    }
+
+    .lucky-realname,
+    .lucky-realtime {
+        font-size: .28rem;
+        flex: 3
+    }
+
+    .lucky-prod {
+        flex: 2;
+        justify-content: flex-end;
+        text-align: right;
+        color: #0c0202;
+        font-size: .3rem;
+    }
+
+    .lucky-sent {
+        font-size: .28rem;
+        color: #f5174a;
+    }
+
+    .bottom-tip {
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        color: #777;
+        background: #f2f2f2;
+    }
+}
+
+.alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    background: rgba(7, 17, 27, 0.7);
+}

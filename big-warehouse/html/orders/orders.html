@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>订单详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <link rel="stylesheet" href="../../css/orders.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="orderDetail">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">订单详情</span></div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="order-main">
+                <div class="order-status">
+                    <span class="status">待发货</span>
+                    <div class="status-pic">
+                        <img src="../../images/hz.png" alt="">
+                    </div>
+                </div>
+                <div class="order-address">
+                    <div class="address-show">
+                        <ul>
+                            <li class="name"><strong>张三</strong> <strong>12345678901</strong></li>
+                            <li class="area">广东省深圳市福田区八卦岭地铁B出口541栋汉富中心3楼云之商科技有限公司</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="order-msg">
+                    <h3>商品信息</h3>
+                    <div class="order-list">
+                        <ul>
+                            <li v-for="(item, index) in 3" :key="index">
+                                <div class="order-detail">
+                                    <div class="has-pic">
+                                        <img src="../../images/good.png" alt="">
+                                    </div>
+                                    <div class="has-txt-status">
+                                        <div class="order-tit">打呼噜的沙漏的行列爱的是拉黑的来看了打了多少阿里肯定会</div>
+                                        <div class="order-spec order-same">规格：3罐装</div>
+                                        <div class="order-date order-same">效期：2019年2月</div>
+                                        <div class="order-post order-same">运费：包邮</div>
+                                        <div class="order-price order-same">折合单价：
+                                            <em>￥280.00</em></div>
+                                        <div class="order-all-price"><em>￥</em>400.00</div>
+                                        <div class="order-nums">x2</div>
+                                        <div class="opertaion">申请退款</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="open-orders">展开剩余3件商品</div>
+                    </div>
+                </div>
+                <div class="account-msg">
+                    <h3>结算信息</h3>
+                    <div class="account-detail">
+                        <div class="account-same">
+                            <span class="name fl">商品总额</span>
+                            <span class="account-nums fr">￥100.00</span>
+                        </div>
+                        <div class="account-same">
+                            <span class="name fl">配送费用</span>
+                            <span class="account-nums fr">￥0.00</span>
+                        </div>
+                        <div class="account-same">
+                            <span class="name fl all-price-txt">费用总计</span>
+                            <span class="account-nums fr all-price">￥100.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ordernums-msg">
+                    <h3>订单信息</h3>
+                    <div class="ordernums">
+                        <div class="ordernums-list orders-copy">
+                            <span class="ordernums-txt">订单编号：</span>
+                            <span class="ordernums-detail">21341243124131231231</span>
+                            <i>复制</i>
+                        </div>
+                        <div class="ordernums-list">
+                            <span class="ordernums-txt">下单时间：</span>
+                            <span class="ordernums-detail">2018-10-11 12：21：00</span>
+                        </div>
+                        <div class="ordernums-list">
+                            <span class="ordernums-txt">支付方式：</span>
+                            <span class="ordernums-detail">微信支付</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="remark-msg">
+                    <h3>备注信息</h3>
+                    <div class="remark-txt">
+                        <textarea name="" class="cell-textarea" placeholder="请于明天把货送到~~~"></textarea>
+                    </div>
+                    <div style="padding:.3rem 0;">
+                        <span class="remark-order">注：香港仓发货与海外仓发货会造成收货时间差异，请耐心等待！</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="m-tabbar hei98">
+            <div class="oncealign">
+                <span class="cancel-btn">联系客服</span>
+                <span class="buy-once">申请退款</span>
+                <span class="make-sure">再次购买</span>
+            </div>
+        </footer>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#orderDetail",
+            data() {
+                return {
+                    message: 1,
+                    showAndClose: true,
+                    indexList: []
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

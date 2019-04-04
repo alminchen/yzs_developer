@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>资产明细</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <!-- <link rel="stylesheet" href="../../css/assetDetails.min.css"> -->
+    <link rel="stylesheet" href="../../css/keeper.min.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="assetDetails">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center">
+                <div class="navbar-ipt">
+                    <span class="navbar-title">资产明细</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="asset-detail-wrapper">
+                <div class="asset-detail-nav" :class="fixNav?'fixed':''">
+                    <div class="asset-detail-inner">
+                        <div class="asset-detail-inner-nav" ref="navs">
+                            <span class="asset-nav" :class="clickIndex == 0?'asset-nav-active':''" @click.stop="getDetailList(0)">全部</span><span
+                                class="asset-nav" :class="clickIndex == 1?'asset-nav-active':''" @click.stop="getDetailList(1)">收入</span><span
+                                class="asset-nav" :class="clickIndex == 2?'asset-nav-active':''" @click.stop="getDetailList(2)">提现</span>
+                        </div>
+                        <span class="bottom-line" ref="navWid" :style="trnsform"></span>
+                    </div>
+                </div>
+                <div class="asset-detail-list">
+                    <ul class="asset-detail-ul">
+                        <li class="asset-detail-li" v-for="(item, index) in 13" :key="index">
+                            <a href="./billingDetails.html">
+                                <div class="asset-li-inner">
+                                    <div class="left-asset-detail">
+                                        <span class="left-asset-name">流水号</span>
+                                        <span class="left-asset-time">2018-12-22 12:00:00</span>
+                                    </div>
+                                    <div class="right-asset-detail">
+                                        <span class="right-asset-status-price right-asset-price-in">+300.00</span>
+                                        <span class="right-asset-status-text right-asset-text-in">收入</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- <footer class="m-tabbar">
+            <a href="#" class="tabbar-item tabbar-active">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">首页</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">分类</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">进货车</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">我的</span>
+            </a>
+        </footer> -->
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#assetDetails",
+            data() {
+                return {
+                    num: 0,
+                    navWidth: 0,
+                    clickIndex: 0,
+                    detailList: [],
+                    pageIndex: 1,
+                    fixNav: false
+                }
+            },
+            computed: {
+                trnsform() {
+                    return 'transform:translateX(' + this.clickIndex * this.navWidth + 'px);width:' + this.navWidth +
+                        'px';
+                }
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+                this.navWidth = Math.floor((this.$refs.navs.clientWidth) / 3);
+                this.$refs.navWid.style.width = Math.floor((this.$refs.navs.clientWidth) / 3);
+                this.loadMore();
+                this.getList(0)
+            },
+            methods: {
+                getDetailList: function (index) {
+                    this.clickIndex = index;
+                    this.detailList = [];
+                    this.pageIndex = 1;
+                    // 切换请求
+                    this.getList(1)
+                },
+                getList: function (type) {
+                    // ajax请求开始
+                    console.log(0)
+                },
+                loadMore: function () {
+                    var self = this;
+                    var scrollBox = document.querySelector('.g-scrollview');
+                    var scrollHeight = $('.asset-detail-wrapper').height();
+                    var winHei = $(window).height();
+                    var time = Math.floor((Number(Math.random() * 500) + 500));
+                    scrollBox.onscroll = function () {
+                        var scrollDistance = scrollBox.scrollTop;
+                        scrollDistance > 100 ? self.fixNav = true : self.fixNav = false;
+                        if (scrollDistance + winHei > scrollHeight) {
+                            self.getList(0)
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

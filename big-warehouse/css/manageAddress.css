@@ -1,0 +1,349 @@
+.no-address {
+    width: 100%;
+    height: 100%;
+}
+
+.no-address .address_pic {
+    width: 100%;
+    text-align: center;
+    padding-top: 2.42rem;
+    padding-bottom: .54rem
+}
+
+.address_pic img {
+    width: 1.08rem;
+    height: 1.3rem;
+    margin: auto
+}
+
+.no-address .no-address-span {
+    display: block;
+    font-size: .28rem;
+    color: rgb(34, 34, 34);
+    text-align: center
+}
+
+.addNewAddress {
+    width: 100%;
+}
+
+.addNewAddress .add_address {
+    display: block;
+    margin:0.1rem 0.2rem;
+    background: #f5174a;
+    font-size: .3rem;
+    text-align: center;
+    padding: .25rem 0;
+    border-radius: 5px;
+    color: #ffffff
+}
+
+.tips-address {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 12;
+}
+
+.tips-address .tips-inner {
+    width: 5.4rem;
+    height: 2.54rem;
+    background: #ffffff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: .2rem
+}
+
+.tips-inner p {
+    padding: 0 .5rem;
+}
+
+.tips-inner p:first-child {
+    padding-top: .32rem;
+    font-size: .32rem;
+    color: rgb(34, 34, 34);
+    text-align: center;
+    line-height: .4rem;
+    padding-bottom: .54rem
+}
+
+.tips-inner p:last-child {
+    height: .9rem;
+    line-height: .9rem;
+    display: flex;
+    position: relative;
+}
+
+.tips-inner p:last-child::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: rgb(228, 228, 228);
+    transform: scaleY(.5);
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.tips-inner p span {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.tips-inner p span:last-child::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: rgb(228, 228, 228);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scaleX(.5)
+}
+
+.address-list {
+    margin-top: .2rem
+}
+
+.address-search {
+    padding: 0 .2rem;
+    height: .8rem;
+    position: relative;
+}
+
+.address-search .search-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.search-inner i {
+    /* font-family: "iconfont";
+    content: '\e601';*/
+    position: absolute;
+    left: 50%;
+    margin-left: -1.2rem;
+    top: .24rem; 
+    font-size: .32rem
+}
+
+.search-inner input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: #f5f5f5;
+    border-radius: 5px;
+    padding: 0 .3rem
+}
+
+input::-webkit-input-placeholder {
+    text-align: center
+}
+
+div.radioBtn {
+    position: relative;
+    /* line-height: 30px; */
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+label.radio_label {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #999;
+}
+
+/*设置选中的input的样式*/
+
+/* + 是兄弟选择器,获取选中后的label元素*/
+
+.radioBtn input:checked+label {
+    background-color:#f5174a;
+    border: 1px solid #f5174a;
+}
+
+.radioBtn input:checked+label::after {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 10px;
+    top: 3px;
+    left: 6px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg)
+}
+
+.address-list .list {
+    padding: 0 .2rem;
+}
+
+.address-ul {
+    margin-top: .3rem
+}
+
+.address-li {
+    position: relative;
+    margin-bottom: .3rem;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.address-list .list-inner {
+    padding: .46rem .2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .1);
+    display: flex;
+    position: relative;
+}
+
+.list-inner .radioBtn {
+    width: .74rem
+}
+
+.list-inner .address_item {
+    flex: 1;
+}
+
+.address_item .item-name {
+    font-size: .32rem;
+    color: rgb(34, 34, 34);
+    padding-bottom: .24rem
+}
+
+.address_item .name {
+    padding-right: .48rem
+}
+
+.address_item .phone {
+    padding-right: .28rem
+}
+
+.address_item .default {
+    display: inline-block;
+    width: .7rem;
+    padding: .03rem 0;
+    background: #f5174a;
+    font-size: .20rem;
+    text-align: center;
+    color: #fff;
+    border-radius: .2rem
+}
+
+.address_item .item-address {
+    line-height: .44rem;
+    font-size: .26rem
+}
+
+.list-inner .editPic {
+    width: 1.14rem;
+    position: relative;
+}
+
+.list-inner .edit {
+    display: block;
+    width: .33rem;
+    height: .38rem;
+    background: url(.././images/edit.png) no-repeat left center;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0.2rem;
+    margin: auto;
+    top: 50%;
+    margin-top: -0.19rem;
+    z-index: 21;
+}
+
+.address-li .delete {
+    width: 1.3rem;
+    height: 100%;
+    background: #f5174a;
+    font-size: 17px;
+    color: #fff;
+    right: 0.2rem;
+    text-align: center;
+    line-height: 2.46rem;
+    position: absolute;
+    top: 0;
+    right: -1.32rem;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.address-li[data-type="0"] {
+    transform: translate3d(0, 0, 0);
+}
+.address-li[data-type="1"]{
+    transform: translate3d(-1.32rem,0,0);
+}
+.address-li[data-type="1"] .delete{
+    right: -.92rem;
+}
+.address-search.search-left .search-inner i{
+    display: none
+}
+.search-inner .serach-icon{
+    left:1.4rem;
+    position: absolute;
+    display: block;
+    width: .28rem;
+    height: .29rem;
+    background: url(.././images/search-icon.png) no-repeat ;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.ads-tip{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding:0 .30rem;
+    text-align: center;
+    font-size: .26rem;
+    color: #e06c1d;
+    height: .8rem;
+    background-color: #fef8d7;
+    line-height: .4rem;
+}
+
+.search-edit .navbar-center{
+    margin-left: 10%;
+    width:6rem;
+}
+.search-edit .address-search{
+    width:100%;
+
+}
+.search-edit .search-inner{
+    position: relative;
+}
+.search-edit .search-inner input{
+    padding:0 0.6rem;
+
+}
+.search-edit .search-inner input::-webkit-input-placeholder {
+     color: #999999;
+      text-align: left;
+
+ }

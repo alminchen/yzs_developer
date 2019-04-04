@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/signIn.min.css">
+    <title>余额充值</title>
+</head>
+
+<body>
+    <section class="g-flexview" id="signIn" v-cloak>
+        <header class="m-navbar">
+            <a href="javascript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">每日签到</span></div>
+            <a href="./singinDetail.html" class="navbar-item">积分明细</a>
+        </header>
+        <div class="g-scrollview">
+            <div class="tips">签到领积分，积分兑豪礼！</div>
+            <div class="integral-box">
+                <div class="integral">
+                    <a href="./rules.html" class="rule">积分规则</a>
+                    <div class="integral_list">
+                        <span class="nums">300</span>
+                        <span class="text">我的积分</span>
+                    </div>
+                </div>
+                <div class="intergral-btn">
+                    <span class="btn-signIn" @click.stop="singnUp">{{singnTxt}}</span>
+                </div>
+            </div>
+            <div class="hot-recommend">
+                <div class="recommend-titie">
+                    <div class="recommend-inner">
+                        <span class="recommend-span">推荐商品</span>
+                    </div>
+                </div>
+                <div class="hot-list-recommend">
+                    <ul class="hot-ul-recommend">
+                        <li class="list-recommend" v-for="(item,index) in 5">
+                            <div class="list-box">
+                                <div class="has-pic">
+                                    <img src="../../images/good.png" alt="">
+                                </div>
+                                <div class="has-text">
+                                    <div class="name">【澳洲直邮】澳洲A2白金版婴幼儿 奶粉100g...</div>
+                                    <div class="spec">
+                                        <span class="sales">销量99</span>
+                                        <span class="date">2018-11-28</span>
+                                    </div>
+                                    <div class="sals">积分：2000</div>
+                                    <span class="right-now">立即兑换</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="more">
+                    <a href="javascript:;">查看更多</a>
+                </div>
+                <div class="fixed-tips" v-if="intergral">
+                    <div class="fixed-inner" ref="fixzoom">
+                        <span class="intergraled">已签到 + 5</span>
+                        <span class="continus">您已连续签到3天</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#signIn",
+        data: {
+            singnTxt: "签到",
+            intergral: false,
+            animated: true
+        },
+        mounted: function () {
+            // var curDate = new Date();
+            // var startDate = new Date(curDate.setDate(curDate.getDate() + 2));
+            // console.log(startDate)
+        },
+        methods: {
+            singnUp: function () {
+                this.intergral = true;
+                this.singnTxt = "已签到 + " + "5";
+                setTimeout(() => {
+                    this.$refs.fixzoom.classList.add("zoomOut");
+                    setTimeout(() => {
+                        this.$refs.fixzoom.classList.remove("zoomOut");
+                        this.intergral = false;
+                    }, 500)
+                }, 3000)
+
+            }
+        }
+    })
+</script>
+
+</html>

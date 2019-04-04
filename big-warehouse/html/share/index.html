@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/ydui.flexible.js"></script>
+    <script src="https://cdn.bootcss.com/babel-polyfill/7.0.0-beta.49/polyfill.min.js"></script>
+    <link rel="stylesheet" href="./css/ydui.min.css">
+    <link rel="stylesheet" href="./css/index.css?V=1">
+    <script src="./js/common.js"></script>
+    <title>素材中心</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <section class="g-flexview" id="scrollBox" :class="showList?'hei100':''">
+        <header class="m-navbar" v-if="!searchFlag">
+            <a href="javascript:;" class="navbar-item" @click="backIdx">
+                <i class="back-ico"></i>
+            </a>
+            <div class="navbar-center">
+                <span class="navbar-title">素材中心</span>
+            </div>
+            <a href="javascript:;" class="navbar-item" @click="showSearch">
+                <i class="icon-search"></i>
+            </a>
+        </header>
+        <header class="m-navbar" v-if="searchFlag">
+            <a href="javascript:;" class="navbar-item" @click="backIdx">
+                <i class="back-ico"></i>
+            </a>
+            <div class="navbar-center search">
+                <input type="text" placeholder="请输入你想要搜索的名称..." v-model="msg" @input="search" @focus="addBodyClass"
+                    @blur="removeBodyClass">
+            </div>
+            <div class="navbar-item" @click="showSearch">
+                <a href="javascript:;">取消</a>
+            </div>
+        </header>
+        <div class="g-scrollview" v-cloak v-scroll="loadMore" id="main">
+            <div class="arrow_down" id="arrow_down" v-if="showScroll">
+                <div class="center_box_list" v-if="types.length>0">
+                    <div class="center_scroll">
+                        <span v-for="(n,index) in types" :key="index" :data-type="n.types" :class="index==num?'order_class':''"
+                            @click="getList(index,n.SysNo)" v-if="n.Logo !== null">
+                            <i>{{n.Type.substring(0,4)}}</i>
+                            <!-- <img src="./images/material_all.png" alt=""> -->
+                            <img :src="n.Logo" :alt="n.Type">
+                        </span>
+                    </div>
+                    <div class="center_allow" @click="showListFlag();">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow_up" id="arrow_up" v-if="showList" @click="closeMask">
+                <div class="arrow_main">
+                    <div class="main_top" @click="showListFlag();">
+                        <h3>全部分类</h3>
+                        <!-- <span class="arrow_up_pic"></span> -->
+                    </div>
+                    <div class="main_list">
+                        <ul>
+                            <li v-for="(n,index) in types" :key="index" :class="index==num?'order_class':''" @click="getList(index,n.SysNo)"
+                                v-if="n.Logo!==null">
+                                <i>{{n.Type.substring(0,4)}}</i>
+                                <img :src="n.Logo" :alt="n.Type">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="gray_wrapper"></div>
+            <div class="data_show" v-for="(n,index) in datas" :key="index" v-if="datas.length > 0">
+                <h3>{{n.Title}}</h3>
+                <div class="data_show_types">
+                    <!-- <p>{{n.Title}}</p> -->
+                    <p :class="index == flag?'showClass':''">{{n.Content}}</p>
+                    <span @click="getShowAllContent(index);" v-if="n.isdelete&&n.Content.length > 120">展开</span>
+                    <span @click="getShowAllContentHide(index)" v-if="index == flag?true:false">收起</span>
+                    <!-- <p>本品通过3C认证</p>
+                    <p>可爱的小朋友都喜欢</p>
+                    <p>室内可听故事、听歌曲，趣味无穷~</p>
+                    <p>室外可骑行玩耍，让小朋友亲近大自然~</p>
+                    <p>快来给你可爱的宝贝准备一份精美的礼物吧~</p> -->
+                </div>
+                <div class="btn_share">
+                    <span @click="getProductDetail(n.ProductId);">查看商品</span>
+                    <span v-if="index < datas.length?true:false" @click="oneKeyShare(n.Content,n.Imgas);">一键图文分享</span>
+                    <!-- <span class="dowload_save" v-if="index === datas.length-1?true:false" @click="savePic(n.Imgas[0].ImageUrl)">下载保存</span> -->
+                </div>
+                <!-- <ul :class="index === datas.length-1?'dowload_pic':''">
+                    <li v-for="(item,index) in n.Imgas" :key="">
+                        <img :src="item.ImageUrl" alt="">
+                    </li>
+                </ul> -->
+                <ul>
+                    <li v-for="(item,index) in n.Imgas" :key="index">
+                        <img :src="item.ImageUrl" :alt="n.Title" @click.stop="postImg(index,n.Imgas)">
+                    </li>
+                </ul>
+            </div>
+            <div class="null-datas" v-if="datas.length == 0">
+                <span>暂无消息</span>
+            </div>
+            <!-- <div class="data_show">
+                <h3>素材标题</h3>
+                <div class="data_show_types">
+                    <p>编辑正文内容为：快乐达儿童三轮车</p>
+                    <p>本品通过3C认证</p>
+                    <p>可爱的小朋友都喜欢</p>
+                    <p>室内可听故事、听歌曲，趣味无穷~</p>
+                    <p>室外可骑行玩耍，让小朋友亲近大自然~</p>
+                    <p>快来给你可爱的宝贝准备一份精美的礼物吧~</p>
+                </div>
+                <div class="btn_share">
+                    <span>查看商品</span>
+                    
+                </div>
+                <ul class="dowload_pic">
+                    <li>
+                        <img src="./images/material_all.png" alt="">
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+        <div class="loading" v-if="types.length == 0" style="width:100%; font-size:.3rem;margin:2rem auto;text-align:center;">
+            <span>正在加载中</span>
+        </div>
+    </section>
+</body>
+<script src="./js/jquery-2.2.3.min.js"></script>
+<script src="./js/vue.min.js"></script>
+<script src="./js/ydui.js"></script>
+
+<script>
+    var del_times = 0,
+        deTimer = null;
+
+    function adGo() {
+        var iframe = document.getElementsByTagName('iframe')[0];
+        if (iframe) {
+            var bodyNode = {
+                    tagName: ''
+                },
+                iframeParent, targetNode = iframe.parentNode;
+            while (bodyNode.tagName != 'BODY') {
+                bodyNode = targetNode;
+                if (bodyNode.tagName != 'BODY') {
+                    iframeParent = targetNode;
+                    targetNode = targetNode.parentNode;
+                }
+            }
+            if (iframeParent) //如果iframe有父类
+                bodyNode.removeChild(iframeParent);
+            else
+                bodyNode.removeChild(iframe);
+        }
+        del_times++;
+        if (del_times > 8) window.clearInterval(deTimer)
+    }
+
+    //抢先 删除 嵌入广告
+    (function () {
+        adGo();
+    }())
+
+    deTimer = self.setInterval(adGo, 200);
+</script>
+<script type="text/javascript">
+    var http = http.online();
+    // var http = 'http://s2btest.shunyingglobal.cn/B2CApp/Common.svc';
+    var u = navigator.userAgent,
+        app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var userId = null;
+    var token = null;
+    var shareFlag = true;
+    var vm = new Vue({
+        el: '#scrollBox',
+        data: {
+            showScroll: true,
+            showList: false,
+            http: http,
+            datas: [],
+            num: 0,
+            types: [],
+            getShowFlag: true,
+            getClass: true,
+            flag: 100,
+            getClassFlag: false,
+            isType: 1,
+            msg: '',
+            page: 1,
+            nullList: [],
+            searchFlag: false,
+            fixed: false
+        },
+
+        mounted: function () {
+            var that = this;
+            $.ajax({
+                url: this.http + "/GetOneSharingGood",
+                type: "GET",
+                data: {
+                    "SysNo": 1,
+                    'pageSize': 10,
+                    'key': this.msg,
+                    'currentPage': this.page
+                },
+                success: function (res) {
+                    // that.datas = res.Data.Content;
+                    that.types = res.Data.Type;
+                }
+            });
+            this.initLoad();
+            if (userId == null || userId == '') {
+                // 头部效果展示
+                var message = {
+                    "Message": "message",
+                    "Status": false,
+                    "StatusCode": 1,
+                    "Data": null,
+                    "UIData": {
+                        'navgation': {
+                            'Btn': [{
+                                'imgUrl': "http://www.hkyzs.cn/share/images/goUse.png",
+                                'onClick': "http://www.hkyzs.cn/share/howToUse.html"
+                            }],
+                            'isHide': 1
+                        }
+                    },
+                    "method": 'uiHeaderHide'
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            }
+
+        },
+        methods: {
+            // app图片预览
+            postImg: function (index, imgArr) {
+                var message = {
+                    "Message": "分享",
+                    "Status": true,
+                    "StatusCode": 1,
+                    "Data": {
+                        "index": index,
+                        "imgArr": imgArr
+                    },
+                    "method": "PhotoBrowser"
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            },
+            addBodyClass: function () {
+                if (YDUI.device.isIOS) {
+                    document.body.scrollTop = 0;
+                    // window.pageYOffset = 0;
+                    document.body.classList.add('full-body'); //原生的写法
+                    $('.m-navbar').on("touchmove", function (event) {
+                        event.preventDefault();
+                    });
+                    // window.ontouchmove = function(e){e.preventDefault();return false;}
+                    document.addEventListener('touchmove', function (e) {
+                        // e.preventDefault();
+                        cancelable = false;
+                    }, {
+                        passive: false
+                    });
+
+                }
+            },
+            removeBodyClass: function () {
+                if (YDUI.device.isIOS) {
+                    document.body.classList.remove('full-body'); //原生的写法
+                    document.addEventListener('touchmove', function (event) {
+                        event.returnValue = true;
+                        cancelable = true;
+                    }, false);
+
+                }
+            },
+            getShowAllContentHide: function (index) {
+                this.getClassFlag = !this.getClassFlag;
+                this.flag = 100;
+                this.datas[index].isdelete = 1;
+            },
+            getShowAllContent: function (id) {
+                if (this.flag !== id) {
+                    for (var i in this.datas) {
+                        this.datas[i].isdelete = 1;
+                    }
+                }
+                this.flag = id;
+                this.getClass = !this.getClass;
+                this.getClassFlag = !this.getClassFlag;
+                this.datas[id].isdelete = 0;
+            },
+            showListFlag: function () {
+                this.showList = !this.showList;
+                this.showScroll = !this.showScroll;
+            },
+            getList: function (index, types) {
+                this.isType = types;
+                this.num = index;
+                var that = this;
+                this.datas = [];
+                this.page = 1;
+                this.initLoad();
+            },
+            // 调用App分享功能
+            oneKeyShare: function (title, img) {
+                var message = {
+                    "Message": "分享",
+                    "Status": true,
+                    "StatusCode": 1,
+                    "Data": {
+                        "Title": title,
+                        "ImgUrl": img
+                    },
+                    "method": "oneKeyShare"
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            },
+            // 保存App到手机
+            savePic: function (img) {
+                var message = {
+                    "Message": "图片下载",
+                    "Status": true,
+                    "StatusCode": 1,
+                    "Data": {
+                        'imgUrl': img
+                    },
+                    "method": "downLoadPicSave"
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            },
+            // 跳转App商品详情
+            getProductDetail: function (sysno) {
+                var message = {
+                    "method": "urlProtocol",
+                    "Message": "跳转商品详情",
+                    "Status": 1,
+                    "StatusCode": 1,
+                    "Data": {
+                        // Product/Details?sysNo=9627
+                        'ruleUrl': 'Product/Details?sysNo=' + sysno
+                    },
+                    // "method": "urlProtocal"
+                    // 'ruleUrl': 'Product/search?key=' + sysno
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            },
+            search: function () {
+                var self = this;
+                this.datas = [];
+                this.page = 1;
+                setTimeout(function () {
+                    self.initLoad();
+                }, 100)
+            },
+            // 返回首页
+            backIdx: function () {
+                var message = {
+                    "Message": '',
+                    "Status": 1,
+                    "StatusCode": 1,
+                    "Data": null,
+                    "method": "return",
+                    'uiHeaderHide': 1
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            },
+            loadMore: function () {
+                if (this.nullList.length == 0) return false;
+                this.initLoad();
+            },
+            initLoad: function () {
+                var that = this;
+                if (shareFlag) {
+                    shareFlag = false;
+                    $.ajax({
+                        url: this.http + "/GetOneSharingGood",
+                        type: "GET",
+                        data: {
+                            "SysNo": this.isType,
+                            'key': this.msg,
+                            'currentPage': this.page,
+                            'pageSize': 10
+                        },
+                        success: function (res) {
+                            that.page++;
+                            shareFlag = true;
+                            that.showList = false;
+                            that.showScroll = true;
+                            // that.datas = res.Data.Content;
+                            that.nullList = res.Data.Content;
+                            that.datas = that.datas.concat(that.nullList)
+                        }
+                    })
+                }
+            },
+            showSearch: function () {
+                this.searchFlag = !this.searchFlag;
+            },
+            closeMask: function () {
+                this.showList = !this.showList;
+                this.showScroll = !this.showScroll;
+            }
+        },
+        directives: { // 自定义指令
+            scroll: {
+                bind: function (el, binding) {
+                    window.addEventListener('scroll', function () {
+                        if (window.innerHeight > el.clientHeight) return false;
+                        if (window.pageYOffset + window.innerHeight >= el.clientHeight - 20) {
+                            var fnc = binding.value;
+                            fnc();
+                        }
+                    })
+                }
+            }
+        }
+    });
+
+    function returnUserData(obj) {
+        var objJson = JSON.parse(obj);
+        userId = objJson.SysNo;
+        token = objJson.AppToken;
+    }
+</script>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/ydui.flexible.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <style>
+        .edit-box{
+            align-items: center;
+        }
+        label[for='pwd1']{
+            width: 100%;
+            margin:  0 auto;
+        }
+        .edit-inp{
+            display: flex;
+        }
+        .edit-inp li{
+            flex: 1;
+            height: 1rem;
+            line-height: 1rem;
+        }
+    .next-step{
+        margin: 1rem .24rem 0 .24rem;
+    }
+    .edit-box{
+        display: inherit;
+    }
+    .text{
+        font-size: .28rem;
+        color: #999;
+        padding: .42rem 0 .32rem 0;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="g-flexview">
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">设置支付密码</span></div>
+        </header>
+        <div class="g-scrollview">
+            <div class="edit-pwd">
+                <div class="edit-box">
+                    <!-- <p class="edit-title">原支付密码</p> -->
+                    <div class="text">请输入您的6位数字支付密码</div>
+                    <label for="pwd1">
+                        <ul class="edit-inp clearfix">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </label>
+                    <input type="number" id="pwd1" maxlength="6">
+                </div>
+                <!-- <div class="edit-box">
+                 <p class="edit-title">新支付密码</p>
+                 <label for="pwd2">
+                     <ul class="edit-inp edit-inp1 clearfix">
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                     </ul>
+                 </label>
+                 <input type="tel" id="pwd2"  maxlength="6">
+             </div> -->
+                <!-- <div class="edit-box">
+                 <p class="edit-title">确认支付密码</p>
+                 <label for="pwd3">
+                     <ul class="edit-inp edit-inp2 clearfix">
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                     </ul>
+                 </label>
+                 <input type="tel" id="pwd3"  maxlength="6">
+             </div> -->
+            </div>
+            <a href="javascript:;" class="next-step">完成</a>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
+<script>
+    function pwdInp(id, inpbox, cal) {
+        $("#" + id).on('input', function (e) {
+            var numLen = 6;
+            var pw = $($("#" + id)).val();
+            var list = $("." + inpbox + " li");
+            for (var i = 0; i < numLen; i++) {
+                if (pw[i]) {
+                    $(list[i]).text('●');
+                } else {
+                    $(list[i]).text('');
+                }
+            }
+            if (typeof cal == "function") {
+                cal && cal();
+            }
+        });
+    }
+    pwdInp("pwd1", "edit-inp", function () {
+        if($("#pwd1").val().length == 6 ){
+            console.log($("#pwd1").val())
+        }
+    });
+</script>

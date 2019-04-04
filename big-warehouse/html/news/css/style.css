@@ -1,0 +1,100 @@
+ html,body {
+	position:relative;
+	height:100%;
+}
+
+* {
+	padding:0;
+	margin:0;
+}
+li {
+	list-style:none;
+}
+a{
+  text-decoration: none
+}
+body {
+	background:#fff;
+	font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size:12px;
+}
+.img img {
+	width:100%;
+	display:block;
+}
+.has-pic {
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	/* margin: 5px 0; */
+	margin-bottom: 5px;
+	background: #fff;
+	padding: 0.2rem 0.3rem;
+	display: flex;
+}
+
+.has-pic a {
+	display: flex;
+	width: 100%;
+	height: auto;
+}
+
+.has-pic .list_show_flex {
+	flex: 1;
+}
+
+.has-pic .pic {
+	/* position: absolute;
+	right: 0.3rem; 
+	top: 0.2rem;  */
+	width: 2.6rem;
+	height: 2rem;
+	margin-left: 0.7rem;
+	overflow: hidden;
+}
+
+.list-title {
+	color: rgb(34, 34, 34);
+	font-size: 0.3rem;
+	margin-top: 0.2rem;
+	line-height: 0.4rem;
+	font-weight: 500;
+	/* line-height: 20px;
+	min-height: 60px; */
+}
+
+.list-ext {
+	position: absolute;
+	left: 0.3rem;
+	bottom: 0.2rem;
+}
+
+.list-ext .ext {
+	display: inline-block;
+	position: relative;
+	color: #bfbfbf;
+	font-size: 14px;
+}
+
+.list-ext .ext.a2 {
+	margin-left: 0.5rem;
+	display: none;
+}
+
+.list-ext .ext em {
+	display: inline-block;
+	width: 0.24rem;
+	height: 0.26rem;
+	background: url(../images/eyes.png) no-repeat top center;
+	background-size: 100% 100%;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.list-ext img {
+	width: 0.26rem;
+	height: 0.26rem;
+	display: inline-block;
+	margin-right: 0.05rem;
+	vertical-align: text-top;
+}

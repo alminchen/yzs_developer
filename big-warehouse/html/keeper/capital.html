@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>我的资产</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/ydui.flexible.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <style>
+        .m-navbar .head-caption {
+            font-size: 0.34rem;
+            letter-spacing: 0.02rem;
+            color: #222222;
+        }
+        .dialog-server{
+            display: block;
+        }
+    </style>
+</head>
+<body style="background: #fff">
+<section class="g-flexview" id="app">
+    <header class="m-navbar">
+        <a href="keeper.html" class="navbar-item"><i class="back-ico"></i></a>
+        <div class="navbar-center"><span class="navbar-title head-caption">我的资产</span>
+        </div>
+        <a href="./assetDetails.html" class="navbar-item"><i class="cap-info">明细</i></a>
+    </header>
+    <div class="spacing"></div>
+    <div class="g-scrollview">
+        <div class="cash-wrap">
+            <div class="cash-box">
+                <p class="cash-txt">可提现金额(元)</p>
+                <p class="cash-num">800.00</p>
+                <a href="javascript:;" class="cashBtn">提现</a>
+            </div>
+
+            <a href="waitAccount.html" class="accounts">
+                <p class="accounts-txt">待结算 (￥)</p>
+                <div class="accounts-box">
+                    <p class="accounts-num">300.00</p>
+                    <span class="accounts-right"></span>
+                </div>
+            </a>
+            <a href="javascript:;" class="accounts"  @click="typeShow=!typeShow">
+                <p class="accounts-txt">提现账户</p>
+                <div class="accounts-box">
+                    <p class="accounts-gray">未绑定</p>
+                    <span class="accounts-right"></span>
+                </div>
+            </a>
+
+            <div class="declare-box">
+                <p class="declare"><span class="redLab">*</span>提现申明：</p>
+                <p class="declare-info">1、通道手续费用0.6%</p>
+                <p class="declare-info">1、通道手续费用0.6%</p>
+                <p class="declare-info">1、通道手续费用0.6%</p>
+                <p class="declare-info">1、通道手续费用0.6%</p>
+            </div>
+        </div>
+    </div>
+    <!--<footer class="m-tabbar" style="padding: 0">-->
+    <!---->
+    <!--</footer>-->
+
+    <!--提现方式弹窗-->
+    <div class="dialog-server" v-show="typeShow">
+        <div class="dialog-box">
+            <i class="close_i" @click="typeShow=!typeShow"></i>
+            <p class="cash_title">选择提现方式</p>
+            <a href="bindBank.html" class="cashType">
+                <p class="cashType_txt"><i class="cashType_img "></i>银行卡</p>
+                <span class="type_check"></span>
+            </a>
+            <a href="bindWx.html" class="cashType">
+                <p class="cashType_txt"><i class="cashType_img cash_wx"></i>微信</p>
+                <span class="type_check"></span>
+            </a>
+            <a href="bindZfb.html" class="cashType">
+                <p class="cashType_txt"><i class="cashType_img cash_zfb"></i>支付宝</p>
+                <span class="type_check"></span>
+            </a>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            typeShow: false
+
+        },
+        methods:{
+
+        }
+    })
+</script>

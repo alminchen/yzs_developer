@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>商品详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/detail.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/activeDetail.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="detail">
+
+        <header class="m-navbar">
+            <a href="javascript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">商品详情</span></div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="detail_main">
+                <div class="mod_slider">
+                    <div class="banner">
+                        <span class="back_idx"></span>
+                        <div class="swiper-container detail-banner" style="height:100%">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="../../images/detain_goods.png" width="100%" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="../../images/detain_goods.png" width="100%" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="../../images/detain_goods.png" width="100%" />
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="buy_area">
+                        <div class="buy_price">
+                            <div class="price active-detail">
+                                <em>距离结束还剩</em><span>160</span>:<span>122</span>:<span>122</span>
+                            </div>
+                            <div class="attention">热度：1.3万</div>
+                        </div>
+                        <div class="buy_active_price">
+                            <span class="active-price"><em>￥</em>200.00</span><del>￥299.86</del>
+                        </div>
+                        <div class="fn_wrap"><span class="title">秒杀</span>
+                            <h1 class="fn fn_goods_name">[香港直邮] MAC魅可口红哑光不掉色唇膏 3g# see sheer 西柚色</h1>
+                            <span class="share"></span>
+                        </div>
+                    </div>
+                    <div class="detail_gap"></div>
+                    <div class="detail_parms pad40">
+                        <div class="parms_name">产品参数</div>
+                        <table>
+                            <tr>
+                                <td>产地</td>
+                                <td>韩国</td>
+                            </tr>
+                            <tr>
+                                <td>品牌</td>
+                                <td>悦风诗吟</td>
+                            </tr>
+                            <tr>
+                                <td>系列</td>
+                                <td>洗护用品</td>
+                            </tr>
+                            <tr>
+                                <td>规格</td>
+                                <td>230罐/托板</td>
+                            </tr>
+                            <tr>
+                                <td>效期</td>
+                                <td>2012年9月--2021年10月</td>
+                            </tr>
+                            <tr>
+                                <td>仓库类型</td>
+                                <td>香港仓</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="detail_gap"></div>
+                    <div class="detail_parms pic_ad_txt">
+                        <div class="parms_name pic_ad_name">图文详情</div>
+                        <div class="pic_and_txt">
+                            <img src="../../images/detail_detail.png" alt="">
+                            <div class="isToBottom">
+                                <span>已经到底了</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="car-list" @click.stop="bgHide" :class="carShow?'show':''">
+            <div class="carlist-inner" id="showCar">
+                <div class="car-main">
+                    <div class="close" @click="hideMask">
+                        <span class="close-pic"></span>
+                    </div>
+                    <div class="car-top">
+                        <div class="car-pic">
+                            <img src="../../images/good.png" alt="">
+                        </div>
+                        <div class="car-title">
+                            <span class="car-pice">单价:
+                                <em>￥120.00</em>
+                            </span>
+                            <span class="car-tit">
+                                <img src="../../images/gj.png" alt="">[香港直邮] MAC魅可口红哑光不掉色唇膏 3g# see
+                                sheer 西柚色</span>
+                        </div>
+                    </div>
+                    <div class="carScroll" style="height: 3.8rem;overflow-y: scroll;overflow-x: hidden;-webkit-overflow-scrolling: touch; ">
+                        <div class="car-age sameLine" v-for="(item, index) in 3" :key="index">
+                            <div class="car-age-txt">年龄</div>
+                            <div class="car-age-list">
+                                <ul>
+                                    <li v-for="(item,index) in 4" :key="index" class="car-age-active">5个月</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-nums sameLine">
+                        <div class="nums-txt">数量</div>
+                        <span style="display:inline-block; line-height: .5rem;vertical-align: text-bottom; color: rgb(245, 23, 74); margin-left: 40%;">(起定量：20)</span>
+                        <span class="m-spinner" id="J_Quantity" style="margin-left:0;">
+                            <a href="javascript:;" class="J_Del" @click.stop="minusNums"></a>
+                            <input type="text" class="J_Input" value="1" v-model="carNums" @blur.stop="iptTxt" />
+                            <a href="javascript:;" class="J_Add" @click.stop="addNums"></a>
+                        </span>
+                    </div>
+                    <div class="m-cell">
+                        <div class="cell-item">
+                            <div class="cell-left">库存</div>
+                            <div class="cell-right">200</div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">有效期</div>
+                            <div class="cell-right">2018-10-1</div>
+                        </div>
+                    </div>
+                    <div class="car-btns">
+                        <span class="btns-sure" @click.stop="hideCar">确定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="m-tabbar">
+            <a href="javascript:;" class="tabbar-item tabbar-border">
+                <i class="icon icon1"></i>
+                <span class="txt">加入清单</span>
+            </a>
+            <a href="javascript:;" class="tabbar-item tabbar-border">
+                <i class="icon icon2"></i>
+                <span class="txt">进货车</span>
+                <span class="badge badge-danger">2</span>
+            </a>
+            <a href="javascript:;" class="tabbar-item tabbar-border">
+                <i class="icon icon3"></i>
+                <span class="txt">客服</span>
+            </a>
+            <a href="javascript:;" class="tabbar-item tabbar-rightnow tabber-same">
+
+                <span class="tabbar-txt" @click.stop="showCar">立即下单</span>
+            </a>
+            <a href="javascript:;" class="tabbar-item tabbar-addcar tabber-same">
+
+                <span class="tabbar-txt" @click.stop="showCar">加入进货车</span>
+            </a>
+        </footer>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#detail",
+            data() {
+                return {
+                    carShow: false,
+                    carNums: 1,
+
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+                // 详情页面的轮播 轮播由API请求过来的数据时请把改代码放置Api请求success里边
+                var bannerSwiper = new Swiper('.detail-banner', {
+                    loop: false,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'fraction',
+                        renderFraction: function (currentClass, totalClass) {
+                            return '<span class="' + currentClass + '"></span>' + '/' +
+                                '<span class="' +
+                                totalClass + '"></span>';
+                        },
+                    },
+                });
+
+                var scrollBox = document.querySelector('.g-scrollview');
+                // 获取 导航栏
+                var navDom = document.querySelector('.swiper-container');
+                var maxDistance = navDom.offsetTop + navDom.offsetHeight;
+                var headerDom = document.querySelector('.m-navbar');
+                headerDom.style.display = "none";
+                headerDom.style.opacity = "0";
+                scrollBox.onscroll = function () {
+                    var scrollDistance = scrollBox.scrollTop;
+                    var percent = (scrollDistance / maxDistance) > 1 ? 1 : scrollDistance / maxDistance;
+                    if (scrollDistance > 100) {
+                        headerDom.style.display = "flex";
+                        headerDom.style.height = ".9rem";
+                        headerDom.style.opacity = percent
+                    } else {
+                        headerDom.style.display = "none";
+                        headerDom.style.height = "0";
+                        headerDom.style.opacity = "0"
+
+                    }
+
+                }
+            },
+            methods: {
+                showCar: function () {
+                    this.carShow = !this.carShow;
+                },
+                hideCar: function () {
+                    this.carShow = !this.carShow;
+                },
+                bgHide: function (e) {
+                    var showBg = document.getElementById('showCar');
+                    if (showBg) {
+                        if (!showBg.contains(e.target)) {
+                            this.carShow = !this.carShow;
+                        }
+                    }
+                },
+                addNums: function () {
+                    this.carNums++;
+                },
+                minusNums: function () {
+                    this.carNums--;
+                    if (this.carNums <= 1) {
+                        this.carNums = 1;
+                    }
+                },
+                hideMask: function () {
+                    this.carShow = !this.carShow
+                },
+                iptTxt: function () {
+                    // if (this.carNums <= 0) {
+                    //     this.carNums = 1;
+                    // }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

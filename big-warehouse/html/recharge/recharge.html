@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/recharge.min.css">
+    <title>余额充值</title>
+</head>
+
+<body>
+    <section class="g-flexview">
+        <header class="m-navbar">
+            <a href="javascript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">余额充值</span>
+            </div>
+        </header>
+        <div class="g-scrollview" id="recharge">
+            <div class="select-type">
+                <div class="m-cell">
+                    <a class="cell-item" href="javascript:;" @click.stop="changeType($event)">
+                        <div class="cell-left">选择支付方式</div>
+                        <div class="cell-right cell-arrow"> <img :src="img" alt=""> {{text}}</div>
+                    </a>
+                </div>
+            </div>
+            <div class="drag"></div>
+            <div class="money-types" v-if="setMoneyType.length > 0">
+                <h3>选择充值金额</h3>
+                <ul class="money-ul">
+                    <li class="money-list" v-for="(item,index) in 9" :key="index" :class="index==idx?'select':''" @click.stop="selectMoney($event,index)">
+                        <div class="list-type">
+                            <p class="listType_money">200元</p>
+                            <p class="listType_send">赠送18元</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="use-ipt">
+                    <div class="custom"><span class="fh">￥</span><input type="number" class="other-money" placeholder="自定义金额" v-model="orderMoney"></div>
+                    <span class="give">赠送18元</span>
+                </div>
+                <div class="sure" @click.stop="surePay($event)">
+                    <span class="btn">确定</span>
+                </div>
+            </div>
+            <div class="drag"></div>
+            <div class="tips">
+                <h3>充值卡购卡说明：</h3>
+                <div class="text-tips">
+                    <p> 1、充值面额：<span class="redCol">300元、500元、1000元、2000元、300元、5000元</span>和<span>自定义充值</span>等不同额度。</p>
+                    <p>2、购卡充值成功后，<span class="redCol">不支持</span>提现，除非法律另有规定。</p>
+                    <p>3、使用方法：此充值在货栈商城消费视同于现金结算，在结算时选择“<span class="redCol">充值卡支付</span>”即可使用。</p>
+                </div>
+            </div>
+            <div class="selected" v-if="selectType" @click.stop="hideMask($event)">
+                <div class="selectedIn" :class="selectType?'show':''" id="showType">
+                    <div class="head">
+                        <span class="title">选择支付方式</span><span class="close"></span>
+                    </div>
+                    <ul>
+                        <li @click.stop="selectIn($event)">
+                            <div class="mar30"><img src="../../images/wechat.icon.png" alt=""><span class="text">微信支付</span></div>
+                        </li>
+                        <li @click.stop="selectIn($event)">
+                            <div class="mar30"><img src="../../images/zfb.png" alt=""><span class="text">支付宝支付</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#recharge",
+        data: {
+            selectType: false,
+            img:"../../images/zfb.png",
+            text:"支付宝支付",
+            idx:0,
+            orderMoney:"",
+            setMoneyType:["1"]
+        },
+        mounted: function () {
+
+        },
+        methods: {
+            changeType: function (e) {
+                this.selectType = !this.selectType;
+            },
+            hideMask: function (e) {
+                const showType = document.getElementById('showType');
+                if (showType) {
+                    if (!showType.contains(e.target)) {
+                        this.selectType = !this.selectType;
+                    }
+                }
+            },
+            selectIn:function(e){
+                this.img = e.currentTarget.childNodes[0].childNodes[0].getAttribute('src');
+                this.text = e.currentTarget.childNodes[0].childNodes[1].innerHTML;
+                this.selectType = !this.selectType;
+            },
+            selectMoney:function(e,index){
+                this.idx = index;
+            },
+            surePay:function(e){
+                alert(9)
+            }
+        }
+    })
+</script>
+
+</html>

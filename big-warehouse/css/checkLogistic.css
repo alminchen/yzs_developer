@@ -1,0 +1,147 @@
+html,
+body {
+    background: rgb(248, 248, 248);
+}
+
+.check-status {
+    padding: .4rem .24rem;
+    background: #fff;
+    margin-top: .2rem;
+    position: relative;
+}
+
+.check-status::after {
+    content: "";
+    display: inline-block;
+    width: .55rem;
+    height: .55rem;
+    background: url(../images/bg.png) no-repeat left center;
+    background-position: -2.55rem -1.2rem;
+    background-size: 7.5rem;
+    position: absolute;
+    left: .24rem;
+    top: .9rem;
+}
+
+.check-status .check-now {
+    padding-left: .8rem;
+    font-size: .28rem;
+    color: rgb(58, 58, 58);
+}
+
+.check-status p:not(:last-child) {
+    margin-bottom: .2rem;
+}
+
+.check-status em {
+    color: rgb(245, 23, 74);
+}
+
+.tracking {
+    width: 100%;
+    overflow: hidden;
+    margin: .2rem 0 0 0;
+    background: #fff;
+}
+
+.tracking h3 {
+    width: 100%;
+    display: inline-block;
+    height: 1rem;
+    line-height: 1rem;
+    padding: 0 .24rem;
+    font-size: .28rem;
+    color: rgb(106, 108, 112);
+    font-weight: 600;
+    position: relative;
+}
+
+.tracking h3::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+
+.tracking .tracking-status {
+    padding: 0 .24rem 0 .4rem;
+}
+
+.tracking-status dl {
+    width: 100%;
+    padding-top: .3rem;
+    position: relative;
+    padding-bottom: .3rem;
+    border-left: 1px solid rgb(228, 228, 228);
+    padding-left: .38rem;
+}
+
+
+.tracking dl:not(:last-child)::after{
+    content: "";
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: .38rem;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+.tracking dt {
+    font-size: .28rem;
+    color: rgb(110, 110, 112);
+    padding-bottom: .14rem;
+}
+
+.tracking dd {
+    font-size: .24rem;
+    color: rgb(110, 110, 112);
+}
+
+.tracking .end_order {
+    padding-bottom: .16rem
+}
+
+.tracking .end {
+    color: rgb(34, 34, 34)
+}
+
+.tracking .end_in {
+    color: rgb(34, 34, 34);
+}
+
+.tracking i {
+    display: inline-block;
+    width: .16rem;
+    height: .16rem;
+    background: rgb(191, 191, 191);
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
+    top: .44rem;
+}
+
+.tracking i.status {
+    display: inline-block;
+    width: .32rem;
+    height: .32rem;
+    border-radius: 50%;
+    background: url(../images/circle_03.png) no-repeat left center rgb(228, 228, 228);
+    background-size: 100% 100%;
+    position: absolute;
+    left: -0.16rem;
+    top: .36rem;
+}

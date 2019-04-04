@@ -1,0 +1,159 @@
+.login-bg {
+  width: 7.5rem;
+  height: 5.52rem;
+  display: block;
+  background-image: url("../images/bg1.png");
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.login {
+  position: relative;
+  height: 100%;
+}
+.login-wrap {
+  position: absolute;
+  left: 0.3rem;
+  top: 3.5rem;
+  width: 6.9rem;
+  background-color: #ffffff;
+  box-shadow: 0 0.09rem 0.13rem 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+.inputBox {
+  margin-top: 1rem;
+}
+.inputBox .tel1 {
+  position: relative;
+  margin: 0 0 0.5rem 0.6rem;
+  width: 5.7rem;
+  height: 0.6rem;
+  border-bottom: solid 1px #ccc;
+}
+.inputBox .tel1 .inp {
+  background: rgba(0, 0, 0, 0);
+  margin-left: 0.6rem;
+  outline-style: none;
+  border: none;
+  width: 4.6rem;
+  height: 0.5rem;
+  font-size: 0.26rem;
+  color: #333;
+}
+.inputBox .tel1 .inp::-webkit-input-placeholder {
+  font-size: 0.26rem;
+  color: #dddddd;
+}
+.inputBox .tel1 .inp::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 0.26rem;
+  color: #dddddd;
+}
+.inputBox .tel1 .inp:-ms-input-placeholder {
+  font-size: 0.26rem;
+  color: #dddddd;
+}
+.inputBox .tel1:nth-child(1) img {
+  left: 0;
+  top: 0.1rem;
+  position: absolute;
+  width: 0.27rem;
+  height: 0.3rem;
+}
+.inputBox .tel1:nth-child(2) img {
+  left: 0;
+  top: 0.1rem;
+  position: absolute;
+  width: 0.24rem;
+  height: 0.3rem;
+}
+#btn {
+  width: 5.7rem;
+  height: 0.9rem;
+  font-size: 0.3rem;
+  background-color: #f5174a;
+  border-radius: 0.05rem;
+  cursor: pointer;
+  margin: 0.2rem 0 0 0.6rem;
+  color: #fff;
+  border: 0;
+}
+.register {
+  margin: 0.4rem 0 0 1.7rem;
+}
+.register li {
+  float: left;
+  padding: 0 0.25rem;
+}
+.register li:nth-child(1) a {
+  font-size: 0.24rem;
+  color: #f5174a;
+}
+.register li:nth-child(2) span {
+  margin-top: 0.04rem;
+  display: block;
+  width: 2px;
+  height: 0.26rem;
+  background-color: #efefef;
+}
+.register li:nth-child(3) a {
+  font-size: 0.24rem;
+  color: #5c5c5c;
+}
+.Shortcut {
+  width: 5.71rem;
+  height: 0.23rem;
+  margin: 1.11rem auto 0.4rem;
+}
+.wechat-login img {
+  width: 0.64rem;
+  height: 0.64rem;
+  margin: 0 auto 1.54rem;
+}
+.agree {
+  margin: 0 0 0.5rem 0.3rem;
+}
+.agree .agree-checkbox {
+  margin: 0.04rem 0.1rem 0 0;
+  float: left;
+}
+.agree .agree-txt {
+  letter-spacing: 0.04rem;
+  font-size: 0.22rem;
+  color: #c9c9c9;
+  float: left;
+}
+.agree .agreement {
+  display: inline-block;
+  color: #2b2b2b;
+}
+#check {
+  display: none;
+}
+.box {
+  display: block;
+  width: 0.24rem;
+  height: 0.24rem;
+  border: 1px solid #f5174a;
+  -webkit-border-radius: 0.05rem;
+  -moz-border-radius: 0.05rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+input[type=checkbox]:checked + label {
+  position: relative;
+  background-color: #fff;
+}
+input[type=checkbox]:checked + label::after {
+  position: absolute;
+  top: 0.02rem;
+  left: 0.08rem;
+  width: 0.06rem;
+  height: 0.12rem;
+  border-style: solid;
+  border-color: #f5174a;
+  border-width: 0 0.02rem 0.02rem 0;
+  transform: rotateZ(45deg);
+  -webkit-transform: rotateZ(45deg);
+  content: "";
+}
+/*# sourceMappingURL=about.css.map */

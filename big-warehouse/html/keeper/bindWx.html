@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>绑定微信</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/ydui.flexible.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <style>
+        .m-navbar .head-caption {
+            font-size: 0.34rem;
+            letter-spacing: 0.02rem;
+            color: #222222;
+        }
+    </style>
+</head>
+<body>
+<section class="g-flexview" id="app">
+    <header class="m-navbar">
+        <a href="capital.html" class="navbar-item"><i class="back-ico"></i></a>
+        <div class="navbar-center">
+            <span class="navbar-title head-caption">绑定微信</span>
+        </div>
+
+    </header>
+    <div class="g-scrollview">
+        <div class="wx_wrap" v-show="!nextShow">
+            <div class="wxInp_box">
+                <div class="wxInp">
+                    <p class="wxInp_txt">微信号</p>
+                    <input type="text" name="" class="wx_input" placeholder="请输入微信号">
+                </div>
+                <div class="wxInp">
+                    <p class="wxInp_txt">真实姓名</p>
+                    <input type="text" name="" class="wx_input" placeholder="请输入真实姓名">
+                </div>
+            </div>
+            <a href="javascript:;" class="next-bind" @click="nextShow=!nextShow">下一步</a>
+            <div class="wxTips">
+                 <h3 class="wxTips_h3"><span class="wx_red">*</span>温馨提示</h3>
+                <p class="wxTips_info">1、请确保微信已实名认证，并填写身份证上的真实姓名（请不要填写昵称）</p>
+                <p class="wxTips_info">2、为了保证顺利提现，30天内不要换其他账号，否则会导致提现不通过</p>
+                <p class="wxTips_info">3、我们承诺不会向任何人透露您的个人信息</p>
+            </div>
+        </div>
+
+        <div class="next_box" v-show="nextShow">
+            <div class="wxInp_box verify_box">
+                <div class="wxInp">
+                    <p class="wxInp_txt">手机号</p>
+                    <input type="number" name="" class="wx_input" placeholder="请输入微信号">
+                </div>
+                <div class="wxInp verify_wx">
+                    <div class="verify_code">
+                        <p class="wxInp_txt">验证码</p>
+                        <input type="number" name=""  class="wx_input" placeholder="请输入手机短信验证码">
+                    </div>
+                    <span class="getBtnC">点击获取</span>
+                </div>
+            </div>
+            <a href="javascript:;" class="next-bind">完成</a>
+        </div>
+    </div>
+    <!--<footer class="m-tabbar" style="padding: 0">-->
+    <!---->
+    <!--</footer>-->
+
+</section>
+</body>
+</html>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            nextShow: false
+
+        },
+        methods:{
+
+        }
+    })
+</script>

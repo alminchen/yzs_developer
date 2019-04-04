@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/ydui.flexible.js"></script>
+    <script src="../../js/ydui.js"></script>
+</head>
+<body>
+<section class="g-flexview" id="app">
+    <header class="m-navbar">
+        <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">申请退款</span></div>
+    </header>
+    <div class="g-scrollview">
+        <div class="drawback">
+            <div class="drawback-head">
+                <label class="cell-right">
+                    <input type="checkbox" name="checkbox" v-model="checked" @change="changeAllChecked()"/>
+                    <i class="cell-checkbox-icon"></i>
+                </label>
+                <span class="drawback-icon"></span>
+                <p>订单编号：So00018412</p>
+            </div>
+            <div class="drawback-section">
+                <div class="drawback-item"  v-for="(item,index) in list" :key="index">
+                    <label class=" cell-right" >
+                        <input  type="checkbox" name="checkbox" :value="item" v-model="checkedList"/>
+                        <i class="cell-checkbox-icon"></i>
+                    </label>
+                    <img src="../../images/backimg.png" alt="" class="drawbackImg">
+                    <div class="drawback-content">
+                        <p class="drawback-txt">港版Cow&Gate牛栏2段奶粉婴幼儿配方奶粉2段900g .....</p>
+                        <div class="drawback-pn">
+                            <p class="drawback-price">退款金额：<span class="price-rmb">￥188.00</span></p>
+                            <span class="drawback-num">x{{item.num}}</span>
+                        </div>
+                        <div class="drawback-amount">
+                            <p class="amount-txt">退款数量</p>
+                            <div class="amount-num" class="clearfix">
+                                <a href="" @click.prevent="minus(index)">－</a>
+                                <input type="text"  v-model="item.num">
+                                <a href="" @click.prevent="add(index)">＋</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drawback-form">
+                    <div class="form-list">
+                        <p class="form-txt">退款原因<span class="drawback-red">*</span></p>
+                        <a  href="javascript:;" class="form-sel" @click.prevent="dialogShow" ><input type="text" v-model="drawback_txt" placeholder="请选择"><span class="drawback-sel"></span></a>
+                    </div>
+                    <div class="form-list">
+                        <p class="form-txt">退款总额<span class="drawback-red">*</span></p>
+                        <p class="form-ps">（不含发货邮费：￥12.00）</p>
+                        <p class="form-sel-price"><span class="form-sel-num">￥</span>{{allPrice.toFixed(2)}}</p>
+                    </div>
+                    <div class="form-list" style="border-bottom: 0">
+                        <p class="form-txt">退款说明</p>
+                    </div>
+                    <div class="textarea-box">
+                        <div class="textarea">
+                            <textarea maxlength="300" placeholder="退款说明(字数限制：300)"></textarea>
+                        </div>
+                    </div>
+                    <div class="drawback-upload">
+                        <p class="upload-title">上传图片</p>
+                        <input type="file" id="img-inp">
+                        <label for="img-inp" class="lab-upload">
+                            <img src="../../images/camera.png" alt="">
+                            <i> 上传凭证(最多6张)</i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="m-tabbar">
+        <div class="add-name">
+            <a href="javascript:;" class="add-name-sure">
+                提交申请
+            </a>
+        </div>
+    </footer>
+
+    <!--退款原因弹窗-->
+    <div class="dialog-server" v-show="flag">
+         <div class="dialog-box" id="dialog-server">
+             <!--<p class="server-txt drawback-dialog-title">退款原因</p>-->
+             <p class="server-txt" @click="drawback_lg($event)">拍错/多拍/不想要</p>
+             <p class="server-txt" @click="drawback_lg($event)">协商一致退款</p>
+             <p class="server-txt" @click="drawback_lg($event)">缺货</p>
+             <p class="server-txt" @click="drawback_lg($event)">未按约定时间发货</p>
+             <p class="server-txt" @click="drawback_lg($event)">其他</p>
+             <p class="server-cancel drawback-dialog-off" id="server-cancel" @click="offDialog">取消</p>
+         </div>
+    </div>
+</section>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            list: [{
+                title: 'Chrome更新了',
+                tips: '不再支持Flash视频播放',
+                isDefault: 1,
+                price: 12,
+                num: 1
+            },
+                {
+                    title: '电影新资讯',
+                    tips: '电影《红海行动》上映以来票房暴涨，很多国人表示对国产电影有了新的改观',
+                    isDefault: 0,
+                    price: 10,
+                    num: 2
+                },
+                {
+                    title: '聚焦两会·共筑中国梦',
+                    tips: '习近平代表的两会故事',
+                    isDefault: 0,
+                    price: 13,
+                    num: 1
+                },
+                {
+                    title: '微信团队',
+                    tips: '您的帐号有异常登录，如非本人操作，请及时修改密码',
+                    isDefault: 0,
+                    price: 20,
+                    num: 4
+                }
+            ],
+            checked: false,
+            checkedList: [],
+            flag:false,
+            drawback_txt:''
+        },
+        computed: {
+            allPrice: function () {
+                var price = 0;
+                for (var i in this.checkedList) {
+                    price += Number(this.checkedList[i].num * this.checkedList[i].price)
+                }
+                return price;
+            }
+        },
+        methods:{
+            add: function (index) {
+                this.list[index].num++
+            },
+            minus: function (index) {
+                this.list[index].num--;
+                if (this.list[index].num < 1) {
+                    this.list[index].num = 1
+                }
+            },
+            changeAllChecked: function () {
+                if (this.checked) {
+                    this.checkedList = this.list
+                } else {
+                    this.checkedList = []
+                }
+            },
+            dialogShow:function () {
+                this.flag = true;
+            },
+            offDialog:function () {
+                this.flag = false;
+            },
+            drawback_lg:function (e) {
+                this.drawback_txt = e.target.innerHTML;
+                this.flag = false;
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>

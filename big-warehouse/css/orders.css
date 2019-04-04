@@ -1,0 +1,322 @@
+html,
+body {
+    background: rgb(248, 248, 248)
+}
+
+img {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.order-status {
+    width: 100%;
+    height: 2.4rem;
+    background: rgb(245, 23, 74);
+    position: relative;
+    overflow: hidden;
+}
+
+.order-status .status {
+    display: inline-block;
+    color: #fff;
+    font-size: .26rem;
+    font-weight: bold;
+    margin: .88rem 0 0 .8rem;
+}
+
+.order-status .status-pic {
+    width: 2.4rem;
+    height: 2.4rem;
+    overflow: hidden;
+    position: absolute;
+    right: .8rem;
+    top: 0rem;
+}
+
+
+.order-address {
+    width: 100%;
+    padding: .3rem;
+    background: #fff;
+    overflow: hidden;
+}
+
+.order-address ul {
+    padding-left: .6rem;
+    position: relative;
+}
+
+.order-address .name {
+    font-size: .3rem;
+    color: rgb(34, 34, 34);
+    padding-bottom: .24rem;
+}
+
+.order-address strong:first-child {
+    padding-right: .48rem;
+}
+
+.order-address .area {
+    line-height: .44rem;
+    font-size: .26rem;
+    position: relative;
+}
+
+.order-address .area::after {
+    content: "";
+    display: inline-block;
+    width: 0.22rem;
+    height: 0.28rem;
+    background: url(../images/menu_address.png) no-repeat left center;
+    background-size: 100% 100%;
+    position: absolute;
+    left: -.6rem;
+    top: 5px;
+}
+
+.order-msg {
+    width: 100%;
+    margin-top: .2rem;
+}
+
+.order-msg h3 {
+    padding: .4rem 0 .4rem .3rem;
+    font-size: .28rem;
+    color: rgb(34, 34, 34);
+    background: #fff;
+}
+
+.order-list li {
+    padding: 0 .24rem;
+    position: relative;
+}
+
+.order-list li:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 120%;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    left: -0.24rem;
+    bottom: 0;
+    right: -0.24rem;
+    transform: scaleY(.8)
+}
+
+.order-list .order-detail {
+    padding: .4rem 0 .2rem 0;
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    -o-display: flex;
+    display: flex;
+    overflow: hidden;
+}
+
+.order-detail .has-pic {
+    width: 1.86rem;
+    height: 1.86rem;
+    overflow: hidden;
+    margin-right: .2rem;
+}
+
+.order-detail .has-txt-status {
+    flex: 1;
+    position: relative;
+}
+
+.order-detail .order-tit {
+    line-height: .44rem;
+    font-size: .24rem;
+    color: rgb(67, 67, 67);
+    padding-bottom: .05rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.order-detail .order-same {
+    color: rgb(181, 180, 180);
+    margin-bottom: .14rem;
+    font-size: .24rem
+}
+
+.order-detail .order-same em {
+    color: rgb(255, 102, 24)
+}
+
+.order-detail .order-all-price {
+    font-size: .3rem;
+    color: rgb(245, 23, 74);
+    font-weight: bold;
+    padding-bottom: .2rem;
+}
+
+.order-detail .order-all-price em {
+    font-size: .24rem;
+    font-weight: bold
+}
+
+.order-detail .order-nums {
+    font-size: .26rem;
+    color: rgb(128, 128, 128);
+    position: absolute;
+    right: 0;
+    bottom: .72rem
+}
+
+.order-detail .opertaion {
+    width: 1.5rem;
+    text-align: center;
+    padding: .1rem 0;
+    font-size: .26rem;
+    color: rgb(245, 23, 74);
+    background: #fff;
+    border: 1px solid rgb(245, 23, 74);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.order-list .open-orders {
+    width: 100%;
+    background: #fff;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: .28rem;
+    color: rgb(191, 191, 191);
+    text-align: center;
+}
+
+.account-msg,
+.ordernums-msg {
+    margin-top: .2rem;
+    padding: .4rem .24rem;
+    background: #fff;
+}
+
+.account-msg h3,
+.ordernums-msg h3,
+.remark-msg h3 {
+    font-size: .28rem;
+    color: rgb(34, 34, 34);
+}
+
+.account-msg .account-detail {
+    padding-top: .4rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.account-detail .account-same:not(:last-child) {
+    margin-bottom: .2rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.account-msg .name,
+.ordernums-msg .ordernums-txt {
+    font-size: .28rem;
+    color: rgb(153, 153, 153);
+}
+
+.account-msg .account-nums,
+.ordernums-msg .ordernums-detail {
+    font-size: .28rem;
+    color: rgb(66, 65, 68)
+}
+
+.account-msg .all-price-txt {
+    color: rgb(66, 65, 68);
+}
+
+.account-msg .all-price {
+    color: rgb(245, 23, 74);
+    font-weight: bold;
+}
+
+.ordernums-msg .ordernums,
+.remark-msg .remark-txt {
+    padding-top: .4rem;
+    overflow: hidden;
+}
+
+.ordernums-msg .ordernums-list:not(:last-child) {
+    margin-bottom: .2rem;
+    overflow: hidden;
+}
+
+.ordernums-msg .orders-copy {
+    position: relative;
+}
+
+.ordernums-msg i {
+    margin-left: .14rem;
+    display: inline-block;
+    width: 1rem;
+    text-align: center;
+    padding: .03rem 0;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 5px;
+}
+
+.remark-msg {
+    margin-top: .2rem;
+    padding: .4rem .24rem 0 .24rem;
+    background: #fff;
+}
+
+.remark-msg .cell-textarea {
+    background: rgb(248, 248, 248);
+    height: 2rem;
+    font-size: .26rem;
+    padding: .28rem .24rem;
+    border-radius: 5px;
+}
+
+.remark-msg .remark-order {
+    display: block;
+    font-size: .22rem;
+    color: rgb(191, 191, 191);
+}
+
+.hei98 {
+    height: .98rem;
+    text-align: right;
+    padding: 0 .24rem;
+}
+
+.oncealign {
+    width: 100%;
+    text-align: right;
+    font-size: 0;
+}
+
+.oncealign span {
+    display: inline-block;
+    width: 1.5rem;
+    text-align: center;
+    padding: 0.13rem 0;
+    font-size: 0.28rem;
+    border-radius: 5px;
+    margin-right: .2rem;
+    border: 1px solid rgb(228, 228, 228);
+}
+
+.oncealign .make-sure {
+    color: #fff;
+    background: rgb(245, 23, 74);
+    border: none;
+    margin-right: 0;
+}

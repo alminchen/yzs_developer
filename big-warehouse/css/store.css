@@ -1,0 +1,300 @@
+img {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+#storeIndex .m-navbar:after {
+    border: none;
+}
+
+#storeIndex .m-navbar {
+    background: #f5174a;
+    color: #fff;
+}
+
+#storeIndex .navbar-center .navbar-title {
+    color: #fff;
+}
+
+.store-main {
+    width: 100%;
+    overflow: hidden;
+}
+
+.store-main .store-intro {
+    width: 100%;
+    overflow: hidden;
+    height: 4.3rem;
+    position: relative;
+}
+
+.store-intro .intro-inner {
+    padding: 0 .3rem;
+    width: 100%;
+    height: 3.36rem;
+    background: #f5174a;
+    line-height: .56rem;
+    font-size: .28rem;
+    color: #ffffff;
+}
+
+.store-intro::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: .95rem;
+    background: url(../images/bottom.png) no-repeat left center;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0
+}
+
+.store-intro .more {
+    display: inline-block;
+    width: 100%;
+    height: 28px;
+    text-align: center;
+    position: relative;
+    z-index: 1231;
+}
+
+.store-intro .more::after {
+    content: "";
+    display: inline-block;
+    width: .37rem;
+    height: .2rem;
+    background: url(../images/more_03.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data {
+    padding: 15px .3rem 0 .3rem;
+}
+
+.store-data .cell-item {
+    padding-left: 0;
+}
+
+.store-data .cell-item:not(:last-child):after {
+    border: none
+}
+
+.store-data .m-cell {
+    padding-top: .35rem;
+}
+
+.store-data .cell-item.cell-mine {
+    width: 100%;
+    line-height: .41rem;
+    padding-left: .6rem;
+    position: relative;
+}
+
+.store-data .cell-item.cell-mine::before {
+    content: "";
+    display: inline-block;
+    width: .33rem;
+    height: .4rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.store-data .cell-item.cell-mine.tel::before {
+    background: url(../images/regist_tel.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.cell-item.cell-mine .cell-left {
+    line-height: .41rem;
+    font-size: .3rem;
+    color: #010101;
+    position: relative;
+    padding-right: 10px;
+}
+
+.cell-item.cell-mine .cell-left::after {
+    content: "*";
+    position: absolute;
+    right: 0;
+    top: 2px;
+    color: #f5174a;
+    font-size: .3rem
+}
+
+.store-data .cell-item.cell-mine.code::before {
+    width: .35rem;
+    height: .37rem;
+    background: url(../images/regist_yzm.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .verifyCode {
+    display: inline-block;
+    margin-top: .26rem;
+    width: 2.5rem;
+    font-size: .26rem;
+    text-align: center;
+    height: .6rem;
+    padding: .13rem 0 0 0;
+    background: #f5174a;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.store-data .cell-item.cell-mine.name::before {
+    background: url(../images/regist_name.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .cell-item.cell-mine.store::before {
+    background: url(../images/regist__mc.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .cell-item.cell-mine.address::before {
+    background: url(../images/regist__dz.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .cell-item.cell-mine.spec::before {
+    background: url(../images/regist__lx.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .cell-item.cell-mine.inviter::before {
+    width: .35rem;
+    height: .35rem;
+    background: url(../images/regist__yqr.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.cell-item.cell-mine .cell-left.no-m::after {
+    content: "";
+}
+
+.store-data .cell-item.cell-mine.picture::before {
+    width: .37rem;
+    height: .31rem;
+    top: 2px;
+    background: url(../images/regist__pz.png) no-repeat left center;
+    background-size: 100% 100%;
+}
+
+.store-data .padd36 {
+    padding-top: .36rem;
+    display: inherit;
+    margin-left: -0.13rem
+}
+
+.store-data dl {
+    width: 2.2rem;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin-left: .13rem;
+    margin-bottom: .16rem;
+}
+
+.store-data dd {
+    position: relative;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.store-data dd input[type="file"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.store-data dt {
+    display: block;
+    font-size: .28rem;
+    color: #222;
+    padding: .15rem 0;
+    text-align: center;
+}
+
+.store-data .m-cell.picno:after {
+    border: none;
+}
+
+div.radioBtn {
+    width: 25px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+label.radio_label {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #999;
+}
+
+/*设置选中的input的样式*/
+
+/* + 是兄弟选择器,获取选中后的label元素*/
+
+.radioBtn input:checked+label {
+    background-color: #f5174a;
+    border: 1px solid #f5174a;
+}
+
+.radioBtn input:checked+label::after {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 10px;
+    top: 3px;
+    left: 6px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg)
+}
+
+.store-data .txt{
+    color: #c9c9c9;
+    font-size: .26rem;
+    padding-left: .1rem
+}
+
+.store-data .txt a{
+    color: #010101;
+}
+.store-data .paddBom{
+    padding-bottom: .4rem
+}
+
+.m-tabbar .tabbar-item{
+    padding: 0 .3rem;
+}
+
+.m-tabbar span{
+    display: inline-block;
+    width: 100%;
+    padding: .2rem 0;
+    text-align: center;
+    background: #f5174a;
+    color: #fff;
+    font-size: .28rem;
+    border-radius: 5px;
+}

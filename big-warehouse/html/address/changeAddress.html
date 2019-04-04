@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/addAddress.css">
+    <title>编辑收货地址</title>
+</head>
+
+<body>
+    <section class="g-flexview">
+        <!-- <header class="m-navbar">
+            <a href="#" class="navbar-item">
+                <i class="back-ico"></i>
+            </a>
+            <div class="navbar-center">
+                <span class="navbar-title">NavBar</span>
+            </div>
+        </header> -->
+        <div class="g-scrollview" id="addAddress">
+            <div class="m-cell">
+                <div class="cell-item">
+                    <div class="cell-left">收货人：</div>
+                    <div class="cell-right">
+                        <input type="text" class="cell-input" placeholder="" v-model="name" />
+                    </div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left">联系电话：</div>
+                    <div class="cell-right">
+                        <input type="number" pattern="[0-9]*" class="cell-input" placeholder="" autocomplete="off" v-model="phone" />
+                    </div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left">身份证：</div>
+                    <div class="cell-right">
+                        <input type="text" class="cell-input" placeholder="" v-model="idcard" />
+                    </div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left">省/市/区：</div>
+                    <div class="cell-right cell-arrow">
+                        <input type="text" class="cell-input" v-model="area" id="J_Address" onfocus="this.blur();" unselectable="on" />
+                    </div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left cell-area">详细地址：</div>
+                    <div class="cell-right cell-text">
+                        <!-- <input type="text" class="cell-input bigIpt" v-model="detailAddress" /> -->
+                        <textarea name="detail" class="cell-input bigIpt" v-model="detailAddress" placeholder="如街道、楼牌号等"></textarea>
+                    </div>
+                </div>
+                <label class="cell-item">
+                    <span class="cell-left">设为默认地址</span>
+                    <label class="cell-right">
+                        <input type="checkbox" class="m-switch" v-model="select" />
+                    </label>
+                </label>
+            </div>
+            <div class="saveAndUse" @click="saveAndUse">
+                <span class="saveBtn">保存并使用</span>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/ydui.city.js"></script>
+<script src="../../js/ydui.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: "#addAddress",
+        data() {
+            return {
+                message: "1",
+                name: "",
+                phone: '',
+                idcard: '',
+                area: '',
+                detailAddress: '',
+                select: ''
+            }
+        },
+        mounted() {
+            this.name = "张三"
+            this.phone = "13212345678"
+            this.idcard = "123456789012345678"
+            this.detailAddress = "测试地址"
+            this.area = "广东省 深圳市 福田区"
+            this.select = true;
+            var _this = this;
+            var $address = $('#J_Address');
+
+            $address.citySelect();
+
+            $address.on('click', function () {
+                $address.citySelect('open');
+            });
+
+            $address.on('done.ydui.cityselect', function (ret) {
+                /* 省：ret.provance */
+                /* 市：ret.city */
+                /* 县：ret.area */
+                // $(this).val(ret.provance + ' ' + ret.city + ' ' + ret.area);
+                _this.area = ret.provance + ' ' + ret.city + ' ' + ret.area
+            });
+        },
+        methods: {
+            saveAndUse: function () {
+                // window.location.href = "./mangeAaddress.html" 
+                parent.getDeatailAddress();
+                var idx = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(idx);
+            }
+        }
+    })
+
+    function getManager(bool) {
+        // vm.managerFlag = bool;
+
+    }
+</script>
+
+</html>

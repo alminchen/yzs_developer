@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>实名认证通过</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <!-- <link rel="stylesheet" href="../../css/idCardPassCertification.min.css"> -->
+    <link rel="stylesheet" href="../../css/keeper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <style>
+        .m-navbar .head-caption {
+            font-size: 0.34rem;
+            letter-spacing: 0.02rem;
+            color: #222222;
+        }
+
+        .dialog-server {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="g-flexview" id="idCardPassCertification">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center">
+                <div class="navbar-ipt">
+                    <span class="navbar-title">实名认证通过</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="pass-certification">
+                <div class="pass-status">
+                    <div class="pass-status-pic">
+                        <img src="../../images/keeper/shopowner_success.png" alt="">
+                        <span class="certification-status-">已通过</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pass-certification-idcard">
+                <div class="m-cell">
+                    <div class="cell-item">
+                        <div class="cell-left">姓名：</div>
+                        <div class="cell-right"><span class="cell-input">孙悟空</span></div>
+                    </div>
+                    <div class="cell-item">
+                        <div class="cell-left">身份证：</div>
+                        <div class="cell-right"><span class="cell-input">2*********************1</span></div>
+                    </div>
+                </div>
+                <div class="pass-idcard-pic">
+                    <dl>
+                        <dd>
+                            <img src="../../images/keeper/shopowner__id_up.png" alt="">
+                        </dd>
+                        <dt>身份证人像照</dt>
+                    </dl>
+                    <dl class="mar30">
+                        <dd>
+                            <img src="../../images/keeper/shopowner__id_down.png" alt="">
+                        </dd>
+                        <dt>身份证人像照</dt>
+                    </dl>
+                </div>
+                <div class="m-cell">
+                    <div class="cell-item">
+                        <div class="cell-left">提现方式</div>
+                        <div class="cell-right cell-arrow color-ec" @click="typeShow=!typeShow">未绑定</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-server" v-show="typeShow">
+            <div class="dialog-box">
+                <i class="close_i" @click="typeShow=!typeShow"></i>
+                <p class="cash_title">选择提现方式</p>
+                <a href="bindBank.html" class="cashType">
+                    <p class="cashType_txt"><i class="cashType_img "></i>银行卡</p>
+                    <span class="type_check"></span>
+                </a>
+                <a href="bindWx.html" class="cashType">
+                    <p class="cashType_txt"><i class="cashType_img cash_wx"></i>微信</p>
+                    <span class="type_check"></span>
+                </a>
+                <a href="bindZfb.html" class="cashType">
+                    <p class="cashType_txt"><i class="cashType_img cash_zfb"></i>支付宝</p>
+                    <span class="type_check"></span>
+                </a>
+            </div>
+        </div>
+        <!-- <footer class="m-tabbar">
+            <a href="#" class="tabbar-item tabbar-active">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">首页</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">分类</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">进货车</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">我的</span>
+            </a>
+        </footer> -->
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#idCardPassCertification",
+            data() {
+                return {
+                    num: 0,
+                    typeShow: false
+                }
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

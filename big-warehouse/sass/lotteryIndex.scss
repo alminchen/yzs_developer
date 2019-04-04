@@ -1,0 +1,353 @@
+[v-cloak] {
+    display: none;
+}
+
+.hairline .g-scrollview,
+.hairline .g-scrollview {
+    margin-top: 0
+}
+
+img {
+    width: 100%;
+    display: inline-block;
+}
+
+.lotteryIndex-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #f5174a;
+    // height: 100%;
+
+    // .lucky-wheel {
+    //     // height: 100%;
+    // }
+
+    .lucky-title {
+        width: 100%;
+        height: 5.36rem;
+        background: url(../images/lucky/lucky_title.png) no-repeat top center;
+        background-size: 100%;
+    }
+
+    .lucky-list {
+        width: .6rem;
+        height: .86rem;
+        background: url(../images/lucky/lucky_name_list.png) no-repeat top center;
+        background-size: 100%;
+        position: absolute;
+        right: .3rem;
+        top: 0;
+    }
+
+    .wheel-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .wheel-pointer-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 100;
+        transform: translate(-50%, -65%);
+        width: 1.2rem;
+        height: 1.4rem;
+    }
+
+    .wheel-pointer {
+        width: 100%;
+        height: 100%;
+        background: url(../images/lucky/lucky_point.png) no-repeat center top;
+        background-size: 100%;
+        transform-origin: center 65%;
+    }
+
+    .wheel-inject-bg {
+        width: 6.48rem;
+        height: 6.9rem;
+        background: url(../images/lucky/lucky_roate_wrap.png) no-repeat bottom center;
+        background-size: 100%;
+    }
+
+    .wheel-bg {
+        width: 6.48rem;
+        height: 6.48rem;
+        background: url(../images/lucky/lucky_roating.png) no-repeat top center;
+        background-size: 100%;
+        color: #c30b29;
+        font-size: .32rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        // transform: rotate(-30deg)
+        transition: transform 3s ease;
+
+        div {
+            text-align: center;
+        }
+    }
+
+    .prize-list {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .prize-item {
+        position: absolute;
+        z-index: 2;
+        width: 2.76rem;
+        height: 3.35rem;
+        padding-top: .8rem;
+
+        img {
+            width: .42rem;
+            height: .8rem;
+            display: inline-block;
+        }
+
+        .prize-pic {
+            margin-top: .22rem;
+        }
+
+        &:first-child {
+            top: .1rem;
+            left: 1.87rem;
+            transform: rotate3d();
+        }
+
+        &:nth-child(2) {
+            top: .92rem;
+            left: 3.2rem;
+            transform: rotate(60deg);
+        }
+
+        &:nth-child(3) {
+            top: 2.4rem;
+            left: 3.2rem;
+            transform: rotate(120deg)
+        }
+
+        &:nth-child(4) {
+            top: 3.1rem;
+            left: 1.87rem;
+            transform: rotate(180deg)
+        }
+
+        &:nth-child(5) {
+            top: 2.4rem;
+            left: .6rem;
+            transform: rotate(240deg)
+        }
+
+        &:last-child {
+            top: .9rem;
+            left: .6rem;
+            transform: rotate(-60deg)
+        }
+    }
+
+    .main {
+        width: 100%;
+        padding: .7rem .53rem .5rem .53rem;
+    }
+
+    .main-inner {
+        width: 100%;
+        height: 100%;
+        padding: 0 .3rem;
+        background: #fff;
+        border-radius: .2rem;
+    }
+
+    .tip-title,
+    .winner-title {
+        padding: .35rem 0;
+        text-align: center;
+    }
+
+    .title-pic {
+        display: inline-block;
+        width: 3.2rem;
+        height: .4rem;
+        background: url(../images/lucky/tip-title.png) no-repeat center top;
+        background-size: 100%;
+    }
+
+    .tip-content {
+        font-size: .28rem;
+        flood-color: #333;
+        letter-spacing: 2px;
+        padding-top: .44rem;
+        position: relative;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 1px;
+            background: #ececec;
+            transform: scaleY(.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        p {
+            margin-bottom: .5rem;
+        }
+    }
+
+    .toast-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+    }
+
+    .winner-list,
+    .toast {
+        width: 100%;
+        padding: 0 .5rem;
+        position: fixed;
+        left: 0;
+        top: 50%;
+        z-index: 999999;
+        transform: translate(0, -50%);
+    }
+
+    .winner-inner {
+        width: 100%;
+        padding: 0 .3rem;
+        background: #fff;
+        border-radius: .2rem;
+    }
+
+    .winner-title {
+        border-bottom: 1px solid #ececec;
+    }
+
+    .winner-pic {
+        display: inline-block;
+        width: 3.2rem;
+        height: .4rem;
+        background: url(../images/lucky/winner_list.png) no-repeat top center;
+        background-size: 100%
+    }
+
+    .winner-listbox {
+        padding: .4rem 0;
+    }
+
+    .winner-wraper {
+        width: 100%;
+        height: 6.07rem;
+        overflow: hidden;
+    }
+
+    .winner-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: .3rem;
+        font-size: .26rem;
+        color: #333333;
+
+        span {
+            flex: 1;
+        }
+    }
+
+    .winner-prod {
+        color: #f5174a;
+    }
+
+    .toast-container {
+        width: 100%;
+        height: 6.8rem;
+        border-radius: .2rem;
+        background: url(../images/lucky/toast-bg.png) no-repeat top center;
+        background-size: 100%;
+        position: relative;
+    }
+
+    .toast-inner {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        justify-items: center;
+        position: relative;
+        height: 100%;
+    }
+
+    .toast-pic {
+        margin-top: .75rem;
+        margin-bottom: .35rem;
+    }
+
+    .no_in {
+        margin-top: .88rem;
+        width: 2.62rem;
+        height: 2.55rem;
+        margin-bottom: .66rem;
+    }
+
+    .toast-title {
+        font-size: .46rem;
+        color: #333;
+        margin-bottom: .5rem;
+    }
+
+    .toast-subtit {
+        font-size: .5rem;
+        margin-bottom: .5rem;
+        color: #f5174a;
+        letter-spacing: 2px;
+    }
+
+    .no_in_title {
+        margin-bottom: .7rem;
+        font-size: .46rem;
+        color: #333;
+    }
+
+
+    .btn_detail_or {
+        width: 100%;
+        padding: 0 .72rem;
+        text-align: center;
+        font-size: .46rem;
+        color: #fff;
+
+        a {
+            display: block;
+            width: 100%;
+            height: .8rem;
+            text-align: center;
+            background: #ffa201;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            justify-content: center;
+            border-radius: .4rem;
+            letter-spacing: 2px;
+        }
+    }
+
+    .clsoe-btn {
+        width: .6rem;
+        height: .6rem;
+        background: url(../images/lucky/close_btn.png) no-repeat top center;
+        background-size: 100%;
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translate(-50%, 0)
+    }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>社栈优品</title>
+    <script src="./js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="./css/ydui.css">
+    <link rel="stylesheet" href="./css/h5Index.min.css">
+</head>
+
+<body>
+    <section class="body g-flexview" id="h5Index" :class="{fixBody:navShow}" v-cloak>
+        <div class="inner-body">
+            <header class="nav">
+                <div class="nav-inner">
+                    <div class="logo">
+                        <img src="./images/logo.png" alt="">
+                    </div>
+                    <div class="right-nav" @click.stop="navShow=!navShow">
+                        <img src="./images/right_nav.png" alt="">
+                    </div>
+                </div>
+            </header>
+            <div class="contain">
+                <div class="big-banner">
+                    <img src="./images/big_banner.png" alt="">
+                </div>
+                <div class="about-szyp">
+                    <div class="about-title">
+                        <span class="title">关于社栈优品</span>
+                    </div>
+                    <div class="sub-title">专业的母婴S2B平台</div>
+                    <div class="text-intro">
+                        社栈优品是深圳商栈互联科技有限公司旗下专业的S2B母婴交易平台，专注提供母婴领域的一手优质货源。社栈优品下设中国大陆平台及香港平台，同步运营，销售涉及母婴用品、正版奶粉、营养保健、美妆护肤、百货日用、零食休闲、儿童玩具、动漫IP衍生产品等十几个品类。社栈优品货源全部来自全球一线著名品牌的一手直采，近万款sku、独家新品、特色折扣、一应集结。利用强大的供应链整合优势，社栈优品成功打通线上线下，实现全渠道方向拓展，目前已强势覆盖大陆及港澳地区以万宁、屈臣氏、各大药房为代表的16000多家合作门店，华润万家、百佳等10000个KA超市以及20000多个微商分销。
+                    </div>
+                </div>
+                <div class="compilation">
+                    <div class="inner-compilation">
+                        <dl class="inner-dl">
+                            <dt class="inner-dt-img"><img src="./images/ccwl.png" alt=""></dt>
+                            <dd class="inner-dl-title">仓储物流</dd>
+                            <dd class="inner-dl-content">社栈优品为客户提供一站式的供应链解决方案，在香港及大陆地区均配备了大型仓储配送中心。</dd>
+                        </dl>
+                        <dl class="inner-dl">
+                            <dt class="inner-dt-img"><img src="./images/gyljr.png" alt=""></dt>
+                            <dd class="inner-dl-title">供应链金融</dd>
+                            <dd class="inner-dl-content">社栈优品提供众多供应链金融服务,为平台上下游企业解决融资难、资金流不畅等金融困境,满足各种融资需求。</dd>
+                        </dl>
+                        <dl class="inner-dl">
+                            <dt class="inner-dt-img"><img src="./images/zyc.png" alt=""></dt>
+                            <dd class="inner-dl-title">中央仓</dd>
+                            <dd class="inner-dl-content">在传统仓的基础之上，进行演化升级，加入更多的功能模块，突破传统仓单一的存储及配送功能。</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="extension-module">
+                    <div class="about-title modules-title">
+                        <span class="title">社栈优品运营扩展模式</span>
+                    </div>
+                    <div class="module-list">
+                        <ul class="module-ul">
+                            <li class="module-li">
+                                <img src="./images/module_1.png" alt="">
+                            </li>
+                            <li class="module-li">
+                                <img src="./images/module_2.png" alt="">
+                            </li>
+                            <li class="module-li">
+                                <img src="./images/module_3.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cooperation">
+                    <div class="about-title cooperation-title">
+                        <span class="title">合作伙伴</span>
+                    </div>
+                    <div class="cooperation-list" ref="cooperationUl">
+                        <ul class="cooperation-ul" >
+                            <li class="cooperation-li" v-for="(item,index) in showBrandList" :key="index">
+                                <img :src="item" alt="">
+                            </li>
+                            <!-- <li class="cooperation-li">
+                                <img src="./images/cooperation_2.png" alt="">
+                            </li>
+                            <li class="cooperation-li">
+                                <img src="./images/cooperation_3.png" alt="">
+                            </li>
+                            <li class="cooperation-li">
+                                <img src="./images/cooperation_4.png" alt="">
+                            </li>
+                            <li class="cooperation-li">
+                                <img src="./images/cooperation_5.png" alt="">
+                            </li>
+                            <li class="cooperation-li">
+                                <img src="./images/cooperation_6.png" alt="">
+                            </li> 
+                            <li class="cooperation-li">
+                                <img src="./images/cooperation_7.png" alt="">
+                            </li>-->
+                            <li class="cooperation-li" @click.stop="brandShow=!brandShow">{{showWord}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phone-nums">
+                    <div class="phone-inner">
+                        <span class="phone-pic">免费服务热线</span>
+                        <span class="phones">400-9928-680</span>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="company-msg">ICP备案网站信息：<a href="http://www.miitbeian.gov.cn">粤ICP备18121068号-1</a> Copyright
+                    2015
+                </div>
+                <div class="company-name">深圳商栈互联科技有限公司 Inc.,</div>
+                <div class="gxb-pic">
+                    <img src="./images/icon-police.png" alt="">
+                    <a href="http://www.miitbeian.gov.cn">工信部网站</a>
+                </div>
+
+            </footer>
+        </div>
+        <div class="all-nav" v-if="navShow" :class="{showRight:navShow}" @click.stop="hideMask($event)"
+            ref="allNavInner">
+            <div class="all-nav-inner">
+                <div class="arrow-nav">
+                    <ul class="all-nav-ul">
+                        <li class="all-nav-li index">
+                            <a href="./H5index.html"><span>首页</span></a>
+                        </li>
+                        <li class="all-nav-li resiger-md">
+                            <a href=""><span>门店注册</span></a>
+                        </li>
+                        <li class="all-nav-li resiger-customer">
+                            <a href=""><span>普通用户</span></a>
+                        </li>
+                        <li class="all-nav-li resiger-shopper">
+                            <a href=""><span>商家入驻</span></a>
+                        </li>
+                        <li class="all-nav-li resiger-member">
+                            <a href=""><span>会员注册</span></a>
+                        </li>
+                        <li class="all-nav-li about">
+                            <a href="./aboutMe.html"><span>关于我们</span></a>
+                        </li>
+                        <li class="all-nav-li download">
+                            <a href=""><span>APP下载</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="./js/jquery-2.1.1.js"></script>
+<script src="./js/ydui.js"></script>
+<script src="./js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#h5Index",
+        data: {
+            navShow: false,
+            brandList: ["./images/cooperation_1.png", "./images/cooperation_2.png",
+                "./images/cooperation_3.png", "./images/cooperation_4.png", "./images/cooperation_5.png",
+                "./images/cooperation_6.png", "./images/cooperation_7.png", "./images/cooperation_8.png",
+                "./images/cooperation_9.png", "./images/cooperation_10.png", "./images/cooperation_11.png",
+                "./images/cooperation_12.png", "./images/cooperation_13.png",
+            ],
+            brandShow: false,
+            showTitle: "查看全部"
+        },
+        computed: {
+            showBrandList: function () {
+                if (!this.brandShow) {
+                    var newBrandList = [];
+                    if (this.brandList.length > 7) {
+                        for (var i = 0; i < 7; i++) {
+                            newBrandList.push(this.brandList[i])
+                        }
+                    } else {
+                        newBrandList = this.brandList;
+                    }
+                    return newBrandList;
+                } else {
+                    return this.brandList
+                }
+            },
+            showWord: function () {
+                if (!this.brandShow) {
+                    return this.showTitle;
+                } else {
+                    return "点击收起"
+                }
+            }
+        },
+        mounted: function () {
+            
+        },
+        methods: {
+            hideMask: function (e) {
+                var showBg = this.$refs.allNavInner.querySelectorAll(".all-nav-inner");
+                if (showBg[0]) {
+                    if (!showBg[0].contains(e.target)) {
+                        this.navShow = !this.navShow;
+                    }
+                }
+            }
+        },
+        watch: {
+            showBrandList(val){
+                console.log(val)
+            }
+        }
+    })
+</script>
+
+</html>

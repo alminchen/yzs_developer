@@ -1,0 +1,296 @@
+img {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rate-head {
+    width: 100%;
+    height: 2.4rem;
+    background: rgb(245, 23, 74);
+    position: relative;
+    overflow: hidden;
+}
+
+.rate-head .rate-time {
+    overflow: hidden;
+    margin: .88rem 0 0 .8rem
+}
+
+.rate-time span {
+    display: block;
+    color: #fff;
+    font-size: .26rem;
+    font-weight: bold;
+    margin-bottom: 10px
+}
+
+.rate-head .time-pic {
+    width: 1.2rem;
+    height: 1.2rem;
+    overflow: hidden;
+    position: absolute;
+    right: .8rem;
+    top: .6rem
+}
+
+
+.rate-money {
+    padding: 0 .24rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.rate-money::after {
+    content: "";
+    display: block;
+    width: 120%;
+    height: 1px;
+    background: rgb(228, 228, 228);
+    position: absolute;
+    left: -0.24rem;
+    bottom: 0;
+    transform: scaleY(.5)
+}
+
+.rate-money .all-price {
+    width: 100%;
+    height: .9rem;
+    line-height: .9rem;
+    font-size: .3rem;
+    color: #333;
+}
+
+.rate-money .price {
+    font-size: .32rem;
+    color: rgb(245, 23, 74)
+}
+
+.rate-money em {
+    font-size: .22rem
+}
+
+.rate-step {
+    padding: 0 .24rem .1rem .24rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.rate-step::after {
+    content: "";
+    display: block;
+    width: 120%;
+    height: 1px;
+    background: rgb(228, 228, 228);
+    position: absolute;
+    left: -0.24rem;
+    bottom: 0;
+    transform: scaleY(.5)
+}
+
+.rate-step h3 {
+    position: relative;
+    width: 100%;
+    line-height: .88rem;
+    font-size: .3rem;
+    font-weight: normal;
+    color: #333;
+}
+
+.rate-step h3::after {
+    content: "";
+    display: block;
+    width: 120%;
+    height: 1px;
+    background: rgb(228, 228, 228);
+    position: absolute;
+    left: -0.24rem;
+    bottom: 0;
+    transform: scaleY(.5)
+}
+
+.rate-step .step-by-step {
+    padding: .42rem 0 0 .44rem;
+}
+
+.rate-step dl {
+    width: 100%;
+    /* border-left: 1px solid rgb(228, 228, 228); */
+    position: relative;
+    padding-bottom: .6rem;
+}
+
+.rate-step dl:not(:last-child) {
+    border-left: 1px solid rgb(228, 228, 228);
+}
+
+.rate-step i {
+    display: inline-block;
+    width: .2rem;
+    height: .2rem;
+    background: rgb(191, 191, 191);
+    border-radius: 50%;
+    position: absolute;
+    left: -6px;
+    top: 0;
+}
+
+.rate-step dt {
+    font-size: .28rem;
+    color: rgb(110, 110, 112);
+    padding-left: .3rem;
+    padding-bottom: .2rem;
+    transform: translateY(-5px)
+}
+
+.rate-step dd {
+    font-size: .28rem;
+    color: rgb(34, 34, 34);
+    padding-left: .3rem;
+}
+
+.rate-step i.success {
+    display: inline-block;
+    width: .32rem;
+    height: .32rem;
+    border-radius: 50%;
+    background: url(../images/circle_03.png) no-repeat left center rgb(228, 228, 228);
+    background-size: 100% 100%;
+    position: absolute;
+    left: -0.16rem;
+    top: -1px;
+}
+
+.rate-history {
+    /* margin-top: .2rem; */
+    padding: .3rem 0;
+}
+
+.rate-history .cell-right {
+    min-height: auto;
+}
+
+.rate-history .cell-arrow:after {
+    color: rgb(34, 34, 34);
+}
+
+.refund-list {
+    position: relative;
+}
+
+.refund-list::after {
+    content: "";
+    display: block;
+    width: 120%;
+    height: 1px;
+    background: rgb(228, 228, 228);
+    position: absolute;
+    left: -0.24rem;
+    bottom: 0;
+    transform: scaleY(.5)
+}
+
+.refund-list li:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+.refund-list .list-show {
+    padding: .3rem 0;
+    overflow: hidden;
+}
+
+.refund-list .list-detail {
+    padding: 0.2rem .24rem;
+    background: rgb(248, 248, 248);
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    -o-display: flex;
+    display: flex;
+}
+
+.refund-list .has-pic {
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    margin-right: .3rem;
+}
+
+.refund-list .has-text {
+    flex: 1;
+}
+
+.refund-list .titie {
+    margin-top: .12rem;
+    font-size: .28rem;
+    color: #434343;
+    margin-bottom: .12rem;
+    overflow: hidden;
+    width: 5.1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.refund-list .nums {
+    font-size: .26rem;
+    color: #a7a7a7;
+    margin-bottom: .12rem
+}
+
+.refund-list .refund-price {
+    font-size: .36rem;
+    color: rgb(245, 23, 74);
+}
+
+.refund-list span {
+    color: #a7a7a7;
+    font-size: .26rem;
+}
+
+.refund-list em {
+    font-size: .18rem
+}
+
+.refund-order-nums {
+    padding: 0 .24rem .2rem .24rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.refund-order-nums h3 {
+    position: relative;
+    width: 100%;
+    line-height: .88rem;
+    font-size: .3rem;
+    font-weight: normal;
+    color: #333;
+}
+
+.refund-order-nums h3::after {
+    content: "";
+    display: block;
+    width: 120%;
+    height: 1px;
+    background: rgb(228, 228, 228);
+    position: absolute;
+    left: -0.24rem;
+    bottom: 0;
+    transform: scaleY(.5);
+}
+
+.refund-order-nums .ordernums{
+    padding-top: .3rem;
+}
+.refund-order-nums .ordernums-list:not(:last-child) {
+    margin-bottom: .2rem;
+    overflow: hidden;
+}
+
+.refund-order-nums .orders-copy {
+    position: relative;
+}
+
+.refund-order-nums .refund-price {
+    font-size: .26rem;
+    color: rgb(245, 23, 74);
+}

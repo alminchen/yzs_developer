@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>提现账户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <!-- <link rel="stylesheet" href="../../css/cashAccount.min.css"> -->
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="cashAccount">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center">
+                <div class="navbar-ipt">
+                    <span class="navbar-title">提现账户</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="wx_wrap">
+                <div class="wxInp_box">
+                    <div class="wxInp selBank">
+                        <p class="wxInp_txt">提现方式</p>
+                        <div class="selBank_right" @click="typeShow=!typeShow">
+                            <p class="selBank_txt">请选择</p>
+                            <i class="selBank_img"></i>
+                        </div>
+                    </div>
+                    <div class="wxInp selBank">
+                        <p class="wxInp_txt ">提取账号</p>
+                        <div class="selBank_right">
+                            <p class="selBank_txt">未绑定</p>
+                            <i class="selBank_img" style="visibility:hidden;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-server" v-show="typeShow" style="display: block;">
+            <div class="dialog-box">
+                <i class="close_i" @click="typeShow=!typeShow"></i>
+                <p class="cash_title">选择提现方式</p>
+                <a href="bindBank.html" class="cashType">
+                    <p class="cashType_txt"><i class="cashType_img "></i>银行卡</p>
+                    <span class="type_check"></span>
+                </a>
+                <a href="bindWx.html" class="cashType">
+                    <p class="cashType_txt"><i class="cashType_img cash_wx"></i>微信</p>
+                    <span class="type_check"></span>
+                </a>
+                <a href="bindZfb.html" class="cashType">
+                    <p class="cashType_txt"><i class="cashType_img cash_zfb"></i>支付宝</p>
+                    <span class="type_check"></span>
+                </a>
+            </div>
+        </div>
+        <!-- <footer class="m-tabbar">
+            <a href="#" class="tabbar-item tabbar-active">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">首页</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">分类</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">进货车</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">我的</span>
+            </a>
+        </footer> -->
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#cashAccount",
+            data() {
+                return {
+                    num: 0,
+                    typeShow: false
+                }
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

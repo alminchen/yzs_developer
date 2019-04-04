@@ -1,0 +1,154 @@
+html,
+body {
+    background: rgb(248, 248, 248);
+}
+
+img {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.fillout-main {
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: .24rem;
+    bottom: 0;
+}
+
+.cell-item:not(:last-child):after {
+    margin-left: 0;
+}
+
+.fillout-main .cell-item {
+    width: 100%;
+    height: .9rem;
+}
+
+.fillout-main .cell-left {
+    font-size: .27rem;
+    color: rgb(34, 34, 34);
+}
+
+.fillout-main .address {
+    height: 1.33rem;
+    line-height: .45rem;
+    font-size: .28rem;
+    padding: .2rem 0.24rem;
+    color: rgb(245, 23, 74)
+}
+
+.fillout-main .address::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #D9D9D9;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.fillout-main .cell-right {
+    min-height: auto;
+}
+
+.fillout-main .cell-input {
+    height: 100%;
+}
+
+.fillout-main .m-celltitle {
+    height: .9rem;
+    line-height: .9rem;
+    font-size: .27rem;
+    color: rgb(34, 34, 34);
+}
+
+.fillout-main .introduce .cell-item {
+    height: auto;
+}
+
+.fillout-main .cell-textarea {
+    height: 2.5rem;
+    padding: .2rem;
+    background: rgb(248, 248, 248);
+    border-radius: 3px;
+}
+
+.fillout-main .m-celltitle:after {
+    border: none;
+}
+
+.fillout-main .introduce .m-cell {
+    padding-bottom: .32rem
+}
+
+.fillout-main .m-cell:after {
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.fillout-main .upload {
+    width: 100%;
+    overflow: hidden;
+}
+
+.fillout-main .upload .m-cell:after{
+    border: none;
+}
+.fillout-main .upload .cell-item::after {
+    border: none;
+}
+
+.fillout-main .upload-pic {
+    padding: 0 .24rem .4rem .24rem;
+    overflow: hidden;
+}
+
+.fillout-main .refund-pic {
+    width: 1.6rem;
+    height: 1.6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.fillout-main input[type="file"] {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.m-tabbar.refund-foot {
+    padding: .2rem;
+}
+
+.m-tabbar.refund-foot a {
+    font-size: .28rem;
+    color: #fff;
+    padding: .3rem 0;
+    background: #fe9a28;
+}
+
+.m-tabbar.refund-foot .tabbar-txt {
+    font-size: .28rem
+}
+
+.m-tabbar.refund-foot a:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.m-tabbar.refund-foot a:last-child {
+    background: rgb(245, 23, 74);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

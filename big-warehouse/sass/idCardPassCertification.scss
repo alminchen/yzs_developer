@@ -1,0 +1,96 @@
+$hei220:2.2rem;
+$colorF52555:#f52555;
+$padd30:.3rem;
+$padd40:.4rem;
+$color333:#333;
+$color999:#999;
+$wid330:3.3rem;
+$hei210:2.1rem;
+$fontSize28:.28rem;
+$fontSize30:.3rem;
+$colorEcecec:#ececec;
+$wid60:.6rem;
+
+.pass-status {
+    width: 100%;
+    height: $hei220;
+    background: $colorF52555;
+    text-align: center;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+    .pass-status-pic {
+        width: 1.8rem;
+        height: $wid60;
+        display: inline-block
+    }
+
+    img {
+        width: $wid60;
+        height: $wid60;
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    span {
+        display: inline-block;
+        height: $wid60;
+        line-height: $wid60;
+        font-size: $fontSize28;
+        color: #fff;
+        margin-left: 10px
+    }
+}
+
+.pass-certification-idcard {
+    background: #fff;
+
+    .m-cell {
+        margin-bottom: 0;
+
+        &::after {
+            border: none;
+        }
+    }
+
+    .cell-item:not(:last-child):after {
+        border: none;
+    }
+
+    span {
+        justify-items: center;
+        align-items: center;
+        color: $color999;
+    }
+
+    .pass-idcard-pic {
+        display: flex;
+        padding: 0 $padd30 $padd40;
+        border-bottom: 1px solid $colorEcecec;
+    }
+
+    .mar30 {
+        margin-left: $padd30;
+    }
+
+    dl {
+        flex: 1;
+        text-align: center;
+    }
+
+    img {
+        width: $wid330;
+        height: $hei210;
+    }
+
+    dt {
+        font-size: $fontSize28;
+        color: $color333;
+        margin-top: $padd30;
+    }
+    .color-ec{
+        color: $color999
+    }
+}

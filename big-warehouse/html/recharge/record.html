@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/record.css">
+    <title>消费列表</title>
+</head>
+
+<body>
+    <section class="g-flexview">
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">消费列表</span>
+            </div>
+        </header>
+        <div class="g-scrollview" id="recordList">
+            <div class="nav">
+                <div class="fixed" :class="navShow?'navFix':''">
+                    <ul>
+                        <li :class="navIndex == 0?'in':''" :data-status="navIndex == 0?'false':'true'" @click.stop="changeTab(0,0,$event)">收支明细</li>
+                        <li :class="navIndex == 1?'in':''" :data-status="navIndex == 1?'false':'true'" @click.stop="changeTab(1,1,$event)">充值记录</li>
+                        <li :class="navIndex == 2?'in':''" :data-status="navIndex == 2?'false':'true'" @click.stop="changeTab(2,2,$event)">消费记录</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="list_record" v-if="recordList.length > 0" v-cloak>
+                <ul class="record_ul">
+                    <a :href="'./recordDetail.html?id='+index" v-for="(value,index) in recordList" :key="index">
+                        <li>
+                            <div class="record_box">
+                                <div class="has_pic" v-if="type==1">
+                                    <img :src="value.pic" :alt="value.text">
+                                </div>
+                                <div class="record_all">
+                                    <div class="record_tit">
+                                        <span class="text">{{value.text}}</span>
+                                        <span class="time">{{value.CreateDate}}</span>
+                                    </div>
+                                    <div class="momeny record_minus">
+                                        <span>{{value.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </a>
+                </ul>
+                <div class="loading_pic" v-if="loadMoreLoading">
+                    <img src="../../images/loading.gif" alt="">
+                </div>
+            </div>
+            <div class="null-data" v-if="recordList.length == 0 && nullList.length == 0&&tips">
+                <span>暂无{{text}}记录</span>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var u = navigator.userAgent,
+        app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var userId = null;
+    var userId = 61948;
+    var token = null;
+    var scrollDisable = true;
+    var vm = new Vue({
+        el: "#recordList",
+        data: {
+            loadMoreLoading: false,
+            navShow: false,
+            recordList: [],
+            nullList: [],
+            index: 1,
+            navIndex: 0,
+            text: null,
+            type: 0,
+            tips: false
+        },
+        beforeMount() {
+            if (userId == null) {
+                var message = {
+                    "Message": "页面加载用户信息",
+                    "Status": false,
+                    "StatusCode": 1,
+                    "Data": null,
+                    "method": "returnUserData"
+                }
+                if (isAndroid) {
+                    window.huozhan.postMessage(JSON.stringify(message));
+                }
+                if (isIOS) {
+                    window.webkit.messageHandlers.huozhan.postMessage(message)
+                }
+            }
+        },
+        mounted: function () {
+            this.loadMore(this.index, userId, this.type, 0);
+            var scrollBox = document.querySelector('.g-scrollview');
+            var _this = this;
+            scrollBox.onscroll = function () {
+                // console.log(Math.ceil((Math.random().toFixed(1))*500 + 500))
+                var time = Math.ceil((Math.random().toFixed(1)) * 500 + 500);
+                // 当前滚动距离顶部距离
+                var scrollTop = $(this).scrollTop();
+                // 当前要拿来对比的块
+                var scrollHeight = $('.list_record').height();
+                // console.log(scrollTop)
+                if (scrollTop > 0) {
+                    _this.navShow = true
+                } else {
+                    _this.navShow = false;
+                }
+                // 当前窗体高度
+                var windowHeight = $(this).height();
+                var time = Math.ceil((Math.random().toFixed(1)) * 500 + 500);
+                // 如果 滚动距离 + 窗体高度 大于等于 当前块的高度 执行加载
+                if (scrollTop + windowHeight >= scrollHeight) {
+                    if (_this.nullList.length > 0) {
+                        _this.loadMore(_this.index, userId, 0, time)
+                    }
+                }
+            };
+        },
+        methods: {
+            changeTab(index, type, e) {
+                if (e.currentTarget.dataset.status == 'true') {
+                    this.type = type;
+                    this.navIndex = index;
+                    this.index = 1;
+                    this.tips = false;
+                    this.recordList = [];
+                    this.nullList = [];
+                    scrollDisable = true;
+                    this.loadMore(this.index, userId, this.type, 0)
+                }
+            },
+            loadMore: function (index, id, type, time) {
+                var self = this;
+                this.type = type;
+                // http://192.168.1.7:89/B2CApp/Common.svc/GetRechargeChange?pageIndex=1&pageSize=2&userId=62373&TradingType=1
+                if (scrollDisable) {
+                    scrollDisable = false;
+                    if (index == 1) {
+                        self.loadMoreLoading = false;
+                    } else {
+                        self.loadMoreLoading = true;
+                    }
+                    $.ajax({
+                        url: 'https://app.shunyingglobal.cn/B2CApp/Common.svc/GetRechargeChange',
+                        type: "get",
+                        dataType: "JSON",
+                        data: {
+                            pageIndex: index,
+                            pageSize: 10,
+                            userId: id,
+                            TradingType: self.type
+                        },
+                        success: function (res) {
+                            self.nullList = res.Data;
+                            if (self.nullList.length > 0) {
+                                for (var i in self.nullList) {
+                                    self.nullList[i].CreateDate = self.timestampToTime(self.nullList[
+                                        i].CreateDate);
+                                    self.nullList[i].text = self.payPic(self.nullList[i].PayType);
+                                    self.nullList[i].pic = self.nullList[i].TradingType == 1 ?
+                                        '../../images/zfbcz.png' : '../../images/wxcz.png';
+                                    self.nullList[i].price = self.nullList[i].TradingType == 1 ?
+                                        '+' + self.nullList[i].UseAmount : '-' + self.nullList[
+                                            i].UseAmount;
+                                }
+                            } else {
+                                if (type == 1) {
+                                    self.text = '收入'
+                                } else if (type == 2) {
+                                    self.text = "消费"
+                                } else {
+                                    self.text = ""
+                                }
+                                self.tips = true;
+                                self.loadMoreLoading = false;
+                                return;
+                            }
+
+                            setTimeout(function () {
+                                self.recordList = self.recordList.concat(self.nullList);
+                                scrollDisable = true;
+                                self.index++;
+                                self.loadMoreLoading = false;
+                            }, time)
+                        }
+                    })
+                }
+            },
+            timestampToTime: function (time) {
+                if (time == null || time == "") {
+                    return;
+                }
+                var timeChange = Number(time.split("(").pop().split("+")[0]);
+                var date = new Date(timeChange); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                var Y = date.getFullYear() + '-';
+                var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) +
+                    '-';
+                var D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
+                var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+                var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+                var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+                return Y + M + D + h + m + s;
+            },
+            payPic: function (status) {
+                // 7, 变更类型型    支付宝充值=1,微信支付充值=2,信用卡支付充值=3,后台充值=4,退款返还 = 5,退货返还=6,余额支付=7
+                switch (status) {
+                    case 1:
+                        return '支付宝充值';
+                        break;
+                    case 2:
+                        return '微信支付充值';
+                        break;
+                    case 3:
+                        return '信用卡支付充值';
+                        break;
+                    case 4:
+                        return '后台充值';
+                        break;
+                    case 5:
+                        return '退款返还';
+                        break;
+                    case 6:
+                        return '退货返还';
+                        break;
+                    case 7:
+                        return '余额支付';
+                        break;
+                    default:
+                        return '默认';
+                        break;
+                }
+            },
+
+        }
+    })
+
+    function returnUserData(obj) {
+        var objJson = JSON.parse(obj);
+        userId = objJson.SysNo;
+        token = objJson.AppToken;
+        vm.loadMore(vm.index, userId, 0, 0);
+    }
+</script>
+
+</html>

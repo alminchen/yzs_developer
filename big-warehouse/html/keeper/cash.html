@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>提现</title>
+    <link rel="stylesheet" href="../../css/ydui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/ydui.flexible.js"></script>
+    <script src="../../js/ydui.js"></script>
+    <style>
+        .m-navbar .head-caption {
+            font-size: 0.34rem;
+            letter-spacing: 0.02rem;
+            color: #222222;
+        }
+    </style>
+</head>
+<body>
+<section class="g-flexview" id="app">
+    <header class="m-navbar">
+        <a href="capital.html" class="navbar-item"><i class="back-ico"></i></a>
+        <div class="navbar-center">
+            <span class="navbar-title head-caption">提现</span>
+        </div>
+
+    </header>
+    <div class="g-scrollview">
+        <div class="wx_wrap" >
+            <div class="wxInp_box">
+                <div class="wxInp">
+                    <p class="wxInp_txt">提取方式</p>
+                </div>
+                <div class="wxInp cash_wrap" @click="typeShow=!typeShow">
+                    <div class="cash_wechat">
+                        <i class="cash_wx"></i>
+                        <p class="wxInp_txt">微信</p>
+                    </div>
+                    <span class="cash-right"></span>
+                </div>
+            </div>
+            <div class="wxInp_box tx_padding">
+                <p class="tx_title">提现金额</p>
+                <div class="tx_box">
+                     <span class="tx_m">￥</span>
+                     <input type="number" class="tx_inp">
+                </div>
+                <p class="tx_all">可提现金额999.99元</p>
+                <a href="javascript:;" class="sureBtn" @click="sureModal=!sureModal">确定提现</a>
+
+            </div>
+
+        </div>
+    </div>
+    <!--<footer class="m-tabbar" style="padding: 0">-->
+    <!---->
+    <!--</footer>-->
+
+
+    <!--提现方式弹窗-->
+    <div class="dialog-server" v-show="typeShow" style="display: block">
+        <div class="dialog-box">
+            <i class="close_i" @click="typeShow=!typeShow"></i>
+            <p class="cash_title">选择提现方式</p>
+            <a href="bindBank.html" class="cashType">
+                <p class="cashType_txt"><i class="cashType_img "></i>银行卡</p>
+                <span class="type_check"></span>
+            </a>
+            <a href="bindWx.html" class="cashType">
+                <p class="cashType_txt"><i class="cashType_img cash_wx"></i>微信</p>
+                <span class="type_check"></span>
+            </a>
+            <a href="bindZfb.html" class="cashType">
+                <p class="cashType_txt"><i class="cashType_img cash_zfb"></i>支付宝</p>
+                <span class="type_check"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="dialog-server" v-show="sureModal" style="display: block">
+        <div class="sure_info">
+           <h3>确认提现</h3>
+            <div class="sure_wrap">
+                <p class="sure_txt">提现方式：微信</p>
+                <p class="sure_txt">提现金额：112元</p>
+                <p class="sure_txt">额外扣除手续费：112元</p>
+            </div>
+
+            <div class="confirm_b">
+                <a href="javascript:;"  class="cancel-b"  @click="sureModal=!sureModal">取消</a>
+                <a href="javascript:;"  class="sure-b"  @click="sureModal=!sureModal">确定</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script src="../../js/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            sureBtn: false,
+            typeShow: false,
+            sureModal:false
+        },
+        methods:{
+
+        }
+    })
+</script>

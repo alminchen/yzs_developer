@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>承运资费新增或编辑</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../../js/layui/css/layui.css?v=2.2.2" media="all">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css?v2.0.1-simple" media="all">
+    <style>
+        .layui-input,
+        .layui-textarea {
+            width: 212px;
+            resize: none;
+        }
+
+        .layui-col-md4 {
+            width: 30%;
+            display: inline-block;
+            overflow: hidden;
+        }
+        .layui-col-md4 .border_in{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd;
+        }
+        .layui-col-md4 .inner_col {
+            width: 114%;
+            height: 120px;
+            padding: 10px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .inner_col ul {
+            width: 90%;
+            overflow: hidden;
+        }
+        .arrow_box{
+            width: 10%;
+        }
+        .arrow_right{
+            width: 100%;
+            height: 120px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+        }
+        .layui-form-mid{
+            float: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .charges .layui-input{
+            width: 50px;
+            display: inline-block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-fluid larry-wrapper">
+        <div class="layui-row layui-col-space30">
+            <div class="layui-col-xs24">
+                <section class="panel panel-padding">
+                    <form class="layui-form" action="javascript:return true;">
+                        <blockquote class="layui-elem-quote layui-quote-nm">运费公式编制</blockquote>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline">
+                                <label for="">运费公式名称：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label>物流公司：</label>
+                                <div class="layui-input-inline">
+                                    <select name="city" jq-verify="required" jq-error="请选择地区" lay-filter="verify">
+                                        <option value=""></option>
+                                        <option value="0">北京</option>
+                                        <option value="1">上海</option>
+                                        <option value="2">广州</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">杭州</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label>&nbsp;&nbsp;结算货币：</label>
+                                <div class="layui-input-inline">
+                                    <select name="city" jq-verify="required" jq-error="请选择地区" lay-filter="verify">
+                                        <option value=""></option>
+                                        <option value="0">北京</option>
+                                        <option value="1">上海</option>
+                                        <option value="2">广州</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">杭州</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label style=" vertical-align: top;display: inline-block;">&nbsp;&nbsp;适用仓库：</label>
+                                <div class="layui-input-inline" style="width:600px;">
+                                    <div class="layui-row layui-col-space30" style="width:100%;">
+                                        <div class="layui-col-md4">
+                                            <div class="border_in">
+                                                <div class="inner_col">
+                                                    <ul>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4 arrow_box">
+                                            <div class="arrow_right">>></div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="border_in">
+                                                <div class="inner_col">
+                                                    <ul>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                        <li>测试地址</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">&nbsp;&nbsp;是否启用：</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="selectedRadio" value="1" title="是" checked="">
+                                    <input type="radio" name="selectedRadio" value="0" title="否">
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote class="layui-elem-quote layui-quote-nm">计费标准</blockquote>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">&nbsp;&nbsp;适用地区：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:;">添加</a></div>
+                            </div>
+                        </div>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:10px;">
+                                <label for="">&nbsp;已选择地区：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                </div>
+                                <!-- <div class="layui-form-mid layui-word-aux"><a href="javascript:;">添加</a></div> -->
+                            </div>
+                        </div>
+                        <div class="layui-form-pane charges">
+                            <div class="layui-inline" style="margin-left:52px;">
+                                <label for="">&nbsp;计费：</label>
+                                <div class="layui-input-inline">
+                                    <div class="layui-form-mid layui-word-aux"><a href="javascript:;">首重</a></div>
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                    <div class="layui-form-mid layui-word-aux"><a href="javascript:;">KG</a></div>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                    <div class="layui-form-mid layui-word-aux"><a href="javascript:;">元，每增加</a></div>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                    <div class="layui-form-mid layui-word-aux"><a href="javascript:;">KG，增加运费</a></div>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off">
+                                    <div class="layui-form-mid layui-word-aux"><a href="javascript:;">元</a></div>
+                                </div>
+                                <!-- <div class="layui-form-mid layui-word-aux"><a href="javascript:;">添加</a></div> -->
+                            </div>
+                        </div>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">&nbsp;&nbsp;是否限重：</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="xzRadio" value="1" title="是" checked="">
+                                    <input type="radio" name="xzRadio" value="0" title="否">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-pane">
+                            <div class="layui-inline" style="margin-left:20px;">
+                                <label for="">&nbsp;&nbsp;限重重量：</label>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="" autocomplete="off" style="width:50px;">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:;">KG</a></div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block" style="margin-left:30px;">
+                                <button class="layui-btn layui-btn-primary" jq-submit="" jq-filter="submit" type="button">确定</button>
+                                <button type="button" class="layui-btn layui-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../../js/layui/layui.js"></script>
+<script src="../../js/common.js"></script>
+<!-- <script type="text/javascript" src="../../js/version.js"></script> -->
+<script>
+    // $为JQ内部引用，可以直接使用
+    var $, layer, form;
+    layui.use(['jquery', 'layer', 'form'], function () {
+        $ = layui.$, layer = layui.layer, form = layui.form;
+    });
+</script>
+
+</html>

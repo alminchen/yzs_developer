@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>进货车</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/shopcar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="shopcar">
+
+        <header class="m-navbar">
+            <a href="javascript:;" class="navbar-item"><span class="kf"></span></a>
+            <div class="navbar-center"><span class="navbar-title">进货车</span></div>
+            <a href="javascript:;" class="navbar-item">编辑</a>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="shopcar-main">
+                <div class="shopcar-nav">
+                    <div class="shopcar-inner">
+                        <span class="shopcar-type shopcar-active">国内仓发货(5)</span>
+                        <span class="shopcar-type">保税区直供(6)</span>
+                        <span class="shopcar-type">海外直邮(7)</span>
+                    </div>
+                </div>
+                <div class="car-list-box" v-if="0">
+                    <div class="car-list">
+                        <div class="car-list-inner">
+                            <ul>
+                                <li class="car-item" v-for="(item, index) in 5" :key="index" data-type="0">
+                                    <div class="car-wrapper" @touchstart.capture="touchStart" @touchend.capture="touchEnd"
+                                        @click.stop="skip">
+                                        <div class="car-item-list padd40">
+                                            <div class="radioBtn">
+                                                <input id="item" type="checkbox">
+                                                <label for="item" class="radio_label"></label>
+                                            </div>
+                                            <div class="car-inner">
+                                                <div class="has-pic">
+                                                    <img src="../../images/good.png" alt="">
+                                                </div>
+                                                <div class="has-text">
+                                                    <div class="order-tit">打呼噜的沙漏的行列爱的是拉黑的来看了打了多少阿里肯定会</div>
+                                                    <div class="order-spec order-same">规格：3罐装</div>
+                                                    <div class="order-date order-same">效期：2019年2月</div>
+                                                    <div class="order-post order-same">运费：包邮</div>
+                                                    <div class="order-price order-same">折合单价：<em>￥280.00</em></div>
+                                                    <div class="order-all-price"><span class="price"><em>￥</em>400.00</span><span
+                                                            id="J_Quantity" class="m-spinner"><a href="javascript:;"
+                                                                class="J_Del"></a>
+                                                            <input type="text" value="1" class="J_Input"> <a href="javascript:;"
+                                                                class="J_Add"></a></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-cell">
+                                            <div class="cell-item">
+                                                <div class="cell-left">配送至：</div>
+                                                <div class="cell-right cell-arrow"><input type="text" class="cell-input"
+                                                        onfocus="this.blur()" readonly="readonly" placeholder="请选择收货人地址" /></div>
+                                            </div>
+                                            <div class="cell-item">
+                                                <div class="cell-left">收货人：</div>
+                                                <div class="cell-right cell-arrow"><input type="text" class="cell-input"
+                                                        onfocus="this.blur()" readonly="readonly" placeholder="请选择收货人信息" /></div>
+                                            </div>
+                                        </div>
+                                        <div class="opertion-btn">
+                                            <div class="moveTo" :data-index="index" @click.stop="moveItem"><span>移入常购清单</span></div>
+                                            <div class="delete" :data-index="index" @click.stop="deleteItem"><span>删除</span></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lost-car">
+                        <div class="lost-car-inner">
+                            <div class="efficacy-title">
+                                <h3>失效商品 4 件</h3> <span>清空失效商品</span>
+                            </div>
+                            <div class="efficacy-goods">
+                                <ul>
+                                    <li class="lost-goods" v-for="(item,index) in 3" :key="index">
+                                        <div class="lost-goods-inner">
+                                            <div class="lost-txt">
+                                                <span class="text">失效</span>
+                                            </div>
+                                            <div class="lost-datas">
+                                                <div class="lost-pic">
+                                                    <img src="../../images/good.png" alt="">
+                                                </div>
+                                                <div class="lost-types">
+                                                    <div class="losts-title">港版Cow&Gate牛栏2段奶粉 婴幼儿配方奶粉 2段900g...</div>
+                                                    <div class="lost-spec">
+                                                        <span>规格：12*12/板</span>
+                                                    </div>
+                                                    <div class="lost-spec">
+                                                        <span>规格：12*12/板</span>
+                                                    </div>
+                                                    <div class="lost-spec">
+                                                        <span>规格：12*12/板</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="no-lost-goods">
+                                    <span class="notlsot">暂无失效产品</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="car_null">
+                    <div class="car_null_inner">
+                        <div class="pic_center">
+                            <img src="../../images/shopcar.png" alt="">
+                        </div>
+                        <div class="car_null_text">
+                            <span class="tex">购物车空空如也~</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-opertaion" v-if="0">
+            <div class="tabbar_balance">
+                <div class="allSelect">
+                    <div class="radioBtn centerBtn">
+                        <input id="allSelect" type="checkbox">
+                        <label for="allSelect" class="radio_label"></label>
+                    </div>
+                    <div class="selectTxt">全部</div>
+                </div>
+                <div class="calculate">
+                    合计：<span class="cal-txt">￥0.00</span></div>
+                <div class="sure-buy"><span class="sure-buyBtn">去结算</span></div>
+            </div>
+        </div>
+        <footer class="m-tabbar">
+            <a href="#" class="tabbar-item tabbar-active">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">首页</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">分类</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">进货车</span>
+            </a>
+            <a href="#" class="tabbar-item">
+                <span class="nav-icon"></span>
+                <span class="tabbar-txt">我的</span>
+            </a>
+        </footer>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#shopcar",
+            data() {
+                return {
+                    startX: 0,
+                    endX: 0
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+            },
+            methods: {
+                skip() {
+                    if (this.checkSlide) {
+                        this.resetSlide();
+                    }
+                },
+                touchStart(e) {
+                    this.startX = e.touches[0].clientX;
+                },
+                touchEnd(e) {
+                    let parentElement = e.currentTarget.parentElement;
+                    this.endX = e.changedTouches[0].clientX;
+                    if (parentElement.dataset.type == 0 && this.startX - this.endX > 30) {
+                        this.resetSlide();
+                        parentElement.dataset.type = 1;
+                    }
+                    if (parentElement.dataset.type == 1 && this.startX - this.endX < -30) {
+                        this.resetSlide();
+                        parentElement.dataset.type = 0;
+                    }
+                },
+                checkSlide() {
+                    let listItems = document.querySelectorAll('.car-item');
+                    for (let i = 0; i < listItems.length; i++) {
+                        if (listItems[i].dataset.type == 1) {
+                            return true;
+                        }
+                    }
+                    return false;
+                },
+                resetSlide() {
+                    let listItems = document.querySelectorAll('.car-item');
+                    for (let i = 0; i < listItems.length; i++) {
+                        listItems[i].dataset.type == 0;
+                    }
+                },
+                deleteItem(e) {
+                    let index = e.currentTarget.dataset.index;
+                    this.resetSlide();
+                    console.log(index)
+
+                },
+                moveItem(e) {
+                    let index = e.currentTarget.dataset.index;
+                    this.resetSlide();
+                    console.log(index)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

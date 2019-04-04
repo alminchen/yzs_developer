@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>抽奖记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/lotteryRecord.min.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="lotteryRecord">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center">
+                <div class="navbar-ipt">
+                    <span class="navbar-title">抽奖记录</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="lucky-nav">
+                <div class="lucky-nav-list" ref="nav">
+                    <span :class="clickIndex==0?'active':''" @click.stop="getRecoedList(0)">全部</span>
+                    <span :class="clickIndex==1?'active':''" @click.stop="getRecoedList(1)">待发放</span>
+                    <span :class="clickIndex==2?'active':''" @click.stop="getRecoedList(2)">已发放</span>
+                    <span :class="clickIndex==3?'active':''" @click.stop="getRecoedList(3)">已拒绝</span>
+                </div>
+                <!-- <span class="bottom-line" :style="transform"></span> -->
+            </div>
+            <div class="lucky-list">
+                <!-- 占位用的div -->
+                <div class="list-wrapper list-wrapper-hook" ref="listWrapper">
+                    <div class="lucky-list-perch">
+                        <div class="top-tip">
+                            <span class="refresh-hook" ref="topTip">下拉刷新</span>
+                        </div>
+                        <div class="lucky-list-wrap">
+                            <ul class="list-content list-content-hook">
+
+                                <li class="lucky-item" v-for="(item,index) in 20" :key="index">
+                                    <a :href="'./lotteryRecordDetail.html?id='+index">
+                                        <div class="lucky-name">
+                                            <span class="lucky-realname">公司十周年活动</span>
+                                            <span class="lucky-prod">iPhoneX一部</span>
+                                        </div>
+                                        <div class="lucky-time">
+                                            <span class="lucky-realtime">2018-12-24</span>
+                                            <span class="lucky-sent">待发放</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-tip">
+                            <span class="loading-hook" ref="bottomTip">查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-hook" ref="alert">刷新成功</div>
+        </div>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script src="../../js/bscroll.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#lotteryRecord",
+            data() {
+                return {
+                    oneNavWidth: 0,
+                    clickIndex: 0,
+                    recordList: []
+                }
+            },
+            computed: {
+
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+                this.initScroll();
+                //第一次进入加载数据
+                this.reloadData()
+            },
+            methods: {
+                getRecoedList(index) {
+                    this.clickIndex = index;
+                    this.recordList = [];
+                    //点击切换 加载数据
+                    this.reloadData();
+                },
+                initScroll() {
+                    let scroll = new BScroll(this.$refs.listWrapper, {
+                        probeType: 1,
+                        click: true,
+                        taps: true
+                    })
+                    scroll.on("scroll", (position) => {
+                        if (position.y > 30) {
+                            this.$refs.topTip.innerText = "释放立即刷新";
+                        }
+                    })
+                    scroll.on("touchend", (position) => {
+                        if (position.y > 30) {
+                            setTimeout(() => {
+                                this.$refs.topTip.innerText = "释放立即刷新";
+                                this.refreshAlert("刷新成功");
+                                scroll.refresh();
+                            }, 1000)
+                        } else if (position.y < scroll.maxScrollY) {
+                            this.$refs.bottomTip.innerText = "加载中...";
+                            setTimeout(() => {
+                                this.$refs.bottomTip.innerText = "查看更多";
+                                this.reloadData();
+                            }, 1000)
+                        }
+                    })
+                },
+                refreshAlert(text) {
+                    text = text || "操作成功";
+                    this.$refs.alert.innerText = text;
+                    this.$refs.alert.style.display = "block";
+                    setTimeout(() => {
+                        this.$refs.topTip.innerText = "下拉刷新";
+                        this.$refs.alert.style.display = "none";
+                    }, 1000);
+                },
+                // 数据加载
+                reloadData() {
+                    // recordList拼接展示
+                    console.log(0)
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

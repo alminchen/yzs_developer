@@ -1,0 +1,233 @@
+$borderRadius10:.1rem;
+$colorEcecec:#ececec;
+$padd24:.24rem;
+$padd30:.3rem;
+$padd20:.2rem;
+$hei70:.7rem;
+$fontSize28:.28rem;
+$colorB5b4b4:#b5b4b4;
+$padd9:.09rem;
+$fontSize26:.26rem;
+$color808080:#808080;
+$padd32:.32rem;
+$borderRadius5:.05rem;
+$wid180:1.8rem;
+$color010101:#010101;
+$fontSize36:.36rem;
+$colorF52555:#f52555;
+$colorFFF:#fff;
+$backgroundF8f8f8:#f8f8f8;
+$padd60:.6rem;
+$padd15:.15rem;
+$borderRadius20:.2rem;
+$color333:#333;
+$padd40:.4rem;
+$fontSize30:.3rem;
+$color999:#999;
+
+[v-cloak] {
+    display: none;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+#customerOrder {
+    background: $backgroundF8f8f8;
+}
+
+.search_customer {
+    width: 100%;
+    background: $colorFFF;
+
+    .customer_inner {
+        padding: $padd20 $padd24;
+        position: relative;
+    }
+
+    .customer_search_pic {
+        display: block;
+        width: .26rem;
+        height: .26rem;
+        background: url(../images/sear.png) no-repeat top center;
+        background-size: 100% 100%;
+        position: absolute;
+        left: .54rem;
+        top: 50%;
+        margin-top: -0.13rem;
+    }
+
+    .customer_input {
+        padding-left: .6rem;
+        width: 100%;
+        border: 1px solid $colorEcecec;
+        outline: none;
+        height: $hei70;
+        font-size: $fontSize28;
+        color: $color010101;
+        border-radius: $borderRadius10;
+
+        &::-webkit-input-placeholder {
+            color: $colorB5b4b4;
+            font-size: $fontSize26;
+            letter-spacing: .01rem;
+        }
+    }
+}
+
+.customer_order_list {
+    padding: $padd20 $padd20 0;
+
+    .customer_li {
+        background: $colorFFF;
+        border-radius: $borderRadius20;
+        padding: $padd32 0 $padd32 $padd24;
+        margin-bottom: $padd20;
+    }
+
+    .customer_title {
+        font-size: $fontSize26;
+        color: $color808080;
+        display: flex;
+        margin-right: $padd24;
+        padding-bottom: $padd32;
+    }
+
+    .customer_order_num {
+        flex: 1;
+        justify-content: flex-start;
+        letter-spacing: .01rem;
+    }
+
+    .customer_order_status {
+        flex: 1;
+        justify-content: flex-end;
+        text-align: right;
+        color: $colorF52555;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .customer_order_pic {
+        width: 100%;
+        font-size: 0;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
+        overflow-x: auto;
+        margin-bottom: $padd60;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .customer_list_pic {
+        display: inline-block;
+        width: $wid180;
+        height: $wid180;
+        margin-right: 0.12rem;
+    }
+
+    .customer_price {
+        font-size: $fontSize26;
+        text-align: right;
+        margin-right: $padd30;
+        color: $color808080;
+        margin-bottom: $padd32
+    }
+
+    .customer_all_price {
+        margin-left: $padd15;
+
+        i {
+            font-size: $fontSize28;
+            color: $color010101;
+            letter-spacing: 2px
+        }
+
+        em {
+            font-size: $fontSize36;
+            color: $color010101;
+            letter-spacing: 1px;
+        }
+    }
+
+    .customer_my_in {
+        font-size: $fontSize26;
+        text-align: right;
+        margin-right: $padd30;
+        color: $color808080;
+
+        i {
+            font-size: $fontSize28;
+            color: $colorF52555;
+            letter-spacing: 2px
+        }
+
+        em {
+            font-size: $fontSize36;
+            color: $colorF52555;
+            letter-spacing: 1px;
+        }
+    }
+
+    .custoner_onlyone {
+        width: 100%;
+        padding-right: $padd24;
+        display: flex;
+        margin-bottom: $padd60;
+    }
+
+    .customer_left_pic {
+        width: $wid180;
+        margin-right: $padd24;
+    }
+
+    .customer_right_text {
+        flex: 1;
+    }
+
+    .customer_right_title {
+        width: 100%;
+        line-height: $padd40;
+        font-size: $fontSize26;
+        color: $color333;
+        margin-bottom: $padd20;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .customer_right_spec {
+        font-size: $fontSize26;
+        color: $color808080;
+    }
+}
+
+.customer_no_order {
+    width: 100%;
+    position: absolute;
+    top: $padd20;
+    bottom: 0;
+    background: $colorFFF;
+    text-align: center;
+
+    .no-order-pic {
+        width: 2.71rem;
+        height: 1.65rem;
+        display: inline-block;
+        margin-top: $wid180;
+    }
+
+    .no-otder-text {
+        font-size: $fontSize30;
+        color: $color999;
+        margin-top: $padd30;
+        letter-spacing: 2px;
+    }
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品品牌</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../../../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../js/layui/css/layui.css?v=2.2.2" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css?v2.0.1-simple" media="all">
+    <style>
+        .layui-form-label{
+            width:100px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="layui-fluid larry-wrapper">
+    <div class="layui-row layui-col-space30">
+        <div class="layui-col-xs24">
+            <!--头部搜索-->
+            <section class="panel panel-padding">
+                <form class="layui-form" action="">
+                    <div class="layui-form">
+                        <a href="javascript:;" onclick="addBrand()" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon"></i>添加</a>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">商品品牌：</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" name="keyword" placeholder="关键字">
+                                </div>
+                            </div>
+                        <div class="layui-inline">
+                            <button lay-submit class="layui-btn" lay-filter="search">查找</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th> <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div></th>
+                    <th>品牌编号</th>
+                    <th>品牌名称</th>
+                    <th>授权状态</th>
+                    <th>供应商公司</th>
+                    <th>是否在中国有代理</th>
+                    <th>排序</th>
+                    <th>备注</th>
+                    <th>创建人</th>
+                    <th>创建时间</th>
+                    <th>修改人</th>
+                    <th>修改时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                    </td>
+                    <td>1</td>
+                    <td>R0008</td>
+                    <td>香港</td>
+                    <td>是</td>
+                    <td>系统管理员</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>2018-09-15 18:13:22</td>
+                    <td>系统管理员</td>
+                    <td >
+                        2018-12-15 18:13:22
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                    </td>
+                    <td>1</td>
+                    <td>R0008</td>
+                    <td>香港</td>
+                    <td>是</td>
+                    <td>系统管理员</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>2018-09-15 18:13:22</td>
+                    <td>系统管理员</td>
+                    <td >
+                        2018-12-15 18:13:22
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="group-button">
+                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon"></i>删除</a>
+                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon"></i>修改</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--添加品牌弹窗-->
+<div class="addBrand" style="padding:20px; display: none;">
+
+    <form class="layui-form  layui-col-md12 x-so" style="margin-bottom:0;">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">品牌名称：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">品牌背景：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">供应商公司：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">是否授权</label>
+            <div class="layui-input-block">
+                <input type="radio" name="accredit" value="是" title="是" checked="">
+                <input type="radio" name="accredit" value="否" title="否">
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label" style="width:150px;">是否在中国有代理</label>
+            <div class="layui-input-block">
+                <input type="radio" name="agent" value="是" title="是" checked="">
+                <input type="radio" name="agent" value="否" title="否">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">排列序号：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-upload">
+            <label class="layui-form-label">品牌LOGO：</label>
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="uploadBrand" src="../../../images/1.jpg">
+                <p id="brandText"></p>
+            </div>
+        </div>
+        <div class="layui-upload">
+            <label class="layui-form-label">授权书：</label>
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="uploadBrand1" src="../../../images/1.jpg">
+                <p id="brandText1"></p>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label" style="width:auto;padding: 9px 0 9px 15px;">企业背景：</label>
+            <div class="layui-input-block" style="margin-left:95px;">
+                <textarea placeholder="" class="layui-textarea" style="width:400px;"></textarea>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+</body>
+
+
+
+<script type="text/javascript" src="../../../js/layui/layui.js?v=2.2.2"></script>
+<!--<script type="text/javascript" src="../../../js/version.js?v=2.0.1"></script>-->
+<!--<script src="../../../js/common.js?v=2.0.1"></script>-->
+<script>
+    layui.use(['form', 'element', "jquery","layer"],
+        function () {
+            layer = layui.layer;
+            element = layui.element;
+            $ = layui.jquery;
+            form = layui.form;
+
+            tableCheck = {
+                init:function  () {
+                    $(".layui-form-checkbox").click(function(event) {
+                        if($(this).hasClass('layui-form-checked')){
+                            $(this).removeClass('layui-form-checked');
+                            if($(this).hasClass('header')){
+                                $(".layui-form-checkbox").removeClass('layui-form-checked');
+                            }
+                        }else{
+                            $(this).addClass('layui-form-checked');
+                            if($(this).hasClass('header')){
+                                $(".layui-form-checkbox").addClass('layui-form-checked');
+                            }
+                        }
+
+                    });
+                },
+            }
+
+            //开启表格多选
+            tableCheck.init();
+        });
+
+    // 文件上传：
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+
+        //品牌logo
+        var uploadInst = upload.render({
+            elem: '#uploadBrand'
+            ,url: '/upload/'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#uploadBrand').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#brandText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        })
+
+        //授权书
+        var uploadInst = upload.render({
+            elem: '#uploadBrand1'
+            ,url: '/upload/'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#uploadBrand1').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#brandText1');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        })
+
+
+    });
+
+
+
+
+
+
+
+    function addBrand(is) {
+        layer.open({
+            title: '添加/修改往来单位信息',
+            type: 1,
+            area: ['800px', '660px'],
+            content: $(".addBrand"),
+            offset: 'auto',
+            scrollbar: false,
+            btn: ['取消', '保存'],
+            btnAlign: 'c',
+            yes: function (index, layero) {
+                //按钮【按钮一】的回调
+
+
+                layer.close(index);
+            },
+            btn2: function (index, layero) {
+                //按钮【按钮二】的回调
+
+                //return false 开启该代码可禁止点击该按钮关闭
+            },
+            cancel: function () {
+
+            }
+        });
+    }
+</script>
+
+</html>

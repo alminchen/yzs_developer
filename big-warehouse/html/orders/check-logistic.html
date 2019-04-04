@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>查看物流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/ydui.css?v=2">
+    <script src="../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../css/checkLogistic.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="checkLogistic">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">查看物流</span></div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="check-main">
+                <div class="check-status">
+                    <div class="check-now">
+                        <p>物流状态：<em>已签收</em></p>
+                        <p>承运来源：百世快递</p>
+                        <p>运单编号：45666588</p>
+                    </div>
+                </div>
+                <div class="tracking">
+                    <h3>物流跟踪</h3>
+                    <div class="tracking-status">
+                        <dl v-for="(item,index) in 3" ::key="index">
+                            <i :class="index == 0?'status':''"></i>
+                            <dt :class="index==0?'end':''">已签收</dt>
+                            <dd class="end_order " :class="index==0?'end_in':''">深圳市，小米已签收</dd>
+                            <dd>2018-6-18 15:24:20</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../../js/jquery-2.1.1.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#checkLogistic",
+            data() {
+                return {
+                    message: 1,
+                    showAndClose: true,
+                    indexList: []
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

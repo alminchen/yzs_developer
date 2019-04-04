@@ -1,0 +1,219 @@
+/* html,
+body {
+    background: rgb(248, 248, 248);
+} */
+
+img {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rate-main .rate-head {
+    width: 100%;
+    height: 2.4rem;
+    background: rgb(245, 23, 74);
+    position: relative;
+    overflow: hidden;
+}
+
+.rate-head .rate-time {
+    overflow: hidden;
+    margin: .88rem 0 0 .8rem
+}
+
+.rate-time span {
+    display: block;
+    color: #fff;
+    font-size: .26rem;
+    font-weight: bold;
+    margin-bottom: 10px
+}
+
+.rate-head .time-pic {
+    width: 1.2rem;
+    height: 1.2rem;
+    overflow: hidden;
+    position: absolute;
+    right: .8rem;
+    top: .6rem
+}
+
+.rate-main .rate-oper {
+    width: 100%;
+    background: #fff;
+    padding: .4rem .24rem;
+}
+
+.rate-oper span {
+    display: inline-block;
+    width: 1.56rem;
+    padding: .12rem 0;
+    border: 1px solid rgb(215, 215, 215);
+    border-radius: 3px;
+    text-align: center;
+    color: rgb(35, 35, 38);
+    margin-right: .2rem;
+}
+
+.rate-oper .rate-recode {
+    color: rgb(245, 23, 74);
+    border-color: rgb(245, 23, 74);
+}
+
+.rate-main .rate-history {
+    /* margin-top: .2rem; */
+    padding: .3rem 0;
+}
+
+
+.m-cell:after {
+    border-bottom: none;
+}
+
+.cell-right {
+    min-height: auto;
+}
+
+.cell-left {
+    color: rgb(34, 34, 34);
+}
+
+.cell-arrow:after {
+    color: rgb(34, 34, 34);
+}
+
+.refund-goods {
+    background: rgb(248, 248, 248);
+    padding: .4rem .24rem;
+    overflow: hidden;
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    -o-display: flex;
+    display: flex;
+}
+
+.refund-goods .has-pic {
+    width: 1.86rem;
+    height: 1.86rem;
+    overflow: hidden;
+    margin-right: .2rem;
+}
+
+.refund-goods .has-text {
+    flex: 1;
+    position: relative;
+}
+
+.refund-goods .order-tit {
+    line-height: .44rem;
+    font-size: .24rem;
+    color: rgb(67, 67, 67);
+    padding-bottom: .05rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.refund-goods .order-same {
+    color: rgb(181, 180, 180);
+    margin-bottom: .14rem;
+    font-size: .24rem
+}
+
+.refund-goods .order-same em {
+    color: rgb(255, 102, 24)
+}
+
+.refund-goods .order-all-price {
+    font-size: .3rem;
+    color: rgb(245, 23, 74);
+    font-weight: bold;
+    padding-bottom: .2rem;
+}
+
+.refund-goods .order-all-price em {
+    font-size: .24rem;
+    font-weight: bold
+}
+
+.refund-goods .order-nums {
+    font-size: .26rem;
+    color: rgb(128, 128, 128);
+    position: absolute;
+    right: 0;
+    bottom: .72rem
+}
+
+/* .refund-list {
+    margin-top: .2rem;
+} */
+.rate-main .gray {
+    width: 100%;
+    height: .2rem;
+    background: rgb(248, 248, 248);
+}
+
+.refund-list span {
+    display: block;
+    width: 100%;
+    padding: .3rem .24rem;
+    background: #fff;
+    font-size: .3rem;
+    color: rgb(34, 34, 34);
+}
+
+.refund-order-nums {
+    background: #fff;
+    padding: .4rem .24rem;
+}
+
+.refund-order-nums .ordernums {
+    overflow: hidden;
+}
+
+.refund-order-nums .ordernums-list:not(:last-child) {
+    margin-bottom: .2rem;
+    overflow: hidden;
+}
+
+.refund-order-nums .orders-copy {
+    position: relative;
+}
+
+.refund-order-nums i {
+    margin-left: .14rem;
+    display: inline-block;
+    width: 1rem;
+    text-align: center;
+    padding: .03rem 0;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 5px;
+}
+
+.refund-order-nums .refund-price {
+    font-size: .26rem;
+    color: rgb(245, 23, 74);
+}
+
+.refund-order-nums .fontSize28 {
+    font-size: .28rem;
+    color: rgb(66, 65, 68);
+}
+.m-tabbar.refund-foot .concat-wrap{
+    padding: .2rem .24rem;
+    width: 100%;
+}
+.m-tabbar.refund-foot span.concat {
+    display: block;
+    width: 100%;
+    font-size: .3rem;
+    padding: .2rem 0;
+    color: #fff;
+    background: rgb(245, 23, 74);
+    border-radius: 5px;
+    text-align: center;
+}

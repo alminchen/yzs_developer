@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品分类</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../../../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../js/layui/css/layui.css?v=2.2.2" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css?v2.0.1-simple" media="all">
+</head>
+
+<body>
+<div class="layui-fluid larry-wrapper">
+    <div class="layui-row layui-col-space30">
+        <div class="layui-col-xs24">
+            <!--头部搜索-->
+            <section class="panel panel-padding">
+                <form class="layui-form" action="">
+                    <div class="layui-form">
+                        <div class="layui-inline">
+                            <div class="group-button">
+                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon"></i>删除</a>
+                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon"></i>修改</a>
+                                <a href="javascript:;"  onclick="addClass()" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon"></i>添加</a>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">分类名称：</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" name="keyword" placeholder="关键字">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button lay-submit class="layui-btn" lay-filter="search">查找</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<!--添加修改弹窗-->
+<div class="goout_order" style="padding:20px; display: none">
+    <form class="layui-form layui-col-md12 x-so" style="margin-bottom:0;">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">上级类目：</label>
+                <div class="layui-input-inline">
+                    <select name="modules" lay-verify="required" lay-search="">
+                        <option value="">layer</option>
+                        <option value="1">layer</option>
+                        <option value="2">form</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">分类编码：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">分类名称：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">排列序号：</label>
+                <div class="layui-input-inline">
+                    <input type="tel"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label" style="width:auto;padding: 9px 0 9px 15px;">备注：</label>
+            <div class="layui-input-block" style="margin-left:95px;">
+                <textarea placeholder="请填写申述原因" class="layui-textarea" style="width:400px;"></textarea>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+</body>
+
+
+<script type="text/javascript" src="../../../js/layui/layui.js?v=2.2.2"></script>
+<!--<script type="text/javascript" src="../../../js/version.js?v=2.0.1"></script>-->
+<script src="../../../js/common.js?v=2.0.1"></script>
+
+<script>
+
+    layui.use(['form', 'element', "jquery","layer"],
+        function () {
+            layer = layui.layer;
+            element = layui.element;
+            $ = layui.jquery;
+            form = layui.form;
+
+        });
+
+    function addClass(is) {
+        layer.open({
+            title: '添加分类信息',
+            type: 1,
+            area: ['800px', '660px'],
+            content: $(".goout_order"),
+            offset: 'auto',
+            scrollbar: false,
+            btn: ['取消', '保存'],
+            btnAlign: 'c',
+            yes: function (index, layero) {
+                //按钮【按钮一】的回调
+
+
+                layer.close(index);
+            },
+            btn2: function (index, layero) {
+                //按钮【按钮二】的回调
+
+                //return false 开启该代码可禁止点击该按钮关闭
+            },
+            cancel: function () {
+
+            }
+        });
+    }
+
+</script>
+</html>

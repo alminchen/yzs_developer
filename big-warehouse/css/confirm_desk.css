@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+body {
+  font-family: 'Microsoft yahei';
+}
+img {
+  display: block;
+}
+ul,
+li,
+ol {
+  list-style: none;
+}
+a {
+  display: block;
+  text-decoration: none;
+}
+.edge {
+  width: 100%;
+  height: 0.2rem;
+  background-color: #f8f8f8;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/*# sourceMappingURL=confirm_desk.css.map */

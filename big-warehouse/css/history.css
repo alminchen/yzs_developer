@@ -1,0 +1,50 @@
+html,
+body {
+    background: rgb(248, 248, 248);
+}
+
+.history-main{
+    padding: .42rem .24rem 0 .44rem;
+    background: #fff;
+}
+
+.history-main dl{
+    width: 100%;
+    border-left: 1px solid rgb(228, 228, 228);
+    position: relative;
+    padding-bottom: .6rem
+}
+.history-main dd{
+    font-size: .28rem;
+    color: rgb(110, 110, 112);
+    padding-left: .3rem;
+    padding-bottom: .2rem
+}
+.history-main dt{
+    font-size: .28rem;
+    color: rgb(34, 34, 34);
+    padding-left: .3rem;
+}
+
+
+.history-main i{
+    display: inline-block;
+    width: .16rem;
+    height: .16rem;
+    background: rgb(191, 191, 191);
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
+    top: 2px;
+}
+.history-main i.success{
+    display: inline-block;
+    width: .32rem;
+    height: .32rem;
+    border-radius: 50%;
+    background: url(../images/circle_03.png) no-repeat left center rgb(228, 228, 228);
+    background-size: 100% 100%;
+    position: absolute;
+    left: -0.16rem;
+    top: -1px;
+}

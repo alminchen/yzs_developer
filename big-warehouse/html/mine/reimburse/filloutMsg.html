@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>填写物流信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../../css/ydui.css?v=2">
+    <script src="../../../js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="../../../css/filloutMsg.css">
+</head>
+
+<body>
+    <section class="g-flexview" id="reimburse">
+
+        <header class="m-navbar">
+            <a href="JavaScript:;" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">填写物流信息</span></div>
+        </header>
+
+        <div class="g-scrollview">
+            <div class="fillout-main">
+                <div class="refund-address">
+                    <div class="cell-item">
+                        <div class="cell-left">退货地址</div>
+                        <!-- <div class="cell-right">右边内容一</div> -->
+                    </div>
+                    <div class="address cell-item">广东省深圳市福田区八卦三路八卦岭地铁站B出口云之商科技有限公司</div>
+                </div>
+                <div class="m-cell post-company">
+                    <div class="cell-item">
+                        <div class="cell-left">物流公司</div>
+                        <!-- <div class="cell-right">右边内容一</div> -->
+                    </div>
+                    <div class="cell-item">
+                        <div class="cell-left">快递单号:</div>
+                        <div class="cell-right"><input type="text" class="cell-input" placeholder="请填写快递单号" /></div>
+                    </div>
+                </div>
+                <div class="introduce">
+                    <div class="m-celltitle">发货说明（可选填）</div>
+                    <div class="m-cell">
+                        <div class="cell-item">
+                            <div class="cell-right">
+                                <textarea class="cell-textarea" placeholder="请填写发货说明"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="upload">
+                    <div class="m-cell">
+                        <div class="cell-item">
+                            <div class="cell-left">上传图片</div>
+                        </div>
+                        <div class="upload-pic">
+                            <div class="refund-pic">
+                                <input type="file">
+                                <img src="../../../images/refund_upload.png" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="m-tabbar refund-foot">
+            <a href="javascript:;" class="tabbar-item">
+                <span class="tabbar-txt">取消</span>
+            </a>
+            <a href="javascript:;" class="tabbar-item">
+                <span class="tabbar-txt">确定</span>
+            </a>
+        </footer>
+    </section>
+    <script src="../../../js/jquery-2.1.1.js"></script>
+    <script src="../../../js/swiper.min.js"></script>
+    <script src="../../../js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#reimburse",
+            data() {
+                return {
+                    message: 1,
+                    showAndClose: true,
+                    indexList: []
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

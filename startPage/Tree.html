@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tree.min.css" />
+  </head>
+
+  <body>
+    <div class="loginModuel" id="stepTree">
+      <tree
+        :menus="menus"
+        :depth="depth"
+        @selectitem="selectItem"
+        :actId="actId"
+        @checkitem="checkItem"
+      ></tree>
+    </div>
+  </body>
+  <script id="treeTpl" type="text/x-template">
+    <ul class = "treeMoudel">
+        <li v-for = "(item,index) in menus" :key = "index">
+            <div :class = "{'itemTree':true,'topNode':depth == 0,'noTopNode':depth != 0,'active':actId == item.id}">
+                <span :style = "transform" v-if = "item.name" :class = "{'topSpan':depth == 0,'noTopSpan':depth != 0}">
+                    <i class = "el-icon-caret-right" v-if = "item.userList && item.userList.length > 0 && !item.show" @click="selectItem(item)">1</i>
+                    <i class = "el-icon-caret-bottom" v-if = "item.userList && item.userList.length > 0 && item.show" @click="selectItem(item)">1</i>
+                    <!-- <i class = "selectBox" @click="checkItem(item)">
+                        <i :class = "{'checkName iconfont':true, 'gouxuan5':item.selectArr.length > 0}" ></i>
+                    </i> -->
+                    <input type="checkbox" @click="checkItem(item)" :checked="item.selectArr.length > 0" >
+                    {{item.name}}
+                </span>
+                <span :style = "transform" v-if = "item.username" :class = "{'topSpan':depth == 0,'noTopSpan':depth != 0}">
+                    <i class = "el-icon-caret-right" v-if = "item.userList && item.userList.length > 0 && !item.show" @click = "selectItem(item)">1</i>
+                    <i class = "el-icon-caret-bottom" v-if = "item.userList && item.userList.length > 0 && item.show" @click = "selectItem(item)">1</i>
+                    <!-- <i class = "selectBox" @click = "checkItem(item)">
+                        <i :class = "{'checkUsername iconfont':true, 'gouxuan5':item.selectArr.length > 0}"></i>
+                    </i> -->
+                    <input type="checkbox" @click="checkItem(item)" :checked="item.selectArr.length > 0" >
+                    {{item.role}}
+                </span>
+                <span style="right:200px;">2131231</span>
+            </div>
+            <tree v-if = "item.userList && item.userList.length > 0 && item.show" :menus = "item.userList" :depth = "depth+4" @selectitem = "selectItem" :actId = "actId" @checkitem = "checkItem"></tree>
+        </li>
+    </ul>
+  </script>
+  <script src="./js/vue.min.js"></script>
+  <script src="./js/axios.min.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#stepTree",
+      data: {
+        msg: "这是一级菜单树",
+        depth: 0,
+        menus: [],
+        actId: ""
+      },
+      // components: {
+      //     tree
+      // },
+      mounted: function() {
+        this.getTree();
+        this.$nextTick(() => {
+          console.log(this.menus);
+        });
+      },
+      methods: {
+        getData() {
+          return axios.get("./js/data.json");
+        },
+        async getTree() {
+          var last = await this.getData();
+          if (last.data.code == 1) {
+            this.menus = last.data.data;
+            this.addShow(this.menus);
+          }
+        },
+        //递归函数在每一项中添加selectArr和show
+        addShow(arr) {
+          for (var i = 0; i < arr.length; i++) {
+            this.$set(arr[i], "show", false);
+            this.$set(arr[i], "selectArr", []);
+            if (arr[i].userList && arr[i].userList.length > 0) {
+              this.addShow(arr[i].userList);
+            }
+          }
+        },
+        //点击箭头使树展开收缩
+        selectItem(data) {
+          if (data.userList && data.userList.length > 0) {
+            data.show = !data.show;
+          } else {
+            this.actId = data.id;
+          }
+        },
+        //进行多选勾选
+        checkItem(data) {
+          if (data.selectArr.length > 0) {
+            data.selectArr = [];
+            if (data.userList && data.userList.length > 0) {
+              this.clearChild(data.userList);
+            }
+            this.clearFather(this.menus, data);
+          } else {
+            data.selectArr.push(data.id);
+            if (data.userList && data.userList.length > 0) {
+              this.addChild(data.userList);
+            }
+            this.selectFather(this.menus, data);
+          }
+        },
+        //定义函数清空所有孩子的勾选
+        clearChild(arr) {
+          for (var i = 0; i < arr.length; i++) {
+            arr[i].selectArr = [];
+            if (arr[i].userList && arr[i].userList.length > 0) {
+              this.clearChild(arr[i].userList);
+            }
+          }
+        },
+        //定义函数添加所有孩子的勾选
+        addChild(arr) {
+          for (var i = 0; i < arr.length; i++) {
+            arr[i].selectArr.push(arr[i].id);
+            if (arr[i].userList && arr[i].userList.length > 0) {
+              this.addChild(arr[i].userList);
+            }
+          }
+        },
+        //定义函数一层一层的往上寻找父元素的userList
+        clearFather(father, data) {
+          for (var i = 0; i < father.length; i++) {
+            if (father[i].id == data.id) {
+              this.clearRealFather(this.menus, father);
+            } else if (father[i].userList && father[i].userList.length > 0) {
+              this.clearFather(father[i].userList, data);
+            }
+          }
+        },
+        //定义函数根据找到的上层父元素的userList来寻找父元素，并将他们清除勾选
+        clearRealFather(menus, arr) {
+          for (var i = 0; i < menus.length; i++) {
+            if (menus[i].userList == arr) {
+              menus[i].selectArr = [];
+              this.clearFather(this.menus, menus[i]);
+            } else if (menus[i].userList && menus[i].userList.length > 0) {
+              this.clearRealFather(menus[i].userList, arr);
+            }
+          }
+        },
+        //定义函数一层一层的往上寻找父元素的userList
+        selectFather(father, data) {
+          for (var i = 0; i < father.length; i++) {
+            if (father[i].id == data.id) {
+              var arr = [];
+              for (var j = 0; j < father.length; j++) {
+                if (father[j].selectArr.length > 0) {
+                  arr.push(father[i]);
+                }
+              }
+              if (arr.length == father.length) {
+                this.selectRealFather(this.menus, father);
+              }
+            } else if (father[i].userList && father[i].userList.length > 0) {
+              this.selectFather(father[i].userList, data);
+            }
+          }
+        },
+        //定义函数根据找到的上层父元素的userList来寻找父元素，并将他们清除勾选
+        selectRealFather(menus, arr) {
+          for (var i = 0; i < menus.length; i++) {
+            if (menus[i].userList == arr) {
+              menus[i].selectArr.push(menus[i].id);
+              this.clearFather(this.menus, menus[i]);
+            } else if (menus[i].userList && menus[i].userList.length > 0) {
+              this.selectRealFather(menus[i].userList, arr);
+            }
+          }
+        }
+      }
+    });
+
+    Vue.component("tree", {
+      name: "tree",
+      template: "#treeTpl",
+      props: ["menus", "depth", "actId"],
+      data() {
+        return {
+          msg: "这是二级菜单树"
+        };
+      },
+      methods: {
+        selectItem(item) {
+          this.$emit("selectitem", item);
+        },
+        checkItem(item) {
+          this.$emit("checkitem", item);
+        }
+      },
+      computed: {
+        transform() {
+          return "transform:translateX(" + this.depth * 5 + "px)";
+        }
+      }
+    });
+  </script>
+</html>

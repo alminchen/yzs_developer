@@ -1,0 +1,67 @@
+{
+    "code": 1,
+    "data": [{
+            "id": "1.2",
+            "name": "技术部",
+            "userList": [{
+                    "id": "1.2.1",
+                    "username": "html",
+                    "role": "主管",
+                    "userList": [{
+                            "id": "1.2.1.1",
+                            "username": "html",
+                            "role": "主管1",
+                            "userList": [{
+                                    "id": "1.2.1.1",
+                                    "username": "html",
+                                    "role": "主管1"
+                                },
+                                {
+                                    "id": "1.2.1.2",
+                                    "username": "vue",
+                                    "role": "普通1",
+                                    "userList": [{
+                                            "id": "1.2.1.1",
+                                            "username": "html",
+                                            "role": "主管1"
+                                        },
+                                        {
+                                            "id": "1.2.1.2",
+                                            "username": "vue",
+                                            "role": "普通1"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1.2.1.2",
+                            "username": "vue",
+                            "role": "普通1"
+                        }
+                    ]
+                },
+                {
+                    "id": "1.2.2",
+                    "username": "vue",
+                    "role": "普通"
+                }
+            ]
+        },
+        {
+            "id": "1.3",
+            "name": "策划部",
+            "userList": [{
+                    "id": "1.3.1",
+                    "username": "jack",
+                    "role": "主管"
+                },
+                {
+                    "id": "1.3.2",
+                    "username": "rose",
+                    "role": "普通"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        ul li,
+        li {
+            list-style: none
+        }
+
+        .nav {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            transition: all .2s linear;
+            font-size: 0
+        }
+
+        .nav div {
+            display: inline-block;
+            vertical-align: middle
+        }
+
+        .nav .nav-btn {
+            font-size: 16px;
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            line-height: 50px;
+            background: rebeccapurple;
+            text-align: center;
+            transition: all 1s;
+        }
+
+        .show_wid {
+            /* transform: translateX(-1%); */
+            transition: all .2s
+        }
+
+        .show_wid ul li {
+            font-size: 14px;
+            width: 200px;
+            display: inline-block;
+            line-height: 50px;
+        }
+
+        .show {
+            width: 100%
+        }
+
+        .show .show_wid {
+            transform: translateX(1%);
+        }
+
+        .show .nav-btn {
+            /* transform: rotate(90deg) */
+            background: red;
+            transition: background 1s linear;
+        }
+    </style>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div class="nav" id="nav" :class="flag?'show':''">
+        <div class="nav-btn" @click="showFlag" :class="flag?'red':''">
+            点击
+        </div>
+        <div class="show_wid">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#nav",
+            data() {
+                return {
+                    flag: false
+                }
+            },
+            mounted() {
+
+            },
+            methods: {
+                showFlag: function () {
+                    this.flag = !this.flag;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

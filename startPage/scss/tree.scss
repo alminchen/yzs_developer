@@ -1,0 +1,72 @@
+.treeMoudel{
+    li{
+        .itemTree{
+            width: 100%;
+            padding-left:30px;
+            position: relative;
+            &:hover{
+                background:#2B9EEE;
+                color:#fff;
+            }
+            .selectBox{
+                display: inline-block;
+                width: 16px;
+                height:16px;
+                border:1px solid #ccc;
+                border-radius: 3px;
+                position: relative;
+                background: #fff;
+                top:2px;
+                .checkName{
+                    position: absolute;
+                    top:-16px;
+                    left:0px;
+                    color:#333;
+                }
+                .checkUsername{
+                    position: absolute;
+                    top:-12px;
+                    left:0px;
+                    color:#333;
+                }
+            }
+            span{
+                display: inline-block;
+                position: absolute;
+                font-size:14px;
+            }
+            .topSpan{
+                font-size:16px;
+            }
+            .noTopSpan{
+                font-size:14px;
+            }
+        }
+        .topNode{
+            height:55px;
+            line-height: 55px;
+            font-size:16px;
+            cursor: pointer;
+        }
+        .active{
+            background:#2B9EEE;
+            color:#fff;
+        }
+        .noTopNode{
+            height:45px;
+            line-height:45px;
+            &:hover{
+                background:#2B9EEE;
+                cursor: pointer;
+                color:#fff;
+            }
+        }
+    }
+}
+
+ul li,li{
+    list-style: none;
+}
+.treeMoudel li .itemTree .selectBox .gouxuan5{
+    background: red
+}

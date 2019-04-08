@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全选/反选/多选</title>
+    <style>
+        .relatedInstance {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .relatedInstance ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .relatedInstance>ul>li {
+            margin-bottom: 20px;
+        }
+
+        .relatedInstance>ul>li>h3 {
+            background: #f3f2f0;
+            color: #6bacdf;
+            font-size: 14px;
+            text-align: center;
+            line-height: 26px;
+        }
+
+        .relatedInstance>ul>li>ul>li {
+            padding-left: 28px;
+            overflow: hidden;
+            width: 100%;
+            font-size: 14px;
+            color: #999;
+            line-height: 20px;
+            min-height: 20px;
+            text-decoration: underline;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        .relatedInstance>ul>li>ul>li {
+            word-wrap: break-word;
+        }
+
+        .relatedInstance li h3 {
+            cursor: pointer;
+        }
+
+        .relatedInstance li h3 span {
+            float: right;
+            line-height: 26px;
+            margin-right: 5px;
+        }
+
+        .relatedInstance li li:hover {
+            color: #333;
+        }
+
+        .relatedInstance li ul {
+            overflow: hidden;
+        }
+
+        .relatedInstance li h3 {
+            position: relative;
+        }
+
+        .relatedInstance li li {
+            position: relative;
+        }
+
+        .relatedInstance li h3 b,
+        .relatedInstance li li b {
+            position: absolute;
+            top: 1px;
+            left: 5px;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            width: 18px;
+            height: 18px;
+            background: url(./images/blue.png);
+            border: none;
+            cursor: pointer;
+            background-position: 0 0;
+            margin-right: 5px;
+        }
+
+        .relatedInstance li h3 b {
+            position: absolute;
+            top: 4px;
+        }
+
+        .relatedInstance li h3 b:hover,
+        .relatedInstance li li b:hover {
+            background-position: -20px 0;
+        }
+
+        .relatedInstance li h3 b.checked,
+        .relatedInstance li li b.checked {
+            background-position: -40px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="row">
+            <div class="relatedInstance">
+                <ul>
+                    <li id="" v-for="(entity,index) in entities" @click="handleTit(index)">
+                        <h3>{{entity.text}}<b :class="{'checked':allState[index]}" @click.stop="handleTitAll(entity,index)"></b></h3>
+                        <ul v-show="entitiesState[index]" @click.stop>
+                            <li v-for="(list,listIndex) in entity.child" @click="childHandle(listIndex,index)">
+                                <b :class="{'checked':childState[index][listIndex]}"></b><span>{{list.text}}</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="http://www.jq22.com/jquery/vue.min.js"></script>
+    <script>
+        var newlist = new Vue({
+            el: '#app',
+            data: {
+                entities: [{
+                        text: '人员',
+                        child: [{
+                            text: '第一组01',
+                            child: [{
+                                text: "第一组011"
+                            }]
+                        }, {
+                            text: '第一组02'
+                        }, {
+                            text: '第一组03'
+                        }, {
+                            text: '第一组04'
+                        }, {
+                            text: '第一组05'
+                        }]
+                    },
+                    {
+                        text: '项目',
+                        child: [{
+                            text: '第二组01'
+                        }, {
+                            text: '第二组02'
+                        }]
+                    },
+                    {
+                        text: '机构',
+                        child: [{
+                            text: '第三组01'
+                        }, {
+                            text: '第三组02'
+                        }, {
+                            text: '第三组03'
+                        }, {
+                            text: '第三组04'
+                        }]
+                    },
+                ],
+                entitiesState: [], //列表展开关闭
+                childState: [], //选中状态
+                allState: [], //全选状态
+                listLen: 0
+            },
+            methods: {
+                handleTit(i) { //点击父级
+                    let state = this.entitiesState;
+                    this.$set(state, i, !state[i]);
+                    for (let a in this.entitiesState) {
+                        if (a != i) {
+                            this.$set(state, a, true);
+                        }
+                    } //增加判断，改变同级的展开状态
+                },
+                childHandle(i, pi) { //单选
+
+                    let child = this.childState;
+                    if (child[pi][i]) this.allState[pi] = false;
+                    this.$set(child[pi], i, !child[pi][i]);
+                    if (this.childState[pi][i]) this.checkList(this.childState[pi], pi);
+                },
+                handleTitAll(item, pi) { //全选
+                    this.listLen = item.child.length;
+                    let child = this.childState[pi],
+                        allState = this.allState;
+                    for (let i = 0; i < this.listLen; i++) {
+                        this.$set(child, i, !allState[pi]);
+                    }
+                    this.$set(allState, pi, !allState[pi]);
+                },
+                checkList(child, pi) {
+                    let allState = this.allState,
+                        len = this.entities[pi].child.length;
+                    for (let i = 0; i < len; i++) {
+                        if (!child[i]) return;
+                    }
+                    this.$set(allState, pi, true);
+                }
+            },
+            created() {
+                let len = this.entities.length;
+                this.listLen = len;
+                for (let i = 0; i < len; i++) {
+                    this.$set(this.childState, i, [])
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

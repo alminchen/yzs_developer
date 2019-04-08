@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米购买页面</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- 第一步：vue -->
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.min.js"></script>
+    <style type="text/css">
+    li{list-style: none;}
+          .ver_box li,.color_box li{  width: 50%;
+    float: left;
+    border: 1px solid #ccc;
+    padding: 10px;}
+     .ver_box .li_actve,.color_box .li_actve{border: 1px solid #ff6600}
+    .clear{clear: both;margin-top: 20px;height: auto;overflow: hidden;}
+    .attr_box{background-color: #eee;padding: 10px;}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://i8.mifile.cn/a1/pms_1502962291.85477516!560x560.jpg" alt=""></div>
+            <div class="col-md-6">
+                <h3>{{goods_info.goods_name}}</h3>
+                <h6>{{goods_info.goods_price}}</h6>
+                <div>
+                    <p>选择版本</p>
+                    <ul class="ver_box">
+                        <li v-for="(ver_info,index) in goods_info.ver_list" :class="{'li_actve':index==cur_ver_index}" @click="choise_ver(index)">
+                            {{ver_info.ver_name}}
+                            {{ver_info.price}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear">
+                    <p>选择颜色</p>
+                    <ul class="color_box">
+                        <li v-for="(color_info,index) in goods_info.ver_list[cur_ver_index].color_list" :class="{'li_actve':index==cur_color_index}" @click="choise_color(index)">{{color_info.color_name}}</li>
+                    </ul>
+                </div>
+                <div class="clear">
+                    <p>意外险</p>
+                    <div>
+                        <input type="checkbox" v-model="baoxian_price" value="119">
+                        小米5X 意外保险
+
+手机意外损坏，一年内免费维修
+119元
+                    </div>
+                </div>
+
+                <div class="clear attr_box">
+                    <p>
+ 
+                        {{goods_info.ver_list[cur_ver_index].ver_name}} {{goods_info.ver_list[cur_ver_index].color_list[cur_color_index].color_name}}
+                    </p>
+                    <p>总计：  {{total_price}}    </p>
+                </div>
+                <div class="clear attr_box">
+                    <a  class="btn btn-info" @click="addCart()">添加购物车</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el:'.container',
+            data:{
+                choise_goods_attr:[],//用户选择的商品属性列表
+                baoxian_price:[], //保险价格数组
+                cur_ver_index:0, //当前选中的版本下标
+                cur_color_index:0, //当前选中的颜色下标
+                goods_info:[]//当前商品信息
+            },
+            computed:{
+                // 计算属性
+                total_price:function () {
+                    // 默认的是不带保险的价格
+                    let t_price = Number(this.goods_info.ver_list[this.cur_ver_index].price)
+                    if (this.baoxian_price.length>0) {
+                        // 如果有选择保险就加上
+                        t_price += Number(this.baoxian_price[0])
+                    }
+                    return  t_price
+                }
+            },
+            created(){
+                var cur_goods_index = getParams('index')
+                // 从本地存储获取当前传过来的商品id值
+                this.goods_info = JSON.parse('[{"goods_name":"小米手机","goods_price":"1999","ver_list":[{"ver_name":"黄色","price":"1999","pic":"","color_list":[{"color_name":"红色","sku":"2999"}]}]},{"goods_name":"红米手机","goods_price":"999","ver_list":[{"ver_name":"金刚版","price":"1999","pic":"","color_list":[{"color_name":"红色","sku":"100"},{"color_name":"黄色","sku":"100"}]},{"ver_name":"葫芦娃版","price":"2999","pic":"","color_list":[{"color_name":"绿色","sku":"100"},{"color_name":"黑色","sku":"100"}]}]}]')[cur_goods_index]
+            },
+            methods:{
+                choise_ver:function (index) {
+                    // 选择版本
+                    this.cur_ver_index=index
+                    this.cur_color_index = 0
+                },
+                choise_color:function (index) {
+                    // 选择颜色
+                    this.cur_color_index=index
+                },
+                addCart:function () {
+                    let cur_ver_info = this.goods_info.ver_list[this.cur_ver_index]
+
+                    // 如果商品已经存在购物车了，对数量进行加1
+                    this.choise_goods_attr.push({
+                        goods_name:this.goods_info.goods_name, //名称
+                        goods_price:cur_ver_info.price,//价格
+                        num:1,//购买数量
+                        ver_info:cur_ver_info,//版本信息
+                        color_info:cur_ver_info.color_list[this.cur_color_index] //颜色信息
+                    })
+                    // 往本地存储给购物车加商品
+                    localStorage.setItem('cart_list',JSON.stringify(this.choise_goods_attr))
+                    console.log(this.choise_goods_attr)
+                }
+            }
+        })
+        // js 怎么获取url传过来参数
+           
+        console.log(getParams('index'))
+
+
+        // 获取指定参数
+        function getParams(key){
+            var url = location.search.replace(/^\?/,'').split('&');
+            var paramsObj = {};
+            for(var i = 0, iLen = url.length; i < iLen; i++){
+                var param = url[i].split('=');
+                paramsObj[param[0]] = param[1];
+            }
+            if(key){
+                return paramsObj[key] || '';
+            }
+            return paramsObj;
+        }
+    </script></body>
+</html>

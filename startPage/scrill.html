@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上拉加载下拉刷新</title>
+    <style>
+        .yo-scroll {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            background-color: #fff
+        }
+
+        .yo-scroll .inner {
+            position: absolute;
+            top: -2rem;
+            width: 100%;
+            transition-duration: 300ms;
+        }
+
+        .yo-scroll .pull-refresh {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yo-scroll.touch .inner {
+            transition-duration: 0ms;
+        }
+
+        .yo-scroll.down .down-tip {
+            display: block;
+        }
+
+        .yo-scroll.up .up-tip {
+            display: block;
+        }
+
+        .yo-scroll.refresh .refresh-tip {
+            display: block;
+        }
+
+        .yo-scroll .down-tip,
+        .yo-scroll .refresh-tip,
+        .yo-scroll .up-tip {
+            display: none;
+        }
+
+        .yo-scroll .load-more {
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="yo-scroll" :class="{'down':(state===0),'up':(state==1),refresh:(state===2),touch:touching}" @touchstart="touchStart($event)"
+        @touchmove="touchMove($event)" @touchend="touchEnd($event)" @scroll="(onInfinite || infiniteLoading) ? onScroll($event) : undefined"
+        id="ssss">
+        <section class="inner" :style="{ transform: 'translate3d(0, ' + top + 'px, 0)' }">
+            <div class="pull-refresh">
+                <div name="pull-refresh">
+                    <!-- 这个也是插槽<solt name="pull-refresh"></solt> -->
+                    <span class="down-tip">下拉更新</span>
+                    <span class="up-tip">松开更新</span>
+                    <span class="refresh-tip">更新中</span>
+                </div>
+            </div>
+            <!-- <solt></solt>  这是父组件插槽-->
+            <!-- 只是插槽内容 -->
+            <div class="body">
+                <ul>
+                    <!-- {{currentlist}} -->
+                    <li v-for="(item,index) in currentlist">{{item}}{{index}}</li>
+                </ul>
+            </div>
+            <!-- 插槽内容结束 -->
+            <div class="load-more">
+                <div name="load-more">
+                    <!-- 这个也是插槽<solt name="load-more"></solt> -->
+                    <span>加载中……</span>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="./js/jquery-2.1.1.js"></script>
+    <script src="./js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#ssss",
+            data() {
+                return {
+                    // 这边是props 可传进来的参数
+                    offset: 40,
+                    enableInfinite: true,
+                    enableRefresh: true,
+                    // 到这结束
+                    top: 0,
+                    state: 0,
+                    startY: 0,
+                    touching: false,
+                    infiniteLoading: false,
+                    endId: "", //记录上拉加载时应该从哪一条数据开始取
+                    pageCount: "", //每次请求的条数
+                    currentlist: [], //当前显示的列表,
+                }
+            },
+            mounted() {
+                this.onRefresh(this.noneFun);
+            },
+            methods: {
+                // 这个是父组件的代码执行
+                onRefresh: function (done) {
+                    //   3. 在刷新方法内部进行自己的逻辑处理 此处调用了后台接口
+                    this.onRefreshPort(done);
+                },
+                onRefreshPort(done) {
+                    var that = this;
+                    // let url = "http://42.236.83.132:90/market/market/getAllList";
+                    for (var i = 0; i < 100; i++) {
+                        this.currentlist.push(i);
+                        done();
+                    }
+                },
+                onInfinite: function (done) {
+                    this.onInfinitePort(done);
+                },
+                onInfinitePort(done) {
+                    // console.log(8)
+                    for (var i = 100; i < 200; i++) {
+                        this.currentlist.push(i);
+                        done();
+                    }
+                    // done();
+                },
+                noneFun: function () {}, // 刚开始是定义一个空白函数执行
+                // 这个是父组件的代码执行
+                // 以下是子组件代码
+                touchStart(e) {
+                    this.startY = e.targetTouches[0].pageY
+                    this.startScroll = this.$el.scrollTop || 0
+                    this.touching = true
+                },
+                touchMove(e) {
+                    if (!this.enableRefresh || this.$el.scrollTop > 0 || !this.touching) {
+                        return
+                    }
+                    let diff = e.targetTouches[0].pageY - this.startY - this.startScroll
+                    if (diff > 0) e.preventDefault()
+                    this.top = Math.pow(diff, 0.8) + (this.state === 2 ? this.offset : 0)
+
+                    if (this.state === 2) { // in refreshing
+                        return
+                    }
+                    if (this.top >= this.offset) {
+                        this.state = 1
+                    } else {
+                        this.state = 0
+                    }
+                },
+                touchEnd(e) {
+                    if (!this.enableRefresh) return
+                    this.touching = false
+                    if (this.state === 2) { // in refreshing
+                        this.state = 2
+                        this.top = this.offset
+                        return
+                    }
+                    if (this.top >= this.offset) { // do refresh
+                        this.refresh()
+                    } else { // cancel refresh
+                        this.state = 0
+                        this.top = 0
+                    }
+                },
+                refresh() {
+                    this.state = 2
+                    this.top = this.offset
+                    this.onRefresh(this.refreshDone)
+                },
+                refreshDone() {
+                    this.state = 0
+                    this.top = 0
+                },
+                infinite() {
+                    this.infiniteLoading = true
+                    this.onInfinite(this.infiniteDone)
+                },
+                infiniteDone() {
+                    this.infiniteLoading = false
+                },
+                onScroll(e) {
+                    if (!this.enableInfinite || this.infiniteLoading) {
+                        return
+                    }
+                    let outerHeight = this.$el.clientHeight
+                    let innerHeight = this.$el.querySelector('.inner').clientHeight
+                    let scrollTop = this.$el.scrollTop
+                    let ptrHeight = this.onRefresh ? this.$el.querySelector('.pull-refresh').clientHeight : 0
+                    let infiniteHeight = this.$el.querySelector('.load-more').clientHeight
+                    let bottom = innerHeight - outerHeight - scrollTop - ptrHeight
+                    if (bottom < infiniteHeight) this.infinite()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

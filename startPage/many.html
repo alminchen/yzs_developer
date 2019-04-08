@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="./css/detail.css">
+    <style>
+        .sec-all span.noAllow{
+            pointer-events: none;
+            cursor: not-allowed;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="addCar" class="detail_serve_main show"></div>
+    <script id="buyNow" type="text/html">
+        <div class="main">
+                <div class="addCar">
+                    <div class="close">
+                        <span class="close-icon">
+                            <img src="./images/car_close.png" alt="">
+                        </span>
+                    </div>
+                    <div class="product-pic">
+                        <img src="{{ImgList[0].Thumbnail}}" alt="">
+                    </div>
+                    <div class="product-detail">
+                        <div class="product-tit">
+                            <span class="title">{{ProductName}}</span>
+                        </div>
+                        {{ each ProductAssociationAttribute as value i}}
+                        <div class="product-spec">
+                            <div class="sec-quality" status="false">{{value.AttributeName}}</div>
+                            <div class="sec-all">
+                                {{ each value.AttributeOptions as n i}}
+                                    <span >{{ n.AttributeText}}</span>
+                                {{/each}}
+                            </div>
+                        </div>
+                        {{/each}}
+                        
+                        <div class="product-unit">
+                            <div class="unit-quality">规格</div>
+                            <div class="unit-all" id="specList">
+                                {{ if PdProductSpecPrices.length > 0}}
+                                    {{each PdProductSpecPrices as val i}}
+                                        <span style="width:auto;padding:0 .2rem;">{{val.Spec}}{{val.Unit}}{{ val.SalesPrice.toFixed(2)}}元</span>
+                                    {{/each}}
+                                {{else}}
+                                    <em style="font-size:.2rem;">暂无规格信息</em>
+                                {{/if}}
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="product-price">
+                            <div class="pri-right">
+                                <span class="quality">数量</span>
+                                <span class="m-spinner" style="border:none">
+                                    <a href="javascript:;" class="J_Del"></a>
+                                    <input type="text" class="J_Input" placeholder="" value="1" disabled/>
+                                    <a href="javascript:;" class="J_Add"></a>
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="add-car-btn" id="buyNowBtn">
+                        <a href="javascript:;" class="addCarNow" id="next" >确定</a>
+                    </div>
+                </div>
+            </div>
+        </script>
+</body>
+<script src="./js/jquery-2.1.1.js"></script>
+<script src="./js/template.js"></script>
+<script>
+    getSpec(9713);
+
+    function getSpec(sysno) {
+        $.ajax({
+            url: "http://192.168.1.7:89/B2CApp/Common.svc/GetProductDetails",
+            data: {
+                sysNo: sysno
+            },
+            type: "GET",
+            success: function (res) {
+                if (res.StatusCode !== -1) {
+                    $('.addCarNow').removeClass('defaultPre');
+                    var addCar = template('buyNow', res.Data);
+                    $('#addCar').html(addCar);
+                    $('#specList').on('click', 'span', function () {
+                        $('#specList').find('span.active').removeClass('active');
+                        $(this).addClass('active');
+                    })
+                    // 进来默认选中属性
+                    for (var i in res.Data.ProductAssociationAttribute) {
+                        for (var j in res.Data.CurrentProductAssociationAttribute) {
+                            if (res.Data.ProductAssociationAttribute[i].AttributeName == res.Data.CurrentProductAssociationAttribute[
+                                    j].AttributeName) {
+                                for (var x in res.Data.ProductAssociationAttribute[i].AttributeOptions) {
+                                    if (res.Data.CurrentProductAssociationAttribute[j].AttributeText == res
+                                        .Data.ProductAssociationAttribute[i].AttributeOptions[x].AttributeText
+                                    ) {
+                                        $('.sec-quality').eq(i).attr('status', true).siblings().find('span')
+                                            .eq(x).addClass('active');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // 属性点击切换选择
+                    $('.sec-all').on('click', 'span', function () {
+                        var idx = 0;
+                        var jdx = 0;
+                        if (!$(this).hasClass('active')) {
+                            $(this).addClass("active").siblings().removeClass('active');
+                            $(this).parent().siblings('.sec-quality').attr('status', true)
+                        } else {
+                            $(this).removeClass("active");
+                            $(this).parent().siblings('.sec-quality').attr('status', 'false');
+                        }
+
+                        // 定义了一个常量来判断执行
+                        for (var i in res.Data.ProductAssociationAttribute) {
+                            if ($('.sec-quality').eq(i).attr('status') == 'false') {
+                                idx++;
+                            } else {
+                                jdx++
+                            }
+                        }
+                        // 全部选中的时候执行
+                        if (idx == 0) {
+                            contrastArr();
+                        } else {
+                            // 判断其他选项是否在排列中有该属性
+                            if (jdx == 0) {
+                                var jdxStatus = $('.product-spec .sec-quality');
+                                for (var k = 0; k < jdxStatus.length; k++) {
+                                    if (jdxStatus.eq(k).attr('status') == 'false') {
+                                        jdxStatus.eq(k).siblings().find('span.noAllow').removeClass(
+                                            'noAllow');
+                                    }
+                                }
+                            } else {
+                                setGrayStatus();
+                            }
+
+                        }
+
+                        var sameArr = null;
+                        // 获取按钮状态得到编号
+                        function contrastArr() {
+                            var status = $('.sec-all span.active');
+                            for (var i = 0; i < status.length; i++) {
+                                allsSpecList(status[i].innerHTML);
+                            }
+                            if (sameArr.length > 0) {
+                                getSpec(sameArr[0])
+                                $('.addCarNow').removeClass('defaultPre');
+                            } else {
+                                $('.addCarNow').addClass('defaultPre');
+                            }
+                        }
+                        // 得到编号跟全部排列中做数据交集处理
+                        function allsSpecList(obj) {
+                            var newArr = [];
+                            var desc = res.Data.AllProductAssociationSpecList;
+                            for (var j = 0; j < desc.length; j++) {
+                                if (obj == desc[j].AttributeText) {
+                                    newArr.push(desc[j].ProductSysNo);
+                                    if (sameArr == null) {
+                                        sameArr = newArr;
+                                    }
+                                }
+                            }
+                            var ar = sameArr.filter(function (n) {
+                                return newArr.indexOf(n) != -1
+                            });
+                            sameArr = ar;
+                        }
+
+                        // 数据置灰处理
+                        var arrSel;
+
+                        function setGrayStatus() {
+                            var innerTxt = $('.sec-all span.active');
+                            for (var i = 0; i < innerTxt.length; i++) {
+                                selectList(innerTxt[i].innerHTML)
+                            }
+                            unclickable(arrSel)
+                        }
+
+                        // 拿到数据跟全部集合做数据对比
+                        function selectList(txt) {
+                            arrSel = [];
+                            // 数据里边的全部集合
+                            var desc = res.Data.AllProductAssociationSpecList;
+                            for (var j = 0; j < desc.length; j++) {
+                                if (txt == desc[j].AttributeText) {
+                                    arrSel.push(desc[j].ProductSysNo);
+                                }
+                            }
+                        }
+
+                        // 置灰处理结果
+                        function unclickable(arr) {
+                            // 数据里边的全部集合
+                            var desc = res.Data.AllProductAssociationSpecList;
+                            // 外层自定义属性个数 
+                            var secStatus = $('.product-spec .sec-quality');
+                            var spanStatus;
+                            for (var i = 0; i < secStatus.length; i++) {
+                                if (secStatus.eq(i).attr('status') == 'false') {
+                                    secStatus.eq(i).siblings('.sec-all').find('span').addClass(
+                                        'noAllow');
+                                    spanStatus = secStatus.eq(i).siblings('.sec-all').find('span');
+                                    for (var x = 0; x < spanStatus.length; x++) {
+                                        for (var j = 0; j < arr.length; j++) {
+                                            for (k = 0; k < desc.length; k++) {
+                                                if (arr[j] == desc[k].ProductSysNo && spanStatus[x]
+                                                    .innerHTML == desc[k].AttributeText) {
+                                                    spanStatus.eq(x).removeClass('noAllow')
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    $('.addCarNow').addClass('defaultPre');
+                }
+            }
+        })
+    }
+</script>
+
+</html>

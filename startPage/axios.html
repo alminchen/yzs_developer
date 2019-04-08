@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./js/axios.js"></script>
+<script>
+    // var instance = axios.create({
+    //     baseURL: "http://192.168.1.7:89/B2CApp/Common.svc"
+    // });
+    // instance.get('/GetOneSharingGood', {
+    //         params: {
+    //             SysNo: 1
+    //         }
+    //     })
+    //     .then((res) => {
+    //         console.log(res.data.Data)
+    //     })
+    //     .catch((error) => {
+    //         console.log(error)
+    //     })
+    var http = {
+        ajax: function (opt) {
+            var opts = opt || {};
+            if (!opts.url) {
+                alert('接口都不写， 想干嘛？');
+                return false;
+            }
+            if (opts.type === undefined) {
+                opts.type = 'post'
+            }
+            axios({
+                method: opts.type,
+                url: opts.url,
+                // `params` 是即将与请求一起发送的 URL 参数
+                // 必须是一个无格式对象(plain object)或 URLSearchParams 对象
+                params: (opts.type === "get") ? opts.data : {},
+                // params:opts.data,
+                // `data` 是作为请求主体被发送的数据
+                // 只适用于这些请求方法 'PUT', 'POST', 和 'PATCH'
+                // 在没有设置 `transformRequest` 时，必须是以下类型之一：
+                // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
+                // - 浏览器专属：FormData, File, Blob
+                // - Node 专属： Stream
+                data: (opts.type === "post") ? qs.stringify(opts.data) : {},
+                headers: opts.headers || {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
+                // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
+                baseURL: 'http://192.168.1.7:89/B2CApp/',
+                // `transformRequest` 允许在向服务器发送前，修改请求数据(请求前处理)
+                // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
+                // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
+                transformRequest: [function (data) {
+                    // 对 data 进行任意转换处理
+                    return data;
+                }],
+                // `transformResponse` 在传递给 then/catch 前，允许修改响应数据(请求返回的数据)
+                transformResponse: [function (data) {
+                    // 对 data 进行任意转换处理
+                    return data;
+                }],
+                // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)
+                // 如果请求话费了超过 `timeout` 的时间，请求将被中断
+                timeout: opts.time || 10 * 1000,
+                //返回数据类型
+                responseType: opts.dataType || 'json'
+            }).then(function (res) {
+                // console.log(res);
+                if (res.status == 200) {
+                    if (opts.success) {
+                        opts.success(res.data, res);
+                    }
+                } else {
+                    alert(res.data.error);
+                }
+            }).catch(function (error) {
+                //请求已发出，但服务器使用状态代码进行响应
+                //落在2xx的范围之外
+                console.log(error);
+                if (opts.error) {
+                    opts.error(error);
+                } else {
+                    //在设置触发错误的请求时发生了错误
+                    alert('出错了');
+                }
+                console.log(error.config);
+            });
+
+        },
+    }
+
+    http.ajax({
+        url: "Common.svc/GetOneSharingGood",
+        type: "get",
+        data: {
+            'SysNo': 1
+        },
+        success: (res) => {
+            console.log(res)
+        }
+    })
+    // http://192.168.1.7:89/B2CApp/UserCenter.svc/Product/H5Attention/Add?productSysNo=9392
+    http.ajax({
+        url: 'UserCenter.svc/Product/H5Attention/Add',
+        type: "GET",
+        data: {
+            'productSysNo': 9392,
+            'token': '42983c2985b34d7a55c7455cfb9016b4'
+        },
+        success: function (rs) {
+            console.log(rs)
+        }
+    })
+
+
+
+    //二次封装
+    axios.interceptors.request.use((config) => {
+        return config
+    }, (err) => {
+        alert('请求超时')
+        return Promise.resolve(err)
+    })
+
+
+    axios.interceptors.response.use((data) => {
+        // 数据统一校验处理
+        return data
+    }, (err) => {
+        // 数据异常统一处理
+        if (err.response.status === 504 || err.response.status === 404) {
+            alert('服务器被吃了')
+        } else if (err.response.status === 403) {
+            alert('权限不足,请联系管理员')
+        } else {
+            alert('未知错误')
+        }
+        return Promise.resolve(err)
+    })
+
+
+    function postRequest(url, params) {
+        return axios({
+            method: 'post',
+            url: `${base}${url}`,
+            data: params,
+            transformRequest: [function (data) {
+                let ret = ''
+                for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                }
+                return ret
+            }],
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+    }
+
+    function uploadFileRequest(url, params) {
+        return axios({
+            method: 'post',
+            url: `${base}${url}`,
+            data: params,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    }
+
+    function putRequest(url, params) {
+        return axios({
+            method: 'put',
+            url: `${base}${url}`,
+            data: params,
+            transformRequest: [function (data) {
+                let ret = ''
+                for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                }
+                return ret
+            }],
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+    }
+
+    function deleteRequest(url) {
+        return axios({
+            method: 'delete',
+            url: `${base}${url}`
+        })
+    }
+
+    function getRequest(url) {
+        return axios({
+            method: 'get',
+            url: `${base}${url}`
+        })
+    }
+</script>
+
+</html>

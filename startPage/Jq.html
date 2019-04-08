@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+</head>
+
+<body>
+    <div class="test-div"></div>
+</body>
+<script src="./js/jquery-2.1.1.js"></script>
+<script>
+    $youziku.load(".test-div", "6aac44556c2043a884a4eec6cebfae65", "PingFangSC");
+    $youziku.draw();
+    $(function () {
+        $('.test-div').append(
+            $("<div/>", {
+                "class": "place-div"
+            }).append(
+                $("<a/>", {
+                    "class": "test-a",
+                    "text": "测试",
+                    "href": "javascript:;",
+                }).append(
+                    $("<span/>", {
+                        "class": 'test-span',
+                        "text": "span测试",
+                        "data-span":"1",
+                        "click": function (e) {
+                            e.cancelBubble = true;
+                            e.stopPropagation();
+                            alert($(this).attr("data-span"))
+                        }
+                    })
+                )
+            )
+        )
+    })
+</script>
+
+</html>

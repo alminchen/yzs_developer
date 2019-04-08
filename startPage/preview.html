@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./dist/skin.css">
+    <title>Document</title>
+</head>
+    <div id="app">
+        <div>
+            <img src="./images/blue.png" alt="" preview="1" preview-text="">
+            <img src="./images/logo.png" alt="" preview="2" preview-text="描述文字">
+            <img src="./images/bg.png" alt="" preview="2" preview-text="描述文字">
+        </div>
+    </div>
+<body>
+
+</body>
+<script src="./js/vue.min.js"></script>
+<script src="./dist/default-skin/vue-photo-preview.js"></script>
+<script>
+    var options = {
+        fullscreenEl: false //关闭全屏按钮
+    }
+
+    Vue.use(vuePhotoPreview, options);
+    new Vue({
+        el:'#app'
+    })
+</script>
+
+</html>

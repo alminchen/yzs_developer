@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>模拟数字键盘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui" />
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+        }
+
+        ul {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #keyboard {
+            width: 100vw;
+            height: 80vw;
+            background: #ccc;
+            padding: 2vw;
+            position: fixed;
+            bottom: -80vw;
+            left: 0;
+            transition: all 1s;
+        }
+
+        .key_input {
+            width: 96vw;
+            padding: 3vw;
+        }
+
+        .key_input li {
+            width: 11vw;
+            height: 11vw;
+            line-height: 11vw;
+            margin: 2vw;
+            border: 1px solid #f00;
+        }
+
+        .key_code {
+            width: 72vw;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .key_code li {
+            width: 24vw;
+            height: 12vw;
+            line-height: 12vw;
+            position: relative;
+        }
+
+        .key_code li:active {
+            background: #f00;
+            color: #fff
+        }
+
+        .key_code::before {
+            content: " ";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 1px;
+            border-top: 1px solid #f00;
+            color: #f00;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+
+        .key_code::after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1px;
+            bottom: 0;
+            border-left: 1px solid #f00;
+            color: #f00;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+        }
+
+        .key_code li::before {
+            content: " ";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1px;
+            bottom: 0;
+            border-right: 1px solid #f00;
+            color: #f00;
+            -webkit-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+        }
+
+        .key_code li::after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 1px;
+            border-bottom: 1px solid #f00;
+            color: #f00;
+            -webkit-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="openBox()">添加键盘</button>
+    <button onclick="closeBox()">关闭键盘</button>
+    <button onclick="getData()">获取键盘的值</button>
+    <!-- 虚拟键盘 -->
+    <ul class="key_input" onclick="openBox()">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="keyboard">
+        <!-- <ul class="key_input">
+            <li></li><li></li><li></li><li></li><li></li><li></li>
+        </ul> -->
+        <ul class="key_code">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>取消</li>
+            <li>0</li>
+            <li>清除</li>
+        </ul>
+    </div>
+
+    <script>
+        let keyboard = document.getElementById('keyboard')
+        let key_code = document.getElementsByClassName('key_code')[0];
+        let key_input = document.querySelectorAll('.key_input li') //获取输入框的集合
+        let dataIndex = -1 //创建一个输入框的下标
+        //通过事件委托来输入信息
+        key_code.onclick = function (event) {
+            let ev = event || window.event;
+            let target = ev.target || ev.srcElement;
+            if (target.innerHTML == '清除') clearData(key_input)
+            else if (target.innerHTML == '取消') closeEditor(key_input)
+            else editData(key_input, target.innerHTML)
+            //此处执行发送请求  
+            if (dataIndex == 5) getData()
+        }
+        //封装一个输入方法
+        function editData(ele, data) {
+            if (dataIndex < 5) dataIndex++
+            else return false;
+            ele[dataIndex].innerHTML = data
+        }
+        //封装一个清除方法
+        function clearData(ele) {
+            if (dataIndex == -1) return false;
+            ele[dataIndex].innerHTML = ''
+            dataIndex--
+        }
+        //封装一个取消方法（清除所有输入项，并隐藏输入框）
+        function closeEditor(ele) {
+            //一切回到公元前(清除key_input的所有数据)
+            for (let i = 0; i < 6; i++) ele[i].innerHTML = ''
+            dataIndex = -1
+        }
+
+        function closeBox() { //关闭键盘的动画
+            keyboard.style.bottom = -keyboard.offsetHeight + 'px';
+            //关闭动画的时候顺便清除一下输入信息
+            setTimeout(() => {
+                closeEditor(key_input)
+            }, 1000);
+        }
+
+        function openBox() { //打开键盘的动画
+            keyboard.style.bottom = 0;
+        }
+
+        function getData() {
+            let datas = ''
+            for (let i = 0; i < 6; i++) datas += key_input[i].innerHTML
+            console.log(datas) //这里可以发送一些ajax请求
+        }
+        //解决移动端不能执行css伪类:active方法添加一个touchstart即可
+        document.body.addEventListener('touchstart', function () {}); //...空函数即可
+    </script>
+</body>
+
+</html>

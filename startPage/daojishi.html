@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/jquery-2.1.1.js"></script>
+    <script>
+        var curDate = new Date("2018/12/04 15:12:22");
+        var endDate = new Date(curDate.setDate(curDate.getDate() + 7));
+
+        function djs() {
+            var startDate = new Date();
+            var leftTime = Math.floor((endDate.getTime() - startDate.getTime()) / 1000); //获得差值除以1000转为秒
+            if (leftTime > 0) {
+                var day = totwo(Math.floor(leftTime / 86400)); //  差值/60/60/24获取天数
+                var hour = totwo(Math.floor(leftTime % 86400 / 3600)); //   取余/60/60获取时(取余是获取leftTime对应位置的小数位)
+                var min = totwo(Math.floor(leftTime % 86400 % 3600 / 60)); //  取余/60获取分
+                var s = totwo(Math.floor(leftTime % 60)); //取总秒数的余数
+            }
+            if (leftTime <= 0) {
+                clearInterval(time)
+            }
+            console.log(day, hour, min, s)
+        }
+
+        function totwo(e) {
+            return e < 10 ? "0" + e : "" + e;
+        }
+        djs();
+        var time = setInterval(djs, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./layui/layui.js"></script>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <style>
+        .ssss {
+            width: 400px;
+            height: 400px;
+            display: none;
+        }
+
+        .runtest textarea {
+            display: block;
+            width: 300px;
+            height: 160px;
+            border: 10px solid #F8F8F8;
+            border-top-width: 0;
+            padding: 10px;
+            line-height: 20px;
+            overflow: auto;
+            background-color: #3F3F3F;
+            color: #eee;
+            font-size: 12px;
+            font-family: Courier New;
+        }
+
+        .runtest a {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="layui-layer-content">
+            <div class="runtest layui-layer-wrap" style="display: block;">
+                <textarea class="site-demo-text" id="testmain1">ssss</textarea>
+            </div>
+        </div>
+    </div>
+    <button onclick="xxx()" type="button">确定</button>
+    <div class="ssss">
+        <div class="runtest layui-layer-wrap" style="display: block;" id="sa">
+            <textarea class="site-demo-text" id="testmain2">layer.open({
+                    title: '在线调试'
+                    ,content: '可以填写任意的layer代码'
+                    });
+                    </textarea>
+            <a href="javascript:;" class="layui-btn layui-btn-normal" onclick="sss()">立即运行</a>
+        </div>
+    </div>
+    <script src="./js/jquery-2.1.1.js"></script>
+    <script>
+        layui.use(['layer', 'form'], function () {
+            var layer = layui.layer,
+                form = layui.form;
+        });
+        var v, index;
+
+        function xxx() {
+            index = layer.open({
+                type: 1,
+                content: $(".ssss"),
+                area: ['400px', "400px"],
+                move:'.layui-layer-title'
+            })
+            v = $("#testmain2").val();
+        }
+
+        function sss() {
+            // $("#sa").css("display","none")
+            // alert($("#testmain1").val());
+            $("#testmain1").val($("#testmain1").val() + v);
+            // layer.closeAll()
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>无限滚动</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            width: 100%;
+            height: 120px;
+            /*padding: 10px 0;*/
+            font-size: .3rem;
+            line-height: 1.2rem;
+            text-align: center;
+            color: #3f3f3f;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .grey-bg {
+            background-color: #eee;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 44px;
+            width: 100%;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            z-index: 1000;
+            color: #666;
+        }
+
+        .header>.title {
+            font-size: 16px;
+            line-height: 44px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .left {
+            float: left;
+            padding-left: .3rem;
+        }
+
+        .right {
+            float: right;
+            padding-right: .3rem;
+            line-height: .6rem;
+            width: 2.2rem;
+            font-size: .24rem;
+        }
+    </style>
+</head>
+
+<body class="easyui-layout">
+    <div id="app">
+        <div class="header">
+            <h1 class="title">抽奖历史记录</h1>
+        </div>
+        <scroller :on-infinite="infinite" ref="my_scroller" :on-refresh="refresh" style="padding-top: 44px;">
+            <div v-for="(item, index) in items" class="row" :class="{ 'grey-bg': index % 2 == 0 }">
+                <span class="left">{{ item.ProductName}}</span>
+                <span class="right">{{ item.MobilePhoneNumber }}</span>
+            </div>
+        </scroller>
+    </div>
+</body>
+<script src="./js/jquery-2.1.1.js"></script>
+<script src="./js/vue.min.js"></script>
+<script src="./js/vue-scroller.min.js"></script>
+<script>
+    var v1 = new Vue({
+        el: '#app',
+        data: {
+            items: [],
+            page: 1
+        },
+        mounted: function () {},
+        methods: {
+            get_list: function (fn) {
+                // var data = { uid:getQueryString('uid'),token:getQueryString('token'),page:this.page };
+                var self = this
+
+                $.ajax({
+                    url: "http://192.168.1.7:89/B2CApp/Common.svc/GetIntegralShopOrderList",
+                    data: {
+                        // ?sysNo=61948&pageIndex=1&pageSize=10
+                        sysNo: 61948,
+                        pageIndex: self.page,
+                        pageSize: 10
+                    },
+                    success: function (res) {
+                        self.items = self.items.concat(res.Data);
+                        self.bottom += res.Data.length;
+                        if (typeof (fn) == "function") {
+                            fn(res.Data.length == 0);
+                        }
+                    }
+                })
+            },
+            refresh: function (done) {
+                var self = this
+                self.page = 1;
+                self.items = [];
+                done();
+            },
+            infinite: function (done) {
+                var self = this
+                self.get_list(function (is_finish) {
+                    console.log(is_finish)
+                    if (is_finish) {
+                        self.$refs.my_scroller.finishInfinite(2);
+                        return;
+                    }
+                    done();
+                    self.page = self.page + 1;
+                });
+            }
+        }
+    });
+</script>
+
+</html>

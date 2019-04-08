@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .inner {
+            width: 300px;
+        }
+
+        .foc-picss {
+            height: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .foc-picss li {
+            float: left;
+            width: 238px;
+            height: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+         .foc-picss li {
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        .foc-picss li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .foc-picss li {
+            width: 114px;
+            margin-right: 10px;
+        }
+ 
+        .foc-picss i {
+            position: absolute;
+            width: 100%;
+            height: 34px;
+            line-height: 44px;
+            overflow: hidden;
+            left: 0;
+            bottom: 0;
+            _bottom: -1px;
+            z-index: 2;
+            color: #fff;
+            text-align: center;
+        }
+
+        .foc-picss span {
+            position: absolute;
+            z-index: 90;
+            width: 20px;
+            height: 30px;
+            cursor: pointer;
+            top: 30px;
+            background: rgba(0, 0, 0, .6);
+            color: #fff;
+            line-height: 30px;
+            text-align: center;
+            font-size: 16px;
+            display: none;
+        }
+
+        .foc-picss .ico-right {
+            right: 0;
+        }
+
+        .foc-picss .ico-left {
+            left: 0;
+        }
+
+        .foc-btn span {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inner">
+        <div class="foc-picss" id="foc_tab8">
+            <ul class="blackborard-ul" rel="xtaberItems">
+
+                <li class="xtaber-item">
+                    <a href="">
+                        <img src="/uploads/images/20180116/83kg8gbt1q8239da_0.gif">
+                        <i class="img-tit"></i>
+                        <i class="title">侠盗联盟</i>
+                    </a></li>
+                <li class="xtaber-item">
+                    <a href="">
+                        <img src="/uploads/images/20180116/83kg8gbt1q8239da_1.gif">
+                        <i class="img-tit"></i>
+                        <i class="title">羞羞的铁拳</i>
+                    </a></li>
+                <li class="xtaber-item">
+                    <a href="">
+                        <img src="/uploads/images/20180116/83kg8gbt1q8239da_2.gif">
+                        <i class="img-tit"></i>
+                        <i class="title">战狼2</i>
+                    </a></li>
+                <li class="xtaber-item">
+                    <a href="">
+                        <img src="/uploads/images/20180116/sv9jmqzeai44m1ma_3.gif">
+                        <i class="img-tit"></i>
+                        <i class="title">银翼杀手</i>
+                    </a></li>
+            </ul>
+            <span class="fico ico-right">
+                <</span> <span class="fico ico-left">>
+            </span>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery-2.1.1.js"></script>
+<script src="./js/tar.js"></script>
+<script>
+    $('.foc-picss').each(function () {
+        var it = $(this);
+        $.fn.xTaber({
+            content: it,
+            tab: false,
+            style: 'left',
+            auto: true,
+            timeout: 6000,
+            prev: it.find('.ico-left'),
+            next: it.find('.ico-right'),
+            setup: 1
+        });
+        it.hover(
+            function () {
+                $(this).addClass('foc-btn')
+            },
+            function () {
+                $(this).removeClass('foc-btn')
+            }
+        );
+    });
+</script>
+
+</html>
